@@ -47,10 +47,8 @@
 </div>
 <br>
 <div>
-
-    ☕ 支持一下作者<br>
-    如果它帮你节省了一点时间，欢迎请作者喝杯咖啡 ☕<br>
-    <img src="public/coffee.JPG" alt="请作者喝咖啡" width="300">
-    
+☕ 支持一下作者<br>
+如果它帮你节省了一点时间，欢迎请作者喝杯咖啡 ☕<br>
+<img src="public/coffee.JPG" alt="请作者喝咖啡" width="300">
 </div>
 
