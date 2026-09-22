@@ -1,0 +1,24 @@
+﻿<div>
+    <% var play = user.getPlay() %>
+    <% var marketItems = user.npc.getShopItems(111) %>
+    <div>
+        <div>
+            <span>金贝：</span><span><%= play.gold %></span>
+        </div>
+        <div>
+            <span>银贝：</span><span><%= play.showSilver %></span>
+            <span>铜币：</span><span><%= play.showCopper %></span>
+        </div>
+    </div>
+
+    <div>
+        <a href="shop?shopType=111">购买商品</a>
+        <br>
+        <a href="market-sell">卖出商品</a>
+    </div>
+
+    <div>
+        <p>欢迎来到市场！这里有来自世界各地的特产商品。</p>
+        <p>您可以在这里购买商品，也可以卖出您拥有的商品。</p>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿<div class="game-section">
+    <div>
+        【宝石信息】
+    </div>
+    <% 
+    var gemName = query.name;
+    var gem = jewel.find(function(item) { return item.name === gemName; });
+    %>
+    
+    <% if (!gem) { %>
+    <div>未找到宝石信息</div>
+    <% } else { %>
+    <div>
+        名称:<span class="left-cls"><%= gem.name %></span>
+    </div>
+    <div>
+        描述:<span class="left-cls"><%= gem.tip %></span>
+    </div>
+    <div>
+        价格:<span class="left-cls"><%= gem.price %>铜币</span>
+    </div>
+    <% } %>
+</div>

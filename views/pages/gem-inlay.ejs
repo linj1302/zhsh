@@ -1,0 +1,56 @@
+﻿<div>
+    <div>
+        【装备列表】
+    </div>
+
+    <% var backpack = user.backpack; %>
+    
+    <!-- 显示背包中的装备 -->
+    <div style="margin-top: 10px;">
+        <div>
+            <% 
+            // 从背包中筛选出装备
+            var equipmentItems = [];
+            backpack.items.forEach(function(item, index) {
+                if (item.type === 1) { // 装备类型
+                    equipmentItems.push({
+                        item: item,
+                        id: item.id // 背包中的ID
+                    });
+                }
+            });
+            
+            // 为装备计算孔位数量
+            equipmentItems.forEach(function(eq) {
+                var item = eq.item;
+                // 根据装备等级计算孔位数 (1-200级对应1-4个孔位)
+                var sockets = Math.max(1, Math.min(4, Math.ceil(item.info.level / 50)));
+                eq.sockets = sockets;
+                
+                // 如果装备还没有sockets属性，则初始化
+                if (!item.info.sockets) {
+                    item.info.sockets = Array(sockets).fill(null);
+                }
+            });
+            %>
+            
+            <% equipmentItems.forEach(function(eq, i) { %>
+            <div>
+                <span><%= i+1 %>.</span>
+                <span>
+                    <span><%= eq.item.name %>(<%= eq.item.info.level %>级)</span>
+                </span>
+                
+                <!-- 显示孔位信息 -->
+                <span style="margin-left: 5px;">
+                    [<%= eq.item.info.sockets ? eq.item.info.sockets.filter(s => s !== null).length : 0 %>/<%= eq.sockets || 0 %>孔]
+                </span>
+
+                <a style="margin-left: 5px;" href="gem-inlay-info?itemId=<%= eq.id %>">
+                    镶嵌
+                </a>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</div>

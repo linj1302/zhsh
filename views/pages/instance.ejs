@@ -1,0 +1,118 @@
+﻿<div>
+    <div style="margin: 10px 0px;">
+        【副本信息】
+    </div>
+
+    <div>
+        ---------------------------------
+    </div>
+    <% var trialList = trial || [];%>
+    <!-- 副本列表 -->
+    <div>
+        <% trialList.forEach(function(trial) { %>
+        <div>
+            <div>
+                <span>【<%= trial.name %>】</span>
+                <span>(<%= trial.levelRequirement %>)</span>
+            </div>
+
+            <div>
+                时长: <span><%= trial.timeLimit || '60分钟' %></span>
+            </div>
+
+            <div>
+                人数上限: <span><%= trial.playerRequirement %></span>
+            </div>
+
+            <div>
+                开放时间:
+                <span>每日1次</span>
+
+            </div>
+
+            <div>
+                进本地点: <span><%= trial.receiveLocation %>-<%= trial.receiveNpc %></span>
+            </div>
+
+
+            <div>
+                ---------------------------------
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+
+    <!-- 分页组件 -->
+
+    <style>
+        .pagination-container {
+            margin: 15px 0;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            background: #fff;
+            flex-wrap: nowrap;
+        }
+
+        .pagination .prev,
+        .pagination .next {
+            height: 30px;
+            line-height: 28px;
+            padding: 0 12px;
+            margin: 0 5px;
+            font-size: 14px;
+            background: #fff;
+            color: #606266;
+            transition: all 0.3s;
+            text-decoration: none;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .pagination .prev:hover,
+        .pagination .next:hover {
+            color: #409eff;
+            border-color: #c6e2ff;
+            background-color: #ecf5ff;
+        }
+
+        .pagination .prev.disabled,
+        .pagination .next.disabled {
+            opacity: 0.6;
+            background: #f8f9fa;
+            color: #c0c4cc;
+            cursor: not-allowed;
+        }
+
+        .pagination .info {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #606266;
+            margin: 0 10px;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .pagination .info .page {
+            margin-right: 8px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .pagination .info .total {
+            color: #909399;
+        }
+    </style>
+<!-- 时间显示组件 -->
+    <div>
+
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "encounters": [
+    {
+      "route": ["泉州", "大阪"],
+      "probability": 0.03,
+      "location": "蓬莱仙岛",
+      "position": "码头"
+    },
+    {
+      "route": ["大阪", "泉州"],
+      "probability": 0.03,
+      "location": "蓬莱仙岛",
+      "position": "码头"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+﻿<div>
+    <div>【参加婚宴】</div>
+
+    <% if (typeof activeBanquets !== 'undefined' && activeBanquets && activeBanquets.length > 0) { %>
+        <div>进行中的婚宴：</div>
+        <% activeBanquets.forEach(function(banquet) { %>
+            <div style="padding: 10px 0; border-bottom: 1px solid #ccc;">
+                <div><strong><%= banquet.host_nickname %></strong> 的婚宴（<%= banquet.guestCount || 0 %>/<%= banquet.neededGuests || 8 %>人）</div>
+                <div><a href="/marriage?type=joinBanquet&banquetId=<%= banquet.id %>">参加婚宴</a></div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <div>暂无进行中的婚宴</div>
+    <% } %>
+
+    <div>
+</div>
+</div>

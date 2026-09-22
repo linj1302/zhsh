@@ -1,0 +1,22 @@
+﻿<div>
+    <div>【强制离婚】</div>
+    
+    <% if (typeof marriageInfo !== 'undefined' && marriageInfo) { %>
+        <div>
+            您已与 <%= marriageInfo.user1_id == user.id ? marriageInfo.user2_nickname : marriageInfo.user1_nickname %> 结为夫妻。
+        </div>
+        
+        <div style="margin: 15px 0; color: red;">
+            确定要强制离婚吗？此操作不可逆。
+        </div>
+        
+        <div>
+            <div><a href="/marriage?type=requestDivorce" onclick="return confirm('确定要离婚吗？')">强制离婚</a></div>
+        </div>
+    <% } else { %>
+        <div>您没有结婚，无法强制离婚</div>
+    <% } %>
+
+    <div>
+</div>
+</div>

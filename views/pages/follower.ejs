@@ -1,0 +1,174 @@
+﻿<h2 class="follower-header">随从系统</h2>
+
+<% var followerStatus = user.follower?.getStatus() || {} %>
+<% var qualityText = {'normal': '普通', 'excellent': '优秀', 'elite': '精锐', 'perfect': '完美', 'legend': '传说'} %>
+<% var qualityColor = {'normal': '#999', 'excellent': '#4caf50', 'elite': '#1976d2', 'perfect': '#e65100', 'legend': '#c62828'} %>
+<% var soulInfo = followerStatus.soulInfo || {} %>
+
+<!-- 随魂信息 -->
+<div style="padding:8px 10px; background:linear-gradient(135deg, #f3e5f5, #ede7f6); border:1px solid #ce93d8; border-radius:6px; margin:8px 0;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+        <div>
+            <strong style="color:#7b1fa2;">👻 随魂</strong>
+            <span style="font-size:1.2em; color:#4a148c; font-weight:bold; margin-left:4px;"><%= soulInfo.soulPoints || 0 %></span>
+            <small style="color:#888;">（遗弃随从可获得）</small>
+        </div>
+        <% if ((soulInfo.soulPoints || 0) >= (soulInfo.legendExchangeCost || 100)) { %>
+            <a href="/follower?action=exchangeLegend" class="btn btn-gold">
+                ★ 兑换传说 (<%= soulInfo.legendExchangeCost %>随魂)
+            </a>
+        <% } %>
+    </div>
+</div>
+
+<!-- 我的随从 -->
+<div class="section">
+    <h3>我的随从 (<%= followerStatus.followerCount || 0 %>/3)</h3>
+    <% if (followerStatus.followers && followerStatus.followers.length > 0) { %>
+        <% followerStatus.followers.forEach(function(f) { %>
+            <div style="border:1px solid <%= f.state === 'fighting' ? '#ffe0b2' : '#eee' %>; border-radius:6px; padding:10px; margin:8px 0; background:<%= f.state === 'fighting' ? '#fffcf5' : '#fafafa' %>;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <strong style="font-size:1.05em;"><%= f.name %></strong>
+                        <span class="tag" style="background:<%= qualityColor[f.quality] %>15; color:<%= qualityColor[f.quality] %>;">
+                            <%= qualityText[f.quality] || f.quality %>
+                        </span>
+                        <% if (f.state === 'fighting') { %>
+                            <span class="tag tag-orange">出战中</span>
+                        <% } %>
+                        <br><small style="color:#888;"><%= f.title %></small>
+                        <% if (f.legendSkill) { %>
+                            <br><span class="legend-skill" style="font-size:0.85em;"><%= f.legendSkill.name %></span>
+                        <% } %>
+                    </div>
+                    <div style="text-align:right; font-size:0.82em; color:#666;">
+                        <%= f.level %>级 · 经验<%= f.exp %>
+                        <br>攻<%= (f.stats?.attack || 0) + (f.equipmentStats?.attack || 0) %> 防<%= (f.stats?.defense || 0) + (f.equipmentStats?.defense || 0) %> 敏<%= (f.stats?.agility || 0) + (f.equipmentStats?.agility || 0) %>
+                    </div>
+                </div>
+                <!-- 装备 + 操作 -->
+                <div style="margin-top:6px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:0.82em;">
+                    <% var slots = { weapon: '武器', armor: '防具', accessory: '饰品' } %>
+                    <% var eq = f.equipment || {} %>
+                    <% Object.keys(slots).forEach(function(s) { %>
+                        <a href="/follower?action=equip&recruitId=<%= f.recruit_id %>&slot=<%= s %>" style="color:#1565c0;">
+                            [<%= slots[s] %>:<%= eq[s] ? eq[s].item_name : '空' %>]
+                        </a>
+                        <% if (eq[s]) { %>
+                            <a href="/follower?action=unequip&recruitId=<%= f.recruit_id %>&slot=<%= s %>" style="color:#c62828; font-size:0.9em;">卸</a>
+                        <% } %>
+                    <% }); %>
+                    <span style="color:#ddd;">|</span>
+                    <a href="/follower?action=sprite&recruitId=<%= f.recruit_id %>" style="color:#7b1fa2;">🔮 精灵</a>
+                    <span style="color:#ddd;">|</span>
+                    <% if (f.state !== 'fighting') { %>
+                        <a href="/follower?action=setState&state=fighting&id=<%= f.recruit_id %>" class="btn btn-primary" style="padding:1px 8px; font-size:0.85em;">出战</a>
+                    <% } else { %>
+                        <a href="/follower?action=setState&state=rest&id=<%= f.recruit_id %>" class="btn btn-ghost" style="padding:1px 8px; font-size:0.85em;">休息</a>
+                    <% } %>
+                    <span style="color:#ddd;">|</span>
+                    <a href="/follower?action=train&recruitId=<%= f.recruit_id %>" style="color:#e65100;">💪培养</a>
+                    <a href="/follower?action=abandon&id=<%= f.recruit_id %>" style="color:#c62828; margin-left:auto;" onclick="return confirm('确定遗弃<%= f.name %>？将获得随魂。')">遗弃</a>
+                </div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p style="color:#999; font-size:0.85em;">尚未招募任何随从</p>
+    <% } %>
+</div>
+
+<!-- 招募区域 -->
+<% if ((followerStatus.followerCount || 0) < 3) { %>
+<div class="section">
+    <h3>可招募随从</h3>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <small style="color:#999;">每2小时自动刷新</small>
+        <a href="/follower?action=refreshPool" class="btn btn-primary" style="font-size:0.78em;">刷新池 (5000铜贝)</a>
+    </div>
+    <% if (followerStatus.recruitPool && followerStatus.recruitPool.length > 0) { %>
+        <table>
+        <tr><th>名称</th><th>品质</th><th></th></tr>
+        <% followerStatus.recruitPool.forEach(function(f) { %>
+            <tr>
+                <td>
+                    <strong><%= f.name %></strong>
+                    <br><small style="color:#888;"><%= f.title %></small>
+                </td>
+                <td>
+                    <span style="color:<%= qualityColor[f.quality] %>; font-weight:600;"><%= qualityText[f.quality] || f.quality %></span>
+                    <% if (f.quality === 'legend') { %>
+                        <br><small style="color:#c62828;">★ <%= f.legendSkill?.name %></small>
+                    <% } %>
+                </td>
+                <td>
+                    <a href="/follower?action=recruit&id=<%= f.id %>&quality=<%= f.quality %>" class="btn btn-primary" style="padding:2px 8px; font-size:0.82em;">招募</a>
+                </td>
+            </tr>
+        <% }); %>
+        </table>
+    <% } else { %>
+        <p style="color:#999; font-size:0.85em;">暂无可招募的随从</p>
+    <% } %>
+</div>
+<% } %>
+
+<!-- 传承 -->
+<% if (followerStatus.followers && followerStatus.followers.length >= 2) { %>
+<details class="section" style="padding:8px 10px;">
+    <summary style="font-weight:600; font-size:0.9em; cursor:pointer;">📖 传承</summary>
+    <p style="font-size:0.82em; color:#888; margin:6px 0;">将源随从经验转移给目标（消耗传承之书x1，源随从将被遗弃）</p>
+    <form action="/follower" method="get" style="font-size:0.85em;">
+        <input type="hidden" name="action" value="inherit">
+        <div style="margin:4px 0;">
+            <label>源（牺牲）：</label>
+            <select name="sourceId">
+                <% followerStatus.followers.forEach(function(f) { %>
+                    <option value="<%= f.recruit_id %>"><%= f.name %> <%= f.level %>级</option>
+                <% }); %>
+            </select>
+        </div>
+        <div style="margin:4px 0;">
+            <label>目标（升级）：</label>
+            <select name="targetId">
+                <% followerStatus.followers.forEach(function(f) { %>
+                    <option value="<%= f.recruit_id %>"><%= f.name %> <%= f.level %>级</option>
+                <% }); %>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:4px;">执行传承</button>
+    </form>
+</details>
+<% } %>
+
+<!-- 传说技能一览 -->
+<details class="section" style="padding:8px 10px;">
+    <summary style="font-weight:600; font-size:0.9em; cursor:pointer;">📜 传说随从技能一览</summary>
+    <table style="font-size:0.85em; margin-top:6px;">
+        <tr><th>随从</th><th>技能</th><th>效果</th></tr>
+        <% [
+            { n:'路飞',   s:'橡胶巨人枪', d:'10%概率5倍伤害，停止攻击2回合' },
+            { n:'索隆',   s:'三刀流鬼斩', d:'10%概率连击3次，额外承受20%伤害' },
+            { n:'香吉士', s:'恶魔风脚', d:'10%概率对手防具耐久归零' },
+            { n:'布鲁克', s:'镇魂之歌', d:'10%概率对手首饰耐久归零' },
+            { n:'福兰奇', s:'终极铁锤', d:'10%概率对手武器耐久归零' },
+            { n:'罗宾',   s:'十六轮花', d:'受击26%概率分身闪避' },
+            { n:'娜美',   s:'雷霆万钧', d:'闪避后额外10000雷电伤害' },
+            { n:'乔巴',   s:'野性强化', d:'战斗后攻防敏+50%' },
+            { n:'乌索普', s:'必杀火星鸟', d:'10%概率额外5000火焰伤害' }
+        ].forEach(function(s) { %>
+            <tr><td><%= s.n %></td><td><span style="color:#c62828; font-weight:600;"><%= s.s %></span></td><td><small><%= s.d %></small></td></tr>
+        <% }); %>
+    </table>
+</details>
+
+<!-- 系统说明 -->
+<details style="font-size:0.82em; color:#666; margin:8px 0;">
+    <summary style="color:#888; cursor:pointer;">系统说明</summary>
+    <div style="padding:6px; background:#f8f9fa; border-radius:4px; margin-top:4px;">
+        <div>· 最多招募3只随从，只能选择1只出战</div>
+        <div>· 传说品质随从拥有特殊传说技能</div>
+        <div>· 品质越高，培养属性增幅越大</div>
+        <div>· 遗弃随从可获得随魂，用于兑换传说随从</div>
+        <div>· 招募池每2小时自动刷新</div>
+    </div>
+</details>

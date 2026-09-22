@@ -1,0 +1,150 @@
+﻿<h2 class="card-header">卡片系统</h2>
+
+<% var cardStatus = user.card?.getStatus() || {} %>
+<% var currentTab = (typeof query !== 'undefined' && query.tab) ? query.tab : 'main'; %>
+
+<!-- 导航标签 -->
+<div style="display:flex; gap:4px; margin-bottom:10px; flex-wrap:wrap;">
+    <% var tabs = [
+        {key:'main', label:'🔮 附魔'},
+        {key:'collection', label:'📦 收集'},
+        {key:'enchant', label:'✨ 附魔操作'},
+        {key:'wiki', label:'📖 百科'}
+    ]; %>
+    <% tabs.forEach(function(t) { %>
+        <a href="/card<%= t.key === 'main' ? '' : '?tab=' + t.key %>" 
+           class="btn <%= currentTab === t.key ? 'btn-primary' : 'btn-ghost' %>" 
+           style="font-size:0.82em;"><%= t.label %></a>
+    <% }); %>
+</div>
+
+<% if (currentTab === 'main' || currentTab === '') { %>
+<!-- ====== 附魔状态 ====== -->
+<div class="section" style="border-color:#b2dfdb;">
+    <h3 style="border-color:#e0f2f1;">
+        <span style="color:#00695c;">✧</span> 附魔状态
+    </h3>
+    <% if (cardStatus.enchantedCards && cardStatus.enchantedCards.length > 0) { %>
+        <table>
+            <tr><th>槽位</th><th>卡片</th><th>品质</th><th>等级</th><th></th></tr>
+            <% cardStatus.enchantedCards.forEach(function(e) { %>
+            <tr>
+                <td><%= e.slot %></td>
+                <td><strong><%= e.card_name %></strong></td>
+                <td><span style="font-weight:600;"><%= user.card?.qualityText?.(e.quality) || e.quality %></span></td>
+                <td>★<%= e.level %></td>
+                <td><a href="/card?type=card.unequipCard&params=<%= e.slot %>" style="color:#c62828; font-size:0.82em;">卸</a></td>
+            </tr>
+            <% }); %>
+        </table>
+        <div style="margin-top:6px; padding:6px; background:#e0f7fa; border-radius:4px; font-size:0.85em;">
+            <b>合计：</b><%= cardStatus.bonusText || '无' %>
+        </div>
+    <% } else { %>
+        <p style="color:#999; font-size:0.85em;">尚未附魔任何卡片</p>
+    <% } %>
+</div>
+
+<div class="section" style="font-size:0.85em;">
+    <span style="color:#888;">已收集</span> <strong><%= cardStatus.totalCards || 0 %></strong> / <%= cardStatus.totalCardTypes || 21 %> 种
+</div>
+
+<% } else if (currentTab === 'collection') { %>
+<!-- ====== 收集列表 ====== -->
+<div class="section">
+    <h3>📦 已收集 (<%= cardStatus.totalCards || 0 %>/<%= cardStatus.totalCardTypes || 21 %>)
+        <a href="/card?type=card.upgradeAll" onclick="return confirm('一键升星将成对消耗所有同种同品卡片？')" 
+           class="btn btn-gold" style="font-size:0.78em; margin-left:8px;">★ 一键升星</a>
+    </h3>
+    <% if (cardStatus.collectedCards && cardStatus.collectedCards.length > 0) { %>
+        <table>
+            <tr><th>卡片</th><th>品质</th><th>等级</th><th></th></tr>
+            <% cardStatus.collectedCards.forEach(function(c) { %>
+            <% var cfg = c.config || {} %>
+            <tr>
+                <td><strong><%= c.card_name || cfg.name || '??' %></strong></td>
+                <td><span style="font-weight:600;"><%= user.card?.qualityText?.(c.quality) || c.quality %></span></td>
+                <td>★<%= c.level %></td>
+                <td>
+                    <% if (c.level < 10) { %>
+                        <a href="/card?type=card.upgradeCard&params=<%= c.id %>" class="btn btn-primary" style="padding:1px 6px; font-size:0.78em;">升星</a>
+                    <% } else { %>
+                        <span class="tag tag-gold">满级</span>
+                    <% } %>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+    <% } else { %>
+        <p style="color:#999; font-size:0.85em;">尚未收集任何卡片</p>
+    <% } %>
+</div>
+
+<% } else if (currentTab === 'enchant') { %>
+<!-- ====== 附魔操作 ====== -->
+<div class="section">
+    <h3>✨ 附魔操作</h3>
+    <small style="color:#888;">选择卡片 → 选择部位 → 确认附魔，各槽位只能附魔1张</small>
+    
+    <% if (cardStatus.collectedCards && cardStatus.collectedCards.length > 0) { %>
+        <table style="margin-top:6px;">
+            <tr><th>卡片</th><th>品质/等级</th><th>附魔到</th></tr>
+            <% cardStatus.collectedCards.forEach(function(c) { %>
+            <% var cfg = c.config || {} %>
+            <tr>
+                <td><strong><%= c.card_name || cfg.name || '??' %></strong></td>
+                <td>
+                    <span style="font-weight:600;"><%= user.card?.qualityText?.(c.quality) || c.quality %></span>
+                    <small>★<%= c.level %></small>
+                </td>
+                <td>
+                    <% (cfg.attachableParts || []).forEach(function(slot) { %>
+                        <a href="/card?type=card.enchant&params=<%= c.id %>,<%= slot %>" class="tag tag-blue" style="text-decoration:none; margin:1px;"><%= slot %></a>
+                    <% }); %>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+    <% } else { %>
+        <p style="color:#999; font-size:0.85em;">尚未收集可附魔的卡片</p>
+    <% } %>
+</div>
+
+<% } else if (currentTab === 'wiki') { %>
+<!-- ====== 卡片百科 ====== -->
+<div class="section">
+    <h3>📖 卡片百科（<%= cardStatus.cardList ? cardStatus.cardList.length : 0 %>种）</h3>
+    <table style="font-size:0.85em;">
+        <tr><th>名称</th><th>部位</th><th>来源</th></tr>
+        <% (cardStatus.cardList || []).forEach(function(c) { %>
+        <tr>
+            <td><strong><%= c.name %></strong></td>
+            <td><small><%= (c.attachableParts || []).join(', ') %></small></td>
+            <td><small><%= c.dropInfo || '怪物掉落' %></small></td>
+        </tr>
+        <% }); %>
+    </table>
+</div>
+
+<!-- 品质说明 -->
+<div class="section">
+    <h3>品质效果倍率</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:6px; font-size:0.85em;">
+        <span class="tag tag-white">普通 ×1.0</span>
+        <span class="tag tag-green">精致 ×1.5</span>
+        <span class="tag tag-blue">珍贵 ×2.0</span>
+        <span class="tag tag-purple">稀有 ×3.0</span>
+        <span class="tag tag-gold">传说 ×5.0</span>
+    </div>
+</div>
+
+<details style="font-size:0.82em; color:#666; margin:8px 0;">
+    <summary style="color:#888; cursor:pointer;">系统说明</summary>
+    <div style="padding:6px; background:#f8f9fa; border-radius:4px; margin-top:4px;">
+        <div>· 卡牌通过战斗胜利击毙怪物时低概率掉落</div>
+        <div>· 2张同种同品卡片可合成升1级（★10满）</div>
+        <div>· 卡片可附魔到装备槽位，效果永久生效</div>
+        <div>· 特定BOSS有专属卡片掉落</div>
+    </div>
+</details>
+<% } %>

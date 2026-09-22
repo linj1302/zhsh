@@ -1,0 +1,323 @@
+[
+  {
+    "submitLocation": "泉州长生观",
+    "receiveNpc": "商人李",
+    "submitNpc": "王道长",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "夜梳头",
+    "targetAddress": "泉州长生观",
+    "receiveLocation": "泉州酒肆",
+    "content": "去泉州长生观找王道长。",
+    "index": 88,
+    "receiveDialog": [
+      "商人李：王道长在长生观等你，你快去找他吧。",
+      "你：好的，我这就去长生观。"
+    ],
+    "submitDialog": [
+      "王道长：哦，商人李让你来的？有什么事吗？",
+      "你：他说你有些事情要找我处理。"
+    ],
+    "prize": {
+      "经验": 6000
+    },
+    "level": 25
+  },
+  {
+    "submitLocation": "泉州民巷",
+    "receiveNpc": "王道长",
+    "submitNpc": "老张头",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "牛眼泪",
+    "targetAddress": "泉州民巷",
+    "receiveLocation": "泉州长生观",
+    "content": "去泉州民巷找老张头。",
+    "index": 89,
+    "receiveDialog": [
+      "王道长：你去泉州民巷找老张头，他有些东西能帮到我们。",
+      "你：老张头？他能提供什么帮助？"
+    ],
+    "submitDialog": [
+      "老张头：哦，王道长让你来的？需要什么帮助？",
+      "你：他说你有些东西能帮到我们。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "牛眼泪": 1
+    }
+  },
+  {
+    "submitLocation": "泉州长生观",
+    "receiveNpc": "老张头",
+    "submitNpc": "王道长",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "斩妖剑",
+    "targetAddress": "泉州长生观",
+    "receiveLocation": "泉州民巷",
+    "content": "去长生观找王道长。",
+    "index": 90,
+    "receiveDialog": [
+      "老张头：你回去找王道长，把我的话告诉他。",
+      "你：好的，我这就回去找他。"
+    ],
+    "submitDialog": [
+      "王道长：老张头说什么了？",
+      "你：他说要借给你斩妖剑一用。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "斩妖剑": 1
+    }
+  },
+  {
+    "submitLocation": "泉州长生观",
+    "receiveNpc": "王道长",
+    "submitNpc": "王道长",
+    "taskType": "打怪",
+    "targetName": "桃花妖",
+    "quantity": "8",
+    "name": "桃花妖",
+    "targetAddress": "泉州桃花坞",
+    "receiveLocation": "泉州长生观",
+    "content": "去桃花坞杀8个桃花妖回长生观找王道长。",
+    "index": 91,
+    "receiveDialog": [
+      "王道长：桃花坞出现了桃花妖，你去清理8个回来。",
+      "你：桃花妖？听起来挺浪漫的，不过该清理还是要清理。"
+    ],
+    "submitDialog": [
+      "王道长：桃花妖都清理完了吗？",
+      "你：清理完了，8个桃花妖已经被我全部解决。"
+    ],
+    "prize": {
+      "经验": 15000
+    },
+    "level": 38
+  },
+  {
+    "submitLocation": "泉州丹霞山",
+    "receiveNpc": "王道长",
+    "submitNpc": "狐仙小美",
+    "taskType": "对话",
+    "targetName": "狐仙小美",
+    "quantity": "1",
+    "name": "狐仙小美",
+    "targetAddress": "泉州丹霞山",
+    "receiveLocation": "泉州长生观",
+    "content": "去北城门外的丹霞山寻找狐仙小美。",
+    "index": 92,
+    "receiveDialog": [
+      "王道长：你去北城门外的丹霞山寻找狐仙小美，她有重要消息。",
+      "你：狐仙小美？听起来是个美女，我这就去。"
+    ],
+    "submitDialog": [
+      "狐仙小美：你就是王道长派来的？找我有什么事？",
+      "你：他说你有重要消息要告诉我。"
+    ],
+    "prize": {
+      "经验": 6000
+    }
+  },
+  {
+    "submitLocation": "泉州长生观",
+    "receiveNpc": "狐仙小美",
+    "submitNpc": "王道长",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "小美的请求",
+    "targetAddress": "泉州长生观",
+    "receiveLocation": "泉州丹霞山",
+    "content": "去长生观找王道长，带去小美的话。",
+    "index": 93,
+    "receiveDialog": [
+      "狐仙小美：请你把我的请求带给王道长，这关系到很多人的安危。",
+      "你：好的，我一定会转达到。"
+    ],
+    "submitDialog": [
+      "王道长：小美说什么了？",
+      "你：她说需要你的帮助，关系到很多人的安危。"
+    ],
+    "prize": {
+      "经验": 5000
+    }
+  },
+  {
+    "submitLocation": "泉州古董店",
+    "receiveNpc": "王道长",
+    "submitNpc": "李胖子",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "去找李胖子",
+    "targetAddress": "泉州古董店",
+    "receiveLocation": "泉州长生观",
+    "content": "去古董店找李胖子。",
+    "index": 94,
+    "receiveDialog": [
+      "王道长：你去泉州古董店找李胖子，他有些古董能帮到我们。",
+      "你：李胖子？他能提供什么古董？"
+    ],
+    "submitDialog": [
+      "李胖子：哦，王道长让你来的？需要什么古董？",
+      "你：他说你有些古董能帮到我们。"
+    ],
+    "prize": {
+      "经验": 6000
+    }
+  },
+  {
+    "submitLocation": "泉州民巷",
+    "receiveNpc": "李胖子",
+    "submitNpc": "老张头",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "梧桐枝",
+    "targetAddress": "泉州民巷",
+    "receiveLocation": "泉州古董店",
+    "content": "去民巷找老张头问问怎么搞到梧桐枝。",
+    "index": 95,
+    "receiveDialog": [
+      "李胖子：梧桐枝要去问老张头，你去民巷找他吧。",
+      "你：好的，我这就去民巷。"
+    ],
+    "submitDialog": [
+      "老张头：梧桐枝？那可是好东西，你问这个做什么？",
+      "你：李胖子让我来问问怎么搞到梧桐枝。"
+    ],
+    "prize": {
+      "经验": 6000
+    }
+  },
+  {
+    "submitLocation": "泉州民巷",
+    "receiveNpc": "老张头",
+    "submitNpc": "老张头",
+    "taskType": "打怪",
+    "targetName": "千年桐妖",
+    "quantity": "1",
+    "name": "千年桐妖",
+    "targetAddress": "泉州青龙潭",
+    "receiveLocation": "泉州民巷",
+    "content": "去南城门外的青龙潭诛杀千年桐妖，回泉州民巷找老张头。",
+    "index": 96,
+    "receiveDialog": [
+      "老张头：千年桐妖在南城门外的青龙潭，你去把它除掉，就能得到梧桐枝。",
+      "你：千年桐妖？这可不容易对付，不过我不会退缩。"
+    ],
+    "submitDialog": [
+      "老张头：千年桐妖除掉了吗？",
+      "你：除掉了，这是你要的梧桐枝。"
+    ],
+    "prize": {
+      "经验": 15000
+    },
+    "level": 45
+  },
+  {
+    "submitLocation": "泉州古董店",
+    "receiveNpc": "老张头",
+    "submitNpc": "李胖子",
+    "taskType": "送物品",
+    "targetName": "梧桐枝",
+    "quantity": "1",
+    "name": "去找李胖子2",
+    "targetAddress": "泉州古董店",
+    "receiveLocation": "泉州民巷",
+    "content": "拿着梧桐枝去找泉州古董店找李胖子。",
+    "index": 97,
+    "receiveDialog": [
+      "老张头：你拿着梧桐枝去古董店找李胖子，他需要这个。",
+      "你：好的，我这就去古董店。"
+    ],
+    "submitDialog": [
+      "李胖子：梧桐枝拿到了吗？",
+      "你：拿到了，这是你要的梧桐枝。"
+    ],
+    "prize": {
+      "经验": 8000
+    }
+  },
+  {
+    "submitLocation": "泉州古董店",
+    "receiveNpc": "李胖子",
+    "submitNpc": "李胖子",
+    "taskType": "收集",
+    "targetName": "凤凰羽毛",
+    "quantity": "1",
+    "name": "斩凤",
+    "targetAddress": "泉州梧桐山",
+    "receiveLocation": "泉州古董店",
+    "content": "去梧桐山斩杀凤凰，收集凤凰羽毛1个，回古董店找李胖子。",
+    "index": 98,
+    "receiveDialog": [
+      "李胖子：我还需要凤凰羽毛来配这梧桐枝，你去梧桐山斩杀凤凰。",
+      "你：凤凰？这可是神兽啊，不过为了完成任务，我拼了。"
+    ],
+    "submitDialog": [
+      "李胖子：凤凰羽毛拿到了吗？",
+      "你：拿到了，这是你要的凤凰羽毛。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "凤凰羽衣": 1
+    }
+  },
+  {
+    "submitLocation": "泉州长生观",
+    "receiveNpc": "李胖子",
+    "submitNpc": "王道长",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "王道长的战袍",
+    "targetAddress": "泉州长生观",
+    "receiveLocation": "泉州古董店",
+    "content": "去长生观找王道长。",
+    "index": 99,
+    "receiveDialog": [
+      "李胖子：你把凤凰羽衣带给王道长，这是他需要的战袍。",
+      "你：好的，我这就去长生观。"
+    ],
+    "submitDialog": [
+      "王道长：凤凰羽衣带来了吗？",
+      "你：带来了，这是李胖子为你制作的战袍。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "游侠腰带": 1
+    }
+  },
+  {
+    "submitLocation": "泉州南少林寺",
+    "receiveNpc": "王道长",
+    "submitNpc": "王道长",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "小龙珠合成",
+    "targetAddress": "",
+    "receiveLocation": "泉州南少林寺",
+    "content": "传说只要收集齐了10颗龙珠碎片和一颗聚凝石就可以合成一颗小龙珠。",
+    "index": 100,
+    "receiveDialog": [
+      "王道长：你去南少林寺收集龙珠碎片和聚凝石，合成小龙珠。",
+      "你：小龙珠？这听起来很厉害，我这就去收集材料。"
+    ],
+    "submitDialog": [
+      "王道长：小龙珠合成成功了吗？",
+      "你：成功了，这是合成的小龙珠。"
+    ],
+    "prize": {
+      "经验": 100,
+      "铜贝": 100,
+      "小龙珠": 1
+    }
+  }
+]

@@ -1,0 +1,30 @@
+﻿<div>
+    <div>
+        【帮会列表】
+    </div>
+
+    <% if (typeof gangList !== 'undefined' && gangList && gangList.length > 0) { %>
+        <!-- 帮会列表 -->
+        <div>
+            <div>
+                <% gangList.forEach(function(gang, index) { %>
+                    <div>
+                        <span><%= index + 1 %>.</span>
+                        <a href="/gang-detail?id=<%= gang.id %>"><%= gang.name %></a>
+                        <span>(<%= gang.level %>级)</span>
+                        <a href="/my-gang?type=joinGang&params=<%= gang.id %>">加入帮会</a>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    <% } else { %>
+        <div>暂无帮会</div>
+    <% } %>
+
+    <!-- 操作按钮 -->
+    <div style="margin-top: 20px;">
+        <div>
+            <a href="/create-gang">创建帮会</a>
+        </div>
+</div>
+</div>

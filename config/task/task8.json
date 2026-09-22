@@ -1,0 +1,104 @@
+[
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "露丝",
+    "submitNpc": "阿曼达",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "去找阿曼达",
+    "targetAddress": "威尼斯王宫",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去王宫找阿曼达聊聊",
+    "index": 44,
+    "receiveDialog": [
+      "露丝：你去王宫找阿曼达聊聊吧，她好像有事要找你。",
+      "你：阿曼达？她是谁？"
+    ],
+    "submitDialog": [
+      "阿曼达：哦，露丝让你来的？有什么事吗？",
+      "你：她说你有些事情需要处理。"
+    ],
+    "prize": {
+      "经验": 4000,
+      "声望": 1,
+      "铜贝": 400
+    },
+    "level": 10
+  },
+  {
+    "submitLocation": "雅典居民区",
+    "receiveNpc": "阿曼达",
+    "submitNpc": "娜娜",
+    "taskType": "送物品",
+    "targetName": "信",
+    "quantity": "1",
+    "name": "阿曼达的信使",
+    "targetAddress": "雅典居民区",
+    "receiveLocation": "威尼斯王宫",
+    "content": "把威尼斯王宫阿曼达的信送给雅典居民区的娜娜",
+    "index": 45,
+    "receiveDialog": [
+      "阿曼达：我有封信需要送到雅典居民区的娜娜手中，你能帮忙吗？",
+      "你：没问题，包在我身上。"
+    ],
+    "submitDialog": [
+      "娜娜：你是阿曼达派来的信使吗？信带来了吗？",
+      "你：是的，这是阿曼达让我带给你的信。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    }
+  },
+  {
+    "receiveNpc": "娜娜",
+    "submitNpc": "阿曼达",
+    "taskType": "对话",
+    "name": "去找阿曼达聊聊",
+    "receiveLocation": "雅典居民区",
+    "submitLocation": "威尼斯王宫",
+    "content": "去找阿曼达聊聊",
+    "index": 46,
+    "receiveDialog": [
+      "娜娜：请你把我的回复带给阿曼达，她会知道什么意思。",
+      "你：好的，我这就回去找她。"
+    ],
+    "submitDialog": [
+      "阿曼达：娜娜的回复带来了吗？",
+      "你：带来了，她说你会明白的。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "阿曼达",
+    "submitNpc": "阿曼达",
+    "taskType": "收集",
+    "targetName": "鳄鱼肉",
+    "quantity": "5",
+    "name": "美味鳄鱼汤",
+    "targetAddress": "威尼斯湿地",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去西城门外的湿地收集5块鳄鱼肉。回王宫交给阿曼达。",
+    "index": 47,
+    "receiveDialog": [
+      "阿曼达：我想做鳄鱼汤，你能去西城门外的湿地帮我收集一些鳄鱼肉吗？",
+      "你：鳄鱼肉？这听起来有点挑战性。"
+    ],
+    "submitDialog": [
+      "阿曼达：鳄鱼肉收集齐了吗？",
+      "你：这是你要的5块鳄鱼肉，应该足够做汤了。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    }
+  }
+]

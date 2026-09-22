@@ -1,0 +1,36 @@
+﻿<div>
+    <div>
+        【选择道具】
+    </div>
+
+    <div>
+        <span>请选择要使用的道具：</span>
+    </div>
+
+    <div>
+        <% var action = query.action %>
+        <% if (items && items.length > 0) { %>
+            <% items.forEach(function(item, index) { %>
+                <div>
+                    <div>
+                        <span><%= index + 1 %>.</span>
+                        <div>
+                            <span><%= item.name %></span>
+                        </div>
+                    </div>
+                    <div>数量: <%= item.num %></div>
+                    <div>
+                        <% if (action === 'feed') { %>
+                            <span>增加饱食度：<%= item.info.add || 0 %></span>
+                        <% } else if (action === 'clean') { %>
+                            <span>增加清洁度：<%= item.info.add || 0 %></span>
+                        <% } %>
+                    </div>
+                    <a href="pet-tool?action=<%= action %>&type=petManager.use&params=<%= item.id %>">使用</a>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <div>暂无可用道具</div>
+        <% } %>
+    </div>
+</div>

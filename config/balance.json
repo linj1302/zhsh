@@ -1,0 +1,64 @@
+{
+  "_comment": "数值公式集中化配置：全部战斗/成长系数。数值重设计请改这里而不是代码。",
+  "damage": {
+    "_comment": "伤害公式参数。defenseConstant 为防御减伤公式中的常数（defense/(defense+K)），maxDefenseRate 为最大减伤率上限。",
+    "defenseConstant": 300,
+    "maxDefenseRate": 0.99,
+    "baseCritChance": 0.15,
+    "critDamageMultiplier": 2
+  },
+  "monster": {
+    "statJitter": 0.1
+  },
+  "monsterExp": {
+    "_comment": "怪物击杀经验已固定化：运行时读 config/monsterRewards.json 逐等级数值表（killsPerLevel 为该表的生成/兜底参数：表值 = 玩家同级升级需求 ÷ killsPerLevel）。bossMultiplier/dungeonMultiplier 为特殊怪物类型经验倍率，在表值基础上再乘。",
+    "killsPerLevel": 6,
+    "bossMultiplier": 3,
+    "dungeonMultiplier": 2
+  },
+  "monsterCopper": {
+    "_comment": "怪物击杀铜贝已固定化：运行时读 config/monsterRewards.json（base/exponent 为该表的生成/兜底参数：表值 = base * level^exponent）。bossMultiplier 为 BOSS 类倍率。",
+    "base": 500,
+    "exponent": 2.0,
+    "bossMultiplier": 3
+  },
+  "playerLevelUp": {
+    "_comment": "升级成长。防御常数300为机制常数不动。",
+    "healthBase": 25,
+    "healthLevelDivisor": 2,
+    "attackBase": 5,
+    "attackLevelDivisor": 6,
+    "maxAttackBase": 6,
+    "maxAttackLevelDivisor": 6,
+    "defenseBase": 3,
+    "defenseLevelDivisor": 8,
+    "agilityFixed": 2,
+    "moraleFixed": 5
+  },
+  "petExp": {
+    "_comment": "宠物升级需求：petExpToNext = calcMonsterExp(level) * petBattleRatio。battleGainRatio 为宠物出战时每次击杀获得的怪物经验比例（升级所需击杀数 = petBattleRatio / battleGainRatio）。petGrowthItemMultiplier 为成长道具的倍率。",
+    "petBattleRatio": 10,
+    "battleGainRatio": 0.5,
+    "petGrowthItemMultiplier": 1000,
+    "_commentGrowthItem": "type 27 成长道具（info.add≈300）是为旧量级设计的，新量级下需要倍率放大。"
+  },
+  "followerExp": {
+    "_comment": "随从升级需求：followerExpToNext = calcMonsterExp(level) * followerBattleRatio。battleGainRatio 为随从出战时每次击杀获得的怪物经验比例（升级所需击杀数 = followerBattleRatio / battleGainRatio）。",
+    "followerBattleRatio": 10,
+    "battleGainRatio": 0.3
+  },
+  "strengthen": {
+    "attackPerLevel": 1,
+    "maxAttackPerLevel": 1,
+    "defensePerLevel": 1,
+    "agilityDivisor": 2,
+    "moraleDivisor": 3,
+    "healthPerLevel": 2
+  },
+  "playerExp": {
+    "_comment": "角色经验兜底公式（仅 config/exp.json 缺失时使用）。按新曲线 ≈ base*L^p 重拟合（锚点 L50≈297.7万、L210≈20亿），得 base=0.06、p=4.53；有 exp.json 时不生效，保留为容灾兜底。",
+    "maxLevel": 210,
+    "fallbackBase": 0.06,
+    "fallbackExponent": 4.53
+  }
+}

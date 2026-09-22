@@ -1,0 +1,45 @@
+﻿<div class="wap_class">
+    <% var taskSystem = user.task %>
+    
+    <!-- 已接受任务 -->
+    <div>已接受任务</div>
+    <% 
+        // 获取所有可提交的任务（已接受但未完成）
+        const allTasks = taskSystem.getAllTasks();
+        const submittableTasks = allTasks.filter(task => 
+            taskSystem.isTaskAccepted(task.index) && !taskSystem.isTaskCompleted(task.index)
+        );
+    %>
+    
+    <% if (submittableTasks.length > 0) { %>
+        <% submittableTasks.forEach(task => { %>
+            <div class="task-item">
+                <a href="/task-detail?taskIndex=<%= task.index %>&from=task-list">
+                    <%= task.name %>
+                </a>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>暂无已接受任务</p>
+    <% } %>
+
+    <br>
+    <!-- 可接任务 -->
+    <div>可接任务</div>
+    <% 
+        // 获取所有可接任务（不指定特定NPC）
+        const availableTasks = taskSystem.getAvailableTasksForNpc('');
+    %>
+    
+    <% if (availableTasks.length > 0) { %>
+        <% availableTasks.forEach(task => { %>
+            <div class="task-item">
+                <a href="/task-detail?taskIndex=<%= task.index %>&from=task-list">
+                    <%= task.name %>
+                </a>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>暂无可接任务</p>
+    <% } %>
+</div>

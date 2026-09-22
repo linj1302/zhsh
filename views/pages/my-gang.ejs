@@ -1,0 +1,69 @@
+﻿<div>
+    <div style="margin: 10px 0px;">
+        【我的帮会】
+    </div>
+
+    <% if (typeof gangInfo !== 'undefined' && gangInfo && gangInfo.id) { %>
+        <!-- 帮会基本信息 -->
+        <div>
+            帮会名称:
+            <span><%= gangInfo.name %></span>
+        </div>
+
+        <div>
+            帮规:
+            <span><%= gangInfo.notice %></span>
+        </div>
+
+        <div>
+            帮会等级: <span><%= gangInfo.level %></span>
+        </div>
+
+        <div>
+            帮会资金: <span><%= gangInfo.fund %> / <%= gangInfo.level * 20000 %></span>
+        </div>
+
+        <div>
+            帮主: <a><%= gangMembers.find(m => m.role === 'leader')?.username || '未知' %></a>
+        </div>
+
+        <!-- 帮会成员 -->
+        <div>
+            帮会成员: <span><%= gangMembersCount %> / <%= gangInfo.maxMembers %></span>
+        </div>
+
+        <!-- 帮会功能按钮 -->
+        <div>
+            <div>
+                <a href="/gang-store">帮会仓库</a>
+            </div>
+            <div>
+                <a href="/gang-member">帮会成员</a>
+            </div>
+            <div>
+                <a href="/chat">帮会聊天</a>
+            </div>
+            <div>
+                <a href="/gang-donation">帮会捐献</a>
+            </div>
+            <div>
+                <a href="/gang-shop">帮会商店</a>
+            </div>
+            <div>
+                <a href="/gang-list">帮会列表</a>
+            </div>
+            <div>
+                <% if (gangInfo.role === 'leader') { %>
+                    <a href="/gang-list?type=gang.leaveGang">解散帮会</a>
+                <% } else { %>
+                    <a href="/gang-list?type=gang.leaveGang">退出帮会</a>
+                <% } %>
+            </div>
+        </div>
+    <% } else { %>
+        <div>您还没有加入任何帮会</div>
+        <div style="margin-top: 20px;">
+            <a href="/gang-list">查看帮会列表</a>
+        </div>
+    <% } %>
+</div>

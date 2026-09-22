@@ -1,0 +1,29 @@
+﻿<div>
+    <% user.fish.clear() %>
+    <% var inInstance = user.trial.isInTrial() || user.sailing.isInSailingFb() %>
+    <% if (!inInstance) { user.sailing.clear() } %>
+    <div>
+        你被<%= monsterName %>狠狠教训了一顿!
+    </div>
+    <div>
+        丢失铜贝:0
+    </div>
+    <div>
+        丢失补给:<%= lostSupplies || 0 %>
+    </div>
+    <div>
+        士气减少:<%= (typeof moraleLoss !== 'undefined' ? moraleLoss : 0) %>
+    </div>
+    <% if (inInstance) { %>
+    <div>
+        你倒在了副本中…
+    </div>
+    <% } else { %>
+    <div>
+        被好心人救回了城里
+    </div>
+    <% } %>
+    <div>
+        <a href="<%= inInstance ? 'trial-map' : 'main' %>">继续</a>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿<div class="game-container">
+    <div>
+        请选择要穿戴的装备:
+    </div>
+
+    <% var backpack = user.backpack;
+    var slotType = parseInt(query.params);
+    var equip = user.getEquipment();
+    var items = backpack.getItemsByType(1).filter(function(v) {
+        return v.info && v.info.type == slotType;
+    });
+    %>
+    <% for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+    %>
+    <div class="row-cls">
+        <span style="margin-right: 5px;"><%= i+1 %>.</span>
+        <a href="item-info?params=<%= item.id %>">
+            <%= item.info.name %>
+        </a>
+        <% if (item.status == 2) { %>
+            <span style="margin-left: 5px; color: #666;">(已装备)</span>
+            <a href="equip-item?type=play.unequip&params=<%= slotType %>"
+               style="margin-left: 5px; color: red;">卸载</a>
+        <% } else { %>
+            <a href="role-status?type=play.equip&params=<%= item.id %>,<%= i %>">穿戴</a>
+        <% } %>
+    </div>
+    <% } %>
+</div>

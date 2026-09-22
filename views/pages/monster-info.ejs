@@ -1,0 +1,38 @@
+﻿<div class="game-container">
+    <% var monster = user.getMonster() %>
+    <div class="title">【怪物信息】</div>
+
+    <div class="row-cls">名称: <span class="left-cls"><%= monster.name %></span></div>
+    <div class="row-cls">等级: <span class="left-cls"><%= monster.level %></span></div>
+    <div class="row-cls">生命值: <span class="left-cls"><%= monster.health %></span></div>
+    <div class="row-cls">攻击: <span class="left-cls"><%= monster.attack %> - <%= monster.maxAttack %></span></div>
+    <div class="row-cls">防御: <span class="left-cls"><%= monster.defense %></span></div>
+    <div class="row-cls">敏捷: <span class="left-cls"><%= monster.agility %></span></div>
+    <div class="row-cls">掉落经验: <span class="left-cls"><%= monster.exp %></span></div>
+    <div class="row-cls">掉落金钱: <span class="left-cls"><%= monster.copper %></span></div>
+
+    <div class="row-cls">
+        掉落物品:
+        <div>
+            <% for (let i = 0; i < monster.goods.length; i++) {
+                let item = monster.goods[i];
+            %>
+            <div class="left-cls link-item drop-item">
+                <%= item.name %>(<%= item.info.level %>级)
+            </div>
+            <% } %>
+            <% var monsterGoods = user.monster.monsterGoods %>
+            <% for (let j = 0; j < monsterGoods.length; j++) {
+                let item = monsterGoods[j];
+            %>
+            <div class="left-cls link-item drop-item">
+                <%= item.name %>(1级)
+            </div>
+            <% } %>
+        </div>
+
+    </div>
+
+    <!--    <div class="row-cls">特性: <span class="left-cls"></span></div>-->
+
+</div>

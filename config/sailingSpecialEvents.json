@@ -1,0 +1,281 @@
+{
+  "events": [
+    {
+      "name": "美人鱼的歌声",
+      "probability": 0.02,
+      "luckFactor": 0,
+      "effect": {
+        "type": "morale",
+        "value": 10
+      },
+      "tip": "你听到了美人鱼的美妙歌声，心情变得愉悦，士气大增！"
+    },
+    {
+      "name": "风暴",
+      "probability": 0.03,
+      "luckFactor": -0.5,
+      "effect": {
+        "type": "marketLoss",
+        "minLoss": 0.5,
+        "maxLoss": 0.9
+      },
+      "tip": "糟糕！你遇到了强烈的风暴，船上的货物受到了损失！"
+    },
+    {
+      "name": "鼠灾",
+      "probability": 0.03,
+      "luckFactor": -0.5,
+      "effect": {
+        "type": "marketLoss",
+        "minLoss": 0.7,
+        "maxLoss": 0.95
+      },
+      "tip": "天哪！船上发生了鼠灾，大量的货物被老鼠啃食！"
+    },
+    {
+      "name": "海豚引航",
+      "probability": 0.02,
+      "luckFactor": 0.5,
+      "effect": {
+        "type": "speedBoost",
+        "value": 20
+      },
+      "tip": "一群海豚在船周围游弋，它们似乎在为你引航，航行速度提升了！"
+    },
+    {
+      "name": "神秘宝箱",
+      "probability": 0.01,
+      "luckFactor": 0.8,
+      "effect": {
+        "type": "treasure",
+        "items": [
+          {
+            "name": "铜贝",
+            "type": 10,
+            "min": 1000,
+            "max": 5000
+          }
+        ]
+      },
+      "tip": "你发现了一个神秘的宝箱，里面装着一些财宝！"
+    },
+    {
+      "name": "海盗袭击",
+      "probability": 0.02,
+      "luckFactor": -0.7,
+      "effect": {
+        "type": "pirateAttack",
+        "lossPercent": 0.01
+      },
+      "tip": "糟糕！你遭遇了海盗袭击，损失了一部分货物和金钱！"
+    },
+    {
+      "name": "幸运女神的祝福",
+      "probability": 0.015,
+      "luckFactor": 1,
+      "effect": {
+        "type": "luckBoost",
+        "value": 5
+      },
+      "tip": "幸运女神向你投来了祝福的目光，你的幸运值提升了！"
+    },
+    {
+      "name": "海妖的诱惑",
+      "probability": 0.02,
+      "luckFactor": -0.6,
+      "effect": {
+        "type": "moraleLoss",
+        "value": 15
+      },
+      "tip": "你听到了海妖的歌声，但那不是美妙的音乐，而是诱惑你走向毁灭的魔音，士气大减！"
+    },
+    {
+      "name": "顺风航行",
+      "probability": 0.025,
+      "luckFactor": 0.7,
+      "effect": {
+        "type": "distanceBoost",
+        "value": 0.2
+      },
+      "tip": "你遇到了顺风，航行速度大幅提升，一段航程被快速完成了！"
+    },
+    {
+      "name": "船体受损",
+      "probability": 0.02,
+      "luckFactor": -0.5,
+      "effect": {
+        "type": "shipDamage",
+        "repairCost": 500
+      },
+      "tip": "船体在航行中受到了损伤，需要支付修理费用来修复！"
+    },
+    {
+      "name": "发现新大陆",
+      "probability": 0.005,
+      "luckFactor": 0.9,
+      "effect": {
+        "type": "expGain",
+        "value": 100
+      },
+      "tip": "你发现了一片未知的大陆，这次伟大的发现让你获得了宝贵的经验！"
+    },
+    {
+      "name": "遭遇漩涡",
+      "probability": 0.015,
+      "luckFactor": -0.8,
+      "effect": {
+        "type": "timeLoss",
+        "value": 3
+      },
+      "tip": "你的船只被卷入了巨大的漩涡，费了很大劲才脱离，浪费了大量时间！"
+    },
+    {
+      "name": "货物被偷",
+      "probability": 0.025,
+      "luckFactor": -0.6,
+      "effect": {
+        "type": "marketLoss",
+        "minLoss": 0.3,
+        "maxLoss": 0.7
+      },
+      "tip": "糟糕！航行途中一些货物被海盗偷走了！"
+    },
+    {
+      "name": "遭遇海啸",
+      "probability": 0.02,
+      "luckFactor": -0.7,
+      "effect": {
+        "type": "marketLoss",
+        "minLoss": 0.6,
+        "maxLoss": 0.9
+      },
+      "tip": "不幸遇到了海啸，大量的货物被海水浸泡损坏了！"
+    },
+    {
+      "name": "仓库失火",
+      "probability": 0.015,
+      "luckFactor": -0.8,
+      "effect": {
+        "type": "marketLoss",
+        "minLoss": 0.7,
+        "maxLoss": 0.95
+      },
+      "tip": "船上的仓库突然起火，大量货物被烧毁了！"
+    },
+    {
+      "name": "遭遇礁石",
+      "probability": 0.02,
+      "luckFactor": -0.6,
+      "effect": {
+        "type": "marketLoss",
+        "minLoss": 0.4,
+        "maxLoss": 0.8
+      },
+      "tip": "船只撞上了暗礁，船舱破损导致部分货物丢失！"
+    },
+    {
+      "name": "武士的馈赠",
+      "probability": 0.01,
+      "luckFactor": 0.8,
+      "effect": {
+        "type": "equipmentReward",
+        "equipmentList": [
+          "+武士之刀",
+          "+武士之帽",
+          "+武士战甲",
+          "+武士腰带",
+          "+武士布鞋"
+        ]
+      },
+      "tip": "你遇到了一位武士的幻影，他赞赏你的勇气并赠予你一件装备！"
+    },
+    {
+      "name": "哥伦布的遗产",
+      "probability": 0.008,
+      "luckFactor": 0.85,
+      "effect": {
+        "type": "equipmentReward",
+        "equipmentList": [
+          "+哥伦布之锤",
+          "+哥伦布胸甲",
+          "+哥伦布之帽"
+        ]
+      },
+      "tip": "你发现了航海家哥伦布的遗物，从中获得了一件珍贵的装备！"
+    },
+    {
+      "name": "麦哲伦的宝藏",
+      "probability": 0.008,
+      "luckFactor": 0.85,
+      "effect": {
+        "type": "equipmentReward",
+        "equipmentList": [
+          "+麦哲伦之匕",
+          "麦哲伦之戒",
+          "麦哲伦之腰带"
+        ]
+      },
+      "tip": "你找到了麦哲伦航海时遗失的宝箱，里面有一件精美的装备！"
+    },
+    {
+      "name": "霸者之证",
+      "probability": 0.007,
+      "luckFactor": 0.85,
+      "effect": {
+        "type": "equipmentReward",
+        "equipmentList": [
+          "+霸者之刃",
+          "+霸者之盔",
+          "+霸者之靴"
+        ]
+      },
+      "tip": "你获得了霸者的认可，被赐予了一件霸者装备！"
+    },
+    {
+      "name": "奔月之礼",
+      "probability": 0.005,
+      "luckFactor": 0.9,
+      "effect": {
+        "type": "equipmentReward",
+        "equipmentList": [
+          "+月华相思剑",
+          "+奔月の玄冰",
+          "+奔月の玉鳞",
+          "+奔月の逐风",
+          "+奔月の承影"
+        ]
+      },
+      "tip": "中秋月圆之夜，你获得了奔月套装中的一件神兵！"
+    },
+    {
+      "name": "地魔之魂",
+      "probability": 0.004,
+      "luckFactor": 0.9,
+      "effect": {
+        "type": "equipmentReward",
+        "equipmentList": [
+          "+地魔龙角羽冠",
+          "+地魔龙脊护肩",
+          "+地魔龙鳞绑腿",
+          "+地魔龙爪之靴"
+        ]
+      },
+      "tip": "你感受到了地魔的气息，获得了地魔套装中的一件强力装备！"
+    },
+    {
+      "name": "天魔之赐",
+      "probability": 0.003,
+      "luckFactor": 0.95,
+      "effect": {
+        "type": "equipmentReward",
+        "equipmentList": [
+          "+天魔荆棘皇冠",
+          "+天魔玄夜战铠",
+          "+天魔碧玉束腰",
+          "+天魔风沙之靴"
+        ]
+      },
+      "tip": "天魔认可了你的实力，将套装中的一件神装赐予了你！"
+    }
+  ]
+}

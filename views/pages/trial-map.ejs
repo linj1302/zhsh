@@ -1,0 +1,151 @@
+﻿<div>
+    <div>
+        <div>
+            <span href="trial-map">[副本]</span>
+            <% var play = user.getPlay() %>
+            <% var city = user.getCity() %>
+
+            <span><%= city.city %></span>
+            -
+            <span><%= city.position %></span>
+            <a style="margin: 0 3px 0 13px;" href="trial-map">刷新</a>
+        </div>
+    </div>
+
+    <!-- 副本时间 -->
+    <div>
+        <% var isTrial = true %>
+        <% var trialData = user.trial.getPlayerTrialData() %>
+        <% if (isTrial) { %>
+            <div>
+                副本时间：
+                <% if (trialData) { %>
+                    <% var remainingSeconds = user.trial.getRemainingTime() %>
+                    <% var minutes = Math.floor(remainingSeconds / 60) %>
+                    <% var seconds = remainingSeconds % 60 %>
+                    <span><%= String(minutes).padStart(2, '0') %>:<%= String(seconds).padStart(2, '0') %></span>
+                    <% if (user.trial.isTrialTimeout()) { %>
+                        <span style="color: red;">(时间到)</span>
+                    <% } %>
+                <% } else { %>
+                    <span>无限制</span>
+                <% } %>
+            </div>
+        <% } %>
+        <div>
+            <% if (trialData) { %>
+                <a href="main?type=trial.levelTrial">离开副本</a>
+            <% }else{ %>
+                <a href="main?type=sailing.levelSailFb">离开</a>
+            <% } %>
+
+        </div>
+    </div>
+
+    <!-- 副本目标 -->
+    <% if (trialData && isTrial) { %>
+        <div>
+            <div>副本目标:</div>
+            <% var trialConfig = user.trial.getTrialConfig(trialData.name) %>
+            <% if (trialConfig && trialConfig.target) { %>
+                <% if (trialConfig.target.monsters && trialConfig.target.monsters.length > 0) { %>
+                    <% trialConfig.target.monsters.forEach(monster => { %>
+                        <% var progress = trialData.targets['monster_' + monster.name] || {
+                            current: 0,
+                            required: monster.quantity
+                        } %>
+                        <div>
+                            击杀 <%= monster.name %>:
+                            <span style="margin-left: 8px;">(<%= progress.current %>/<%= progress.required %>)</span>
+                            <% if (progress.current >= progress.required) { %>
+                                <span style="color: green;">(已完成)</span>
+                            <% } %>
+                        </div>
+                    <% }) %>
+                <% } %>
+
+                <% if (trialConfig.target.items && trialConfig.target.items.length > 0) { %>
+                    <% trialConfig.target.items.forEach(item => { %>
+                        <% var progress = trialData.targets['item_' + item.name] || {
+                            current: 0,
+                            required: item.quantity
+                        } %>
+                        <div>
+                            收集 <%= item.name %>:
+                            <span style="margin-left: 8px;">(<%= progress.current %>/<%= progress.required %>)</span>
+                            <% if (progress.current >= progress.required) { %>
+                                <span style="color: green;">(已完成)</span>
+                            <% } %>
+                        </div>
+                    <% }) %>
+                <% } %>
+
+                <% var allCompleted = Object.values(trialData.targets).every(target => target.current >= target.required) %>
+                <% if (allCompleted) { %>
+                    <div style="color: green; font-weight: bold;">副本目标已完成！</div>
+                <% } %>
+            <% } %>
+
+            <!-- BOSS信息 -->
+            <% if (trialConfig && trialConfig.boss) { %>
+                <div>
+                    <div><strong>副本BOSS:</strong></div>
+                    <div><%= trialConfig.boss.name %>: <%= trialConfig.boss.quantity %> 只</div>
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+
+    <!-- 附近玩家 -->
+    你看到:<br>
+    <% var allNpcs = user.getNpc() %>
+    <% var allMonsters = user.getNpc(true) %>
+
+    <% for (let i in allNpcs) { %>
+        <% let npc = allNpcs[i] %>
+
+        <span>
+            <%
+                // 检查该NPC是否有可接任务或可提交任务
+                const availableTasks = user.task.getAvailableTasksForNpc(npc.name);
+                const submittableTasks = user.task.getSubmittableTasksForNpc(npc.name);
+
+            if (submittableTasks.length > 0) {
+                // 有可接任务，显示叹号图标
+            %>
+            <%- include('assets/wen') %>
+            <% } else if (availableTasks.length > 0) {
+                // 有可提交任务，显示问号图标
+            %>
+            <%- include('assets/tan') %>
+            <% } %>
+            <a href="<%= user.npc.getHref(npc) %>"><%= npc.name %></a>
+            <br>
+            </span>
+    <% } %>
+    <% for (let i in allMonsters) { %>
+        <% let mon = allMonsters[i] %>
+        <a href="/attack?type=monster.assault&params=<%= mon.name + "," + mon.level %>"><%= mon.name %>
+            (<%= mon.level %>
+            级)</a>
+    <% } %>
+    <br>
+    <% var dirs = user.city.getDirs() %>
+    <div>请选择方向：</div>
+    <% for (let i in dirs) { let dir = dirs[i] %>
+    <% if(i == 2){ %>
+        <br>
+    <% } %>
+    <span>
+        <%= dir.value %>:<a href="trial-map?type=city.move&params=<%= dir.value %>"><%= dir.label %></a>
+    </span>
+
+    <% } %>
+
+    <!-- 城内地图 -->
+    <div>
+        <span><%= insideMapFlat[`${city.city}-${city.position}`] || `${city.city}-${city.position}` %></span>
+    </div>
+
+    <a href="/role-status">状态</a> . <a href="/backpack">物品</a>
+</div>

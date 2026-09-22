@@ -1,0 +1,74 @@
+﻿<div>
+    <% var shopItems = user.npc.getShopItems(query.shopType);
+    var shopItem = shopItems[query.i];
+    var price = shopItem.price;
+    var priceType = shopItem.priceType || "copper";
+    var showPrice = "";
+    
+    if (priceType === "gold") {
+        showPrice = price + "金贝";
+    } else if (priceType === "silver") {
+        showPrice = price + "银贝";
+    } else {
+        // 默认为铜币
+        showPrice = price + "铜币";
+        if (price >= 1000) {
+            var silver = Math.floor(price / 1000);
+            var copper = price % 1000;
+            if (copper > 0) {
+                showPrice = silver + "银贝" + copper + "铜币";
+            } else {
+                showPrice = silver + "银贝";
+            }
+        }
+    }
+    %>
+    <div>
+        <div>
+            名称: <span>
+                <%= shopItem.name %>
+            </span>
+        </div>
+        <div>
+            等级: <span>
+
+                <%= shopItem.level || 1 %>
+            </span>
+        </div>
+
+        <div>
+            描述: <span><%= shopItem.tip || shopItem.name %></span>
+        </div>
+
+        <div>
+            价格: <span><%= showPrice %></span>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <form action="shop" method="get">
+                <input type="hidden" name="type"
+                       value="npc.buy">
+                <input type="hidden" name="params"
+                       value="<%= query.shopType + ',' + query.i + ',1' %>">
+                <input type="hidden" name="shopType"
+                       value="<%= query.shopType %>">
+                购买数量:
+                <input type="number" name="count" value="1" min="1" max="100"
+                       id="purchaseQuantity" 
+                       onchange="updateParams(this.value)"
+                       oninput="updateParams(this.value)">
+                <input type="submit" value="购买"
+                       style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer;">
+            </form>
+            <script>
+                function updateParams(count) {
+                    const paramsInput = document.querySelector('input[name="params"]');
+                    paramsInput.value = '<%= query.shopType + ',' + query.i %>' + ',' + count;
+                }
+                </script>
+        </div>
+
+    </div>
+</div>

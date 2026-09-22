@@ -1,0 +1,35 @@
+﻿<div>
+    <div>
+        【选择存入帮会仓库的装备】
+    </div>
+    <% var backpack = user.backpack;
+    var items = backpack.getItemsByType(1);
+    %>
+    <% if (typeof gangInfo !== 'undefined' && gangInfo && gangInfo.id) { %>
+        <div>
+            仓库容量：（<span><%= storageItems.length %> / <%= 1000 + (gangInfo.level * 500) %></span>）
+        </div>
+
+        <% if (typeof items !== 'undefined' && items && items.length > 0) { %>
+            <!-- 只显示装备列表 -->
+            <div style="margin-top: 10px;">
+                <div>
+                    <% items.forEach(function(item, index) { %>
+                        <div>
+                            <span><%= index + 1 %>.</span>
+                            <a><%= item.name %>(<%= item.info.level %>级)</a>
+                            <a style="margin-left: 15px;"
+                               href="/gang-store-deposit?type=addGangStorageItem&params=<%= item.id %>">
+                                存入
+                            </a>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        <% } else { %>
+            <div>背包中没有可存入的装备</div>
+        <% } %>
+    <% } else { %>
+        <div>您还没有加入任何帮会</div>
+    <% } %>
+</div>

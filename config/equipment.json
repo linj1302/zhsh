@@ -1,0 +1,3471 @@
+{
+  "+武士之刀": {
+    "name": "+武士之刀",
+    "level": 4,
+    "attack": "4",
+    "maxAttack": "8",
+    "lj": "350",
+    "tx": "物品掉落+2",
+    "type": "1"
+  },
+  "+武士之帽": {
+    "name": "+武士之帽",
+    "level": 7,
+    "defense": "2",
+    "morale": "3",
+    "lj": "350",
+    "tx": "抗麻痹+1",
+    "type": "2"
+  },
+  "+武士战甲": {
+    "name": "+武士战甲",
+    "level": 9,
+    "defense": "12",
+    "lj": "350",
+    "tx": "抗沮丧+4",
+    "type": "3"
+  },
+  "+武士腰带": {
+    "name": "+武士腰带",
+    "level": 8,
+    "defense": "2",
+    "lj": "350",
+    "tx": "抗诅咒+1",
+    "type": "4"
+  },
+  "+武士布鞋": {
+    "name": "+武士布鞋",
+    "level": 6,
+    "defense": "1",
+    "lj": "350",
+    "tx": "物品掉落+1",
+    "type": "5"
+  },
+  "+哥伦布之锤": {
+    "name": "+哥伦布之锤",
+    "level": 30,
+    "attack": "34",
+    "maxAttack": "44",
+    "lj": "500",
+    "tx": "麻痹攻+13",
+    "tip": "航海家哥伦布的锤子，是土著人的噩梦",
+    "type": "1"
+  },
+  "+哥伦布胸甲": {
+    "name": "+哥伦布胸甲",
+    "level": 35,
+    "defense": "30",
+    "lj": "500",
+    "tx": "抗迟缓+6",
+    "tip": "航海家哥伦布的胸甲",
+    "type": "3"
+  },
+  "+哥伦布之帽": {
+    "name": "+哥伦布之帽",
+    "level": 34,
+    "defense": "5",
+    "morale": "13",
+    "lj": "500",
+    "tx": "抗迟缓+3",
+    "tip": "航海家哥伦布的头盔",
+    "type": "2"
+  },
+  "+麦哲伦之匕": {
+    "name": "+麦哲伦之匕",
+    "level": 40,
+    "attack": "46",
+    "maxAttack": "58",
+    "lj": "500",
+    "tx": "致命攻+10",
+    "tip": "航海家麦哲伦遗留下来的匕首，沾满了掠夺的鲜血",
+    "type": "1"
+  },
+  "麦哲伦之戒": {
+    "name": "麦哲伦之戒",
+    "level": 25,
+    "attack": "5",
+    "maxAttack": "6",
+    "agility": "3",
+    "lj": "500",
+    "tx": "虚弱攻+2",
+    "tip": "麦哲伦遗留的戒指",
+    "type": "6"
+  },
+  "麦哲伦之腰带": {
+    "name": "麦哲伦之腰带",
+    "level": 35,
+    "defense": "6",
+    "lj": "500",
+    "tx": "抗毒+3",
+    "tip": "麦哲伦的腰带",
+    "type": "4"
+  },
+  "+霸者之刃": {
+    "name": "+霸者之刃",
+    "level": 45,
+    "attack": "54",
+    "maxAttack": "70",
+    "lj": "800",
+    "tx": "毒攻+11",
+    "type": "1"
+  },
+  "+霸者之盔": {
+    "name": "+霸者之盔",
+    "level": 45,
+    "defense": "9",
+    "morale": "15",
+    "lj": "800",
+    "tx": "抗麻痹+4",
+    "type": "2"
+  },
+  "+霸者之靴": {
+    "name": "+霸者之靴",
+    "level": 45,
+    "defense": "6",
+    "agility": "8",
+    "lj": "800",
+    "tx": "抗沮丧+4",
+    "tip": "奔月出世，天下再无传说",
+    "type": "5"
+  },
+  "+月华相思剑": {
+    "name": "+月华相思剑",
+    "level": 30,
+    "attack": "160",
+    "maxAttack": "180",
+    "morale": "10",
+    "agility": "10",
+    "lj": "1000",
+    "tip": "月华光耀，亲人远疏，万里孤穹，泪为相思",
+    "type": "1"
+  },
+  "+奔月の玄冰": {
+    "name": "+奔月の玄冰",
+    "level": 30,
+    "defense": "15",
+    "lj": "1000",
+    "tip": "万年结冰，千年成形，五代匠师，只铸玄冰",
+    "type": "2"
+  },
+  "+奔月の玉鳞": {
+    "name": "+奔月の玉鳞",
+    "level": 30,
+    "defense": "90",
+    "lj": "1000",
+    "tip": "青龙之鳞，温润如玉，月凌浩空，玉鳞为甲",
+    "type": "3"
+  },
+  "+奔月の逐风": {
+    "name": "+奔月の逐风",
+    "level": 30,
+    "defense": "15",
+    "morale": "10",
+    "lj": "1000",
+    "tip": "虚幻如影，虚实无变，日行千里，逐风无疑",
+    "type": "4"
+  },
+  "+奔月の承影": {
+    "name": "+奔月の承影",
+    "level": 30,
+    "defense": "15",
+    "agility": "10",
+    "lj": "1000",
+    "tip": "东海知明，狂龙之战，韵沉四海，承影化形",
+    "type": "5"
+  },
+  "+地魔龙角羽冠": {
+    "name": "+地魔龙角羽冠",
+    "level": 95,
+    "defense": "15",
+    "morale": "10",
+    "lj": "1000",
+    "tx": "沮丧攻+10",
+    "tip": "地魔的头盔",
+    "type": "2"
+  },
+  "+地魔龙脊护肩": {
+    "name": "+地魔龙脊护肩",
+    "level": 90,
+    "defense": "90",
+    "lj": "1000",
+    "tx": "反弹+10",
+    "tip": "地魔龙脊护肩，传说乃是地魔生前佩戴的装备，拥有无穷尽的力量，是所有探险家的至宝",
+    "type": "3"
+  },
+  "+地魔龙鳞绑腿": {
+    "name": "+地魔龙鳞绑腿",
+    "level": 101,
+    "defense": "15",
+    "morale": "10",
+    "lj": "1000",
+    "tx": "诅咒攻+10",
+    "tip": "地魔的绑腿",
+    "type": "4"
+  },
+  "+地魔龙爪之靴": {
+    "name": "+地魔龙爪之靴",
+    "level": 98,
+    "defense": "15",
+    "agility": "10",
+    "lj": "1000",
+    "tx": "迟缓攻+10",
+    "tip": "地魔的靴子",
+    "type": "5"
+  },
+  "+地魔指环(左)": {
+    "name": "+地魔指环(左)",
+    "level": 80,
+    "attack": "25",
+    "maxAttack": "25",
+    "defense": "10",
+    "health": "15",
+    "morale": "15",
+    "agility": "8",
+    "lj": "666",
+    "tip": "传说是地魔曾经佩戴过的指环",
+    "type": "6"
+  },
+  "+地魔指环(右)": {
+    "name": "+地魔指环(右)",
+    "level": 80,
+    "attack": "25",
+    "maxAttack": "25",
+    "defense": "10",
+    "health": "15",
+    "morale": "15",
+    "agility": "8",
+    "lj": "666",
+    "tip": "传说是地魔曾经佩戴过的指环",
+    "type": "6"
+  },
+  "+地魔飓风斩": {
+    "name": "+地魔飓风斩",
+    "level": 110,
+    "attack": "150",
+    "maxAttack": "180",
+    "morale": "10",
+    "agility": "10",
+    "lj": "1000",
+    "tx": "反弹+5",
+    "tip": "地魔生前的武器，具有强大的攻击力",
+    "type": "1"
+  },
+  "+地魔回魂之恋": {
+    "name": "+地魔回魂之恋",
+    "level": 93,
+    "attack": "28",
+    "maxAttack": "28",
+    "health": "70",
+    "lj": "1000",
+    "tx": "反弹+5",
+    "tip": "地魔的项链",
+    "type": "6"
+  },
+  "+天魔荆棘皇冠": {
+    "name": "+天魔荆棘皇冠",
+    "defense": "20",
+    "morale": "11",
+    "lj": "1000",
+    "tip": "天魔套装之一，头盔",
+    "type": "2"
+  },
+  "+天魔玄夜战铠": {
+    "name": "+天魔玄夜战铠",
+    "defense": "120",
+    "lj": "1000",
+    "tip": "天魔套装之一，战甲",
+    "type": "3"
+  },
+  "+天魔碧玉束腰": {
+    "name": "+天魔碧玉束腰",
+    "level": 125,
+    "defense": "20",
+    "lj": "1000",
+    "tip": "天魔套装之一，腰带",
+    "type": "4"
+  },
+  "+天魔风沙之靴": {
+    "name": "+天魔风沙之靴",
+    "level": 130,
+    "defense": "20",
+    "agility": "11",
+    "lj": "1000",
+    "tip": "天魔套装之一，靴子",
+    "type": "5"
+  },
+  "魑魅魍魉": {
+    "name": "魑魅魍魉",
+    "level": 125,
+    "attack": "40",
+    "maxAttack": "50",
+    "defense": "20",
+    "health": "150",
+    "agility": "10",
+    "lj": "1000",
+    "tip": "传说由魑魅魍魉四鬼戾气所化，威力无穷",
+    "type": "6"
+  },
+  "凤凰的右爪": {
+    "name": "凤凰的右爪",
+    "level": 128,
+    "attack": "177",
+    "maxAttack": "217",
+    "lj": "800",
+    "tx": "致命攻+7",
+    "tip": "炽热的烈焰，让人望而生畏",
+    "type": "1"
+  },
+  "冷石弯刀": {
+    "name": "冷石弯刀",
+    "level": 127,
+    "attack": "163",
+    "maxAttack": "200",
+    "lj": "800",
+    "tx": "致命攻+7",
+    "type": "1"
+  },
+  "游冰项圈": {
+    "name": "游冰项圈",
+    "level": 123,
+    "attack": "32",
+    "maxAttack": "39",
+    "lj": "800",
+    "tx": "麻痹攻+6",
+    "type": "6"
+  },
+  "六指拳爪": {
+    "name": "六指拳爪",
+    "level": 122,
+    "attack": "161",
+    "maxAttack": "198",
+    "agility": "13",
+    "lj": "800",
+    "tx": "致命攻+7",
+    "type": "1"
+  },
+  "压迫之刃": {
+    "name": "压迫之刃",
+    "level": 140,
+    "attack": "190",
+    "maxAttack": "231",
+    "lj": "800",
+    "tx": "致命攻+8",
+    "type": "1"
+  },
+  "吸血手镰": {
+    "name": "吸血手镰",
+    "level": 147,
+    "attack": "198",
+    "maxAttack": "242",
+    "lj": "800",
+    "tx": "致命攻+8",
+    "type": "1"
+  },
+  "复仇": {
+    "name": "复仇",
+    "level": 159,
+    "attack": "215",
+    "maxAttack": "261",
+    "lj": "800",
+    "tx": "致命攻+7",
+    "type": "1"
+  },
+  "天魔惊神指": {
+    "name": "天魔惊神指",
+    "level": 140,
+    "attack": "50",
+    "maxAttack": "60",
+    "defense": "20",
+    "health": "200",
+    "morale": "15",
+    "lj": "1000",
+    "tip": "相传，是天魔所佩戴的指环",
+    "type": "6"
+  },
+  "天魔风雷链": {
+    "name": "天魔风雷链",
+    "level": 140,
+    "attack": "60",
+    "maxAttack": "60",
+    "defense": "20",
+    "health": "100",
+    "lj": "1000",
+    "tip": "天魔生前用过的首饰，具有极强的破坏力",
+    "type": "6"
+  },
+  "天魔轮回杖": {
+    "name": "天魔轮回杖",
+    "level": 150,
+    "attack": "200",
+    "maxAttack": "238",
+    "morale": "10",
+    "lj": "1000",
+    "tip": "天魔生前用过的武器，此武器拥有斩断轮回之力，十分可怖",
+    "type": "1"
+  },
+  "复仇者": {
+    "name": "复仇者",
+    "level": 160,
+    "attack": "222",
+    "maxAttack": "268",
+    "lj": "800",
+    "tx": "致命攻+7",
+    "type": "1"
+  },
+  "珍珠项圈": {
+    "name": "珍珠项圈",
+    "level": 158,
+    "attack": "39",
+    "maxAttack": "48",
+    "agility": "17",
+    "lj": "800",
+    "tx": "致命攻+5",
+    "type": "6"
+  },
+  "月怒束带": {
+    "name": "月怒束带",
+    "level": 160,
+    "defense": "19",
+    "lj": "800",
+    "tx": "抗麻痹+6",
+    "type": "4"
+  },
+  "据点长靴": {
+    "name": "据点长靴",
+    "level": 165,
+    "defense": "26",
+    "agility": "23",
+    "lj": "800",
+    "tx": "抗麻痹+5",
+    "type": "5"
+  },
+  "暗血胸甲": {
+    "name": "暗血胸甲",
+    "level": 154,
+    "defense": "114",
+    "lj": "800",
+    "tx": "抗麻痹+7",
+    "type": "3"
+  },
+  "皮腰带": {
+    "name": "皮腰带",
+    "level": 1,
+    "type": "4",
+    "defense": 1,
+    "lj": 303
+  },
+  "长剑": {
+    "name": "长剑",
+    "level": 2,
+    "type": "1",
+    "attack": 2,
+    "lj": 308,
+    "maxAttack": 3
+  },
+  "皮帽": {
+    "name": "皮帽",
+    "level": 2,
+    "type": "2",
+    "defense": 1,
+    "morale": 4,
+    "lj": 306
+  },
+  "短锤": {
+    "name": "短锤",
+    "level": 2,
+    "type": "1",
+    "attack": 3,
+    "lj": 309,
+    "maxAttack": 6
+  },
+  "铜盔": {
+    "name": "铜盔",
+    "level": 4,
+    "type": "2",
+    "defense": 1,
+    "morale": 8,
+    "lj": 314
+  },
+  "精钢短刀": {
+    "name": "精钢短刀",
+    "level": 4,
+    "type": "1",
+    "attack": 6,
+    "lj": 319,
+    "maxAttack": 12
+  },
+  "华丽剑": {
+    "name": "华丽剑",
+    "level": 4,
+    "type": "1",
+    "attack": 5,
+    "lj": 316,
+    "maxAttack": 9
+  },
+  "铜甲": {
+    "name": "铜甲",
+    "level": 4,
+    "type": "2",
+    "defense": 2,
+    "morale": 5,
+    "lj": 313
+  },
+  "麻之刀": {
+    "name": "麻之刀",
+    "level": 6,
+    "type": "1",
+    "attack": 8,
+    "lj": 327,
+    "maxAttack": 16
+  },
+  "古藤耳环": {
+    "name": "古藤耳环",
+    "level": 6,
+    "type": "6",
+    "attack": 2,
+    "agility": 9,
+    "lj": 324,
+    "maxAttack": 3
+  },
+  "精灵项链": {
+    "name": "精灵项链",
+    "level": 6,
+    "type": "6",
+    "attack": 3,
+    "agility": 6,
+    "lj": 321,
+    "maxAttack": 4
+  },
+  "影子外套": {
+    "name": "影子外套",
+    "level": 6,
+    "type": "3",
+    "defense": 6,
+    "lj": 319
+  },
+  "武士之帽": {
+    "name": "武士之帽",
+    "level": 7,
+    "type": "2",
+    "defense": 2,
+    "morale": 13,
+    "lj": 329
+  },
+  "教官护腿": {
+    "name": "教官护腿",
+    "level": 7,
+    "type": "5",
+    "defense": 2,
+    "agility": 14,
+    "lj": 334
+  },
+  "武士腰带": {
+    "name": "武士腰带",
+    "level": 8,
+    "type": "4",
+    "defense": 3,
+    "lj": 333
+  },
+  "上校之戒": {
+    "name": "上校之戒",
+    "level": 8,
+    "type": "6",
+    "attack": 3,
+    "agility": 7,
+    "lj": 330,
+    "maxAttack": 5
+  },
+  "贪婪匕首": {
+    "name": "贪婪匕首",
+    "level": 8,
+    "type": "1",
+    "attack": 11,
+    "lj": 337,
+    "maxAttack": 22
+  },
+  "麻痹匕首": {
+    "name": "麻痹匕首",
+    "level": 8,
+    "type": "1",
+    "attack": 9,
+    "lj": 330,
+    "maxAttack": 14
+  },
+  "长躬腰带": {
+    "name": "长躬腰带",
+    "level": 8,
+    "type": "4",
+    "defense": 2,
+    "lj": 339
+  },
+  "银月布衣": {
+    "name": "银月布衣",
+    "level": 10,
+    "type": "3",
+    "defense": 10,
+    "lj": 332
+  },
+  "圣殿外衣": {
+    "name": "圣殿外衣",
+    "level": 10,
+    "type": "3",
+    "defense": 20,
+    "lj": 348
+  },
+  "万灵腰带": {
+    "name": "万灵腰带",
+    "level": 10,
+    "type": "4",
+    "defense": 3,
+    "lj": 343
+  },
+  "太阳皮鞋": {
+    "name": "太阳皮鞋",
+    "level": 10,
+    "type": "5",
+    "defense": 2,
+    "agility": 12,
+    "lj": 345
+  },
+  "统御裹腰": {
+    "name": "统御裹腰",
+    "level": 11,
+    "type": "4",
+    "defense": 3,
+    "lj": 346
+  },
+  "尖刺靴": {
+    "name": "尖刺靴",
+    "level": 11,
+    "type": "1",
+    "attack": 12,
+    "lj": 338,
+    "maxAttack": 17
+  },
+  "绸缎长袍": {
+    "name": "绸缎长袍",
+    "level": 11,
+    "type": "3",
+    "defense": 14,
+    "lj": 340
+  },
+  "丝质外衣": {
+    "name": "丝质外衣",
+    "level": 11,
+    "type": "3",
+    "defense": 14,
+    "lj": 340
+  },
+  "冲撞重戒": {
+    "name": "冲撞重戒",
+    "level": 11,
+    "type": "6",
+    "attack": 3,
+    "agility": 12,
+    "lj": 349,
+    "maxAttack": 6
+  },
+  "轻锤": {
+    "name": "轻锤",
+    "level": 11,
+    "type": "1",
+    "attack": 12,
+    "lj": 335,
+    "maxAttack": 16
+  },
+  "碾虫靴": {
+    "name": "碾虫靴",
+    "level": 11,
+    "type": "5",
+    "defense": 3,
+    "agility": 6,
+    "lj": 338
+  },
+  "沉默之帽": {
+    "name": "沉默之帽",
+    "level": 11,
+    "type": "2",
+    "defense": 2,
+    "morale": 11,
+    "lj": 344
+  },
+  "胜利指环": {
+    "name": "胜利指环",
+    "level": 11,
+    "type": "6",
+    "attack": 4,
+    "agility": 6,
+    "lj": 338,
+    "maxAttack": 6
+  },
+  "防御之刀": {
+    "name": "防御之刀",
+    "level": 12,
+    "type": "1",
+    "attack": 14,
+    "lj": 343,
+    "maxAttack": 21
+  },
+  "月布长袍": {
+    "name": "月布长袍",
+    "level": 12,
+    "type": "3",
+    "defense": 17,
+    "lj": 346
+  },
+  "光明腰带": {
+    "name": "光明腰带",
+    "level": 12,
+    "type": "4",
+    "defense": 4,
+    "lj": 344
+  },
+  "冰川长袍": {
+    "name": "冰川长袍",
+    "level": 13,
+    "type": "3",
+    "defense": 18,
+    "lj": 350
+  },
+  "命运头盔": {
+    "name": "命运头盔",
+    "level": 13,
+    "type": "2",
+    "defense": 2,
+    "morale": 11,
+    "lj": 351
+  },
+  "执法者长袍": {
+    "name": "执法者长袍",
+    "level": 13,
+    "type": "3",
+    "defense": 20,
+    "lj": 353
+  },
+  "北极长靴": {
+    "name": "北极长靴",
+    "level": 13,
+    "type": "5",
+    "defense": 3,
+    "agility": 11,
+    "lj": 357
+  },
+  "阴云头盔": {
+    "name": "阴云头盔",
+    "level": 14,
+    "type": "2",
+    "defense": 2,
+    "morale": 14,
+    "lj": 360
+  },
+  "变形长靴": {
+    "name": "变形长靴",
+    "level": 14,
+    "type": "5",
+    "defense": 3,
+    "agility": 13,
+    "lj": 365
+  },
+  "霜火长袍": {
+    "name": "霜火长袍",
+    "level": 14,
+    "type": "3",
+    "defense": 23,
+    "lj": 360
+  },
+  "无敌之戒": {
+    "name": "无敌之戒",
+    "level": 14,
+    "type": "6",
+    "attack": 5,
+    "agility": 4,
+    "lj": 345,
+    "maxAttack": 7
+  },
+  "冰川便鞋": {
+    "name": "冰川便鞋",
+    "level": 15,
+    "type": "5",
+    "defense": 3,
+    "agility": 8,
+    "lj": 357
+  },
+  "剔骨者面甲": {
+    "name": "剔骨者面甲",
+    "level": 15,
+    "type": "2",
+    "defense": 2,
+    "morale": 15,
+    "lj": 365
+  },
+  "雄鹰匕首": {
+    "name": "雄鹰匕首",
+    "level": 16,
+    "type": "1",
+    "attack": 20,
+    "lj": 366,
+    "maxAttack": 35
+  },
+  "恶鬼软帽": {
+    "name": "恶鬼软帽",
+    "level": 16,
+    "type": "2",
+    "defense": 3,
+    "morale": 9,
+    "lj": 359
+  },
+  "苍穹战靴": {
+    "name": "苍穹战靴",
+    "level": 16,
+    "type": "5",
+    "defense": 3,
+    "agility": 8,
+    "lj": 360
+  },
+  "烈焰法衣": {
+    "name": "烈焰法衣",
+    "level": 17,
+    "type": "3",
+    "defense": 24,
+    "lj": 367
+  },
+  "虫鳞足垫": {
+    "name": "虫鳞足垫",
+    "level": 17,
+    "type": "5",
+    "defense": 3,
+    "agility": 11,
+    "lj": 374
+  },
+  "灾难之握": {
+    "name": "灾难之握",
+    "level": 17,
+    "type": "1",
+    "attack": 24,
+    "lj": 381,
+    "maxAttack": 50
+  },
+  "雪兽兜帽": {
+    "name": "雪兽兜帽",
+    "level": 17,
+    "type": "2",
+    "defense": 2,
+    "morale": 19,
+    "lj": 383
+  },
+  "学者外衣": {
+    "name": "学者外衣",
+    "level": 18,
+    "type": "3",
+    "defense": 31,
+    "lj": 380
+  },
+  "鱼眼棒": {
+    "name": "鱼眼棒",
+    "level": 18,
+    "type": "1",
+    "attack": 26,
+    "lj": 384,
+    "maxAttack": 53
+  },
+  "出血指环": {
+    "name": "出血指环",
+    "level": 19,
+    "type": "6",
+    "attack": 5,
+    "agility": 11,
+    "lj": 382,
+    "maxAttack": 9
+  },
+  "霜嚎腰带": {
+    "name": "霜嚎腰带",
+    "level": 19,
+    "type": "4",
+    "defense": 5,
+    "lj": 373
+  },
+  "狼软帽": {
+    "name": "狼软帽",
+    "level": 19,
+    "type": "2",
+    "defense": 3,
+    "morale": 12,
+    "lj": 378
+  },
+  "迅捷之刃": {
+    "name": "迅捷之刃",
+    "level": 19,
+    "type": "1",
+    "attack": 25,
+    "lj": 383,
+    "maxAttack": 47
+  },
+  "毒蛇长靴": {
+    "name": "毒蛇长靴",
+    "level": 19,
+    "type": "5",
+    "defense": 5,
+    "agility": 4,
+    "lj": 359
+  },
+  "勇敢护腰": {
+    "name": "勇敢护腰",
+    "level": 20,
+    "type": "4",
+    "defense": 5,
+    "lj": 378
+  },
+  "元老长袍": {
+    "name": "元老长袍",
+    "level": 20,
+    "type": "3",
+    "defense": 34,
+    "lj": 389
+  },
+  "魔震指环": {
+    "name": "魔震指环",
+    "level": 20,
+    "type": "6",
+    "attack": 7,
+    "agility": 6,
+    "lj": 371,
+    "maxAttack": 10
+  },
+  "短路之靴": {
+    "name": "短路之靴",
+    "level": 20,
+    "type": "5",
+    "defense": 4,
+    "agility": 7,
+    "lj": 374
+  },
+  "鳄鱼之腿": {
+    "name": "鳄鱼之腿",
+    "level": 20,
+    "type": "5",
+    "defense": 3,
+    "agility": 14,
+    "lj": 397
+  },
+  "偏见外套": {
+    "name": "偏见外套",
+    "level": 21,
+    "type": "3",
+    "defense": 24,
+    "lj": 373
+  },
+  "幽魂徽记": {
+    "name": "幽魂徽记",
+    "level": 21,
+    "type": "6",
+    "attack": 7,
+    "agility": 7,
+    "lj": 378,
+    "maxAttack": 11
+  },
+  "寂寞胸甲": {
+    "name": "寂寞胸甲",
+    "level": 21,
+    "type": "3",
+    "defense": 4,
+    "morale": 4,
+    "lj": 366
+  },
+  "泥泞裹足": {
+    "name": "泥泞裹足",
+    "level": 21,
+    "type": "5",
+    "defense": 4,
+    "agility": 9,
+    "lj": 383
+  },
+  "水珠之戒": {
+    "name": "水珠之戒",
+    "level": 21,
+    "type": "6",
+    "attack": 6,
+    "agility": 11,
+    "lj": 390,
+    "maxAttack": 11
+  },
+  "仇恨之击": {
+    "name": "仇恨之击",
+    "level": 21,
+    "type": "1",
+    "attack": 26,
+    "lj": 383,
+    "maxAttack": 43
+  },
+  "恐惧之角": {
+    "name": "恐惧之角",
+    "level": 21,
+    "type": "1",
+    "attack": 28,
+    "lj": 389,
+    "maxAttack": 51
+  },
+  "坚硬重戒": {
+    "name": "坚硬重戒",
+    "level": 22,
+    "type": "6",
+    "attack": 6,
+    "agility": 14,
+    "lj": 406,
+    "maxAttack": 13
+  },
+  "血污之刀": {
+    "name": "血污之刀",
+    "level": 22,
+    "type": "1",
+    "attack": 25,
+    "lj": 377,
+    "maxAttack": 36
+  },
+  "荆棘指环": {
+    "name": "荆棘指环",
+    "level": 22,
+    "type": "6",
+    "attack": 7,
+    "agility": 9,
+    "lj": 386,
+    "maxAttack": 12
+  },
+  "纵容外套": {
+    "name": "纵容外套",
+    "level": 22,
+    "type": "3",
+    "defense": 23,
+    "lj": 374
+  },
+  "碎裂重锤": {
+    "name": "碎裂重锤",
+    "level": 22,
+    "type": "1",
+    "attack": 30,
+    "lj": 398,
+    "maxAttack": 58
+  },
+  "忏悔之刃": {
+    "name": "忏悔之刃",
+    "level": 22,
+    "type": "1",
+    "attack": 28,
+    "lj": 388,
+    "maxAttack": 48
+  },
+  "肌腱腰带": {
+    "name": "肌腱腰带",
+    "level": 22,
+    "type": "4",
+    "defense": 5,
+    "lj": 386
+  },
+  "地卫指环": {
+    "name": "地卫指环",
+    "level": 23,
+    "type": "6",
+    "attack": 6,
+    "agility": 12,
+    "lj": 404,
+    "maxAttack": 12
+  },
+  "鬼灵胫甲": {
+    "name": "鬼灵胫甲",
+    "level": 23,
+    "type": "3",
+    "defense": 3,
+    "morale": 8,
+    "lj": 382
+  },
+  "法术之刃": {
+    "name": "法术之刃",
+    "level": 24,
+    "type": "1",
+    "attack": 33,
+    "lj": 408,
+    "maxAttack": 65
+  },
+  "赦免护腰": {
+    "name": "赦免护腰",
+    "level": 24,
+    "type": "4",
+    "defense": 7,
+    "lj": 377
+  },
+  "泪珠指环": {
+    "name": "泪珠指环",
+    "level": 24,
+    "type": "6",
+    "attack": 7,
+    "agility": 9,
+    "lj": 394,
+    "maxAttack": 12
+  },
+  "龙族重戒": {
+    "name": "龙族重戒",
+    "level": 24,
+    "type": "6",
+    "attack": 8,
+    "agility": 5,
+    "lj": 382,
+    "maxAttack": 11
+  },
+  "马克波罗之靴": {
+    "name": "马克波罗之靴",
+    "level": 25,
+    "type": "5",
+    "defense": 5,
+    "agility": 8,
+    "lj": 397
+  },
+  "雷霆罩帽": {
+    "name": "雷霆罩帽",
+    "level": 25,
+    "type": "2",
+    "defense": 4,
+    "morale": 5,
+    "lj": 380
+  },
+  "怒火便鞋": {
+    "name": "怒火便鞋",
+    "level": 25,
+    "type": "1",
+    "attack": 34,
+    "lj": 412,
+    "maxAttack": 66
+  },
+  "野猪匕首": {
+    "name": "野猪匕首",
+    "level": 26,
+    "type": "1",
+    "attack": 27,
+    "lj": 382,
+    "maxAttack": 35
+  },
+  "滑鳞之靴": {
+    "name": "滑鳞之靴",
+    "level": 26,
+    "type": "5",
+    "defense": 5,
+    "agility": 6,
+    "lj": 392
+  },
+  "剔骨者胸甲": {
+    "name": "剔骨者胸甲",
+    "level": 26,
+    "type": "3",
+    "defense": 3,
+    "morale": 15,
+    "lj": 413
+  },
+  "圣骑之刀": {
+    "name": "圣骑之刀",
+    "level": 26,
+    "type": "1",
+    "attack": 36,
+    "lj": 418,
+    "maxAttack": 71
+  },
+  "浸血藤鞋地": {
+    "name": "浸血藤鞋地",
+    "level": 26,
+    "type": "5",
+    "defense": 6,
+    "agility": 3,
+    "lj": 380
+  },
+  "裂鞭皮帽": {
+    "name": "裂鞭皮帽",
+    "level": 27,
+    "type": "2",
+    "defense": 4,
+    "morale": 10,
+    "lj": 402
+  },
+  "指弓引腰带": {
+    "name": "指弓引腰带",
+    "level": 27,
+    "type": "4",
+    "defense": 6,
+    "lj": 430
+  },
+  "阴云护胸": {
+    "name": "阴云护胸",
+    "level": 27,
+    "type": "3",
+    "defense": 44,
+    "lj": 416
+  },
+  "混乱之刃": {
+    "name": "混乱之刃",
+    "level": 27,
+    "type": "1",
+    "attack": 31,
+    "lj": 398,
+    "maxAttack": 47
+  },
+  "极光便鞋": {
+    "name": "极光便鞋",
+    "level": 27,
+    "type": "5",
+    "defense": 6,
+    "agility": 4,
+    "lj": 384
+  },
+  "辉煌外套": {
+    "name": "辉煌外套",
+    "level": 27,
+    "type": "3",
+    "defense": 38,
+    "lj": 407
+  },
+  "尖刺颅盔": {
+    "name": "尖刺颅盔",
+    "level": 27,
+    "type": "1",
+    "attack": 30,
+    "lj": 394,
+    "maxAttack": 43
+  },
+  "巫毒徽记": {
+    "name": "巫毒徽记",
+    "level": 27,
+    "type": "6",
+    "attack": 8,
+    "agility": 8,
+    "lj": 405,
+    "maxAttack": 13
+  },
+  "虚伪皮帽": {
+    "name": "虚伪皮帽",
+    "level": 28,
+    "type": "2",
+    "defense": 3,
+    "morale": 13,
+    "lj": 418
+  },
+  "惩戒之剑": {
+    "name": "惩戒之剑",
+    "level": 28,
+    "type": "1",
+    "attack": 30,
+    "lj": 392,
+    "maxAttack": 40
+  },
+  "邪恶复仇": {
+    "name": "邪恶复仇",
+    "level": 28,
+    "type": 6,
+    "attack": 9,
+    "agility": 6,
+    "lj": 400,
+    "maxAttack": 13
+  },
+  "坚持之靴": {
+    "name": "坚持之靴",
+    "level": 29,
+    "type": "5",
+    "defense": 6,
+    "agility": 4,
+    "lj": 391
+  },
+  "酷热腰带": {
+    "name": "酷热腰带",
+    "level": 29,
+    "type": "4",
+    "defense": 7,
+    "lj": 415
+  },
+  "繁荣指环": {
+    "name": "繁荣指环",
+    "level": 29,
+    "type": "6",
+    "attack": 8,
+    "agility": 10,
+    "lj": 419,
+    "maxAttack": 14
+  },
+  "龙鹰皮帽": {
+    "name": "龙鹰皮帽",
+    "level": 29,
+    "type": "2",
+    "defense": 4,
+    "morale": 6,
+    "lj": 397
+  },
+  "虚空刀锋面具": {
+    "name": "虚空刀锋面具",
+    "level": 29,
+    "type": "1",
+    "attack": 36,
+    "lj": 415,
+    "maxAttack": 60
+  },
+  "动力指环": {
+    "name": "动力指环",
+    "level": 29,
+    "type": "6",
+    "attack": 10,
+    "agility": 4,
+    "lj": 391,
+    "maxAttack": 13
+  },
+  "忠诚徽记": {
+    "name": "忠诚徽记",
+    "level": 30,
+    "type": "6",
+    "attack": 9,
+    "agility": 9,
+    "lj": 418,
+    "maxAttack": 15
+  },
+  "毛皮头盔": {
+    "name": "毛皮头盔",
+    "level": 30,
+    "type": "2",
+    "defense": 3,
+    "morale": 19,
+    "lj": 446
+  },
+  "冬眠胸甲": {
+    "name": "冬眠胸甲",
+    "level": 30,
+    "type": "3",
+    "defense": 5,
+    "morale": 4,
+    "lj": 392
+  },
+  "冥想匕首": {
+    "name": "冥想匕首",
+    "level": 30,
+    "type": "1",
+    "attack": 33,
+    "lj": 402,
+    "maxAttack": 46
+  },
+  "远征军兜帽": {
+    "name": "远征军兜帽",
+    "level": 30,
+    "type": "2",
+    "defense": 3,
+    "morale": 16,
+    "lj": 436
+  },
+  "烈焰腰带": {
+    "name": "烈焰腰带",
+    "level": 30,
+    "type": "4",
+    "defense": 7,
+    "lj": 419
+  },
+  "光芒徽记": {
+    "name": "光芒徽记",
+    "level": 31,
+    "type": "6",
+    "attack": 9,
+    "agility": 7,
+    "lj": 415,
+    "maxAttack": 14
+  },
+  "蟒皮头盔": {
+    "name": "蟒皮头盔",
+    "level": 31,
+    "type": "2",
+    "defense": 4,
+    "morale": 12,
+    "lj": 425
+  },
+  "挑战兜帽": {
+    "name": "挑战兜帽",
+    "level": 31,
+    "type": "2",
+    "defense": 3,
+    "morale": 15,
+    "lj": 438
+  },
+  "祭祀匕首": {
+    "name": "祭祀匕首",
+    "level": 31,
+    "type": "1",
+    "attack": 35,
+    "lj": 409,
+    "maxAttack": 51
+  },
+  "邪恶之剑": {
+    "name": "邪恶之剑",
+    "level": 32,
+    "type": "1",
+    "attack": 36,
+    "lj": 414,
+    "maxAttack": 53
+  },
+  "幻想外套": {
+    "name": "幻想外套",
+    "level": 32,
+    "type": "3",
+    "defense": 29,
+    "lj": 400
+  },
+  "科多皮头盔": {
+    "name": "科多皮头盔",
+    "level": 32,
+    "type": "2",
+    "defense": 3,
+    "morale": 19,
+    "lj": 457
+  },
+  "龙皮头盔": {
+    "name": "龙皮头盔",
+    "level": 32,
+    "type": "2",
+    "defense": 4,
+    "morale": 10,
+    "lj": 421
+  },
+  "仪祭短剑": {
+    "name": "仪祭短剑",
+    "level": 32,
+    "type": "1",
+    "attack": 46,
+    "lj": 452,
+    "maxAttack": 95
+  },
+  "骷髅践踏者": {
+    "name": "骷髅践踏者",
+    "level": 32,
+    "type": 6,
+    "attack": 10,
+    "agility": 6,
+    "lj": 414,
+    "maxAttack": 15
+  },
+  "蝾螈之眼": {
+    "name": "蝾螈之眼",
+    "level": 32,
+    "type": "6",
+    "attack": 8,
+    "agility": 13,
+    "lj": 448,
+    "maxAttack": 16
+  },
+  "本能外套": {
+    "name": "本能外套",
+    "level": 32,
+    "type": "3",
+    "defense": 39,
+    "lj": 417
+  },
+  "长路腰带": {
+    "name": "长路腰带",
+    "level": 32,
+    "type": "4",
+    "defense": 9,
+    "lj": 400
+  },
+  "血孢腰带": {
+    "name": "血孢腰带",
+    "level": 32,
+    "type": "4",
+    "defense": 7,
+    "lj": 443
+  },
+  "地狱之剑": {
+    "name": "地狱之剑",
+    "level": 32,
+    "type": "1",
+    "attack": 39,
+    "lj": 425,
+    "maxAttack": 64
+  },
+  "野蛮面具": {
+    "name": "野蛮面具",
+    "level": 33,
+    "type": "2",
+    "defense": 4,
+    "morale": 15,
+    "lj": 444
+  },
+  "蝙蝠毛项链": {
+    "name": "蝙蝠毛项链",
+    "level": 33,
+    "type": "6",
+    "attack": 12,
+    "agility": 4,
+    "lj": 402,
+    "maxAttack": 15
+  },
+  "撕裂轻刃": {
+    "name": "撕裂轻刃",
+    "level": 33,
+    "type": "1",
+    "attack": 43,
+    "lj": 438,
+    "maxAttack": 77
+  },
+  "刀锋外套": {
+    "name": "刀锋外套",
+    "level": 33,
+    "type": "1",
+    "attack": 41,
+    "lj": 430,
+    "maxAttack": 68
+  },
+  "冷酷之刃": {
+    "name": "冷酷之刃",
+    "level": 33,
+    "type": "1",
+    "attack": 43,
+    "lj": 437,
+    "maxAttack": 77
+  },
+  "华丽短剑": {
+    "name": "华丽短剑",
+    "level": 34,
+    "type": "1",
+    "attack": 43,
+    "lj": 439,
+    "maxAttack": 75
+  },
+  "墓地头盔": {
+    "name": "墓地头盔",
+    "level": 34,
+    "type": "2",
+    "defense": 3,
+    "morale": 19,
+    "lj": 467
+  },
+  "血铸指环": {
+    "name": "血铸指环",
+    "level": 34,
+    "type": "6",
+    "attack": 11,
+    "agility": 5,
+    "lj": 413,
+    "maxAttack": 15
+  },
+  "芳香指环": {
+    "name": "芳香指环",
+    "level": 34,
+    "type": "6",
+    "attack": 8,
+    "agility": 13,
+    "lj": 456,
+    "maxAttack": 16
+  },
+  "诱惑魔刃": {
+    "name": "诱惑魔刃",
+    "level": 34,
+    "type": "1",
+    "attack": 36,
+    "lj": 409,
+    "maxAttack": 47
+  },
+  "元素腰带": {
+    "name": "元素腰带",
+    "level": 34,
+    "type": "4",
+    "defense": 8,
+    "lj": 426
+  },
+  "凯旋护腰": {
+    "name": "凯旋护腰",
+    "level": 34,
+    "type": "4",
+    "defense": 8,
+    "lj": 425
+  },
+  "黎明行者": {
+    "name": "黎明行者",
+    "level": 34,
+    "type": 6,
+    "attack": 8,
+    "agility": 13,
+    "lj": 456,
+    "maxAttack": 16
+  },
+  "涂蜡胸甲": {
+    "name": "涂蜡胸甲",
+    "level": 34,
+    "type": "3",
+    "defense": 5,
+    "morale": 8,
+    "lj": 420
+  },
+  "冷魂长靴": {
+    "name": "冷魂长靴",
+    "level": 34,
+    "type": "5",
+    "defense": 5,
+    "agility": 11,
+    "lj": 446
+  },
+  "围困外套": {
+    "name": "围困外套",
+    "level": 34,
+    "type": "3",
+    "defense": 35,
+    "lj": 413
+  },
+  "冰冷之戒": {
+    "name": "冰冷之戒",
+    "level": 35,
+    "type": "6",
+    "attack": 11,
+    "agility": 7,
+    "lj": 427,
+    "maxAttack": 17
+  },
+  "矿工外套": {
+    "name": "矿工外套",
+    "level": 35,
+    "type": "3",
+    "defense": 53,
+    "lj": 444
+  },
+  "秩序之戒": {
+    "name": "秩序之戒",
+    "level": 35,
+    "type": "6",
+    "attack": 12,
+    "agility": 5,
+    "lj": 416,
+    "maxAttack": 16
+  },
+  "拯救护腰": {
+    "name": "拯救护腰",
+    "level": 35,
+    "type": "4",
+    "defense": 8,
+    "lj": 450
+  },
+  "统御护腰": {
+    "name": "统御护腰",
+    "level": 35,
+    "type": "4",
+    "defense": 8,
+    "lj": 447
+  },
+  "朝圣头盔": {
+    "name": "朝圣头盔",
+    "level": 35,
+    "type": "2",
+    "defense": 6,
+    "morale": 4,
+    "lj": 408
+  },
+  "镰爪长靴": {
+    "name": "镰爪长靴",
+    "level": 35,
+    "type": "1",
+    "attack": 49,
+    "lj": 462,
+    "maxAttack": 99
+  },
+  "鳞甲头盔": {
+    "name": "鳞甲头盔",
+    "level": 36,
+    "type": "2",
+    "defense": 4,
+    "morale": 13,
+    "lj": 451
+  },
+  "无尽野心": {
+    "name": "无尽野心",
+    "level": 36,
+    "type": 6,
+    "attack": 8,
+    "agility": 14,
+    "lj": 475,
+    "maxAttack": 17
+  },
+  "龙鳞项圈": {
+    "name": "龙鳞项圈",
+    "level": 36,
+    "type": "6",
+    "attack": 12,
+    "agility": 5,
+    "lj": 419,
+    "maxAttack": 16
+  },
+  "复仇刺刀": {
+    "name": "复仇刺刀",
+    "level": 36,
+    "type": "1",
+    "attack": 48,
+    "lj": 454,
+    "maxAttack": 88
+  },
+  "断网腰带": {
+    "name": "断网腰带",
+    "level": 36,
+    "type": "4",
+    "defense": 9,
+    "lj": 424
+  },
+  "冰虫之牙": {
+    "name": "冰虫之牙",
+    "level": 37,
+    "type": "1",
+    "attack": 41,
+    "lj": 428,
+    "maxAttack": 59
+  },
+  "龙人坠饰": {
+    "name": "龙人坠饰",
+    "level": 37,
+    "type": "6",
+    "attack": 12,
+    "agility": 4,
+    "lj": 419,
+    "maxAttack": 16
+  },
+  "锁甲头盔": {
+    "name": "锁甲头盔",
+    "level": 37,
+    "type": "2",
+    "defense": 4,
+    "morale": 11,
+    "lj": 446
+  },
+  "环甲头盔": {
+    "name": "环甲头盔",
+    "level": 37,
+    "type": "2",
+    "defense": 5,
+    "morale": 6,
+    "lj": 424
+  },
+  "鳞甲战靴": {
+    "name": "鳞甲战靴",
+    "level": 37,
+    "type": "2",
+    "defense": 4,
+    "morale": 13,
+    "lj": 455
+  },
+  "鳞片冰靴": {
+    "name": "鳞片冰靴",
+    "level": 37,
+    "type": "5",
+    "defense": 8,
+    "agility": 5,
+    "lj": 421
+  },
+  "领主战靴": {
+    "name": "领主战靴",
+    "level": 38,
+    "type": "5",
+    "defense": 6,
+    "agility": 12,
+    "lj": 469
+  },
+  "解救坠饰": {
+    "name": "解救坠饰",
+    "level": 38,
+    "type": "6",
+    "attack": 11,
+    "agility": 7,
+    "lj": 441,
+    "maxAttack": 17
+  },
+  "内厅头盔": {
+    "name": "内厅头盔",
+    "level": 38,
+    "type": "2",
+    "defense": 4,
+    "morale": 12,
+    "lj": 452
+  },
+  "神龛头盔": {
+    "name": "神龛头盔",
+    "level": 38,
+    "type": "2",
+    "defense": 5,
+    "morale": 8,
+    "lj": 436
+  },
+  "寒风之靴": {
+    "name": "寒风之靴",
+    "level": 38,
+    "type": "5",
+    "defense": 7,
+    "agility": 6,
+    "lj": 432
+  },
+  "刺客匕首": {
+    "name": "刺客匕首",
+    "level": 38,
+    "type": "1",
+    "attack": 40,
+    "lj": 420,
+    "maxAttack": 51
+  },
+  "放血匕首": {
+    "name": "放血匕首",
+    "level": 38,
+    "type": "1",
+    "attack": 57,
+    "lj": 488,
+    "maxAttack": 124
+  },
+  "领主之靴": {
+    "name": "领主之靴",
+    "level": 39,
+    "type": "5",
+    "defense": 6,
+    "agility": 12,
+    "lj": 474
+  },
+  "歌唱匕首": {
+    "name": "歌唱匕首",
+    "level": 39,
+    "type": "1",
+    "attack": 54,
+    "lj": 477,
+    "maxAttack": 106
+  },
+  "虚灵束带": {
+    "name": "虚灵束带",
+    "level": 39,
+    "type": "4",
+    "defense": 8,
+    "lj": 482
+  },
+  "和谐外衣": {
+    "name": "和谐外衣",
+    "level": 39,
+    "type": "3",
+    "defense": 32,
+    "lj": 417
+  },
+  "宇宙之光": {
+    "name": "宇宙之光",
+    "level": 40,
+    "type": 6,
+    "attack": 10,
+    "agility": 13,
+    "lj": 484,
+    "maxAttack": 20
+  },
+  "鹿皮软靴": {
+    "name": "鹿皮软靴",
+    "level": 40,
+    "type": "5",
+    "defense": 6,
+    "agility": 10,
+    "lj": 466
+  },
+  "战斗头盔": {
+    "name": "战斗头盔",
+    "level": 40,
+    "type": "2",
+    "defense": 6,
+    "morale": 6,
+    "lj": 435
+  },
+  "龙族长靴": {
+    "name": "龙族长靴",
+    "level": 40,
+    "type": "5",
+    "defense": 8,
+    "agility": 5,
+    "lj": 436
+  },
+  "麦哲伦之匕": {
+    "name": "麦哲伦之匕",
+    "level": 40,
+    "type": "1",
+    "attack": 52,
+    "lj": 468,
+    "maxAttack": 94
+  },
+  "三宝腰带": {
+    "name": "三宝腰带",
+    "level": 40,
+    "type": "4",
+    "defense": 10,
+    "lj": 444
+  },
+  "星光之拥": {
+    "name": "星光之拥",
+    "level": 40,
+    "type": 6,
+    "attack": 11,
+    "agility": 9,
+    "lj": 462,
+    "maxAttack": 19
+  },
+  "迅箭腰带": {
+    "name": "迅箭腰带",
+    "level": 40,
+    "type": "4",
+    "defense": 9,
+    "lj": 473
+  },
+  "战歌军刀": {
+    "name": "战歌军刀",
+    "level": 40,
+    "type": "1",
+    "attack": 56,
+    "lj": 484,
+    "maxAttack": 112
+  },
+  "流放珠串": {
+    "name": "流放珠串",
+    "level": 40,
+    "type": "6",
+    "attack": 9,
+    "agility": 13,
+    "lj": 490,
+    "maxAttack": 19
+  },
+  "灯穗腰带": {
+    "name": "灯穗腰带",
+    "level": 40,
+    "type": "4",
+    "defense": 11,
+    "lj": 422
+  },
+  "骑乘之靴": {
+    "name": "骑乘之靴",
+    "level": 41,
+    "type": "5",
+    "defense": 8,
+    "agility": 6,
+    "lj": 444
+  },
+  "猛犸长靴": {
+    "name": "猛犸长靴",
+    "level": 41,
+    "type": "5",
+    "defense": 7,
+    "agility": 7,
+    "lj": 452
+  },
+  "爱慕之链": {
+    "name": "爱慕之链",
+    "level": 41,
+    "type": "6",
+    "attack": 11,
+    "agility": 9,
+    "lj": 464,
+    "maxAttack": 19
+  },
+  "迅箭头盔": {
+    "name": "迅箭头盔",
+    "level": 41,
+    "type": "2",
+    "defense": 4,
+    "morale": 14,
+    "lj": 477
+  },
+  "猛犸之靴": {
+    "name": "猛犸之靴",
+    "level": 42,
+    "type": "5",
+    "defense": 8,
+    "agility": 7,
+    "lj": 455
+  },
+  "腐朽项圈": {
+    "name": "腐朽项圈",
+    "level": 42,
+    "type": "6",
+    "attack": 12,
+    "agility": 7,
+    "lj": 454,
+    "maxAttack": 18
+  },
+  "行者护胸": {
+    "name": "行者护胸",
+    "level": 42,
+    "type": "3",
+    "defense": 67,
+    "lj": 481
+  },
+  "猎户匕首": {
+    "name": "猎户匕首",
+    "level": 42,
+    "type": "1",
+    "attack": 62,
+    "lj": 507,
+    "maxAttack": 135
+  },
+  "游侠腰带": {
+    "name": "游侠腰带",
+    "level": 42,
+    "type": "4",
+    "defense": 12,
+    "lj": 426
+  },
+  "晶簇头盔": {
+    "name": "晶簇头盔",
+    "level": 42,
+    "type": "2",
+    "defense": 4,
+    "morale": 17,
+    "lj": 494
+  },
+  "裂鞭外套": {
+    "name": "裂鞭外套",
+    "level": 43,
+    "type": "3",
+    "defense": 56,
+    "lj": 463
+  },
+  "骨线外套": {
+    "name": "骨线外套",
+    "level": 43,
+    "type": "3",
+    "defense": 56,
+    "lj": 463
+  },
+  "秘法便鞋地": {
+    "name": "秘法便鞋地",
+    "level": 43,
+    "type": "5",
+    "defense": 7,
+    "agility": 9,
+    "lj": 475
+  },
+  "猛犸腰带": {
+    "name": "猛犸腰带",
+    "level": 44,
+    "type": "4",
+    "defense": 10,
+    "lj": 463
+  },
+  "锁链护喉": {
+    "name": "锁链护喉",
+    "level": 44,
+    "type": "6",
+    "attack": 10,
+    "agility": 13,
+    "lj": 509,
+    "maxAttack": 21
+  },
+  "拜膜者之靴": {
+    "name": "拜膜者之靴",
+    "level": 44,
+    "type": "5",
+    "defense": 6,
+    "agility": 14,
+    "lj": 509
+  },
+  "血肉头盔": {
+    "name": "血肉头盔",
+    "level": 44,
+    "type": "2",
+    "defense": 4,
+    "morale": 17,
+    "lj": 507
+  },
+  "职责匕首": {
+    "name": "职责匕首",
+    "level": 44,
+    "type": "1",
+    "attack": 61,
+    "lj": 498,
+    "maxAttack": 119
+  },
+  "磨石裹足": {
+    "name": "磨石裹足",
+    "level": 44,
+    "type": "5",
+    "defense": 7,
+    "agility": 10,
+    "lj": 484
+  },
+  "环形金链": {
+    "name": "环形金链",
+    "level": 44,
+    "type": "6",
+    "attack": 13,
+    "agility": 7,
+    "lj": 461,
+    "maxAttack": 20
+  },
+  "水鸦腰带": {
+    "name": "水鸦腰带",
+    "level": 44,
+    "type": "4",
+    "defense": 9,
+    "lj": 508
+  },
+  "再生皮甲": {
+    "name": "再生皮甲",
+    "level": 44,
+    "type": "2",
+    "defense": 5,
+    "morale": 13,
+    "lj": 485
+  },
+  "胜利魔刃": {
+    "name": "胜利魔刃",
+    "level": 44,
+    "type": "1",
+    "attack": 49,
+    "lj": 450,
+    "maxAttack": 69
+  },
+  "冰虫鳞盔": {
+    "name": "冰虫鳞盔",
+    "level": 44,
+    "type": "2",
+    "defense": 6,
+    "morale": 7,
+    "lj": 452
+  },
+  "水鸦头盔": {
+    "name": "水鸦头盔",
+    "level": 45,
+    "type": "2",
+    "defense": 4,
+    "morale": 18,
+    "lj": 512
+  },
+  "龙头护符": {
+    "name": "龙头护符",
+    "level": 45,
+    "type": "6",
+    "attack": 10,
+    "agility": 14,
+    "lj": 519,
+    "maxAttack": 21
+  },
+  "龙皮外套": {
+    "name": "龙皮外套",
+    "level": 45,
+    "type": "3",
+    "defense": 58,
+    "lj": 470
+  },
+  "凹槽匕首": {
+    "name": "凹槽匕首",
+    "level": 46,
+    "type": "1",
+    "attack": 50,
+    "lj": 455,
+    "maxAttack": 69
+  },
+  "冬鳞护胸": {
+    "name": "冬鳞护胸",
+    "level": 46,
+    "type": "3",
+    "defense": 74,
+    "lj": 499
+  },
+  "火热串珠": {
+    "name": "火热串珠",
+    "level": 46,
+    "type": "6",
+    "attack": 11,
+    "agility": 14,
+    "lj": 519,
+    "maxAttack": 23
+  },
+  "命运之牙": {
+    "name": "命运之牙",
+    "level": 46,
+    "type": "1",
+    "attack": 56,
+    "lj": 479,
+    "maxAttack": 92
+  },
+  "迁徒束带": {
+    "name": "迁徒束带",
+    "level": 46,
+    "type": "4",
+    "defense": 10,
+    "lj": 500
+  },
+  "皮革长靴": {
+    "name": "皮革长靴",
+    "level": 46,
+    "type": "5",
+    "defense": 8,
+    "agility": 8,
+    "lj": 478
+  },
+  "猛犸头盔": {
+    "name": "猛犸头盔",
+    "level": 46,
+    "type": "2",
+    "defense": 6,
+    "morale": 9,
+    "lj": 470
+  },
+  "铲齿腰带": {
+    "name": "铲齿腰带",
+    "level": 46,
+    "type": "4",
+    "defense": 10,
+    "lj": 494
+  },
+  "完美瞄准面具": {
+    "name": "完美瞄准面具",
+    "level": 47,
+    "type": "2",
+    "defense": 4,
+    "morale": 18,
+    "lj": 526
+  },
+  "防虫面具": {
+    "name": "防虫面具",
+    "level": 47,
+    "type": "2",
+    "defense": 5,
+    "morale": 13,
+    "lj": 498
+  },
+  "不灭胸铠": {
+    "name": "不灭胸铠",
+    "level": 47,
+    "type": "3",
+    "defense": 74,
+    "lj": 499
+  },
+  "冰霜利爪": {
+    "name": "冰霜利爪",
+    "level": 47,
+    "type": "1",
+    "attack": 70,
+    "lj": 531,
+    "maxAttack": 151
+  },
+  "盟军短剑": {
+    "name": "盟军短剑",
+    "level": 48,
+    "type": "1",
+    "attack": 53,
+    "lj": 465,
+    "maxAttack": 75
+  },
+  "神谕者便鞋": {
+    "name": "神谕者便鞋",
+    "level": 49,
+    "type": "5",
+    "defense": 9,
+    "agility": 7,
+    "lj": 477
+  },
+  "银环护符": {
+    "name": "银环护符",
+    "level": 49,
+    "type": "6",
+    "attack": 13,
+    "agility": 9,
+    "lj": 495,
+    "maxAttack": 22
+  },
+  "林地刺刀": {
+    "name": "林地刺刀",
+    "level": 49,
+    "type": "1",
+    "attack": 59,
+    "lj": 485,
+    "maxAttack": 94
+  },
+  "雪羽坠饰": {
+    "name": "雪羽坠饰",
+    "level": 49,
+    "type": "6",
+    "attack": 14,
+    "agility": 7,
+    "lj": 481,
+    "maxAttack": 22
+  },
+  "通灵师符咒": {
+    "name": "通灵师符咒",
+    "level": 50,
+    "type": "6",
+    "attack": 12,
+    "agility": 12,
+    "lj": 529,
+    "maxAttack": 24
+  },
+  "松木头盔": {
+    "name": "松木头盔",
+    "level": 50,
+    "type": "2",
+    "defense": 8,
+    "morale": 3,
+    "lj": 452
+  },
+  "无畏战甲": {
+    "name": "无畏战甲",
+    "level": 50,
+    "type": "2",
+    "defense": 7,
+    "morale": 5,
+    "lj": 461
+  },
+  "余震腰带": {
+    "name": "余震腰带",
+    "level": 50,
+    "type": "4",
+    "defense": 10,
+    "lj": 526
+  },
+  "生命之靴": {
+    "name": "生命之靴",
+    "level": 50,
+    "type": "5",
+    "defense": 10,
+    "agility": 4,
+    "lj": 462
+  },
+  "统御之链": {
+    "name": "统御之链",
+    "level": 50,
+    "type": "6",
+    "attack": 13,
+    "agility": 10,
+    "lj": 510,
+    "maxAttack": 23
+  },
+  "霜鳞头盔": {
+    "name": "霜鳞头盔",
+    "level": 50,
+    "type": "2",
+    "defense": 6,
+    "morale": 10,
+    "lj": 492
+  },
+  "追猎者头盔": {
+    "name": "追猎者头盔",
+    "level": 51,
+    "type": "2",
+    "defense": 7,
+    "morale": 6,
+    "lj": 468
+  },
+  "守卫者之靴": {
+    "name": "守卫者之靴",
+    "level": 51,
+    "type": "5",
+    "defense": 7,
+    "agility": 13,
+    "lj": 542
+  },
+  "复生护甲": {
+    "name": "复生护甲",
+    "level": 51,
+    "type": "2",
+    "defense": 5,
+    "morale": 17,
+    "lj": 535
+  },
+  "追踪匕首": {
+    "name": "追踪匕首",
+    "level": 51,
+    "type": "1",
+    "attack": 65,
+    "lj": 509,
+    "maxAttack": 114
+  },
+  "狮鹫皮靴": {
+    "name": "狮鹫皮靴",
+    "level": 51,
+    "type": "5",
+    "defense": 7,
+    "agility": 12,
+    "lj": 532
+  },
+  "蛛魔头盔": {
+    "name": "蛛魔头盔",
+    "level": 51,
+    "type": "2",
+    "defense": 5,
+    "morale": 18,
+    "lj": 542
+  },
+  "联结项圈": {
+    "name": "联结项圈",
+    "level": 52,
+    "type": "6",
+    "attack": 16,
+    "agility": 5,
+    "lj": 476,
+    "maxAttack": 22
+  },
+  "战神盔甲": {
+    "name": "战神盔甲",
+    "level": 52,
+    "type": "2",
+    "defense": 5,
+    "morale": 17,
+    "lj": 541
+  },
+  "破碎撞锤之盔": {
+    "name": "破碎撞锤之盔",
+    "level": 52,
+    "type": "1",
+    "attack": 61,
+    "lj": 491,
+    "maxAttack": 94
+  },
+  "破天面盔": {
+    "name": "破天面盔",
+    "level": 52,
+    "type": "2",
+    "defense": 5,
+    "morale": 19,
+    "lj": 557
+  },
+  "尖刺项圈": {
+    "name": "尖刺项圈",
+    "level": 52,
+    "type": "1",
+    "attack": 58,
+    "lj": 481,
+    "maxAttack": 84
+  },
+  "猎手头盔": {
+    "name": "猎手头盔",
+    "level": 53,
+    "type": "2",
+    "defense": 7,
+    "morale": 6,
+    "lj": 477
+  },
+  "说服之靴": {
+    "name": "说服之靴",
+    "level": 53,
+    "type": "5",
+    "defense": 11,
+    "agility": 4,
+    "lj": 469
+  },
+  "灌血坠饰": {
+    "name": "灌血坠饰",
+    "level": 53,
+    "type": "6",
+    "attack": 16,
+    "agility": 6,
+    "lj": 489,
+    "maxAttack": 24
+  },
+  "阳炎坠饰": {
+    "name": "阳炎坠饰",
+    "level": 53,
+    "type": "6",
+    "attack": 13,
+    "agility": 11,
+    "lj": 528,
+    "maxAttack": 24
+  },
+  "大地之刺": {
+    "name": "大地之刺",
+    "level": 53,
+    "type": "1",
+    "attack": 64,
+    "lj": 505,
+    "maxAttack": 104
+  },
+  "冲浪腰带": {
+    "name": "冲浪腰带",
+    "level": 53,
+    "type": "4",
+    "defense": 13,
+    "lj": 484
+  },
+  "女王的恩赐": {
+    "name": "女王的恩赐",
+    "level": 54,
+    "type": 6,
+    "attack": 13,
+    "agility": 12,
+    "lj": 546,
+    "maxAttack": 26
+  },
+  "环甲束带": {
+    "name": "环甲束带",
+    "level": 54,
+    "type": "2",
+    "defense": 7,
+    "morale": 6,
+    "lj": 480
+  },
+  "鳞甲束带": {
+    "name": "鳞甲束带",
+    "level": 54,
+    "type": "2",
+    "defense": 6,
+    "morale": 13,
+    "lj": 527
+  },
+  "轻盈之刃": {
+    "name": "轻盈之刃",
+    "level": 54,
+    "type": "1",
+    "attack": 65,
+    "lj": 504,
+    "maxAttack": 103
+  },
+  "潜伏者头盔": {
+    "name": "潜伏者头盔",
+    "level": 54,
+    "type": "2",
+    "defense": 6,
+    "morale": 11,
+    "lj": 513
+  },
+  "毁灭胸甲": {
+    "name": "毁灭胸甲",
+    "level": 54,
+    "type": "3",
+    "defense": 5,
+    "morale": 14,
+    "lj": 533
+  },
+  "刺鲨匕首": {
+    "name": "刺鲨匕首",
+    "level": 54,
+    "type": "1",
+    "attack": 69,
+    "lj": 520,
+    "maxAttack": 120
+  },
+  "锁甲战靴": {
+    "name": "锁甲战靴",
+    "level": 54,
+    "type": "2",
+    "defense": 6,
+    "morale": 11,
+    "lj": 513
+  },
+  "冷酷": {
+    "name": "冷酷",
+    "level": 54,
+    "type": 6,
+    "attack": 14,
+    "agility": 10,
+    "lj": 525,
+    "maxAttack": 25
+  },
+  "荣耀盔甲": {
+    "name": "荣耀盔甲",
+    "level": 54,
+    "type": "2",
+    "defense": 8,
+    "morale": 4,
+    "lj": 465
+  },
+  "羊角巨盔": {
+    "name": "羊角巨盔",
+    "level": 55,
+    "type": "1",
+    "attack": 64,
+    "lj": 500,
+    "maxAttack": 97
+  },
+  "苔原行者长靴": {
+    "name": "苔原行者长靴",
+    "level": 55,
+    "type": "5",
+    "defense": 7,
+    "agility": 15,
+    "lj": 574
+  },
+  "逆戟鲸牙": {
+    "name": "逆戟鲸牙",
+    "level": 55,
+    "type": "1",
+    "attack": 79,
+    "lj": 563,
+    "maxAttack": 165
+  },
+  "丹尼芬雷外衣": {
+    "name": "丹尼芬雷外衣",
+    "level": 56,
+    "type": "3",
+    "defense": 71,
+    "lj": 509
+  },
+  "锁甲束带": {
+    "name": "锁甲束带",
+    "level": 56,
+    "type": "2",
+    "defense": 6,
+    "morale": 11,
+    "lj": 521
+  },
+  "魔眼": {
+    "name": "魔眼",
+    "level": 56,
+    "type": "6",
+    "attack": 13,
+    "agility": 14,
+    "lj": 567,
+    "maxAttack": 27
+  },
+  "破天": {
+    "name": "破天",
+    "level": 56,
+    "type": 6,
+    "attack": 12,
+    "agility": 15,
+    "lj": 577,
+    "maxAttack": 26
+  },
+  "剔骨者战靴": {
+    "name": "剔骨者战靴",
+    "level": 56,
+    "type": "5",
+    "defense": 8,
+    "agility": 11,
+    "lj": 544
+  },
+  "仁德会罩衫": {
+    "name": "仁德会罩衫",
+    "level": 57,
+    "type": "3",
+    "defense": 90,
+    "lj": 544
+  },
+  "魔精匕首": {
+    "name": "魔精匕首",
+    "level": 57,
+    "type": "1",
+    "attack": 85,
+    "lj": 583,
+    "maxAttack": 185
+  },
+  "丛林行者兜帽": {
+    "name": "丛林行者兜帽",
+    "level": 58,
+    "type": "2",
+    "defense": 8,
+    "morale": 5,
+    "lj": 490
+  },
+  "扭曲匕首": {
+    "name": "扭曲匕首",
+    "level": 58,
+    "type": "1",
+    "attack": 73,
+    "lj": 533,
+    "maxAttack": 125
+  },
+  "永恒": {
+    "name": "永恒",
+    "level": 58,
+    "type": 6,
+    "attack": 15,
+    "agility": 10,
+    "lj": 546,
+    "maxAttack": 27
+  },
+  "屠龙战靴": {
+    "name": "屠龙战靴",
+    "level": 58,
+    "type": "5",
+    "defense": 12,
+    "agility": 4,
+    "lj": 480
+  },
+  "迷失者之刃": {
+    "name": "迷失者之刃",
+    "level": 58,
+    "type": "1",
+    "attack": 84,
+    "lj": 576,
+    "maxAttack": 175
+  },
+  "亡魂之靴": {
+    "name": "亡魂之靴",
+    "level": 58,
+    "type": "5",
+    "defense": 8,
+    "agility": 12,
+    "lj": 561
+  },
+  "仇恨回响长袍": {
+    "name": "仇恨回响长袍",
+    "level": 58,
+    "type": "3",
+    "defense": 80,
+    "lj": 529
+  },
+  "乌鸦之心头饰": {
+    "name": "乌鸦之心头饰",
+    "level": 58,
+    "type": "6",
+    "attack": 17,
+    "agility": 7,
+    "lj": 509,
+    "maxAttack": 26
+  },
+  "休眠看守者链甲": {
+    "name": "休眠看守者链甲",
+    "level": 58,
+    "type": "2",
+    "defense": 7,
+    "morale": 9,
+    "lj": 517
+  },
+  "不朽意志项圈": {
+    "name": "不朽意志项圈",
+    "level": 59,
+    "type": "6",
+    "attack": 19,
+    "agility": 4,
+    "lj": 489,
+    "maxAttack": 25
+  },
+  "仁慈兜帽": {
+    "name": "仁慈兜帽",
+    "level": 59,
+    "type": "2",
+    "defense": 6,
+    "morale": 14,
+    "lj": 554
+  },
+  "征程战靴": {
+    "name": "征程战靴",
+    "level": 59,
+    "type": "5",
+    "defense": 8,
+    "agility": 14,
+    "lj": 586
+  },
+  "鬼魅的召唤": {
+    "name": "鬼魅的召唤",
+    "level": 59,
+    "type": 6,
+    "attack": 13,
+    "agility": 14,
+    "lj": 582,
+    "maxAttack": 27
+  },
+  "侵犯外衣": {
+    "name": "侵犯外衣",
+    "level": 59,
+    "type": "3",
+    "defense": 94,
+    "lj": 553
+  },
+  "星辰束带": {
+    "name": "星辰束带",
+    "level": 59,
+    "type": "4",
+    "defense": 14,
+    "lj": 509
+  },
+  "休眠胸甲": {
+    "name": "休眠胸甲",
+    "level": 59,
+    "type": "3",
+    "defense": 7,
+    "morale": 9,
+    "lj": 521
+  },
+  "毁灭的征兆": {
+    "name": "毁灭的征兆",
+    "level": 59,
+    "type": 6,
+    "attack": 15,
+    "agility": 11,
+    "lj": 555,
+    "maxAttack": 28
+  },
+  "卫士之靴": {
+    "name": "卫士之靴",
+    "level": 59,
+    "type": "5",
+    "defense": 11,
+    "agility": 5,
+    "lj": 498
+  },
+  "元素师外套": {
+    "name": "元素师外套",
+    "level": 60,
+    "type": "3",
+    "defense": 74,
+    "lj": 522
+  },
+  "命运的信使": {
+    "name": "命运的信使",
+    "level": 60,
+    "type": 6,
+    "attack": 16,
+    "agility": 8,
+    "lj": 534,
+    "maxAttack": 26
+  },
+  "祖传剖鱼刀": {
+    "name": "祖传剖鱼刀",
+    "level": 60,
+    "type": "1",
+    "attack": 65,
+    "lj": 502,
+    "maxAttack": 90
+  },
+  "血肉塑造者": {
+    "name": "血肉塑造者",
+    "level": 60,
+    "type": 6,
+    "attack": 14,
+    "agility": 13,
+    "lj": 582,
+    "maxAttack": 29
+  },
+  "扭曲的映像": {
+    "name": "扭曲的映像",
+    "level": 60,
+    "type": 6,
+    "attack": 16,
+    "agility": 9,
+    "lj": 541,
+    "maxAttack": 27
+  },
+  "五色巨龙之怒": {
+    "name": "五色巨龙之怒",
+    "level": 60,
+    "type": "1",
+    "attack": 63,
+    "lj": 492,
+    "maxAttack": 82
+  },
+  "无常": {
+    "name": "无常",
+    "level": 60,
+    "type": 6,
+    "attack": 21,
+    "agility": 3,
+    "lj": 480,
+    "maxAttack": 25
+  },
+  "余渣之冠": {
+    "name": "余渣之冠",
+    "level": 60,
+    "type": "2",
+    "defense": 9,
+    "morale": 4,
+    "lj": 490
+  },
+  "再生外衣": {
+    "name": "再生外衣",
+    "level": 61,
+    "type": "3",
+    "defense": 94,
+    "lj": 556
+  },
+  "元老罩帽": {
+    "name": "元老罩帽",
+    "level": 61,
+    "type": "2",
+    "defense": 6,
+    "morale": 15,
+    "lj": 571
+  },
+  "上古巨龙": {
+    "name": "上古巨龙",
+    "level": 61,
+    "type": 6,
+    "attack": 16,
+    "agility": 9,
+    "lj": 549,
+    "maxAttack": 28
+  },
+  "不屈束带": {
+    "name": "不屈束带",
+    "level": 61,
+    "type": "4",
+    "defense": 16,
+    "lj": 489
+  },
+  "不朽意志": {
+    "name": "不朽意志",
+    "level": 61,
+    "type": 6,
+    "attack": 20,
+    "agility": 4,
+    "lj": 495,
+    "maxAttack": 26
+  },
+  "远征之靴": {
+    "name": "远征之靴",
+    "level": 61,
+    "type": "5",
+    "defense": 9,
+    "agility": 12,
+    "lj": 577
+  },
+  "元素师骨帽": {
+    "name": "元素师骨帽",
+    "level": 61,
+    "type": "2",
+    "defense": 7,
+    "morale": 9,
+    "lj": 526
+  },
+  "公正使者长袍": {
+    "name": "公正使者长袍",
+    "level": 61,
+    "type": "3",
+    "defense": 75,
+    "lj": 526
+  },
+  "五雷腰带": {
+    "name": "五雷腰带",
+    "level": 62,
+    "type": "4",
+    "defense": 13,
+    "lj": 564
+  },
+  "先知的头饰": {
+    "name": "先知的头饰",
+    "level": 62,
+    "type": "6",
+    "attack": 22,
+    "agility": 3,
+    "lj": 487,
+    "maxAttack": 27
+  },
+  "先知的头盔": {
+    "name": "先知的头盔",
+    "level": 62,
+    "type": "2",
+    "defense": 10,
+    "morale": 3,
+    "lj": 487
+  },
+  "雪兽长靴": {
+    "name": "雪兽长靴",
+    "level": 62,
+    "type": "5",
+    "defense": 8,
+    "agility": 14,
+    "lj": 604
+  },
+  "血之靴": {
+    "name": "血之靴",
+    "level": 62,
+    "type": "5",
+    "defense": 11,
+    "agility": 6,
+    "lj": 515
+  },
+  "冰冷的锁甲护胸": {
+    "name": "冰冷的锁甲护胸",
+    "level": 62,
+    "type": "2",
+    "defense": 8,
+    "morale": 8,
+    "lj": 524
+  },
+  "五色巨龙": {
+    "name": "五色巨龙",
+    "level": 62,
+    "type": 6,
+    "attack": 20,
+    "agility": 4,
+    "lj": 498,
+    "maxAttack": 26
+  },
+  "乔丹腰带": {
+    "name": "乔丹腰带",
+    "level": 62,
+    "type": "4",
+    "defense": 12,
+    "lj": 581
+  },
+  "冰冻护甲": {
+    "name": "冰冻护甲",
+    "level": 62,
+    "type": "2",
+    "defense": 7,
+    "morale": 9,
+    "lj": 529
+  },
+  "光梭指环": {
+    "name": "光梭指环",
+    "level": 63,
+    "type": "6",
+    "attack": 21,
+    "agility": 4,
+    "lj": 497,
+    "maxAttack": 26
+  },
+  "伊瓦的皮带": {
+    "name": "伊瓦的皮带",
+    "level": 63,
+    "type": "4",
+    "defense": 13,
+    "lj": 565
+  },
+  "恶狼印记": {
+    "name": "恶狼印记",
+    "level": 63,
+    "type": 6,
+    "attack": 19,
+    "agility": 7,
+    "lj": 527,
+    "maxAttack": 29
+  },
+  "冰霜暗纹长袍": {
+    "name": "冰霜暗纹长袍",
+    "level": 64,
+    "type": "3",
+    "defense": 126,
+    "lj": 615
+  },
+  "冬鳞荣耀眼罩": {
+    "name": "冬鳞荣耀眼罩",
+    "level": 64,
+    "type": "6",
+    "attack": 16,
+    "agility": 11,
+    "lj": 576,
+    "maxAttack": 30
+  },
+  "全能之戒": {
+    "name": "全能之戒",
+    "level": 64,
+    "type": "6",
+    "attack": 16,
+    "agility": 10,
+    "lj": 570,
+    "maxAttack": 29
+  },
+  "阳炎战靴": {
+    "name": "阳炎战靴",
+    "level": 64,
+    "type": "5",
+    "defense": 9,
+    "agility": 11,
+    "lj": 575
+  },
+  "保养之剑": {
+    "name": "保养之剑",
+    "level": 64,
+    "type": "1",
+    "attack": 65,
+    "lj": 497,
+    "maxAttack": 81
+  },
+  "冷魂长袍": {
+    "name": "冷魂长袍",
+    "level": 65,
+    "type": "3",
+    "defense": 104,
+    "lj": 580
+  },
+  "冰雾头饰": {
+    "name": "冰雾头饰",
+    "level": 65,
+    "type": "6",
+    "attack": 16,
+    "agility": 11,
+    "lj": 581,
+    "maxAttack": 30
+  },
+  "凝结泪珠长袍": {
+    "name": "凝结泪珠长袍",
+    "level": 66,
+    "type": "3",
+    "defense": 73,
+    "lj": 530
+  },
+  "万灵长靴": {
+    "name": "万灵长靴",
+    "level": 66,
+    "type": "5",
+    "defense": 10,
+    "agility": 11,
+    "lj": 582
+  },
+  "先知的束带": {
+    "name": "先知的束带",
+    "level": 66,
+    "type": "4",
+    "defense": 17,
+    "lj": 499
+  },
+  "冬至徽记": {
+    "name": "冬至徽记",
+    "level": 67,
+    "type": "6",
+    "attack": 16,
+    "agility": 12,
+    "lj": 602,
+    "maxAttack": 31
+  },
+  "主宰之履": {
+    "name": "主宰之履",
+    "level": 67,
+    "type": "5",
+    "defense": 8,
+    "agility": 15,
+    "lj": 634
+  },
+  "几丁加固兜帽": {
+    "name": "几丁加固兜帽",
+    "level": 67,
+    "type": "2",
+    "defense": 8,
+    "morale": 8,
+    "lj": 540
+  },
+  "丝绸碎冰长靴": {
+    "name": "丝绸碎冰长靴",
+    "level": 67,
+    "type": "5",
+    "defense": 14,
+    "agility": 3,
+    "lj": 502
+  },
+  "冰霜荆棘指环": {
+    "name": "冰霜荆棘指环",
+    "level": 67,
+    "type": "6",
+    "attack": 15,
+    "agility": 15,
+    "lj": 630,
+    "maxAttack": 32
+  },
+  "丝绸碎冰长袍": {
+    "name": "丝绸碎冰长袍",
+    "level": 67,
+    "type": "3",
+    "defense": 55,
+    "lj": 502
+  },
+  "冰铸战斗之戒": {
+    "name": "冰铸战斗之戒",
+    "level": 67,
+    "type": "6",
+    "attack": 18,
+    "agility": 9,
+    "lj": 565,
+    "maxAttack": 30
+  },
+  "利爪护胸": {
+    "name": "利爪护胸",
+    "level": 67,
+    "type": "1",
+    "attack": 87,
+    "lj": 580,
+    "maxAttack": 156
+  },
+  "冒险者腰带": {
+    "name": "冒险者腰带",
+    "level": 67,
+    "type": "4",
+    "defense": 13,
+    "lj": 618
+  },
+  "凶猛进攻指环": {
+    "name": "凶猛进攻指环",
+    "level": 68,
+    "type": "6",
+    "attack": 18,
+    "agility": 9,
+    "lj": 571,
+    "maxAttack": 30
+  },
+  "乌鲁洛斯皮靴": {
+    "name": "乌鲁洛斯皮靴",
+    "level": 68,
+    "type": "5",
+    "defense": 14,
+    "agility": 4,
+    "lj": 516
+  },
+  "凶兽之怒项圈": {
+    "name": "凶兽之怒项圈",
+    "level": 68,
+    "type": "1",
+    "attack": 83,
+    "lj": 562,
+    "maxAttack": 135
+  },
+  "加尔莫胸甲": {
+    "name": "加尔莫胸甲",
+    "level": 69,
+    "type": "3",
+    "defense": 9,
+    "morale": 7,
+    "lj": 540
+  },
+  "刺环": {
+    "name": "刺环",
+    "level": 69,
+    "type": "1",
+    "attack": 91,
+    "lj": 597,
+    "maxAttack": 168
+  },
+  "切碎者的符咒": {
+    "name": "切碎者的符咒",
+    "level": 69,
+    "type": "6",
+    "attack": 17,
+    "agility": 10,
+    "lj": 591,
+    "maxAttack": 31
+  },
+  "冰霜原始腰带": {
+    "name": "冰霜原始腰带",
+    "level": 69,
+    "type": "4",
+    "defense": 13,
+    "lj": 639
+  },
+  "匕潭罩帽": {
+    "name": "匕潭罩帽",
+    "level": 69,
+    "type": "1",
+    "attack": 101,
+    "lj": 637,
+    "maxAttack": 216
+  },
+  "乞求之靴": {
+    "name": "乞求之靴",
+    "level": 69,
+    "type": "5",
+    "defense": 10,
+    "agility": 12,
+    "lj": 612
+  },
+  "匕鞘软帽": {
+    "name": "匕鞘软帽",
+    "level": 69,
+    "type": "1",
+    "attack": 96,
+    "lj": 613,
+    "maxAttack": 189
+  },
+  "仁慈之靴": {
+    "name": "仁慈之靴",
+    "level": 70,
+    "type": "5",
+    "defense": 10,
+    "agility": 11,
+    "lj": 601
+  },
+  "亵渎之靴": {
+    "name": "亵渎之靴",
+    "level": 70,
+    "type": "5",
+    "defense": 13,
+    "agility": 6,
+    "lj": 542
+  },
+  "净化尸体护腕": {
+    "name": "净化尸体护腕",
+    "level": 70,
+    "type": "4",
+    "defense": 13,
+    "lj": 647
+  },
+  "绘子手的指环": {
+    "name": "绘子手的指环",
+    "level": 70,
+    "type": "6",
+    "attack": 19,
+    "agility": 9,
+    "lj": 577,
+    "maxAttack": 32
+  },
+  "冷语束腰": {
+    "name": "冷语束腰",
+    "level": 70,
+    "type": "4",
+    "defense": 16,
+    "lj": 566
+  },
+  "剪枝坠饰": {
+    "name": "剪枝坠饰",
+    "level": 70,
+    "type": "6",
+    "attack": 21,
+    "agility": 6,
+    "lj": 542,
+    "maxAttack": 30
+  },
+  "凶兽之怒": {
+    "name": "凶兽之怒",
+    "level": 70,
+    "type": "1",
+    "attack": 85,
+    "lj": 570,
+    "maxAttack": 139
+  },
+  "勇敢的信仰长袍": {
+    "name": "勇敢的信仰长袍",
+    "level": 70,
+    "type": "3",
+    "defense": 95,
+    "lj": 573
+  },
+  "北伐军护符": {
+    "name": "北伐军护符",
+    "level": 71,
+    "type": "6",
+    "attack": 23,
+    "agility": 4,
+    "lj": 529,
+    "maxAttack": 30
+  },
+  "北伐军的罩帽": {
+    "name": "北伐军的罩帽",
+    "level": 71,
+    "type": "2",
+    "defense": 10,
+    "morale": 5,
+    "lj": 529
+  },
+  "勘探员的奖赏": {
+    "name": "勘探员的奖赏",
+    "level": 71,
+    "type": 6,
+    "attack": 23,
+    "agility": 5,
+    "lj": 533,
+    "maxAttack": 31
+  },
+  "英勇之戒": {
+    "name": "英勇之戒",
+    "level": 35,
+    "type": 6,
+    "attack": 8,
+    "defense": 3,
+    "lj": 400,
+    "maxAttack": 12
+  },
+  "银龙之鳞": {
+    "name": "银龙之鳞",
+    "level": 45,
+    "type": 6,
+    "defense": 15,
+    "agility": 8,
+    "lj": 600,
+    "tip": "银龙掉落的珍贵鳞片"
+  },
+  "玄天法袍": {
+    "name": "玄天法袍",
+    "level": 50,
+    "type": 3,
+    "defense": 60,
+    "morale": 15,
+    "lj": 700,
+    "tip": "玄天海棠的精华所化"
+  },
+  "玄天头冠": {
+    "name": "玄天头冠",
+    "level": 50,
+    "type": 2,
+    "defense": 10,
+    "morale": 20,
+    "lj": 700,
+    "tip": "蕴含玄天之力的头冠"
+  },
+  "青龙之怒": {
+    "name": "青龙之怒",
+    "level": 60,
+    "type": 1,
+    "attack": 80,
+    "maxAttack": 120,
+    "lj": 800,
+    "tip": "青龙残魂凝聚的武器"
+  },
+  "龙鳞护甲": {
+    "name": "龙鳞护甲",
+    "level": 60,
+    "type": 3,
+    "defense": 80,
+    "lj": 800,
+    "tip": "以龙鳞锻造的护甲"
+  },
+  "龙骨之靴": {
+    "name": "龙骨之靴",
+    "level": 60,
+    "type": 5,
+    "defense": 15,
+    "agility": 12,
+    "lj": 800,
+    "tip": "龙骨制作的战靴"
+  },
+  "朱雀之羽": {
+    "name": "朱雀之羽",
+    "level": 65,
+    "type": 6,
+    "attack": 20,
+    "agility": 15,
+    "lj": 850,
+    "tip": "朱雀的精华之羽"
+  },
+  "火焰战衣": {
+    "name": "火焰战衣",
+    "level": 65,
+    "type": 3,
+    "defense": 85,
+    "lj": 850,
+    "tip": "蕴含火焰之力的战衣"
+  },
+  "烈焰头盔": {
+    "name": "烈焰头盔",
+    "level": 65,
+    "type": 2,
+    "defense": 18,
+    "morale": 12,
+    "lj": 850,
+    "tip": "烈焰环绕的头盔"
+  },
+  "白虎之爪": {
+    "name": "白虎之爪",
+    "level": 70,
+    "type": 1,
+    "attack": 95,
+    "maxAttack": 140,
+    "lj": 900,
+    "tip": "白虎的锋利之爪"
+  },
+  "猛兽皮甲": {
+    "name": "猛兽皮甲",
+    "level": 70,
+    "type": 3,
+    "defense": 90,
+    "lj": 900,
+    "tip": "以猛兽皮革制成的护甲"
+  },
+  "疾风之靴": {
+    "name": "疾风之靴",
+    "level": 70,
+    "type": 5,
+    "defense": 18,
+    "agility": 15,
+    "lj": 900,
+    "tip": "如疾风般迅捷的战靴"
+  },
+  "玄武之甲": {
+    "name": "玄武之甲",
+    "level": 75,
+    "type": 3,
+    "defense": 100,
+    "health": 50,
+    "lj": 950,
+    "tip": "玄武的坚硬之甲"
+  },
+  "玄铁重盔": {
+    "name": "玄铁重盔",
+    "level": 75,
+    "type": 2,
+    "defense": 25,
+    "morale": 15,
+    "lj": 950,
+    "tip": "玄铁铸造的重盔"
+  },
+  "重岩之靴": {
+    "name": "重岩之靴",
+    "level": 75,
+    "type": 5,
+    "defense": 20,
+    "agility": 8,
+    "lj": 950,
+    "tip": "重岩雕刻的战靴"
+  }
+}

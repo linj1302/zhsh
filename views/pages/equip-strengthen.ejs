@@ -1,0 +1,43 @@
+﻿<h2 class="strengthen-title">装备强化</h2>
+
+<% var play = user.getPlay(); %>
+<% var backpack = user.backpack; %>
+
+<!-- 筛选装备 -->
+<% 
+var equipmentItems = [];
+backpack.items.forEach(function(item, index) {
+    if (item.type == 1) {
+        equipmentItems.push({ item: item, id: item.id });
+    }
+});
+%>
+
+<% if (equipmentItems.length == 0) { %>
+    <div class="section">
+        <p style="color:#999; text-align:center;">背包中没有可强化的装备</p>
+    </div>
+<% } else { %>
+    <div class="section">
+        <% equipmentItems.forEach(function(eq, i) { 
+            var sl = eq.item.info.strengthenLevel || 0;
+            var sd = sl > 0 ? user.getStrengthenDisplay(sl) : null; 
+        %>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid #f5f5f5;">
+            <div>
+                <span style="color:#888; font-size:0.82em; margin-right:4px;"><%= i+1 %>.</span>
+                <span style="color:<%= sd ? sd.color : '#333' %>; font-weight:<%= sl > 0 ? '600' : 'normal' %>;">
+                    <%= eq.item.name %>
+                    <small>(<%= eq.item.info.level %>级)</small>
+                </span>
+                <% if (sd) { %>
+                    <span class="tag" style="background:<%= sd.color %>15; color:<%= sd.color %>;">+<%= sl %></span>
+                <% } else { %>
+                    <span class="tag tag-white">+0</span>
+                <% } %>
+            </div>
+            <a href="equip-strengthen-info?itemId=<%= eq.id %>" class="btn btn-primary" style="padding:2px 10px; font-size:0.82em;">强化</a>
+        </div>
+        <% }); %>
+    </div>
+<% } %>

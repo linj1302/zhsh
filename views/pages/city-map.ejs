@@ -1,0 +1,6 @@
+﻿<div class="wap_class">
+    城内地图（中国传统城市布局：居中而王、面朝后市、左祖右社）:
+    <br>
+    <%- include('common/city-grid', { spots: user.city.getInsideMap(), currentPos: user.city.getStatus().position }) %>
+    <br>
+</div>

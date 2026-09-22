@@ -1,0 +1,46 @@
+﻿<div>
+    <h2>邮件列表</h2>
+    
+    <% if (typeof message !== 'undefined' && message) { %>
+        <div style="color: <%= message.type === 'success' ? 'green' : 'red' %>;">
+            <%= message.text %>
+        </div>
+    <% } %>
+
+    <div>
+        <a href="/backpack">背包</a>
+    </div>
+
+    <!-- 邮件列表 -->
+    <div>
+        <% if (typeof mails === 'undefined' || !mails || mails.length === 0) { %>
+            <p>暂无邮件</p>
+        <% } else { %>
+            <% mails.forEach(function(mail) { %>
+            <div style="border: 1px solid #ccc; margin: 10px 0; padding: 10px;">
+                <div>
+                    <span style="font-weight: bold;">
+                        <%= mail.is_read ? '' : '[未读]' %> 
+                        <a href="/mail-detail?mailId=<%= mail.id %>"><%= mail.subject %></a>
+                    </span>
+                </div>
+                <div>
+                    发件人: <%= mail.sender_name %>
+                </div>
+                <div>
+                    时间: <%= new Date(mail.created_at).toLocaleString() %>
+                </div>
+                <% if (mail.items && mail.items.length > 0) { %>
+                <div>
+                    附件: 
+                    <% mail.items.forEach(function(item, index) { %>
+                        <%= item.name %><% if (item.num > 1) { %>*<%= item.num %><% } %>
+                        <%= index < mail.items.length - 1 ? ', ' : '' %>
+                    <% }); %>
+                </div>
+                <% } %>
+            </div>
+            <% }); %>
+        <% } %>
+    </div>
+</div>

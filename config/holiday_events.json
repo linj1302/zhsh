@@ -1,0 +1,552 @@
+{
+  "events": [
+    {
+      "id": "new_years_eve",
+      "name": "元旦跨年",
+      "icon": "🎆",
+      "date": "solar",
+      "solar_month": 1,
+      "solar_day": 1,
+      "duration_days": 3,
+      "activities": [
+        {
+          "id": "new_year_countdown",
+          "name": "跨年倒计时",
+          "type": "one_time",
+          "description": "元旦当天在游戏中获得大量奖励",
+          "rewards": [
+            {"type": "exp", "amount": 50000},
+            {"type": "gold", "amount": 30000},
+            {"type": "item", "name": "新年勋章", "num": 1}
+          ]
+        },
+        {
+          "id": "new_years_resolution",
+          "name": "新年目标",
+          "type": "daily",
+          "description": "每天完成3个任务即可获得年度积分",
+          "requirement": {"type": "task_complete", "count": 3},
+          "rewards": [
+            {"type": "gold", "amount": 2000},
+            {"type": "exp", "amount": 3000}
+          ]
+        }
+      ],
+      "special_features": ["经验+30%", "金币+20%"]
+    },
+    {
+      "id": "spring_festival",
+      "name": "春节庆典",
+      "description": "爆竹声中一岁除，春风送暖入屠苏。春节期间登录即可领取丰厚红包！",
+      "icon": "🧧",
+      "date_type": "lunar",
+      "lunar_month": 1,
+      "lunar_day": 1,
+      "duration_days": 7,
+      "activities": [
+        {
+          "id": "daily_red_envelope",
+          "name": "每日红包",
+          "type": "daily_login",
+          "description": "活动期间每日首次登录可领取红包",
+          "rewards": [
+            {"type": "gold", "amount": 5000, "chance": 0.3},
+            {"type": "gold", "amount": 2000, "chance": 0.5},
+            {"type": "silver", "amount": 50, "chance": 0.2}
+          ]
+        },
+        {
+          "id": "new_year_lucky_bag",
+          "name": "新春福袋",
+          "type": "one_time",
+          "description": "完成任意10场战斗即可领取春节福袋",
+          "requirement": {"type": "battle_count", "count": 10},
+          "rewards": [
+            {"type": "gold", "amount": 10000},
+            {"type": "exp", "amount": 5000, "everyone": true},
+            {"type": "item", "name": "春节福袋", "num": 1}
+          ]
+        },
+        {
+          "id": "new_year_blessing",
+          "name": "新年祝福",
+          "type": "one_time",
+          "description": "拜访任意3个NPC即可获得新春祝福奖励",
+          "requirement": {"type": "npc_visit", "count": 3},
+          "rewards": [
+            {"type": "exp", "amount": 3000},
+            {"type": "item", "name": "幸运糖果", "num": 1}
+          ]
+        },
+        {
+          "id": "reunion_dinner",
+          "name": "团圆晚宴",
+          "type": "one_time",
+          "description": "组队击杀10只怪物可获得团圆晚宴礼包",
+          "requirement": {"type": "team_kills", "count": 10},
+          "rewards": [
+            {"type": "gold", "amount": 8000},
+            {"type": "attribute_boost", "attr": "attack", "amount": 20, "duration_ms": 86400000}
+          ]
+        }
+      ],
+      "special_features": [
+        "节日期间所有怪物掉落金币翻倍",
+        "幸运值临时+10",
+        "商城指定物品8折"
+      ]
+    },
+    {
+      "id": "lantern_festival",
+      "name": "元宵节",
+      "icon": "🏮",
+      "date_type": "solar",
+      "solar_month": 2,
+      "solar_day": 15,
+      "duration_days": 3,
+      "activities": [
+        {
+          "id": "lantern_riddle",
+          "name": "猜灯谜",
+          "type": "one_time",
+          "description": "每天答对3个灯谜可获得汤圆奖励",
+          "requirement": {"type": "riddle_solved", "count": 3},
+          "rewards": [
+            {"type": "gold", "amount": 3000},
+            {"type": "item", "name": "汤圆", "num": 3},
+            {"type": "exp", "amount": 2000}
+          ],
+          "daily": true
+        },
+        {
+          "id": "lantern_blessing",
+          "name": "放河灯祈福",
+          "type": "one_time",
+          "description": "放河灯祈福获得随机属性加成",
+          "rewards": [
+            {"type": "attribute_boost", "attr": "defense", "amount": 15, "duration_ms": 21600000},
+            {"type": "gold", "amount": 2000}
+          ]
+        }
+      ],
+      "special_features": [
+        "经验获取+20%",
+        "元宵主题限定头像框"
+      ]
+    },
+    {
+      "id": "qingming",
+      "name": "清明节",
+      "icon": "🍃",
+      "date_type": "solar",
+      "solar_month": 4,
+      "solar_day": 5,
+      "duration_days": 3,
+      "activities": [
+        {
+          "id": "tomb_sweeping",
+          "name": "踏青祭祖",
+          "type": "one_time",
+          "description": "在野外地图行走10步即可获得清明礼",
+          "requirement": {"type": "walk_steps", "count": 10},
+          "rewards": [
+            {"type": "exp", "amount": 5000},
+            {"type": "item", "name": "青团", "num": 2}
+          ]
+        },
+        {
+          "id": "spring_out",
+          "name": "春日踏青",
+          "type": "one_time",
+          "description": "在野外战斗中获得3次掉落物",
+          "requirement": {"type": "item_drops", "count": 3},
+          "rewards": [
+            {"type": "exp", "amount": 3000},
+            {"type": "gold", "amount": 2000}
+          ]
+        }
+      ],
+      "special_features": ["野外经验+15%"]
+    },
+    {
+      "id": "labor_day",
+      "name": "劳动节",
+      "icon": "🔨",
+      "date_type": "solar",
+      "solar_month": 5,
+      "solar_day": 1,
+      "duration_days": 3,
+      "description": "劳动最光荣！辛勤耕耘，必有收获。全民欢庆劳动者的节日！",
+      "activities": [
+        {
+          "id": "labor_hero",
+          "name": "劳动模范",
+          "type": "one_time",
+          "description": "完成5个任务即可获得劳动模范表彰",
+          "requirement": {"type": "task_complete", "count": 5},
+          "rewards": [
+            {"type": "gold", "amount": 5000},
+            {"type": "exp", "amount": 5000},
+            {"type": "item", "name": "劳动者礼包", "num": 1}
+          ]
+        },
+        {
+          "id": "daily_labor",
+          "name": "辛勤打卡",
+          "type": "daily_login",
+          "description": "劳动节期间每日登录领取辛勤奖励",
+          "rewards": [
+            {"type": "exp", "amount": 3000},
+            {"type": "gold", "amount": 2000},
+            {"type": "item", "name": "劳动勋章", "num": 1}
+          ]
+        }
+      ],
+      "special_features": [
+        "经验获取+30%",
+        "铜币收益+20%",
+        "材料掉落率+10%"
+      ]
+    },
+    {
+      "id": "dragon_boat",
+      "name": "端午节",
+      "icon": "🐲",
+      "date_type": "lunar",
+      "lunar_month": 5,
+      "lunar_day": 5,
+      "duration_days": 3,
+      "activities": [
+        {
+          "id": "dragon_boat_race",
+          "name": "龙舟竞渡",
+          "type": "one_time",
+          "description": "完成5场战斗（不限胜利）获得雄黄酒",
+          "requirement": {"type": "battle_count", "count": 5},
+          "rewards": [
+            {"type": "gold", "amount": 3000},
+            {"type": "item", "name": "雄黄酒", "num": 1},
+            {"type": "exp", "amount": 3000}
+          ]
+        },
+        {
+          "id": "zongzi_making",
+          "name": "包粽子",
+          "type": "one_time",
+          "description": "击杀8只怪物收集食材制作粽子",
+          "requirement": {"type": "monster_kills", "count": 8},
+          "rewards": [
+            {"type": "item", "name": "粽子礼包", "num": 2},
+            {"type": "gold", "amount": 2000}
+          ]
+        }
+      ],
+      "special_features": ["掉落物品概率+10%"]
+    },
+    {
+      "id": "qixi",
+      "name": "七夕情人节",
+      "icon": "💕",
+      "date_type": "lunar",
+      "lunar_month": 7,
+      "lunar_day": 7,
+      "duration_days": 3,
+      "description": "牛郎织女鹊桥相会，天下有情人终成眷属。七夕期间亲密度翻倍，结婚免费！",
+      "activities": [
+        {
+          "id": "magpie_bridge",
+          "name": "鹊桥之约",
+          "type": "one_time",
+          "description": "完成5次组队战斗即可获得鹊桥祝福",
+          "requirement": {"type": "team_kills", "count": 5},
+          "rewards": [
+            {"type": "exp", "amount": 5000},
+            {"type": "gold", "amount": 3000},
+            {"type": "item", "name": "鹊桥仙羽", "num": 1}
+          ]
+        },
+        {
+          "id": "qixi_blessing",
+          "name": "乞巧祈福",
+          "type": "daily_login",
+          "description": "七夕期间每日登录领取情人节礼物",
+          "rewards": [
+            {"type": "gold", "amount": 2000},
+            {"type": "item", "name": "巧果", "num": 2},
+            {"type": "exp", "amount": 2000}
+          ]
+        },
+        {
+          "id": "love_letter",
+          "name": "告白信笺",
+          "type": "one_time",
+          "description": "向任意玩家发送1条消息即可领取爱情礼物",
+          "requirement": {"type": "npc_visit", "count": 2},
+          "rewards": [
+            {"type": "attribute_boost", "attr": "agility", "amount": 15, "duration_ms": 86400000},
+            {"type": "item", "name": "情书", "num": 1}
+          ]
+        }
+      ],
+      "special_features": [
+        "亲密度收益翻倍（200%）",
+        "结婚费用全免",
+        "七夕限定情侣称号"
+      ]
+    },
+    {
+      "id": "mid_autumn",
+      "name": "中秋节",
+      "icon": "🌕",
+      "date_type": "lunar",
+      "lunar_month": 8,
+      "lunar_day": 15,
+      "duration_days": 3,
+      "activities": [
+        {
+          "id": "mooncake_festival",
+          "name": "月饼赏月",
+          "type": "daily_login",
+          "description": "登录领取中秋节月饼和祝福",
+          "rewards": [
+            {"type": "item", "name": "中秋月饼", "num": 1},
+            {"type": "exp", "amount": 8000},
+            {"type": "gold", "amount": 2000}
+          ]
+        },
+        {
+          "id": "moon_blessing",
+          "name": "月神祝福",
+          "type": "one_time",
+          "description": "中秋节当天晚上8-10点在线可获得属性加成",
+          "requirement": {"type": "online_time", "start_hour": 20, "end_hour": 22},
+          "rewards": [
+            {"type": "attribute_boost_percent", "attr": "all", "amount": 10, "duration_ms": 86400000}
+          ]
+        }
+      ],
+      "special_features": ["组队奖励+15%", "中秋赏月期间经验+25%"]
+    },
+    {
+      "id": "chongyang",
+      "name": "重阳节",
+      "icon": "🌺",
+      "date_type": "lunar",
+      "lunar_month": 9,
+      "lunar_day": 9,
+      "duration_days": 3,
+      "description": "九月九日忆山东兄弟，登高望远，敬老爱幼。师徒共同修炼三倍经验！",
+      "activities": [
+        {
+          "id": "climb_high",
+          "name": "登高望远",
+          "type": "one_time",
+          "description": "在野外行走20步完成登山之旅",
+          "requirement": {"type": "walk_steps", "count": 20},
+          "rewards": [
+            {"type": "exp", "amount": 5000},
+            {"type": "item", "name": "菊花酿", "num": 2},
+            {"type": "gold", "amount": 2000}
+          ]
+        },
+        {
+          "id": "elder_respect",
+          "name": "敬老爱幼",
+          "type": "daily_login",
+          "description": "重阳节期间每日登录领取重阳糕和师恩经验",
+          "rewards": [
+            {"type": "item", "name": "重阳糕", "num": 1},
+            {"type": "exp", "amount": 15000},
+            {"type": "gold", "amount": 3000}
+          ]
+        },
+        {
+          "id": "chrysanthemum_feast",
+          "name": "赏菊大会",
+          "type": "one_time",
+          "description": "拜访4个NPC欣赏菊花获得特殊BUFF",
+          "requirement": {"type": "npc_visit", "count": 4},
+          "rewards": [
+            {"type": "attribute_boost_percent", "attr": "attack", "amount": 15, "duration_ms": 86400000},
+            {"type": "gold", "amount": 5000}
+          ]
+        }
+      ],
+      "special_features": [
+        "师徒经验三倍（300%）",
+        "全属性+5%",
+        "体力回复速度+25%"
+      ]
+    },
+    {
+      "id": "national_day",
+      "name": "国庆节",
+      "icon": "🇨🇳",
+      "date": "solar",
+      "solar_month": 10,
+      "solar_day": 1,
+      "duration_days": 7,
+      "activities": [
+        {
+          "id": "national_celebration",
+          "name": "国庆签到",
+          "type": "daily_login",
+          "description": "每日登录签到领取国庆礼包",
+          "rewards": [
+            {"type": "gold", "amount": 10000, "chance": 0.1},
+            {"type": "gold", "amount": 5000, "chance": 0.3},
+            {"type": "exp", "amount": 10000, "chance": 0.3},
+            {"type": "silver", "amount": 100, "chance": 0.3}
+          ],
+          "reward_msg": "您获得了{amount}{currency}作为国庆快乐礼金！"
+        },
+        {
+          "id": "golden_week_quest",
+          "name": "黄金周挑战",
+          "type": "chain",
+          "description": "完成连续任务获取丰厚奖励（需按次序完成）",
+          "chain_steps": [
+            {
+              "name": "初试身手",
+              "requirement": {"type": "battle_count", "count": 5},
+              "rewards": [{"type": "gold", "amount": 3000}, {"type": "exp", "amount": 5000}]
+            },
+            {
+              "name": "渐入佳境",
+              "requirement": {"type": "monster_kills", "count": 10},
+              "rewards": [{"type": "gold", "amount": 5000}, {"type": "exp", "amount": 8000}]
+            },
+            {
+              "name": "王者之路",
+              "requirement": {"type": "trial_complete", "count": 2},
+              "rewards": [{"type": "gold", "amount": 10000}, {"type": "attribute_boost", "attr": "attack", "amount": 30, "duration_ms": 86400000}]
+            }
+          ]
+        }
+      ],
+      "special_features": [
+        "所有经验奖励+50%",
+        "每日体力回复+50%",
+        "攻城战胜率积分+20%"
+      ]
+    },
+    {
+      "id": "double_eleven",
+      "name": "狂欢购物节",
+      "icon": "🎉",
+      "date": "solar",
+      "solar_month": 11,
+      "solar_day": 11,
+      "duration_days": 1,
+      "activities": [
+        {
+          "id": "shopping_frenzy",
+          "name": "疯狂购物",
+          "type": "one_time",
+          "description": "商城消费累计满100金贝获得购物返利",
+          "requirement": {"type": "shop_purchase", "amount": 100},
+          "rewards": [
+            {"type": "gold", "amount": 10000},
+            {"type": "item", "name": "随机高级卡片", "num": 1}
+          ]
+        }
+      ],
+      "special_features": [
+        "商城全部物品5折",
+        "交易市场手续费减半"
+      ]
+    },
+    {
+      "id": "christmas",
+      "name": "圣诞节",
+      "icon": "🎄",
+      "date": "solar",
+      "solar_month": 12,
+      "solar_day": 25,
+      "duration_days": 3,
+      "activities": [
+        {
+          "id": "santa_gift",
+          "name": "圣诞礼物",
+          "type": "daily_login",
+          "description": "圣诞节期间登录即可领取圣诞老人的神秘礼物",
+          "rewards": [
+            {"type": "gold", "amount": 5000},
+            {"type": "item", "name": "圣诞礼物盒", "num": 1},
+            {"type": "exp", "amount": 5000}
+          ]
+        },
+        {
+          "id": "snowball_fight",
+          "name": "打雪仗",
+          "type": "one_time",
+          "description": "战斗胜利5场获得圣诞节限定礼物",
+          "requirement": {"type": "battle_win", "count": 5},
+          "rewards": [
+            {"type": "gold", "amount": 3000},
+            {"type": "item", "name": "圣诞卡片", "num": 1},
+            {"type": "attribute_boost", "attr": "stamina", "amount": 50, "duration_ms": 86400000}
+          ]
+        }
+      ],
+      "special_features": ["团队奖励+25%", "圣诞节限定卡片掉落"]
+    }
+  ],
+  "system_config": {
+    "check_period_ms": 3600000,
+    "enable_notification": true,
+    "notification_channel": "public",
+    "activity_tracker_db": "holiday_events",
+    "lunar_calendar_offset": {
+      "2026": {
+        "lunar_new_year": "2026-02-17",
+        "lunar_5_5": "2026-06-19",
+        "lunar_7_7": "2026-08-19",
+        "lunar_8_15": "2026-09-26",
+        "lunar_9_9": "2026-10-20"
+      },
+      "2027": {
+        "lunar_new_year": "2027-02-06",
+        "lunar_5_5": "2027-06-09",
+        "lunar_7_7": "2027-08-08",
+        "lunar_8_15": "2027-09-15",
+        "lunar_9_9": "2027-10-09"
+      },
+      "2028": {
+        "lunar_new_year": "2028-01-26",
+        "lunar_5_5": "2028-05-28",
+        "lunar_7_7": "2028-08-26",
+        "lunar_8_15": "2028-10-03",
+        "lunar_9_9": "2028-10-26"
+      },
+      "2029": {
+        "lunar_new_year": "2029-02-13",
+        "lunar_5_5": "2029-06-16",
+        "lunar_7_7": "2029-08-16",
+        "lunar_8_15": "2029-09-22",
+        "lunar_9_9": "2029-10-16"
+      },
+      "2030": {
+        "lunar_new_year": "2030-02-03",
+        "lunar_5_5": "2030-06-05",
+        "lunar_7_7": "2030-08-05",
+        "lunar_8_15": "2030-09-12",
+        "lunar_9_9": "2030-10-05"
+      },
+      "2031": {
+        "lunar_new_year": "2031-01-23",
+        "lunar_5_5": "2031-06-24",
+        "lunar_7_7": "2031-08-24",
+        "lunar_8_15": "2031-10-01",
+        "lunar_9_9": "2031-10-24"
+      },
+      "2032": {
+        "lunar_new_year": "2032-02-11",
+        "lunar_5_5": "2032-06-12",
+        "lunar_7_7": "2032-08-12",
+        "lunar_8_15": "2032-09-19",
+        "lunar_9_9": "2032-10-12"
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+﻿<div class="wap_class">
+    <% var task = user.task %>
+    <% if (typeof taskInfo !== 'undefined' && taskInfo) { %>
+        【<%= taskInfo.name %>】
+        <br>
+        <%= taskInfo.content %>
+        <br>
+        <% if (taskInfo.targetName && taskInfo.quantity) { %>
+            任务：<%= taskInfo.taskType === '打怪' ? '击杀' : (taskInfo.taskType === '收集' ? '收集' : '送达') %>
+            <% 
+                const targetNames = taskInfo.targetName.split(',');
+                const quantities = taskInfo.quantity.toString().split(',');
+                if (targetNames.length > 1 && quantities.length === targetNames.length) {
+            %>
+                <br>
+                <%
+                    targetNames.forEach((name, i) => {
+                %>
+                    <%= name %><%= quantities[i] %>个
+                    <% if (i < targetNames.length - 1) { %>
+                        、
+                    <% } %>
+                <% }); %>
+            <% } else { %>
+                <%= taskInfo.targetName %><%= taskInfo.quantity %>个
+            <% } %>
+            ！
+            <br>
+        <% } %>
+        任务奖励：
+        <% if (taskInfo.prize) { %>
+            <% Object.keys(taskInfo.prize).forEach(key => { %>
+                <%= key %>+<%= taskInfo.prize[key] %>
+            <% }) %>
+        <% } else { %>
+            铜钱+100
+        <% } %>
+        <br>
+        
+        <% if (taskInfo.isAccepted && !taskInfo.isCompleted) { %>
+            当前进度：<%= user.task.getTaskProgress(taskInfo) %>
+            <br>
+        <% } %>
+        
+        <br>
+
+        <% if (!taskInfo.isCompleted) { %>
+            <% if (!taskInfo.isAccepted) { %>
+                <a href="/task?type=acceptTask&params=<%= taskInfo.index %>">接受任务</a><br>
+            <% } else { %>
+                <a href="/task?type=submitTask&params=<%= taskInfo.index %>">提交任务</a><br>
+            <% } %>
+        <% } else { %>
+            <p>任务已完成</p>
+        <% } %>
+    <% } else { %>
+        <p>当前没有任务信息</p>
+    <% } %>
+</div>

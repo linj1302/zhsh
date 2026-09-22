@@ -1,0 +1,675 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>纵横四海</title>
+    <%- include('./assets/font') %>
+    <style>
+        /* ═══════════════════════════════════════════
+           纵横四海 · 全局设计系统
+           ═══════════════════════════════════════════ */
+
+        /* ── 基础重置 ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            font-size: 15px;
+            line-height: 1.65;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'testFont', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            min-height: 100vh;
+        }
+
+        /* ── 居中容器 ── */
+        .game-wrap {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 12px 14px 24px;
+            background: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.06);
+        }
+
+        /* 兼容旧页面包装类 */
+        .wap_class { font-size: 0.95em; }
+
+        /* ── 链接 ── */
+        a { color: #1565c0; text-decoration: none; }
+        a:active { opacity: 0.7; }
+
+        /* ── 排版 ── */
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.3; }
+        h1 { font-size: 1.35em; letter-spacing: 0.5px; }
+        h2 { font-size: 1.2em; letter-spacing: 0.3px; }
+        h3 { font-size: 1.05em; }
+        small { font-size: 0.82em; color: #888; }
+
+        /* ── 表格 ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            margin: 6px 0;
+        }
+        table th {
+            background: #f8f8f8;
+            font-weight: 600;
+            text-align: left;
+            padding: 7px 8px;
+            border-bottom: 2px solid #e0e0e0;
+            font-size: 0.85em;
+            color: #555;
+        }
+        table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        table tr:last-child td { border-bottom: none; }
+        table tr:hover td { background: #fafafa; }
+
+        /* ── 表单 ── */
+        input, select, textarea {
+            font-family: inherit;
+            font-size:0.9em;
+            padding: 5px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #fff;
+        }
+        input:focus, select:focus { outline: none; border-color: #1565c0; }
+
+        /* ── 分隔线 ── */
+        hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 10px 0;
+        }
+
+        /* ═══════════════════════════════════════════
+           通用组件类
+           ═══════════════════════════════════════════ */
+
+        /* 区块 */
+        .section {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            background: #fff;
+        }
+        .section h3 {
+            margin-bottom: 6px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95em;
+        }
+
+        /* 提示条 */
+        .tip-bar {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size:0.85em;
+            font-weight: 600;
+            border-left: 3px solid #4caf50;
+        }
+
+        /* 按钮链接 */
+        .btn {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+        .btn-primary { background: #1565c0; color: #fff; }
+        .btn-danger  { background: #c62828; color: #fff; }
+        .btn-gold    { background: linear-gradient(135deg, #c8a84e, #a07828); color: #fff; }
+        .btn-purple  { background: linear-gradient(135deg, #7c4dff, #6c5ce7); color: #fff; }
+        .btn-ghost   { background: transparent; color: #1565c0; border-color: #1565c0; }
+
+        /* 标签 */
+        .tag {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size:0.78em;
+            font-weight: 600;
+        }
+        .tag-white  { background: #f5f5f5; color: #999; }
+        .tag-green  { background: #e8f5e9; color: #2e7d32; }
+        .tag-blue   { background: #e3f2fd; color: #1565c0; }
+        .tag-purple { background: #f3e5f5; color: #7b1fa2; }
+        .tag-orange { background: #fff3e0; color: #e65100; }
+        .tag-red    { background: #ffebee; color: #c62828; }
+        .tag-gold   { background: linear-gradient(135deg, #fff8e1, #fff3e0); color: #a07828; border: 1px solid #c8a84e40; }
+
+        /* 进度条 */
+        .progress {
+            background: #f0f0f0;
+            border-radius: 3px;
+            height: 5px;
+            overflow: hidden;
+            margin: 2px 0;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 3px;
+            background: #4caf50;
+            transition: width 0.3s;
+        }
+
+        /* 属性行 */
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            font-size:0.85em;
+        }
+        .stat-label { color: #888; }
+        .stat-value { font-weight: 600; color: #1a1a1a; }
+
+        /* ═══════════════════════════════════════════
+           高阶内容 · 酷炫视觉
+           ═══════════════════════════════════════════ */
+
+        /* ── 装备强化 · 火焰色系 ── */
+        .strengthen-title {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .strengthen-title::before { content: '🔥 '; }
+
+        /* ── 装备觉醒 · 紫金光芒 ── */
+        .awaken-glow {
+            color: #7c4dff;
+            font-weight: 700;
+            text-shadow: 0 0 6px rgba(124,77,255,0.25);
+        }
+        .awaken-title {
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c4dff, #c8a84e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .awaken-title::before { content: '✦ '; -webkit-text-fill-color: #7c4dff; }
+        .awaken-title::after  { content: ' ✦'; -webkit-text-fill-color: #c8a84e; }
+
+        /* ── 附魔 · 星光效果 ── */
+        .enchant-glow {
+            color: #00897b;
+            font-weight: 600;
+        }
+        .enchant-title::before { content: '✧ '; }
+
+        /* ── 品质颜色系统 ── */
+        .q-white  { color: #999; }
+        .q-green  { color: #4caf50; font-weight: 600; }
+        .q-blue   { color: #1e88e5; font-weight: 600; }
+        .q-purple { color: #8e24aa; font-weight: 700; }
+        .q-gold   {
+            color: #a07828;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c8a84e, #e8c868, #a07828);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── 宠物系统 · 生命绿色调 ── */
+        .pet-header {
+            font-weight: 700;
+            color: #2e7d32;
+        }
+        .pet-header::before { content: '🐾 '; }
+
+        /* ── 随从系统 · 军事风格 ── */
+        .follower-header {
+            font-weight: 700;
+            color: #e65100;
+            letter-spacing: 1px;
+        }
+        .follower-header::before { content: '⚔ '; }
+
+        /* ── 坐骑系统 · 大地色调 ── */
+        .mount-header {
+            font-weight: 700;
+            color: #5d4037;
+            letter-spacing: 0.5px;
+        }
+        .mount-header::before { content: '🐎 '; }
+
+        /* ── 羽翼系统 · 天空蓝调 ── */
+        .wing-header {
+            font-weight: 700;
+            color: #1565c0;
+            letter-spacing: 0.5px;
+        }
+        .wing-header::before { content: '🪽 '; }
+
+        /* ── 圣痕系统 · 神秘紫调 ── */
+        .holymark-header {
+            font-weight: 700;
+            color: #6a1b9a;
+            letter-spacing: 0.5px;
+        }
+        .holymark-header::before { content: '✦ '; }
+
+        /* ── 卡片系统 · 附魔青调 ── */
+        .card-header {
+            font-weight: 700;
+            color: #00695c;
+        }
+        .card-header::before { content: '🃏 '; }
+
+        /* ── 传说天赋 · 金色脉动 ── */
+        @keyframes legendPulse {
+            0%, 100% { text-shadow: 0 0 4px rgba(200,168,78,0.3); }
+            50% { text-shadow: 0 0 10px rgba(200,168,78,0.6); }
+        }
+        .legend-skill {
+            color: #a07828;
+            font-weight: 700;
+            animation: legendPulse 3s ease-in-out infinite;
+        }
+        .legend-skill::before { content: '★ '; }
+
+        /* ── 套装标记 ── */
+        .set-mark {
+            display: inline-block;
+            padding: 0 4px;
+            border: 1px solid #c8a84e60;
+            border-radius: 3px;
+            font-size:0.78em;
+            color: #a07828;
+            background: #fff8e1;
+            margin-right: 3px;
+        }
+
+        /* ── 插槽标记 ── */
+        .socket-mark {
+            display: inline-block;
+            width: 8px; height: 8px;
+            border: 1px solid #bbb;
+            border-radius: 50%;
+            margin: 0 1px;
+            vertical-align: middle;
+        }
+        .socket-filled { background: #4caf50; border-color: #388e3c; }
+        .socket-empty  { background: transparent; }
+
+        /* ═══════════════════════════════════════════
+           导航 · 主页系统菜单
+           ═══════════════════════════════════════════ */
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3px;
+            margin: 6px 0;
+        }
+        .nav-grid a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            padding: 4px 2px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            font-size: 0.82em;
+            color: #333;
+            background: #fafafa;
+            text-decoration: none;
+            transition: background 0.15s;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .nav-grid a:active { background: #f0f0f0; }
+        .nav-grid .nav-icon {
+            display: inline;
+            font-size: 1.1em;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .nav-grid .nav-label {
+            font-size: 0.82em;
+            color: #666;
+        }
+
+        /* 高阶导航特殊样式 */
+        .nav-grid .nav-premium a {
+            border-color: #c8a84e40;
+            background: linear-gradient(180deg, #fffdf5, #fff8e1);
+        }
+        .nav-grid .nav-premium a .nav-label {
+            color: #a07828;
+            font-weight: 600;
+        }
+
+        /* 分区标题 */
+        .section-title {
+            font-size: 0.78em;
+            color: #999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 12px 0 4px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        /* ═══════════════════════════════════════════
+           main 页 · 固定高度滚动窗口
+           ═══════════════════════════════════════════ */
+        .scroll-box {
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+        .scroll-box::-webkit-scrollbar { width: 4px; }
+        .scroll-box::-webkit-scrollbar-track { background: transparent; }
+        .scroll-box::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+        /* ═══════════════════════════════════════════
+           动画（尊重用户偏好）
+           ═══════════════════════════════════════════ */
+        @keyframes shimmer {
+            0% { background-position: -100px 0; }
+            100% { background-position: 100px 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           ASCII 字符画（保留兼容）
+           ═══════════════════════════════════════════ */
+        .ascii {
+            font-family: Consolas, 'Courier New', monospace;
+            white-space: pre;
+            line-height: 1.45;
+            font-size: 14px;
+            color: #22384a;
+            overflow-x: auto;
+        }
+        .ascii a { color: #0b6aa8; margin: 0 2px; }
+        .ascii a:hover { color: #d98e04; }
+        .asc-frame  { color: #8ba3b5; }
+        .asc-title  { color: #b07818; font-weight: bold; }
+        .asc-slot   { color: #44607a; }
+        .asc-dim    { color: #9aa7b1; }
+        .asc-bar    { color: #2e7fb8; }
+        .asc-banner { color: #44607a; letter-spacing: 1px; }
+        .asc-divider { color: #8ba3b5; }
+
+        /* ── 任务图标动画（保留兼容） ── */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .task-icon {
+            width: 1em; height: 1em;
+            vertical-align: middle;
+            margin-left: 5px;
+            animation: blink 2s infinite;
+        }
+
+        /* ═══════════════════════════════════════════
+           全局聊天栏 · 置顶
+           ═══════════════════════════════════════════ */
+        .chat-bar {
+            background: #fafafa;
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        .chat-bar-header {
+            display: flex;
+            align-items: center;
+            padding: 4px 8px;
+            background: #7c4dff;
+            color: #fff;
+            font-size: 0.78em;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+        }
+        .chat-bar-header .chat-tabs {
+            display: flex;
+            gap: 2px;
+            flex: 1;
+        }
+        .chat-bar-header .chat-tabs a {
+            color: rgba(255,255,255,0.7);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .chat-bar-header .chat-tabs a.active {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-weight: 700;
+        }
+        .chat-bar-toggle {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+            margin-left: 4px;
+        }
+        .chat-bar-body {
+            display: block;
+            padding: 6px 8px;
+            max-height: 130px;
+            overflow-y: auto;
+        }
+        .chat-bar-body.closed {
+            display: none;
+        }
+        .chat-bar-msg {
+            font-size: 0.78em;
+            line-height: 1.5;
+            padding: 1px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .chat-bar-msg .chat-time {
+            color: #bbb;
+            font-size: 0.85em;
+        }
+        .chat-bar-msg .chat-user {
+            color: #5c6bc0;
+            font-weight: 500;
+        }
+        .chat-bar-input {
+            display: flex;
+            gap: 4px;
+            padding: 4px 8px 6px;
+            border-top: 1px solid #eee;
+        }
+        .chat-bar-input input {
+            flex: 1;
+            padding: 4px 8px;
+            font-size:0.82em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .chat-bar-input button {
+            padding: 4px 10px;
+            font-size: 0.78em;
+            background: #7c4dff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .chat-bar-back {
+            color: rgba(255,255,255,0.9);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.82em;
+            font-weight: 500;
+            margin-left: auto;
+            margin-right: 4px;
+            background: rgba(255,255,255,0.15);
+        }
+        .chat-bar-back:active {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* ═══════════════════════════════════════════
+           全局底部导航
+           ═══════════════════════════════════════════ */
+        .global-back-nav {
+            margin-top: 16px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 0.85em;
+            display: flex;
+            align-items: center;
+        }
+        /* 底部左侧实时时间（tabular-nums 防数字跳动宽度抖动） */
+        .global-time {
+            color: #999;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .global-back-links {
+            flex: 1;
+            text-align: center;
+        }
+        .global-back-link {
+            color: #1565c0;
+            text-decoration: none;
+        }
+        .global-back-link:active {
+            opacity: 0.7;
+        }
+        .global-back-sep {
+            color: #ddd;
+            margin: 0 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="game-wrap">
+
+<!-- 全局聊天栏 -->
+<% if (typeof globalChat !== 'undefined' && globalChat) { 
+    // 构造当前页面+指定频道的链接（保留页面参数，剔除type/params避免重复执行操作）
+    var chatChannel = globalChat.channel || 'public';
+    function buildChatUrl(ch) {
+        var q = {};
+        if (typeof query !== 'undefined' && query) {
+            Object.keys(query).forEach(function(k) {
+                if (k !== 'type' && k !== 'params' && k !== 'chatChannel' && k !== 'channel' && k !== 'message' && k !== 'targetUserId' && k !== 'targetUsername') q[k] = query[k];
+            });
+        }
+        q.chatChannel = ch;
+        var qs = Object.keys(q).map(function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(q[k]); }).join('&');
+        return '/' + page + (qs ? '?' + qs : '');
+    }
+%>
+<div class="chat-bar">
+    <div class="chat-bar-header" onclick="document.getElementById('chatBarBody').classList.toggle('closed'); document.getElementById('chatArrow').textContent = document.getElementById('chatBarBody').classList.contains('closed') ? '▼' : '▲';">
+        <div class="chat-tabs">
+            <a href="<%= buildChatUrl('public') %>" class="<%= chatChannel === 'public' ? 'active' : '' %>">📢 公共</a>
+            <% if (globalChat.hasGang) { %>
+                <a href="<%= buildChatUrl('gang') %>" class="<%= chatChannel === 'gang' ? 'active' : '' %>">🏰 帮会</a>
+            <% } %>
+            <% if (globalChat.hasTeam) { %>
+                <a href="<%= buildChatUrl('team') %>" class="<%= chatChannel === 'team' ? 'active' : '' %>">⚔ 队伍</a>
+            <% } %>
+            <a href="<%= buildChatUrl('private') %>" class="<%= chatChannel === 'private' ? 'active' : '' %>">🔒 私聊</a>
+        </div>
+        <a href="/main" class="chat-bar-back" onclick="event.stopPropagation();">返回</a>
+        <span class="chat-bar-toggle" id="chatArrow">▲</span>
+    </div>
+    <div class="chat-bar-body" id="chatBarBody">
+        <% if (globalChat.publicMessages && globalChat.publicMessages.length > 0) { %>
+            <% globalChat.publicMessages.forEach(function(msg) { %>
+                <div class="chat-bar-msg">
+                    <span class="chat-time"><%= msg.time %></span>
+                    <a href="/role-status?userId=<%= msg.userId %>" class="chat-user"><%= msg.user %></a>
+                    <% if (chatChannel === 'private' && msg.targetUserId) { %><span style="color:#bbb;">→</span><% } %>
+                    <% 
+                      var escaped = String(msg.message)
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;');
+                      var linked = escaped.replace(/(\/team\?type=joinTeam&amp;teamId=\d+)/g, '<a href="$1" style="color:#1565c0; text-decoration:underline;">加入队伍</a>');
+                    %>
+                    : <%- linked %>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <div style="text-align:center; color:#ccc; font-size:0.78em; padding:8px;">暂无消息</div>
+        <% } %>
+    </div>
+    <form method="get" action="/<%= page %>" class="chat-bar-input">
+        <input type="hidden" name="type" value="sendChatMessage">
+        <input type="hidden" name="channel" value="<%= chatChannel %>">
+        <input type="hidden" name="chatChannel" value="<%= chatChannel %>">
+        <% if (typeof query !== 'undefined' && query) { Object.keys(query).forEach(function(k) { if (k !== 'type' && k !== 'params' && k !== 'chatChannel' && k !== 'channel' && k !== 'message') { %>
+        <input type="hidden" name="<%= k %>" value="<%= query[k] %>">
+        <% } }); } %>
+        <input type="text" name="message" placeholder="说点什么..." required autocomplete="off">
+        <button type="submit">发送</button>
+    </form>
+</div>
+<% } %>
+
+<% if (typeof tip !== "undefined" && tip && !['diving', 'voyage'].includes(page)) { %>
+    <div class="tip-bar"><%= tip %></div>
+<% } %>
+<%- include('pages/' + page) %>
+
+<!-- 全局底部导航 -->
+<div class="global-back-nav">
+    <span class="global-time" id="globalClock"><%= String(new Date().getHours()).padStart(2,'0') %>:<%= String(new Date().getMinutes()).padStart(2,'0') %>:<%= String(new Date().getSeconds()).padStart(2,'0') %></span>
+    <span class="global-back-links">
+    <% if(page !== 'main') { %>
+        <a href="javascript:window.history.back();" class="global-back-link">← 返回</a>
+        <span class="global-back-sep">|</span>
+    <% } %>
+    <a href="/main" class="global-back-link">返回游戏</a>
+    <span class="global-back-sep">|</span>
+    <a href="/logout" class="global-back-link" style="color:#c0392b;" onclick="return confirm('确定要退出游戏吗？');">退出游戏</a>
+    </span>
+</div>
+
+</div>
+<script>
+/* 底部实时时钟：每秒更新（浏览器本地时区，24小时制） */
+(function() {
+    var el = document.getElementById('globalClock');
+    if (!el) return;
+    function tick() {
+        var d = new Date(), p = function(n) { return (n < 10 ? '0' : '') + n; };
+        el.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+    }
+    tick();
+    setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>

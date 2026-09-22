@@ -1,0 +1,112 @@
+﻿<div class="wap_class">
+    <% var monster = user.getMonster() %>
+    <% var play = user.getPlay() %>
+    
+    <a href="attack?type=toggleAutoAttack" id="autoAttackBtn"><%= user.isAutoAttackEnabled ? '关闭自动攻击' : '开启自动攻击' %></a>
+
+    <script>
+        // 自动攻击状态
+        let isAutoAttackEnabled = <%= user.isAutoAttackEnabled %>;
+        let autoAttackInterval = null;
+
+        // 页面加载后检查自动攻击状态
+        window.onload = function () {
+            // 如果开启了自动攻击，每秒刷新页面
+            if (isAutoAttackEnabled) {
+                autoAttackInterval = setInterval(() => {
+                    window.location.href = 'attack?type=monster.assault';
+                }, 1000);
+            }
+        }
+
+        // 页面卸载前清除定时器
+        window.onunload = function () {
+            if (autoAttackInterval) {
+                clearInterval(autoAttackInterval);
+            }
+        }
+    </script>
+    <br>
+    <a href="attack?type=monster.assault">攻击</a>
+    <a href="main?type=monster.out">撤退(<%= monster.outPrice || 500 %>铜)</a>
+    <a href="monster-info">查看</a>
+    <br>
+
+    <% if (typeof battleLog !== 'undefined' && battleLog && battleLog.length > 0) { %>
+    <% var totalPlayerDamage = (typeof playerDamage !== 'undefined' ? playerDamage : 0) + (typeof petDamage !== 'undefined' ? petDamage : 0); %>
+    <% var monsterDmg = typeof monsterDamage !== 'undefined' ? monsterDamage : 0; %>
+    <%= monster.name %>体力:( <%= monster.currentHealth %> / <%= monster.health %> ) (-<%= totalPlayerDamage %>) (+0)<br>
+    你体力:( <%= play.currentHealth %> / <%= play.health %> ) (-<%= monsterDmg %>) (+0)<br>
+<% } else { %>
+    <%= monster.name %>体力:( <%= monster.currentHealth %> / <%= monster.health %> ) (-0) (+0)<br>
+    你体力:( <%= play.currentHealth %> / <%= play.health %> ) (-0) (+0)<br>
+<% } %>
+
+    <!-- 显示异常状态 -->
+    你状态:
+    <%
+    var statusTexts = [];
+    if (play.statusEffects.slow) statusTexts.push("缓慢");
+    if (play.statusEffects.weak) statusTexts.push("虚弱");
+    if (play.statusEffects.curse) statusTexts.push("诅咒");
+    if (play.statusEffects.depressed) statusTexts.push("沮丧");
+    if (play.statusEffects.poison > 0) statusTexts.push("中毒(" + play.statusEffects.poison + ")");
+    if (play.statusEffects.paralysis) statusTexts.push("麻痹");
+    %>
+    <% if (statusTexts.length > 0) { %>
+        [<%= statusTexts.join("][") %>]
+    <% } else { %>
+        无
+    <% } %>
+    <br>
+
+    怪状态:
+    <%
+    var monsterStatusTexts = [];
+    if (monster.statusEffects.slow) monsterStatusTexts.push("缓慢");
+    if (monster.statusEffects.weak) monsterStatusTexts.push("虚弱");
+    if (monster.statusEffects.curse) monsterStatusTexts.push("诅咒");
+    if (monster.statusEffects.depressed) monsterStatusTexts.push("沮丧");
+    if (monster.statusEffects.poison > 0) monsterStatusTexts.push("中毒(" + monster.statusEffects.poison + ")");
+    if (monster.statusEffects.paralysis) monsterStatusTexts.push("麻痹");
+    %>
+    <% if (monsterStatusTexts.length > 0) { %>
+        [<%= monsterStatusTexts.join("][") %>]
+    <% } else { %>
+        无
+    <% } %>
+    <br>
+
+    <!-- 显示战斗日志 -->
+    <% if (typeof battleLog !== 'undefined' && battleLog && battleLog.length > 0) { %>
+        <div class="battle-log">
+            <% battleLog.forEach(function(log) { %>
+                <div><%= log %></div>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <div>
+        <% for (var i = 0; i < 6; i++) { %>
+            <% if (user.medicineSettings && user.medicineSettings[i]) { %>
+                <% var medicine = user.backpack.getItemById(user.medicineSettings[i].id); %>
+                <% if (medicine && medicine.num > 0) { %>
+                    <span>
+              <a href="?type=play.useItem&params=<%= medicine.id %>"><%= medicine.name %>(<%= medicine.num %>)</a>
+            </span>
+                <% } else { %>
+                    <span>
+              <a href="medicine-setting">药品栏(<%= i + 1 %>)</a>
+            </span>
+                <% } %>
+            <% } else { %>
+                <span>
+            <a href="medicine-setting">药品栏(<%= i + 1 %>)</a>
+          </span>
+            <% } %>
+            <% if(i === 2){ %>
+            <br>
+            <% } %>
+        <% } %>
+    </div>
+</div>

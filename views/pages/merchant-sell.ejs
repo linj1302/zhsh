@@ -1,0 +1,53 @@
+﻿<div>
+    <% var play = user.getPlay() %>
+    <% var backpack = user.backpack %>
+    <% var merchantItems = user.npc.getShopItems(105) %>
+    <% var merchantItemNames = merchantItems.map(item => item.name) %>
+    <% var shopItems = user.npc.getShopItems(query.shopType) %>
+        
+    <div>
+        <div>
+            <span>金贝：</span><span><%= play.gold %></span>
+        </div>
+        <div>
+            <span>银贝：</span><span><%= play.showSilver %></span>
+            <span>铜币：</span><span><%= play.showCopper %></span>
+        </div>
+    </div>
+    
+    <div>
+        <a href="merchant">返回商店主页</a>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <a href="merchant-sell?type=npc.sellAll&params=105"
+           style="color: red;">[一键卖出全部]</a>
+    </div>
+
+    <div>
+        
+        <% if (backpack.items && backpack.items.length > 0) { %>
+            <% var sellableItems = backpack.items.filter(item => [1, 2, 4, 5, 10].includes(item.type) && item.status !== 2) %>
+            
+            <% if (sellableItems.length > 0) { %>
+                <% sellableItems.forEach(function(item, index) { %>
+                <div>
+                    <span><%= item.name %></span>
+                    <% if (item.num && item.num > 1) { %>
+                        <span>数量:<%= item.num %></span>
+                    <% } %>
+                    <% var merchantItem = merchantItems.find(m => m.name === item.name) %>
+                    <% var sellPrice = merchantItem ? Math.max(1, Math.floor(merchantItem.price * 0.2)) : 1 %>
+                    <span>(<%= sellPrice %>铜币)</span>
+                    <a href="merchant?type=npc.sell&params=<%= encodeURIComponent(item.name) %>"
+                       style="margin-left: 10px;">卖出</a>
+                </div>
+                <% }) %>
+            <% } else { %>
+                <p>您没有可以卖出的商品。</p>
+            <% } %>
+        <% } else { %>
+            <p>您的背包是空的。</p>
+        <% } %>
+    </div>
+</div>

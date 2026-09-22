@@ -1,0 +1,111 @@
+<div>
+    <h2>🎣 钓鱼大赛</h2>
+
+    <% if (typeof tip !== 'undefined' && tip) { %>
+        <p style="color: #ff6600; font-weight: bold; padding: 6px; background: #fff3e0; border-radius: 6px;"><%= tip %></p>
+    <% } %>
+
+<pre style="line-height: 1.1em; color: #2e7d32;">
+   ~  ~~  ~  ~~  ~
+  (  &gt;&lt;)  ( &gt;&lt; )
+ ~  ~~  ~  ~~  ~
+</pre>
+
+    <!-- 当前比赛 -->
+    <% if (activeTournament) { %>
+        <div class="section" style="border: 2px solid #2e7d32; border-radius: 8px; padding: 10px; margin: 10px 0;">
+            <h3 style="color: #2e7d32; margin: 4px 0;">🏆 进行中的比赛：<%= activeTournament.name %></h3>
+            <p style="color: #666; font-size: 14px;">
+                参赛人数：<%= (activeTournament.participants || []).length %> 人<br>
+                比赛截止：<%= new Date(activeTournament.endTime).toLocaleString() %>
+            </p>
+            <% if ((activeTournament.participants || []).indexOf(user.id) === -1 && (activeTournament.participants || []).indexOf(String(user.id)) === -1) { %>
+                <a href="/fishing-tournament?type=fishingTournament.registerTournament&params=<%= activeTournament.id %>">[报名参加]</a>
+            <% } else { %>
+                <span style="color: green;">✅ 已报名，钓到的鱼会自动计入成绩</span><br>
+                <%
+                    var rankInfo = user.fishingTournament.getTournamentRank(activeTournament.id);
+                %>
+                <% if (rankInfo && rankInfo.totalPlayers > 0) { %>
+                    <p>当前排名：第 <strong><%= rankInfo.rank %></strong> / <%= rankInfo.totalPlayers %> 名，
+                    累计重量 <%= rankInfo.playerWeight.toFixed(1) %> 斤</p>
+                <% } %>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div class="section" style="text-align: center; padding: 16px; color: #999;">
+            <p>当前没有进行中的钓鱼大赛</p>
+            <p style="font-size: 14px;">大赛开启时会在码头公告，钓到大鱼即可冲榜！</p>
+        </div>
+    <% } %>
+
+    <!-- 个人统计 -->
+    <div class="section">
+        <h3>📊 我的钓鱼战绩</h3>
+        <% if (playerStats.totalCatch > 0) { %>
+            <p>
+                总渔获：<strong><%= playerStats.totalCatch %></strong> 条 .
+                稀有渔获：<strong><%= playerStats.rareCatch %></strong> 条 .
+                总重量：<strong><%= playerStats.totalWeight.toFixed(1) %></strong> 斤
+            </p>
+            <% if (playerStats.bestFish) { %>
+                <p>最大纪录：<%= playerStats.bestFish.fishName %>（<%= playerStats.bestFish.weight.toFixed(1) %> 斤）</p>
+            <% } %>
+        <% } else { %>
+            <p style="color: #999;">还没有钓鱼记录，先去 <a href="/fishing">钓鱼</a> 试试吧！</p>
+        <% } %>
+    </div>
+
+    <!-- 排行榜 -->
+    <div class="section">
+        <h3>🥇 渔王榜（各鱼种最重纪录）</h3>
+        <% if (leaderboards.length > 0) { %>
+            <table border="1" cellpadding="4" style="border-collapse: collapse; width: 100%; font-size: 13px;">
+                <tr style="background: #e8f5e9;">
+                    <th>鱼种</th>
+                    <th>渔王</th>
+                    <th>重量</th>
+                </tr>
+                <% leaderboards.slice(0, 10).forEach(function(row) { %>
+                    <% if (row.topRecord) { %>
+                    <tr>
+                        <td><%= row.fishName %></td>
+                        <td><%= row.topRecord.userName || '无名' %></td>
+                        <td><%= (row.topRecord.weight || 0).toFixed(1) %> 斤</td>
+                    </tr>
+                    <% } %>
+                <% }); %>
+            </table>
+        <% } else { %>
+            <p style="color: #999;">暂无上榜纪录</p>
+        <% } %>
+    </div>
+
+    <!-- 历史比赛 -->
+    <% if (tournamentHistory.length > 0) { %>
+    <div class="section">
+        <h3>📜 往期大赛与战绩</h3>
+        <% tournamentHistory.slice(0, 5).forEach(function(t) { %>
+            <p>
+                <%= t.name %>（<%= new Date(t.endTime).toLocaleDateString() %> 结束）
+                我的名次：<%= t.rank %>
+                <% if (typeof t.rank === 'number' && t.rank >= 1 && t.rank <= 3 && t.prize && !t.claimed) { %>
+                    <a href="/fishing-tournament?type=fishingTournament.claimPrize&params=<%= t.id %>">[领取名次奖励]</a>
+                <% } else if (t.claimed) { %>
+                    <span style="color: green;">✅ 奖励已领取</span>
+                <% } %>
+            </p>
+        <% }); %>
+    </div>
+    <% } %>
+
+    <div class="section" style="font-size: 14px; color: #666;">
+        <h3>📖 大赛规则</h3>
+        <ul>
+            <li>比赛期间报名后，钓到的每条鱼自动计入总重量</li>
+            <li>比赛结束时按总重量排名，前三名可领取奖励</li>
+            <li>平时钓鱼也会累计个人战绩与鱼种最重纪录</li>
+        </ul>
+    </div>
+
+</div>

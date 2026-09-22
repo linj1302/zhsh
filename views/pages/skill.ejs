@@ -1,0 +1,619 @@
+﻿<div class="game-container">
+    <!-- 标题 -->
+    <div class="title-section">
+        宠物技能指南
+    </div>
+
+    <!-- 指南说明 -->
+    <div class="guide-desc">
+        点击技能名称查看详细信息
+    </div>
+
+    <!-- 技能列表 -->
+    <div class="game-section">
+        <div>
+            <!-- 攻击型技能 -->
+            <div class="skill-type-header">攻击型技能</div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('1-0')">
+                    <span class="expand-icon" id="icon-1-0">▼</span>
+                    <span>嗜血</span>
+                </div>
+                <div class="skill-content show" id="content-1-0">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>攻击型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>伤害</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>10%的概率，把攻击对方的血加给自身</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>10%的概率，把攻击对方的血加给自身</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>1</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('1-1')">
+                    <span class="expand-icon" id="icon-1-1">▼</span>
+                    <span>血刃</span>
+                </div>
+                <div class="skill-content show" id="content-1-1">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>攻击型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>伤害</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，让对手无法反弹</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，让对手无法反弹</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 辅助型技能 -->
+            <div class="skill-type-header">辅助型技能</div>
+
+
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-2')">
+                    <span class="expand-icon" id="icon-2-2">▼</span>
+                    <span>免卸</span>
+                </div>
+                <div class="skill-content show" id="content-2-2">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>增益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>30%的概率，防止卸刃，卸甲，卸佩</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>30%的概率，防止卸刃，卸甲，卸佩</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-3')">
+                    <span class="expand-icon" id="icon-2-3">▼</span>
+                    <span>净化</span>
+                </div>
+                <div class="skill-content show" id="content-2-3">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>增益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，净化所有负面效果</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，净化所有负面效果</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-4')">
+                    <span class="expand-icon" id="icon-2-4">▼</span>
+                    <span>利刃</span>
+                </div>
+                <div class="skill-content show" id="content-2-4">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>增益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>本次战斗增加10%攻击</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>本次战斗增加10%攻击</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-5')">
+                    <span class="expand-icon" id="icon-2-5">▼</span>
+                    <span>卸佩</span>
+                </div>
+                <div class="skill-content show" id="content-2-5">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，卸掉对手的佩戴</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，卸掉对手的佩戴</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-6')">
+                    <span class="expand-icon" id="icon-2-6">▼</span>
+                    <span>卸刃</span>
+                </div>
+                <div class="skill-content show" id="content-2-6">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，直接卸掉对方的武器</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，直接卸掉对方的武器</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-7')">
+                    <span class="expand-icon" id="icon-2-7">▼</span>
+                    <span>卸甲</span>
+                </div>
+                <div class="skill-content show" id="content-2-7">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，直接卸掉对方的盔甲</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，直接卸掉对方的盔甲</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-8')">
+                    <span class="expand-icon" id="icon-2-8">▼</span>
+                    <span>威压</span>
+                </div>
+                <div class="skill-content show" id="content-2-8">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>让对手所有数值和特性降低10%</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>让对手所有数值和特性降低10%</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-9')">
+                    <span class="expand-icon" id="icon-2-9">▼</span>
+                    <span>封毒</span>
+                </div>
+                <div class="skill-content show" id="content-2-9">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，让对手丧失毒攻技能</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，让对手丧失毒攻技能</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-10')">
+                    <span class="expand-icon" id="icon-2-10">▼</span>
+                    <span>封虚</span>
+                </div>
+                <div class="skill-content show" id="content-2-10">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，让对手丧失虚弱攻技能</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，让对手丧失虚弱攻技能</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-11')">
+                    <span class="expand-icon" id="icon-2-11">▼</span>
+                    <span>封血</span>
+                </div>
+                <div class="skill-content show" id="content-2-11">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，阻止对手的自动加血物品</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，阻止对手的自动加血物品</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-12')">
+                    <span class="expand-icon" id="icon-2-12">▼</span>
+                    <span>封麻</span>
+                </div>
+                <div class="skill-content show" id="content-2-12">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，让对手丧失麻痹攻技能</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，让对手丧失麻痹攻技能</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-13')">
+                    <span class="expand-icon" id="icon-2-13">▼</span>
+                    <span>御敌</span>
+                </div>
+                <div class="skill-content show" id="content-2-13">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>增益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>本次战斗增加10%防御</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>本次战斗增加10%防御</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-14')">
+                    <span class="expand-icon" id="icon-2-14">▼</span>
+                    <span>怒吼</span>
+                </div>
+                <div class="skill-content show" id="content-2-14">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>增益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>让自己的所有数值升高10%</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>让自己的所有数值升高10%</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-15')">
+                    <span class="expand-icon" id="icon-2-15">▼</span>
+                    <span>振幅</span>
+                </div>
+                <div class="skill-content show" id="content-2-15">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>增益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>本次战斗增加20点士气</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>本次战斗增加20点士气</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-16')">
+                    <span class="expand-icon" id="icon-2-16">▼</span>
+                    <span>无敌</span>
+                </div>
+                <div class="skill-content show" id="content-2-16">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>增益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，迷惑无效，无视对手攻击</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，迷惑无效，无视对手攻击</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-17')">
+                    <span class="expand-icon" id="icon-2-17">▼</span>
+                    <span>神圣</span>
+                </div>
+                <div class="skill-content show" id="content-2-17">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，让对方丧失诅咒攻技能</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，让对方丧失诅咒攻技能</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-18')">
+                    <span class="expand-icon" id="icon-2-18">▼</span>
+                    <span>轻身</span>
+                </div>
+                <div class="skill-content show" id="content-2-18">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>增益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>本次战斗增加20点敏捷</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>本次战斗增加20点敏捷</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('2-19')">
+                    <span class="expand-icon" id="icon-2-19">▼</span>
+                    <span>迷惑</span>
+                </div>
+                <div class="skill-content show" id="content-2-19">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>辅助型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>减益</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>20%的概率，让对方的宠物退出战斗</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>20%的概率，让对方的宠物退出战斗</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 治疗型技能 -->
+            <div class="skill-type-header">治疗型技能</div>
+
+
+            <div class="skill-item">
+                <div class="skill-header" onclick="toggleSkill('3-20')">
+                    <span class="expand-icon" id="icon-3-20">▼</span>
+                    <span>疗伤</span>
+                </div>
+                <div class="skill-content show" id="content-3-20">
+                    <div class="skill-info">
+                        <span class="attribute-label">技能类型: </span>
+                        <span>治疗型</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">效果类型: </span>
+                        <span>治疗</span>
+                    </div>
+                    <div class="skill-desc">
+                        <span class="attribute-label">技能描述: </span>
+                        <span>战斗完成后恢复10%体力</span>
+                    </div>
+                    <div class="skill-effect">
+                        <span class="attribute-label">效果详情: </span>
+                        <span>战斗完成后恢复10%体力</span>
+                    </div>
+                    <div class="skill-info">
+                        <span class="attribute-label">基础效果值: </span>
+                        <span>1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

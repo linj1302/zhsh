@@ -1,0 +1,64 @@
+﻿<div>
+    <% if (typeof tip !== 'undefined' && tip) { %>
+        <div style="color: <%= tip.includes('成功') || tip.includes('已发送') ? 'green' : 'red' %>;">
+            <%= tip %>
+        </div>
+    <% } %>
+
+    <!-- 发起求婚 -->
+    <div>
+        <div>【发起求婚】</div>
+        <% if (typeof friends !== 'undefined' && friends && friends.length > 0) { %>
+            <div>
+                请选择要求婚的好友：
+                <% friends.forEach(function(friend) { %>
+                    <div style="padding: 10px 0;">
+                        <div><span><%= friend.nickname %></span></div>
+                        <div><a href="/marriage?type=propose&targetUserId=<%= friend.id %>">求婚</a></div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div>暂无可求婚的好友（需要对方未结婚且未有 pending 求婚）</div>
+        <% } %>
+    </div>
+
+    <hr/>
+
+    <!-- 求婚信息 -->
+    <div>
+        <div>【求婚信息】</div>
+        
+        <% if (typeof receivedProposals !== 'undefined' && receivedProposals && receivedProposals.length > 0) { %>
+            <div>
+                【收到的求婚申请】
+                <% receivedProposals.forEach(function(proposal) { %>
+                    <div style="padding: 10px 0; border-bottom: 1px solid #ccc;">
+                        <div><%= proposal.proposer_nickname %> 向您求婚</div>
+                        <div>
+                            <div><a href="/marriage?type=acceptProposal&proposalId=<%= proposal.id %>">接受</a></div>
+                            <div><a href="/marriage?type=rejectProposal&proposalId=<%= proposal.id %>">拒绝</a></div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div>暂无求婚申请</div>
+        <% } %>
+
+        <% if (typeof sentProposals !== 'undefined' && sentProposals && sentProposals.length > 0) { %>
+            <div>
+                【已发送的求婚申请】
+                <% sentProposals.forEach(function(proposal) { %>
+                    <div style="padding: 10px 0; border-bottom: 1px solid #ccc;">
+                        <div>向 <%= proposal.proposee_nickname %> 发起的求婚申请</div>
+                        <div>状态：等待回应</div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+
+    <div>
+</div>
+</div>

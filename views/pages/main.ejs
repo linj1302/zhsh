@@ -1,0 +1,220 @@
+<% var play = user.getPlay() %>
+<% var city = user.getCity() %>
+
+<!-- ═══ 位置信息 ═══ -->
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:6px 10px; background:#f8f9fa; border-radius:5px; font-size:0.85em;">
+    <div>
+        <span style="color:#888; font-size:0.85em;">📍</span>
+        <strong><%= city.city %></strong>
+        <span style="color:#666;">· <%= city.position %><%= city.position === '码头' ? ' ★' : '' %></span>
+    </div>
+    <a href="/main" style="font-size:0.82em; color:#1565c0;">刷新</a>
+</div>
+
+<!-- ═══ 附近玩家 ═══ -->
+<%
+const onlineUsers = user.getOnlineUsersInLocation();
+if (onlineUsers && onlineUsers.length > 0) {
+    const displayUsers = onlineUsers.slice(0, 2);
+%>
+<div style="font-size:0.82em; color:#888; margin-bottom:6px;">
+    <span>附近：</span>
+    <% displayUsers.forEach(function(u) { %>
+        <a href="/role-status?userId=<%= u.id %>" style="color:#555;"><%= u.nickname || u.username %></a>
+    <% }); %>
+    <% if (onlineUsers.length > 2) { %><a href="/online-users" style="color:#999;">…</a><% } %>
+</div>
+<% } %>
+
+<!-- ═══ 场景 ═══ -->
+<div class="section" style="padding:8px 10px;">
+    <% var allNpcs = user.getNpc() %>
+    <% var allMonsters = user.getNpc(true) %>
+
+    <!-- 场景内容：固定最大高度，超出滚动 -->
+    <div class="scroll-box" style="max-height:108px;">
+        <% if (allNpcs.length > 0) { %>
+        <div style="display:flex; flex-wrap:wrap; column-gap:12px; row-gap:3px; margin-bottom:5px; align-items:center;">
+            <% for (let i in allNpcs) { %>
+                <% let npc = allNpcs[i] %>
+                <% const availableTasks = user.task.getAvailableTasksForNpc(npc.name); %>
+                <% const submittableTasks = user.task.getSubmittableTasksForNpc(npc.name); %>
+                <span style="white-space:nowrap;">
+                    <% if (submittableTasks.length > 0) { %><%- include('./assets/wen') %><% } %>
+                    <% if (submittableTasks.length === 0 && availableTasks.length > 0) { %><%- include('./assets/tan') %><% } %>
+                    <a href="<%= user.npc.getHref(npc) %>"><%= npc.name %></a>
+                </span>
+            <% } %>
+        </div>
+        <% } %>
+
+        <% if (allMonsters.length > 0) { %>
+        <div style="display:flex; flex-wrap:wrap; column-gap:12px; row-gap:3px; align-items:center;">
+            <% for (let i in allMonsters) { %>
+                <% let mon = allMonsters[i] %>
+                <span style="white-space:nowrap;">
+                    <a href="/attack?type=monster.assault&params=<%= mon.name + "," + mon.level %>" style="color:#c62828;"><%= mon.name %> <small>(<%= mon.level %>级)</small></a>
+                </span>
+            <% } %>
+        </div>
+        <% } %>
+    </div>
+
+    <!-- 出口 -->
+    <div style="font-size:0.85em; color:#888; margin-top:4px;">
+        出口：
+        <% var dirs = user.getCity().getDirs ? user.getCity().getDirs() : (user.city.getDirs()) %>
+        <% for (let i in dirs) { let dir = dirs[i] %>
+            <a href="/main?type=city.move&params=<%= dir.value %>" style="margin:0 4px;"><%= dir.label %></a>
+        <% } %>
+    </div>
+</div>
+
+<!-- ═══ 城内地图（中国传统城市布局：居中而王、面朝后市、左祖右社）═══ -->
+<div style="margin:6px 0; border:1px solid #eee; border-radius:6px; padding:6px 8px; background:#fafbfc;">
+    <div style="text-align:center; margin-bottom:3px;">
+        <a href="/city-map" style="font-size:0.85em; color:#1565c0; letter-spacing:2px;">[ 城 内 地 图 ]</a>
+    </div>
+    <%- include('common/city-grid', { spots: user.city.getInsideMap(), currentPos: city.position }) %>
+</div>
+
+<!-- ═══ 系统菜单 ═══ -->
+<div class="nav-grid">
+    <!-- 基础 -->
+    <a href="/role-status">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">状态</span>
+    </a>
+    <a href="/backpack">
+        <span class="nav-icon">🎒</span>
+        <span class="nav-label">物品</span>
+    </a>
+    <a href="/task-list">
+        <span class="nav-icon">📜</span>
+        <span class="nav-label">任务</span>
+    </a>
+    <a href="/shop?shopType=1">
+        <span class="nav-icon">🏪</span>
+        <span class="nav-label">商城</span>
+    </a>
+
+    <!-- 战斗 -->
+    <a href="/ranking">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">排行</span>
+    </a>
+    <a href="/team-dungeon">
+        <span class="nav-icon">⚔️</span>
+        <span class="nav-label">组队</span>
+    </a>
+    <a href="/siege">
+        <span class="nav-icon">🏴</span>
+        <span class="nav-label">攻城</span>
+    </a>
+    <a href="/mountain-fortress">
+        <span class="nav-icon">⛰️</span>
+        <span class="nav-label">山寨</span>
+    </a>
+</div>
+
+<div class="section-title">◈ 角色成长</div>
+<div class="nav-grid">
+    <a href="/pet" style="border-color:#4caf5030; background:#f6fdf6;">
+        <span class="nav-icon">🐾</span>
+        <span class="nav-label" style="color:#2e7d32; font-weight:600;">宠物</span>
+    </a>
+    <a href="/follower" style="border-color:#e6510030; background:#fef9f5;">
+        <span class="nav-icon">⚔️</span>
+        <span class="nav-label" style="color:#e65100; font-weight:600;">随从</span>
+    </a>
+    <a href="/mount" style="border-color:#5d403730; background:#fdf8f5;">
+        <span class="nav-icon">🐎</span>
+        <span class="nav-label" style="color:#5d4037; font-weight:600;">坐骑</span>
+    </a>
+    <a href="/wing" style="border-color:#1565c030; background:#f5f9fd;">
+        <span class="nav-icon">🪽</span>
+        <span class="nav-label" style="color:#1565c0; font-weight:600;">羽翼</span>
+    </a>
+</div>
+
+<div class="section-title">◈ 装备强化</div>
+<div class="nav-grid">
+    <a href="/equip-strengthen" style="border-color:#ff6f0030; background:#fffcf5;">
+        <span class="nav-icon">🔥</span>
+        <span class="nav-label" style="color:#e65100; font-weight:600;">强化</span>
+    </a>
+    <a href="/equipment-awaken" style="border-color:#7c4dff30; background:#faf8ff;">
+        <span class="nav-icon">✦</span>
+        <span class="nav-label" style="color:#7c4dff; font-weight:600;">觉醒</span>
+    </a>
+    <a href="/gem-inlay" style="border-color:#00897b30; background:#f5fdfc;">
+        <span class="nav-icon">💎</span>
+        <span class="nav-label" style="color:#00695c; font-weight:600;">宝石</span>
+    </a>
+    <a href="/special-attributes" style="border-color:#00897b30; background:#f5fdfc;">
+        <span class="nav-icon">✧</span>
+        <span class="nav-label" style="color:#00695c; font-weight:600;">附魔</span>
+    </a>
+</div>
+
+<div class="section-title">◈ 收集系统</div>
+<div class="nav-grid">
+    <a href="/card" style="border-color:#00695c30; background:#f5fdfc;">
+        <span class="nav-icon">🃏</span>
+        <span class="nav-label" style="color:#00695c; font-weight:600;">卡片</span>
+    </a>
+    <a href="/holymark" style="border-color:#6a1b9a30; background:#fdf5ff;">
+        <span class="nav-icon">✦</span>
+        <span class="nav-label" style="color:#6a1b9a; font-weight:600;">圣痕</span>
+    </a>
+    <a href="/holiday">
+        <span class="nav-icon">🎉</span>
+        <span class="nav-label">活动</span>
+    </a>
+    <a href="/achievement">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-label">成就</span>
+    </a>
+</div>
+
+<div class="section-title">◈ 社交</div>
+<div class="nav-grid">
+    <a href="/chat">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">聊天</span>
+    </a>
+    <a href="/friend">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">好友</span>
+    </a>
+    <a href="/team">
+        <span class="nav-icon">🤝</span>
+        <span class="nav-label">队伍</span>
+    </a>
+    <a href="/marriage">
+        <span class="nav-icon">💒</span>
+        <span class="nav-label">结婚</span>
+    </a>
+    <a href="/mentor">
+        <span class="nav-icon">📖</span>
+        <span class="nav-label">师徒</span>
+    </a>
+    <a href="<%= user.gang.name ? 'my-gang' : 'gang-list' %>">
+        <span class="nav-icon">🏯</span>
+        <span class="nav-label">帮会</span>
+    </a>
+    <a href="/mail-list">
+        <span class="nav-icon">📮</span>
+        <span class="nav-label">邮件</span>
+    </a>
+    <a href="/fishing-tournament">
+        <span class="nav-icon">🎣</span>
+        <span class="nav-label">钓鱼赛</span>
+    </a>
+</div>
+
+<div style="text-align:center; margin-top:8px;">
+    <a href="/instance" style="font-size:0.78em; color:#bbb;">副本</a>
+    <span style="font-size:0.78em; color:#ddd;"> · </span>
+    <a href="/help" style="font-size:0.78em; color:#bbb;">帮助</a>
+</div>

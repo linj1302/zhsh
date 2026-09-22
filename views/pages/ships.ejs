@@ -1,0 +1,15 @@
+﻿<div>
+    <div>【我拥有的船只】</div>
+    <% const ships = user.backpack.getItemsByType(12); %>
+    <% if (ships.length > 0) { %>
+        <% let index = 1; %>
+        <% ships.forEach(function(ship) { %>
+            <% for (let i = 0; i < ship.num; i++) { %>
+                <div><%= index %>. <%= ship.name %> 航速: <%= ship.info.speed %>
+                <% index++; %>
+            <% } %>
+        <% }); %>
+    <% } else { %>
+        暂无船只
+    <% } %>
+</div>

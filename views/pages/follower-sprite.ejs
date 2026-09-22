@@ -1,0 +1,187 @@
+<div class="wap_class">
+    <h2>🔮 随从精灵管理</h2>
+
+    <% if (typeof tip !== 'undefined' && tip) { %>
+    <div style="color: green; font-weight: bold; margin-bottom: 10px; padding: 6px; background: #e8f5e9; border-radius: 6px;"><%= tip %></div>
+    <% } %>
+
+    <% var qualityText = {'normal': '普通', 'excellent': '优秀', 'elite': '精锐', 'perfect': '完美', 'legend': '传说'} %>
+    <% var qualityColor = {'normal': '#999', 'excellent': '#5cb85c', 'elite': '#5bc0de', 'perfect': '#ff6600', 'legend': '#cc3300'} %>
+
+    <% if (!follower) { %>
+        <p style="color: red;">随从不存在</p>
+        <a href="/follower">← 返回随从列表</a>
+    <% } else { %>
+        <%
+        var sp = sprite || { level: 1, exp: 0, skills: [] };
+        var maxLv = maxLevel || 20;
+        var maxSlots = maxSlots || 4;
+        var expPct = maxLv > 0 ? Math.min(100, Math.floor(sp.level / maxLv * 100)) : 0;
+        %>
+
+        <!-- 精灵基本信息 -->
+        <div class="section" style="border: 2px solid #7b1fa2; border-radius: 10px; background: linear-gradient(135deg, #f3e5f5, #ede7f6); padding: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div>
+                    <strong style="font-size: 1.2em;"><%= follower.name %></strong>
+                    <span style="color:<%= qualityColor[follower.quality] || '#999' %>; font-weight: bold; margin-left: 6px;">
+                        <%= qualityText[follower.quality] || follower.quality %>
+                    </span>
+                    <span style="margin-left: 8px;">的精灵</span>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.1em; color: #4a148c; font-weight: bold;">
+                        精灵等级：<%= sp.level %> / <%= maxLv %>
+                    </div>
+                    <div style="font-size: 12px; color: #888;">技能槽：<%= sp.skills.length %> / <%= maxSlots %></div>
+                </div>
+            </div>
+            <!-- 等级进度条 -->
+            <div style="margin-top: 8px; background: #e0e0e0; border-radius: 6px; height: 16px; overflow: hidden;">
+                <div style="background: linear-gradient(90deg, #7b1fa2, #4a148c); height: 100%; width: <%= expPct %>%; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 10px; color: white; text-shadow: 0 0 2px rgba(0,0,0,0.5);"><%= expPct %>%</span>
+                </div>
+            </div>
+            <div style="font-size: 11px; color: #888; margin-top: 2px;">
+                精灵经验：<%= sp.exp %> | 品质等级上限：<%= maxLv %>
+            </div>
+        </div>
+
+        <!-- 已学技能 -->
+        <div class="section">
+            <h3>📜 精灵技能</h3>
+            <% if (sp.skills.length > 0) { %>
+                <%
+                var SPRITE_SKILLS = {
+                    'claw_strike':    { name:'利爪一击',   desc:'攻击+{val}',        effect:'attack',        base: 5 },
+                    'rock_armor':     { name:'磐石护甲',   desc:'防御+{val}',        effect:'defense',       base: 4 },
+                    'wind_step':      { name:'疾风之步',   desc:'敏捷+{val}',        effect:'agility',       base: 4 },
+                    'blood_thirst':   { name:'嗜血狂暴',   desc:'吸血+{val}%',       effect:'vampire',       base: 1 },
+                    'critical_eye':   { name:'致命洞察',   desc:'暴击率+{val}%',     effect:'critChance',    base: 1 },
+                    'iron_wall':      { name:'铁壁',       desc:'铁壁+{val}%',        effect:'ironWall',      base: 1 },
+                    'double_strike':  { name:'二连击',     desc:'连击率+{val}%',     effect:'comboChance',    base: 1 },
+                    'venom_fang':     { name:'毒牙',        desc:'附着毒功成功率+{val}%', effect:'poisonChance', base: 1.5 },
+                    'flame_claw':     { name:'烈焰爪',      desc:'附加{val}点火焰伤害', effect:'fireDamage',   base: 2 },
+                    'shadow_step':    { name:'影步',        desc:'闪避率+{val}%',     effect:'dodgeChance',   base: 1.5 },
+                    'berserk':        { name:'狂战士',      desc:'攻击+{val}%',       effect:'atkPercent',    base: 1 },
+                    'fortify':        { name:'铁骨',        desc:'防御+{val}%',       effect:'defPercent',    base: 1 },
+                    'fleet_foot':     { name:'轻盈',        desc:'敏捷+{val}%',       effect:'agiPercent',    base: 1 },
+                    'executioner':    { name:'处决者',      desc:'对30%HP以下敌人伤害+{val}%', effect:'executioner',    base: 3 },
+                    'last_stand':     { name:'舍身一击',   desc:'HP低于30%时伤害+{val}%',   effect:'lastStand',  base: 3 },
+                    'quick_learn':    { name:'快速学习',   desc:'获得经验+{val}%',    effect:'expBonus',      base: 2 },
+                    'flame_aura':     { name:'火焰之环',     desc:'每回合对敌造成{val}灼烧伤害', effect:'burning',  base: 3 },
+                    'chill_blast':    { name:'冰冻冲击',   desc:'每回合{val}%概率冻住敌人1轮', effect:'freeze',   base: 2 },
+                    'regenerate':     { name:'再生',        desc:'每回合回复{val}点体力', effect:'regen',        base: 2 },
+                    'storm_call':     { name:'唤雷',        desc:'发动攻击时{val}%召唤雷电', effect:'stormCall', base: 2 },
+                    'mirror':         { name:'镜像',        desc:'反弹{val}%伤害',    effect:'reflection',    base: 1 }
+                };
+                %>
+                <% sp.skills.forEach(function(sk) { %>
+                    <% var def = SPRITE_SKILLS[sk.skillId] || { name: sk.skillId, desc: '未知效果', base: 1 } %>
+                    <% var val = Math.floor(def.base * sk.level) %>
+                    <div style="border: 1px solid #ddd; border-radius: 6px; padding: 8px; margin-bottom: 6px; background: #fafafa;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
+                            <div>
+                                <strong style="color: #4a148c;"><%= def.name %></strong>
+                                <span style="background: #e1bee7; padding: 1px 6px; border-radius: 4px; font-size: 11px; margin-left: 4px;">
+                                    <%= sk.level %>级/10
+                                </span>
+                            </div>
+                            <div style="font-size: 12px; color: #666;">
+                                <%= def.desc.replace('{val}', val) %>
+                            </div>
+                        </div>
+                        <!-- 技能等级条 -->
+                        <div style="margin-top: 4px; background: #e0e0e0; border-radius: 3px; height: 8px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, #ab47bc, #7b1fa2); height: 100%; width: <%= sk.level * 10 %>%; border-radius: 3px;"></div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p style="color: #999; text-align: center;">尚未学习任何技能</p>
+            <% } %>
+
+            <!-- 空槽位显示 -->
+            <% for (var i = sp.skills.length; i < maxSlots; i++) { %>
+                <div style="border: 1px dashed #ccc; border-radius: 6px; padding: 8px; margin-bottom: 6px; text-align: center; color: #ccc;">
+                    🔒 未开启技能槽
+                </div>
+            <% } %>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="section" style="text-align: center;">
+            <h3>🎯 精灵操作</h3>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <% if (sp.skills.length < maxSlots) { %>
+                    <a href="/follower?action=enlighten&recruitId=<%= follower.recruit_id %>"
+                       style="padding: 8px 16px; background: linear-gradient(135deg, #9c27b0, #7b1fa2); color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                        📖 领悟技能（消耗启迪之书x1）
+                    </a>
+                <% } %>
+            </div>
+            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                精灵随随从升级而升级，升级时可能自动领悟新技能<br>
+                使用启迪之书可以主动领悟新技能
+            </p>
+        </div>
+
+        <!-- 卷轴升级 -->
+        <% if (sp.skills.length > 0) { %>
+        <div class="section">
+            <h3>📜 卷轴升级</h3>
+            <p style="font-size: 12px; color: #666; margin-bottom: 6px;">使用技能卷轴可以提升已有技能的等级（最高10级）</p>
+            <form action="/follower" method="get" style="font-size: 13px;">
+                <input type="hidden" name="action" value="scrollUpgrade">
+                <input type="hidden" name="recruitId" value="<%= follower.recruit_id %>">
+                <div style="margin: 6px 0;">
+                    <label>选择技能：</label>
+                    <select name="skillId" style="padding: 2px;">
+                        <% sp.skills.forEach(function(sk) { %>
+                            <% var def = SPRITE_SKILLS[sk.skillId] || { name: sk.skillId } %>
+                            <option value="<%= sk.skillId %>"><%= def.name %> (当前 <%= sk.level %>级)</option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div style="margin: 6px 0;">
+                    <label>卷轴等级：</label>
+                    <select name="scrollLevel" style="padding: 2px;">
+                        <option value="2">2级卷轴</option>
+                        <option value="3">3级卷轴</option>
+                        <option value="4">4级卷轴</option>
+                        <option value="5">5级卷轴</option>
+                        <option value="6">6级卷轴</option>
+                        <option value="7">7级卷轴</option>
+                        <option value="8">8级卷轴</option>
+                        <option value="9">9级卷轴</option>
+                        <option value="10">10级卷轴</option>
+                    </select>
+                </div>
+                <button type="submit" style="padding: 4px 12px; background: #ff9800; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    使用卷轴升级
+                </button>
+            </form>
+        </div>
+        <% } %>
+
+        <!-- 品质与技能槽说明 -->
+        <div class="section">
+            <h3>📊 品质与技能槽上限</h3>
+            <table border="1" cellpadding="4" style="border-collapse: collapse; width: 100%; font-size: 13px;">
+                <tr style="background: #f0f0f0;">
+                    <th>品质</th>
+                    <th>精灵等级上限</th>
+                    <th>技能槽上限</th>
+                </tr>
+                <tr><td style="color:#999;">普通</td><td>20</td><td>4</td></tr>
+                <tr><td style="color:#5cb85c;">优秀</td><td>30</td><td>5</td></tr>
+                <tr><td style="color:#5bc0de;">精锐</td><td>40</td><td>6</td></tr>
+                <tr><td style="color:#ff6600;">完美</td><td>50</td><td>8</td></tr>
+                <tr><td style="color:#cc3300;">传说</td><td>50</td><td>8</td></tr>
+            </table>
+        </div>
+    <% } %>
+
+    <br>
+    <a href="/follower">← 返回随从列表</a>
+</div>

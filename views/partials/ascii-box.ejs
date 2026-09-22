@@ -1,0 +1,5 @@
+<div class="asc-box"><div><span class="asc-frame">╔══ </span><span class="asc-title"><%= boxTitle %></span><span class="asc-frame"> ════════════════════════</span></div>
+<% (boxLines || []).forEach(function(line) { -%>
+<div><span class="asc-frame">║ </span><%- line %></div>
+<% }); -%>
+<div class="asc-frame">╚══════════════════════════════════</div></div>

@@ -1,0 +1,77 @@
+﻿<div>
+    <% var play = user.getPlay() %>
+    <% var backpack = user.backpack %>
+    <% var marketItems = user.npc.getShopItems(111) %>
+    <% var marketItemNames = marketItems.map(item => item.name) %>
+    <% var city = user.city._city %>
+    <% var scp = user.npc.scpData %>
+    <% var marketPriceReductions = user.npc.reductions || {} %>
+    <% var currentTime = Date.now() %>
+
+    <div>
+        <div>
+            <span>金贝：</span><span><%= play.gold %></span>
+        </div>
+        <div>
+            <span>银贝：</span><span><%= play.showSilver %></span>
+            <span>铜币：</span><span><%= play.showCopper %></span>
+        </div>
+    </div>
+
+    <div>
+        <a href="market">返回市场主页</a>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <a href="market-sell?type=npc.sellAll&params=111"
+           style="color: red;">[一键卖出全部]</a>
+    </div>
+
+    <div>
+        <h3>卖出商品</h3>
+
+        <% if (backpack.items && backpack.items.length > 0) { %>
+            <% var sellableItems = backpack.items.filter(item => item.type === 11) %>
+
+            <% if (sellableItems.length > 0) { %>
+                <% sellableItems.forEach(function(item, index) { %>
+                    <div>
+                        <span><%= item.name %></span>
+                        <% if (item.num && item.num > 1) { %>
+                            <span>数量:<%= item.num %></span>
+                        <% } %>
+                        <% var price = 1 %>
+                        <% if (scp[city] && scp[city][item.name]) { %>
+                            <% price = scp[city][item.name] %>
+                        <% } %>
+                        
+                        <% var priceKey = city + '-' + item.name %>
+                        <% var reductionCount = 0 %>
+                        
+                        <% if (marketPriceReductions[priceKey]) { %>
+                            <% var reductionData = marketPriceReductions[priceKey] %>
+                            <% if (currentTime - reductionData.timestamp < 60 * 60 * 1000) { %>
+                                <% reductionCount = Math.min(5, reductionData.reductions) %>
+                            <% } %>
+                        <% } %>
+                        
+                        <% if (reductionCount > 0) { %>
+                            <% for (var i = 0; i < reductionCount; i++) { %>
+                                <% price = Math.floor(price * 0.9) %>
+                            <% } %>
+                            <% price = Math.max(1, price) %>
+                        <% } %>
+                        
+                        <span>(<%= price %>铜币)</span>
+                        <a href="market-sell?type=npc.sell&params=<%= encodeURIComponent(item.name) %>,111"
+                           style="margin-left: 10px;">卖出</a>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>您没有可以卖出的商品。</p>
+            <% } %>
+        <% } else { %>
+            <p>您没有可以卖出的商品。</p>
+        <% } %>
+    </div>
+</div>

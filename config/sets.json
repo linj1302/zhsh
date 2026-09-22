@@ -1,0 +1,240 @@
+{
+  "武士套装": {
+    "name": "武士套装",
+    "description": "基础的新手套装",
+    "items": [
+      "+武士之刀",
+      "+武士之帽",
+      "+武士战甲",
+      "+武士腰带",
+      "+武士布鞋"
+    ],
+    "bonuses": {
+      "2": {
+        "attack": 5,
+        "defense": 3,
+        "agility": 3,
+        "morale": 3
+      },
+      "3": {
+        "attack": 10,
+        "defense": 6,
+        "agility": 6,
+        "morale": 6
+      },
+      "4": {
+        "attack": 15,
+        "defense": 10,
+        "agility": 10,
+        "morale": 10,
+        "criticalChance": 10
+      },
+      "5": {
+        "attack": 20,
+        "defense": 15,
+        "agility": 15,
+        "morale": 15,
+        "criticalChance": 15,
+        "weakInflict": 10
+      }
+    }
+  },
+  "哥伦布套装": {
+    "name": "哥伦布套装",
+    "description": "航海家哥伦布的防具套装",
+    "items": [
+      "+哥伦布之锤",
+      "+哥伦布胸甲",
+      "+哥伦布之帽"
+    ],
+    "bonuses": {
+      "2": {
+        "attack": 15,
+        "defense": 15,
+        "agility": 15,
+        "morale": 5
+      },
+      "3": {
+        "attack": 25,
+        "defense": 25,
+        "agility": 25,
+        "morale": 10,
+        "criticalChance": 30,
+        "poisonInflict": 15
+      }
+    }
+  },
+  "麦哲伦套装": {
+    "name": "麦哲伦套装",
+    "description": "航海家麦哲伦的防具套装",
+    "items": [
+      "+麦哲伦之匕",
+      "麦哲伦之戒",
+      "麦哲伦之腰带"
+    ],
+    "bonuses": {
+      "2": {
+        "attack": 10,
+        "defense": 5,
+        "agility": 10
+      },
+      "3": {
+        "attack": 20,
+        "defense": 15,
+        "agility": 20,
+        "morale": 10,
+        "criticalChance": 20,
+        "curseInflict": 15
+      }
+    }
+  },
+  "霸者套装": {
+    "name": "霸者套装",
+    "description": "霸者的证明",
+    "items": [
+      "+霸者之刃",
+      "+霸者之盔",
+      "+霸者之靴"
+    ],
+    "bonuses": {
+      "2": {
+        "attack": 20,
+        "defense": 10,
+        "agility": 10
+      },
+      "3": {
+        "attack": 35,
+        "defense": 20,
+        "agility": 20,
+        "morale": 15,
+        "poisonInflict": 15,
+        "slowInflict": 15
+      }
+    }
+  },
+  "奔月套装": {
+    "name": "奔月套装",
+    "description": "奔月出世，天下再无传说。2009年中秋纪念版套装。",
+    "items": [
+      "+月华相思剑",
+      "+奔月の玄冰",
+      "+奔月の玉鳞",
+      "+奔月の逐风",
+      "+奔月の承影"
+    ],
+    "bonuses": {
+      "2": {
+        "attack": 20,
+        "defense": 10,
+        "agility": 10,
+        "morale": 10
+      },
+      "3": {
+        "attack": 40,
+        "defense": 20,
+        "agility": 20,
+        "morale": 20
+      },
+      "4": {
+        "attack": 60,
+        "defense": 30,
+        "agility": 30,
+        "morale": 30,
+        "criticalChance": 15
+      },
+      "5": {
+        "attack": 100,
+        "defense": 50,
+        "agility": 50,
+        "morale": 50,
+        "criticalChance": 25,
+        "weakInflict": 20,
+        "poisonInflict": 20,
+        "slowInflict": 20,
+        "curseInflict": 20,
+        "depressedInflict": 20,
+        "paralysisInflict": 20
+      }
+    }
+  },
+  "地魔双环": {
+    "name": "地魔双环",
+    "description": "戈蒂拉的武器，被其所配配的套装。",
+    "items": [
+      "+地魔指环(左)",
+      "+地魔指环(右)"
+    ],
+    "bonuses": {
+      "2": {
+        "attack": 25,
+        "defense": 15,
+        "agility": 15,
+        "morale": 10
+      }
+    }
+  },
+  "地魔套装": {
+    "name": "地魔套装",
+    "description": "戈蒂拉生前所配带的套装。",
+    "items": [
+      "+地魔龙角羽冠",
+      "+地魔龙脊护肩",
+      "+地魔龙鳞绑腿",
+      "+地魔龙爪之靴"
+    ],
+    "bonuses": {
+      "2": {
+        "attack": 25,
+        "defense": 15,
+        "agility": 15,
+        "morale": 10
+      },
+      "3": {
+        "attack": 50,
+        "defense": 30,
+        "agility": 30,
+        "morale": 20
+      },
+      "4": {
+        "attack": 75,
+        "defense": 50,
+        "agility": 50,
+        "morale": 30,
+        "depressedInflict": 15,
+        "curseInflict": 15
+      }
+    }
+  },
+  "天魔套装": {
+    "name": "天魔套装",
+    "description": "三魔时代之首，天魔的防具套装，传闻，得到此套装者，无一不是纵横四海的王者。",
+    "items": [
+      "+天魔荆棘皇冠",
+      "+天魔玄夜战铠",
+      "+天魔碧玉束腰",
+      "+天魔风沙之靴"
+    ],
+    "bonuses": {
+      "2": {
+        "attack": 30,
+        "defense": 20,
+        "agility": 15,
+        "morale": 15
+      },
+      "3": {
+        "attack": 60,
+        "defense": 60,
+        "agility": 25,
+        "morale": 25
+      },
+      "4": {
+        "attack": 100,
+        "defense": 100,
+        "health": 2000,
+        "agility": 30,
+        "morale": 30,
+        "paralysisInflict": 15
+      }
+    }
+  }
+}

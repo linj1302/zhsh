@@ -1,0 +1,180 @@
+[
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "怪博士",
+    "submitNpc": "怪博士",
+    "taskType": "打怪",
+    "targetName": "铁皮人",
+    "quantity": "8",
+    "name": "疯狂铁皮人",
+    "targetAddress": "威尼斯实验室",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去西城门外荒野最南端的实验室杀8个铁皮人，回酒馆找怪博士。",
+    "index": 14,
+    "receiveDialog": [
+      "怪博士：啊哈！你来得正好！我的实验出了点小问题，我创造的铁皮人全都失控了！",
+      "你：什么？你创造了会到处乱跑的铁皮人？"
+    ],
+    "submitDialog": [
+      "怪博士：你回来了！我的铁皮人被你解决了吗？",
+      "你：全都搞定了，不过你的实验室可能需要重新装修了。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    },
+    "level": 6
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "怪博士",
+    "submitNpc": "里皮",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "怪博士的恳求",
+    "targetAddress": "威尼斯居民区",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "怪博士的试验造成了可怕的后果，去居民区找里皮了解情况。",
+    "index": 15,
+    "receiveDialog": [
+      "怪博士：糟糕！我的实验好像影响到了居民区，你快去问问里皮发生了什么事！",
+      "你：又是你的实验惹的祸？好吧，我去看看情况。"
+    ],
+    "submitDialog": [
+      "里皮：哦，是你啊。怪博士的实验确实造成了些麻烦，不过问题不大。",
+      "你：那就好，我还以为出了什么大事呢。"
+    ],
+    "prize": {
+      "经验": 2000,
+      "声望": 1,
+      "铜贝": 200
+    }
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "里皮",
+    "submitNpc": "里皮",
+    "taskType": "打怪",
+    "targetName": "疯牛",
+    "quantity": "8",
+    "name": "疯牛病危机",
+    "targetAddress": "威尼斯农场",
+    "receiveLocation": "威尼斯居民区",
+    "content": "去城南门外的农场杀8个疯牛，回来找居民区的里皮。",
+    "index": 16,
+    "receiveDialog": [
+      "里皮：最近农场的牛群感染了疯牛病，到处乱跑，非常危险！",
+      "你：疯牛病？听起来挺严重的。"
+    ],
+    "submitDialog": [
+      "里皮：疯牛都被你解决了？真是太好了！",
+      "你：这些疯牛确实挺狂暴的，不过已经被我全部处理了。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    },
+    "level": 2
+  },
+  {
+    "receiveNpc": "里皮",
+    "submitNpc": "老板（新手指引）",
+    "taskType": "对话",
+    "name": "去找酒馆老板聊聊",
+    "receiveLocation": "威尼斯居民区",
+    "submitLocation": "威尼斯酒馆",
+    "content": "去找酒馆老板聊聊",
+    "index": 17,
+    "receiveDialog": [
+      "里皮：对了，你去酒馆和老板聊聊吧，他可能有其他任务给你。",
+      "你：好的，我这就去酒馆看看。"
+    ],
+    "submitDialog": [
+      "老板（新手指引）：哦，里皮让你来的？有什么事吗？",
+      "你：他让我来和你聊聊，看看还有什么需要帮忙的。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "老板（新手指引）",
+    "submitNpc": "老板（新手指引）",
+    "taskType": "收集",
+    "targetName": "走私酒",
+    "quantity": "8",
+    "name": "收集罪证",
+    "targetAddress": "威尼斯浅海",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "东城门外的浅海击败走私者收集走私酒8瓶拿给威尼斯酒馆老板。",
+    "index": 18,
+    "receiveDialog": [
+      "老板（新手指引）：最近东城门外的浅海有走私团伙活动，我需要你去收集8瓶走私酒作为证据。",
+      "你：走私酒？这听起来挺刺激的。"
+    ],
+    "submitDialog": [
+      "老板（新手指引）：你拿到走私酒了吗？",
+      "你：当然，这是你要的8瓶走私酒。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    }
+  },
+  {
+    "receiveNpc": "老板（新手指引）",
+    "submitNpc": "赌场老板",
+    "taskType": "对话",
+    "name": "去找赌场老板聊聊",
+    "receiveLocation": "威尼斯酒馆",
+    "submitLocation": "威尼斯赌场",
+    "content": "去找赌场老板聊聊",
+    "index": 19,
+    "receiveDialog": [
+      "老板（新手指引）：接下来你去赌场找老板聊聊吧，他好像也有事要找人帮忙。",
+      "你：赌场老板？听起来挺神秘的。"
+    ],
+    "submitDialog": [
+      "赌场老板：哦，酒馆老板介绍你来的？我正好有件事需要处理。",
+      "你：什么事？说来听听。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯赌场",
+    "receiveNpc": "赌场老板",
+    "submitNpc": "赌场老板",
+    "taskType": "收集",
+    "targetName": "乌龟壳",
+    "quantity": "6",
+    "name": "龟壳赌具",
+    "targetAddress": "威尼斯湿地",
+    "receiveLocation": "威尼斯赌场",
+    "content": "去西城门外的湿地收集6个乌龟壳回赌场交给赌场老板。主线任务",
+    "index": 20,
+    "receiveDialog": [
+      "赌场老板：我需要制作一批新的赌具，材料就是乌龟壳。",
+      "你：乌龟壳？这和赌博有什么关系？"
+    ],
+    "submitDialog": [
+      "赌场老板：乌龟壳都收集齐了吗？",
+      "你：这是你要的6个乌龟壳，应该够制作一批骰子了。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    }
+  }
+]

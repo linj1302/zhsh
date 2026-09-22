@@ -1,0 +1,17 @@
+﻿<div>
+    <% var play = user.getPlay() %>
+
+    <div>
+        <p>欢迎来到赌场！赌场老板为您提供各种赌博游戏。</p>
+    </div>
+
+    <div>
+        <p>当前资产：<%= play.showSilver %>银<%= play.showCopper %>铜</p>
+    </div>
+
+    <div>
+        <a href="?type=casino_dice">赌大小</a>
+        <br>
+        <a href="?type=casino_rps">石头剪刀布</a>
+    </div>
+</div>

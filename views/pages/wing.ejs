@@ -1,0 +1,57 @@
+﻿<h2 class="wing-header">羽翼系统</h2>
+
+<% var wingStatus = user.wing?.getStatus() || {} %>
+<% var play = user.getPlay() %>
+<% var level = play.level || 0 %>
+
+<div class="section">
+    <h3>当前羽翼</h3>
+    <% if (wingStatus.currentWing) { %>
+        <div style="font-size:0.9em;">
+            <p>装备：<strong style="color:#1565c0;"><%= wingStatus.currentWing.name %></strong></p>
+            <div style="margin:6px 0;">
+                <% var bonus = wingStatus.bonus || {} %>
+                <% if (bonus.healthPercent) { %><div class="stat-row"><span class="stat-label">体魄</span><span class="stat-value" style="color:#e91e63;">+<%= (bonus.healthPercent * 100).toFixed(0) %>%</span></div><% } %>
+                <% if (bonus.vampire) { %><div class="stat-row"><span class="stat-label">吸血</span><span class="stat-value" style="color:#c62828;">+<%= (bonus.vampire * 100).toFixed(0) %>%</span></div><% } %>
+                <% if (bonus.combo) { %><div class="stat-row"><span class="stat-label">连击</span><span class="stat-value" style="color:#e65100;">+<%= (bonus.combo * 100).toFixed(0) %>%</span></div><% } %>
+                <% if (bonus.ironWall) { %><div class="stat-row"><span class="stat-label">铁壁</span><span class="stat-value" style="color:#3498db;">+<%= (bonus.ironWall * 100).toFixed(0) %>%</span></div><% } %>
+            </div>
+            <a href="/wing?action=unequip" class="btn btn-ghost">卸下羽翼</a>
+        </div>
+    <% } else { %>
+        <p style="color:#999; font-size:0.9em;">当前未装备羽翼</p>
+    <% } %>
+    
+    <div style="margin-top:8px; font-size:0.85em; color:#888;">
+        翼形术等级：<span style="color:#1565c0; font-weight:600;"><%= wingStatus.wingSkillLevel || 0 %>级</span>
+    </div>
+</div>
+
+<div class="section">
+    <h3>可用羽翼</h3>
+    <table>
+        <tr>
+            <th>羽翼</th>
+            <th>等级</th>
+            <th>效果</th>
+            <th></th>
+        </tr>
+        <% 
+        var wingList = wings;
+        wingList.forEach(function(wing) { 
+        %>
+            <tr>
+                <td style="font-weight:600;"><%= wing.name %></td>
+                <td><small><%= wing.level %>级</small></td>
+                <td><small><%= wing.effectText %></small></td>
+                <td>
+                    <% if (level >= wing.level) { %>
+                        <a href="/wing?action=equip&wing=<%= wing.name %>" class="btn btn-primary" style="padding:2px 8px; font-size:0.82em;">装备</a>
+                    <% } else { %>
+                        <small style="color:#bbb;">需<%= wing.level %>级</small>
+                    <% } %>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+</div>

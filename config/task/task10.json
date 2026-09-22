@@ -1,0 +1,259 @@
+[
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "多纳多",
+    "submitNpc": "多纳多",
+    "taskType": "打怪",
+    "targetName": "海贼",
+    "quantity": "6",
+    "name": "证明实力",
+    "targetAddress": "威尼斯海滩",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去东城门外海滩杀6个海贼，回王宫找多纳多。",
+    "index": 50,
+    "receiveDialog": [
+      "多纳多：想要证明你的实力，就去东城门外海滩清理6个海贼。",
+      "你：海贼？小意思，看我的吧。"
+    ],
+    "submitDialog": [
+      "多纳多：海贼都清理干净了吗？",
+      "你：当然，6个海贼已经全部解决。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    },
+    "level": 9
+  },
+  {
+    "submitLocation": "雅典市场",
+    "receiveNpc": "多纳多",
+    "submitNpc": "保罗",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "调查海贼",
+    "targetAddress": "雅典市场",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去雅典市场找保罗聊聊关于北欧海盗的事情，然后回王宫找多纳多。",
+    "index": 51,
+    "receiveDialog": [
+      "多纳多：我需要你去雅典市场找保罗了解一些关于北欧海盗的情况。",
+      "你：北欧海盗？听起来挺神秘的，我这就去了解一下。"
+    ],
+    "submitDialog": [
+      "保罗：哦，多纳多让你来的？你想了解什么？",
+      "你：他让我来了解一下北欧海盗的情况。"
+    ],
+    "prize": {
+      "经验": 4000,
+      "声望": 1,
+      "铜贝": 400
+    }
+  },
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "保罗",
+    "submitNpc": "多纳多",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "回王宫找多纳多",
+    "receiveLocation": "雅典市场",
+    "content": "。",
+    "index": 52,
+    "receiveDialog": [
+      "保罗：这些信息应该足够了，你回去告诉多纳多吧。",
+      "你：好的，我这就回去向他汇报。"
+    ],
+    "submitDialog": [
+      "多纳多：保罗都告诉你了吗？",
+      "你：是的，我已经了解了北欧海盗的情况。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "多纳多",
+    "submitNpc": "多纳多",
+    "taskType": "打怪",
+    "targetName": "北欧海盗",
+    "quantity": "8",
+    "name": "出战拉古扎",
+    "targetAddress": "拉古扎海滩",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去拉古扎海滩杀8个北欧海盗，回威尼斯王宫找多纳多",
+    "index": 53,
+    "receiveDialog": [
+      "多纳多：根据保罗提供的情报，拉古扎海滩有北欧海盗活动，你去清理8个。",
+      "你：北欧海盗？正好让我试试身手。"
+    ],
+    "submitDialog": [
+      "多纳多：北欧海盗都解决了吗？",
+      "你：搞定了，8个北欧海盗已经全部清除。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    },
+    "level": 11
+  },
+  {
+    "receiveNpc": "多纳多",
+    "submitNpc": "露丝",
+    "taskType": "对话",
+    "name": "去找露丝聊聊",
+    "receiveLocation": "威尼斯王宫",
+    "submitLocation": "威尼斯酒馆",
+    "content": "去找露丝聊聊",
+    "index": 54,
+    "receiveDialog": [
+      "多纳多：接下来你去酒馆找露丝聊聊，她好像有事要找你。",
+      "你：露丝？她又有什么事？"
+    ],
+    "submitDialog": [
+      "露丝：哦，多纳多让你来的？我正好有件事需要帮忙。",
+      "你：什么事？说来听听。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "露丝",
+    "submitNpc": "露丝",
+    "taskType": "收集",
+    "targetName": "玳瑁壳",
+    "quantity": "7",
+    "name": "露丝的想念",
+    "targetAddress": "伊斯坦堡海滩",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去伊斯坦堡的海滩收集7个玳瑁壳交给威尼斯酒馆的露丝。",
+    "index": 55,
+    "receiveDialog": [
+      "露丝：我想念家乡的玳瑁壳制品，你能去伊斯坦堡的海滩帮我收集一些吗？",
+      "你：玳瑁壳？这听起来挺珍贵的。"
+    ],
+    "submitDialog": [
+      "露丝：玳瑁壳收集齐了吗？",
+      "你：这是你要的7个玳瑁壳，应该够用了。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    }
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "露丝",
+    "submitNpc": "露丝",
+    "taskType": "收集",
+    "targetName": "鳄鱼肉,龙虾肉,山猪肉",
+    "quantity": "6,6,6",
+    "name": "共进晚餐",
+    "targetAddress": "威尼斯农场",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去西城门外的湿地收集6块鳄鱼肉，去东城门外的浅海收集6个龙虾肉，去北城门外的农场收集6个山猪肉，回酒吧交给露丝。",
+    "index": 56,
+    "receiveDialog": [
+      "露丝：我想准备一顿丰盛的晚餐，需要一些特殊食材，你能帮我收集吗？",
+      "你：什么食材？说来听听。"
+    ],
+    "submitDialog": [
+      "露丝：食材都收集齐了吗？",
+      "你：当然，鳄鱼肉、龙虾肉和山猪肉都准备好了。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    }
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "露丝",
+    "submitNpc": "露丝",
+    "taskType": "打怪",
+    "targetName": "基恩",
+    "quantity": "1",
+    "name": "露丝的复仇",
+    "targetAddress": "威尼斯海滩",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去东城门外海滩的最东边杀死基恩，回酒馆找露丝。",
+    "index": 57,
+    "receiveDialog": [
+      "露丝：我有个仇人叫基恩，他就在东城门外海滩的最东边，你能帮我报仇吗？",
+      "你：没问题，交给我吧。"
+    ],
+    "submitDialog": [
+      "露丝：基恩解决了吗？",
+      "你：解决了，他再也不能伤害任何人了。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    },
+    "level": 18
+  },
+  {
+    "receiveNpc": "露丝",
+    "submitNpc": "国王",
+    "taskType": "对话",
+    "name": "去找国王聊聊",
+    "receiveLocation": "威尼斯酒馆",
+    "submitLocation": "威尼斯王宫",
+    "content": "去找国王聊聊",
+    "index": 58,
+    "receiveDialog": [
+      "露丝：接下来你去王宫找国王聊聊，他有些重要事情要处理。",
+      "你：国王？他找我有什么事？"
+    ],
+    "submitDialog": [
+      "国王：哦，露丝让你来的？我确实有重要的事情要交代。",
+      "你：什么事？请说。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "国王",
+    "submitNpc": "国王",
+    "taskType": "打怪",
+    "targetName": "卡鲁",
+    "quantity": "1",
+    "name": "击杀卡鲁",
+    "targetAddress": "威尼斯暗礁",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去东城门外的暗礁找到卡鲁，将他那个衰样儿打的满地找牙，返回去王宫找拜见国王。说明：一直向东走卡鲁体力2620",
+    "index": 59,
+    "receiveDialog": [
+      "国王：我的敌人卡鲁藏在东城门外的暗礁，你去把他收拾掉。",
+      "你：卡鲁？听起来是个 tough guy，但我不会怕他的。"
+    ],
+    "submitDialog": [
+      "国王：卡鲁解决了吗？",
+      "你：解决了，他现在应该在海底躺着了。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    },
+    "level": 24
+  }
+]

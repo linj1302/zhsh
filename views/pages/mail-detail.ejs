@@ -1,0 +1,56 @@
+﻿<div>
+    <h2>邮件详情</h2>
+    
+    <% if (typeof message !== 'undefined' && message) { %>
+        <div style="color: <%= message.type === 'success' ? 'green' : 'red' %>;">
+            <%= message.text %>
+        </div>
+    <% } %>
+
+    <% if (typeof mail !== 'undefined' && mail) { %>
+        <!-- 邮件详情 -->
+        <div style="border: 1px solid #ccc; margin: 10px 0; padding: 10px;">
+            <div>
+                <h3><%= mail.subject %></h3>
+            </div>
+            <div>
+                发件人: <%= mail.sender_name %>
+            </div>
+            <div>
+                收件人: <%= mail.receiver_name %>
+            </div>
+            <div>
+                时间: <%= new Date(mail.created_at).toLocaleString() %>
+            </div>
+            <div style="margin: 10px 0; padding: 10px; background-color: #f9f9f9;">
+                <%= mail.content.replace(/\n/g, '<br>') %>
+            </div>
+            
+            <!-- 附件 -->
+            <% if (mail.items && mail.items.length > 0) { %>
+            <div>
+                <h4>附件:</h4>
+                <ul>
+                    <% mail.items.forEach(function(item) { %>
+                    <li><%= item.name %><% if (item.num > 1) { %>*<%= item.num %><% } %></li>
+                    <% }); %>
+                </ul>
+                
+                <% if (!mail.is_claimed) { %>
+                <form method="get" action="/mail-detail" style="display: inline;">
+                    <input type="hidden" name="mailId" value="<%= mail.id %>">
+                    <input type="hidden" name="type" value="claimItems">
+                    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+                        领取附件
+                    </button>
+                </form>
+                <% } else { %>
+                <div style="color: green;">附件已领取</div>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+    <% } else { %>
+        <p>邮件不存在或已被删除</p>
+    <% } %>
+</div>

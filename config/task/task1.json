@@ -1,0 +1,335 @@
+[
+  {
+    "submitLocation": "威尼斯福利院",
+    "receiveNpc": "老板（新手指引）",
+    "submitNpc": "福利官",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "找福利官聊聊",
+    "targetAddress": "",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去威尼斯福利院找福利官聊聊",
+    "index": -1,
+    "receiveDialog": [
+      "老板（新手指引）：这都已经不重要了，既来之则安之，在这个世界没有金钱和装备寸步难行，看你一丝不挂就是个穷光蛋，去福利院找福利官聊聊吧，他或许能给你一些帮助",
+      "你：额……好吧"
+    ],
+    "submitDialog": [
+      "福利官：听酒馆老板说来了一位奇怪的新人并且一丝不挂得，看样子就是你吧",
+      "你：嘿嘿……别误会，那只是个意外",
+      "福利官：不用尴尬，我这里每天都会接待很多像你这样从奇怪世界来的新人，我这里有一些物品你拿好，可要省着点花哦，以后我困难可以再到这里来找我",
+      "你：谢谢你。！"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯铁匠铺",
+    "receiveNpc": "福利官",
+    "submitNpc": "卡萨诺",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "去找卡萨诺",
+    "targetAddress": "",
+    "receiveLocation": "威尼斯福利院",
+    "content": "去威尼斯铁匠铺找卡萨诺聊聊",
+    "receiveDialog": [
+      "福利官：听说铁匠铺的卡萨诺遇到了一些麻烦，你去找他聊一聊",
+      "你：好的，我这就去帮忙！顺便看看能不能从他那里搞到点装备。"
+    ],
+    "submitDialog": [
+      "卡萨诺：哦，福利官派你来的吧？正好我这里有些事情需要处理。",
+      "你：什么麻烦事？不会很危险吧？"
+    ],
+    "index": 0,
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯铁匠铺",
+    "receiveNpc": "卡萨诺",
+    "submitNpc": "卡萨诺",
+    "taskType": "打怪",
+    "targetName": "野狼",
+    "quantity": "3",
+    "name": "野狼的困扰",
+    "targetAddress": "威尼斯矿山",
+    "receiveLocation": "威尼斯铁匠铺",
+    "content": "去北城门外的矿山杀3个野狼，回威尼斯铁匠铺找卡萨诺。",
+    "index": 1,
+    "receiveDialog": [
+      "卡萨诺：别担心，只是北城门外的矿山最近来了些野狼，影响我们采矿。你帮我清理掉3只就行。",
+      "你：就这么简单？包在我身上！"
+    ],
+    "submitDialog": [
+      "卡萨诺：干得不错！这些野狼应该能消停一阵子了。",
+      "你：小意思，不过我听说还有偷矿者在捣乱？"
+    ],
+    "prize": {
+      "经验": 3000,
+      "声望": 2,
+      "铜贝": 300
+    }
+  },
+  {
+    "submitLocation": "威尼斯铁匠铺",
+    "receiveNpc": "卡萨诺",
+    "submitNpc": "卡萨诺",
+    "taskType": "打怪",
+    "targetName": "偷矿者",
+    "quantity": "6",
+    "name": "清理矿山",
+    "targetAddress": "威尼斯矿山",
+    "receiveLocation": "威尼斯铁匠铺",
+    "content": "去北城门外的矿山捉拿6个偷矿者，回铁匠铺找卡萨诺。",
+    "index": 2,
+    "receiveDialog": [
+      "卡萨诺：没错，如果你愿意的话，可以顺便帮我处理一下那些偷矿者。",
+      "你：没问题，正好活动活动筋骨。"
+    ],
+    "submitDialog": [
+      "卡萨诺：太好了，现在矿山应该能正常运作了。这是给你的奖励。",
+      "你：谢谢！接下来需要我做什么？"
+    ],
+    "prize": {
+      "经验": 3000,
+      "声望": 2,
+      "铜贝": 300
+    }
+  },
+  {
+    "receiveNpc": "卡萨诺",
+    "submitNpc": "里皮",
+    "taskType": "对话",
+    "name": "去找里皮聊聊",
+    "receiveLocation": "威尼斯铁匠铺",
+    "submitLocation": "威尼斯居民区",
+    "content": "去找里皮聊聊",
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    },
+    "index": 3,
+    "receiveDialog": [
+      "卡萨诺：你可以去居民区找里皮，他可能有些事情需要帮忙。",
+      "你：好的，我这就去找他。"
+    ],
+    "submitDialog": [
+      "里皮：哦，你就是卡萨诺介绍来的那位冒险者吧？",
+      "你：正是在下，不知道您有什么需要帮忙的？"
+    ]
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "里皮",
+    "submitNpc": "里皮",
+    "taskType": "打怪",
+    "targetName": "病鸡",
+    "quantity": "5",
+    "name": "禽流感爆发",
+    "targetAddress": "威尼斯农场",
+    "receiveLocation": "威尼斯居民区",
+    "content": "去北城门外的农场杀5只病鸡，回威尼斯居民区找里皮。",
+    "index": 4,
+    "receiveDialog": [
+      "里皮：最近农场出了点问题，病鸡四处传播疾病，你能否帮我处理一下？",
+      "你：放心，我这就去处理。"
+    ],
+    "submitDialog": [
+      "里皮：干得不错！",
+      "你：当然，我是个乐于助人的人。"
+    ],
+    "prize": {
+      "经验": 3000,
+      "声望": 2,
+      "铜贝": 300
+    }
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "里皮",
+    "submitNpc": "里皮",
+    "taskType": "打怪",
+    "targetName": "野猪",
+    "quantity": "3",
+    "name": "野猪泛滥",
+    "targetAddress": "威尼斯农场",
+    "receiveLocation": "威尼斯居民区",
+    "content": "去威尼斯北城门外农场杀死3头野猪，回居民区找里皮;",
+    "index": 5,
+    "receiveDialog": [
+      "里皮：农场的野猪越来越猖狂了，你能帮我杀死3头吗？",
+      "你：没问题，这种小问题对我来说不在话下。"
+    ],
+    "submitDialog": [
+      "里皮：太感谢了！现在农场安全多了。",
+      "你：好的，我这就去找他。"
+    ],
+    "prize": {
+      "经验": 3000,
+      "声望": 2,
+      "铜贝": 300
+    }
+  },
+  {
+    "receiveNpc": "里皮",
+    "submitNpc": "小皮特",
+    "taskType": "对话",
+    "name": "去找小皮特聊聊",
+    "receiveLocation": "威尼斯居民区",
+    "submitLocation": "威尼斯居民区",
+    "content": "去找小皮特聊聊",
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    },
+    "index": 6,
+    "receiveDialog": [
+      "里皮：你去找小皮特聊聊吧，他可能有事找你。",
+      "你：好的，我这就去。"
+    ],
+    "submitDialog": [
+      "小皮特：嘿，你就是里皮说的那个冒险者吧？我正好有件事需要你帮忙。",
+      "你：什么事？说来听听。"
+    ]
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "小皮特",
+    "submitNpc": "小皮特",
+    "taskType": "收集",
+    "targetName": "潜水镜",
+    "quantity": "1",
+    "name": "小皮特的潜水镜",
+    "targetAddress": "",
+    "receiveLocation": "威尼斯居民区",
+    "content": "去威尼斯商店买一个潜水镜给居民区的小皮特。",
+    "index": 7,
+    "receiveDialog": [
+      "小皮特：我想去潜水看看，但没有潜水镜，你能帮我买一个吗？",
+      "你：当然可以，商店在哪里？",
+      "小皮特：就在居民区附近，你很容易找到的。"
+    ],
+    "submitDialog": [
+      "小皮特：太棒了！有了这个潜水镜我就能去潜水了！",
+      "你：不客气，不过你还是要注意安全。"
+    ],
+    "prize": {
+      "经验": 3000,
+      "声望": 2,
+      "铜贝": 300
+    }
+  },
+  {
+    "receiveNpc": "小皮特",
+    "submitNpc": "里皮",
+    "taskType": "对话",
+    "name": "去找里皮聊聊",
+    "receiveLocation": "威尼斯居民区",
+    "submitLocation": "威尼斯居民区",
+    "content": "去找里皮聊聊",
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    },
+    "index": 8,
+    "receiveDialog": [
+      "小皮特：谢谢你的关心，你去找里皮聊聊吧，他可能还有事需要你帮忙。",
+      "你：好的，我这就去。"
+    ],
+    "submitDialog": [
+      "里皮：你又回来了？有什么事吗？",
+      "你：小皮特让我来找你。"
+    ]
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "里皮",
+    "submitNpc": "里皮",
+    "taskType": "打怪",
+    "targetName": "野猪",
+    "quantity": "6",
+    "name": "野猪成灾",
+    "targetAddress": "威尼斯农场",
+    "receiveLocation": "威尼斯居民区",
+    "content": "去威尼斯北城门外农场杀6头野猪，找威尼斯居民区的里皮。",
+    "index": 9,
+    "receiveDialog": [
+      "里皮：哦，对了，农场的野猪问题又严重了，你能再帮我一次吗？",
+      "你：没问题，交给我吧。"
+    ],
+    "submitDialog": [
+      "里皮：真是太感谢你了！现在农场的问题基本解决了。",
+      "你：不客气，乐意效劳。"
+    ],
+    "prize": {
+      "经验": 3000,
+      "声望": 2,
+      "铜贝": 300
+    }
+  },
+  {
+    "submitLocation": "雅典居民区",
+    "receiveNpc": "里皮",
+    "submitNpc": "凯瑟琳小姐",
+    "taskType": "送物品",
+    "targetName": "情书",
+    "quantity": "1",
+    "name": "爱的使者1",
+    "targetAddress": "威尼斯农场",
+    "receiveLocation": "威尼斯居民区",
+    "content": "给雅典居民区凯瑟琳小姐送情书",
+    "index": 10,
+    "receiveDialog": [
+      "里皮：对了，你可以去雅典居民区帮凯瑟琳小姐送封情书。",
+      "你：没问题，举手之劳。"
+    ],
+    "submitDialog": [
+      "凯瑟琳小姐：哦，是里皮托你送的情书吗？太感谢了！",
+      "你：不用客气，这是我的职责。"
+    ],
+    "prize": {
+      "经验": 3000,
+      "声望": 2,
+      "铜贝": 300
+    }
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "凯瑟琳小姐",
+    "submitNpc": "因扎",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "爱的使者2",
+    "targetAddress": "威尼斯居民区",
+    "receiveLocation": "雅典居民区",
+    "content": "去威尼斯的居民区找因扎告诉他凯瑟琳想他",
+    "index": 11,
+    "receiveDialog": [
+      "凯瑟琳小姐：请你回去告诉因扎，说我一定会好好珍惜这份感情。",
+      "你：好的，我会转达的。"
+    ],
+    "submitDialog": [
+      "因扎：你就是凯瑟琳派来的使者吧？她有什么话要对我说吗？",
+      "你：她说她非常想念你。",
+      "因扎：太好了！我也有好多话想对她说。"
+    ],
+    "prize": {
+      "经验": 3000,
+      "声望": 2,
+      "铜贝": 300
+    }
+  }
+]

@@ -1,0 +1,184 @@
+﻿<h2 class="pet-header">宠物管理</h2>
+
+<% var slotInfo = (typeof selectedPet !== 'undefined' && selectedPet && selectedPet.slotInfo) ? selectedPet.slotInfo : null; %>
+<% if (!slotInfo && typeof user !== 'undefined') { slotInfo = user.petManager.getPetSlotInfo(); } %>
+
+<!-- 兽栏信息 -->
+<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#f6fdf6; border:1px solid #c8e6c9; border-radius:5px; margin:6px 0; font-size:0.85em;">
+    <div>
+        🏠 宠物栏：<b><%= slotInfo ? slotInfo.current : (pets ? pets.length : 0) %></b> / <b><%= slotInfo ? slotInfo.max : '?' %></b>
+        <% if (slotInfo && slotInfo.remaining <= 0) { %>
+            <span class="tag tag-red">已满</span>
+        <% } else if (slotInfo) { %>
+            <small style="color:#4caf50;">（余<%= slotInfo.remaining %>位）</small>
+        <% } %>
+    </div>
+    <div style="font-size:0.85em;">
+        <a href="pet-hatch">孵化</a> · <a href="pet-tool?action=feed">喂食</a> · <a href="pet-tool?action=clean">清洁</a>
+    </div>
+</div>
+
+<!-- 宠物列表 -->
+<div style="margin:8px 0;">
+    <% if (typeof pets !== 'undefined' && pets && pets.length > 0) { %>
+        <% pets.forEach(function(pet, index) { %>
+            <a href="pet?petIndex=<%= index %>" style="display:inline-block; padding:4px 10px; margin:2px; border:1px solid <%= pet.isFighting ? '#e74c3c50' : '#eee' %>; border-radius:4px; background:<%= pet.isFighting ? '#fff5f5' : '#fafafa' %>; font-size:0.85em; text-decoration:none;">
+                <%= pet.name %>
+                <small><%= pet.level %>级</small>
+                <% if (pet.isFighting) { %><span class="tag tag-red" style="margin-left:2px;">出战</span><% } %>
+                <% if (pet.petTypeInfo) { %><small style="color:#999;">[<%= pet.petTypeInfo.category === 'qq' ? 'Q宠' : pet.petTypeInfo.category === 'ancient' ? '远古' : pet.petTypeInfo.category === 'ancient_super' ? '双超' : pet.petTypeInfo.category === 'event' ? '活动' : '普通' %>]</small><% } %>
+            </a>
+        <% }); %>
+    <% } else { %>
+        <p style="color:#999; font-size:0.9em;">暂无宠物，去<a href="pet-hatch">孵化栏</a>孵化一只吧！</p>
+    <% } %>
+</div>
+
+<!-- 宠物详情 -->
+<% const current = (typeof selectedPet !== 'undefined' && selectedPet) ? selectedPet : null; %>
+<% if (current) { %>
+<div class="section" style="border-color:#c8e6c9;">
+    <h3 style="border-color:#e8f5e9;">
+        <strong><%= current.name %></strong>
+        <small style="color:#888;"><%= current.level %>级</small>
+        <% if (current.petTypeInfo) { %>
+            <span class="tag tag-blue"><%= current.petTypeInfo.desc %></span>
+        <% } %>
+        <% if (current.isFighting) { %>
+            <a href="pet?type=petManager.rest" class="btn btn-danger" style="padding:1px 6px; font-size:0.78em;">休息</a>
+        <% } else { %>
+            <a href="pet?type=petManager.fight&params=<%= query.petIndex || 0 %>" class="btn btn-primary" style="padding:1px 6px; font-size:0.78em;">出战</a>
+        <% } %>
+    </h3>
+
+    <!-- 改名 -->
+    <div style="font-size:0.85em; margin:4px 0;">
+        <form method="get" action="pet" style="display:inline;">
+            <input type="hidden" name="type" value="petManager.renamePet">
+            <input type="hidden" name="params" value="<%= current.id %>">
+            <input type="text" name="extra" value="<%= current.name %>" maxlength="8" style="width:75px; font-size:0.9em;">
+            <input type="submit" value="改名" class="btn btn-ghost" style="padding:1px 6px; font-size:0.82em;">
+        </form>
+        <small style="color:#bbb;"><%= current.nameSet ? '(1金贝)' : '(免费)' %></small>
+    </div>
+
+    <!-- 经验条 -->
+    <div style="margin:6px 0;">
+        <div class="stat-row">
+            <span class="stat-label">经验</span>
+            <span class="stat-value"><%= current.exp || 0 %> / <%= current.expToNextLevel || '?' %></span>
+        </div>
+        <div class="progress"><div class="progress-bar" style="width:<%= current.expToNextLevel ? Math.min(100, (current.exp / current.expToNextLevel) * 100) : 0 %>%"></div></div>
+        <% if (current.nextUnlockLevel) { %>
+            <small style="color:#888;">下次技能领悟: <%= current.nextUnlockLevel %>级 <a href="/pet-skills?petIndex=<%= typeof petIndex !== 'undefined' ? petIndex : 0 %>" style="color:#1976d2;">[详情]</a></small>
+        <% } %>
+    </div>
+
+    <!-- 资历 + 天赋 -->
+    <div class="stat-row" style="font-size:0.85em;">
+        <span class="stat-label">资历</span>
+        <span style="color:<%= current.qualification==='超群'?'#c62828':(current.qualification==='上佳'?'#e65100':'#666') %>; font-weight:600;"><%= current.qualification || '普通' %></span>
+    </div>
+    <div class="stat-row" style="font-size:0.85em;">
+        <span class="stat-label">天赋</span>
+        <span style="color:<%= current.talent==='无比聪慧'?'#c62828':(current.talent==='上佳'?'#e65100':(current.talent==='普通'?'#1565c0':'#999')) %>; font-weight:600;"><%= current.talent || '普通' %></span>
+    </div>
+
+    <!-- 属性 -->
+    <div style="display:flex; gap:10px; margin:6px 0; font-size:0.85em;">
+        <span style="color:#e74c3c;">攻 <%= current.attack || 0 %></span>
+        <span style="color:#3498db;">防 <%= current.defense || 0 %></span>
+        <span style="color:#2ecc71;">敏 <%= current.agility || 0 %></span>
+    </div>
+
+    <!-- 状态条 -->
+    <div style="font-size:0.85em;">
+        <div class="stat-row">
+            <span class="stat-label">饱食 <%= current.hunger || 0 %>/1000</span>
+            <div style="display:flex; align-items:center; gap:4px;">
+                <div class="progress" style="width:60px;"><div class="progress-bar" style="background:#ff9800; width:<%= (current.hunger || 0) / 10 %>%"></div></div>
+                <a href="pet-tool?action=feed" style="font-size:0.85em;">喂食</a>
+            </div>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">清洁 <%= current.cleanliness || 0 %>/1000</span>
+            <div style="display:flex; align-items:center; gap:4px;">
+                <div class="progress" style="width:60px;"><div class="progress-bar" style="background:#2196f3; width:<%= (current.cleanliness || 0) / 10 %>%"></div></div>
+                <a href="pet-tool?action=clean" style="font-size:0.85em;">清洁</a>
+            </div>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">心情</span>
+            <span class="stat-value"><%= current.mood || 0 %>/1000</span>
+        </div>
+    </div>
+
+    <!-- 技能 -->
+    <div style="margin:8px 0; font-size:0.85em;">
+        <div style="font-weight:600; margin-bottom:4px;">
+            技能 <small style="color:#888;"><%= current.maxLearnableSkills ? ((current.innateSkills || []).length + (current.skills || []).length) + '/' + current.maxLearnableSkills : '?' %></small>
+        </div>
+        <% 
+        var allSkills = [];
+        if (current.innateSkills) allSkills = allSkills.concat(current.innateSkills.map(function(s) { return Object.assign({}, s, {innate: true}); }));
+        if (current.skills) allSkills = allSkills.concat(current.skills.map(function(s) { return Object.assign({}, s, {innate: false}); }));
+        %>
+        <% if (allSkills.length > 0) { %>
+            <div style="display:flex; flex-wrap:wrap; gap:3px;">
+                <% allSkills.forEach(function(skill) { 
+                    var tierColor = skill.tier === 'high' ? '#c62828' : (skill.tier === 'medium' ? '#e65100' : (skill.tier === 'low' ? '#1565c0' : '#7b1fa2'));
+                    var typeLabel = skill.type === 'attack' ? '攻' : (skill.type === 'buff' ? '益' : (skill.type === 'debuff' ? '减' : (skill.type === 'heal' ? '疗' : '特')));
+                %>
+                    <span class="tag" style="border:1px solid <%= tierColor %>30; background:<%= skill.innate ? '#fff3e0' : (skill.levelUnlocked ? '#e8f5e9' : '#f5f5f5') %>;" title="<%= skill.desc %>">
+                        <%= skill.innate ? '⭐' : (skill.levelUnlocked ? '📖' : '') %><%= skill.name %>
+                        <small style="color:<%= tierColor %>;">[<%= typeLabel %>]</small>
+                    </span>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <small style="color:#999;">无技能</small>
+        <% } %>
+
+        <!-- 可学习技能 -->
+        <% if (current.availableSkills && current.availableSkills.length > 0) { %>
+            <div style="margin-top:6px; padding:6px; background:#f8f9fa; border-radius:4px;">
+                <small style="color:#1565c0;">消耗技能点学习：</small>
+                <div style="display:flex; flex-wrap:wrap; gap:3px; margin-top:3px;">
+                    <% current.availableSkills.forEach(function(skill) { 
+                        var tierColor = skill.tier === 'high' ? '#c62828' : (skill.tier === 'medium' ? '#e65100' : (skill.tier === 'low' ? '#1565c0' : '#7b1fa2'));
+                    %>
+                        <a href="pet?type=petManager.learnSkill&params=<%= current.id %>,<%= skill.id %>&petIndex=<%= query.petIndex || 0 %>"
+                           class="tag" style="border:1px solid <%= tierColor %>40; background:#fff; text-decoration:none;" title="<%= skill.desc %>">
+                            <%= skill.name %>(<%= skill.skillCost %>点)
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+        <% } %>
+        <small style="color:#888;">技能点: <b style="color:#1565c0;"><%= current.maxSkillPoints ? (current.maxSkillPoints - (current.usedSkillPoints || 0)) : 0 %>/<%= current.maxSkillPoints || 0 %></b> · 每5级领悟1技能</small>
+    </div>
+
+    <!-- 操作 -->
+    <div style="font-size:0.82em; margin-top:6px; padding-top:6px; border-top:1px solid #f0f0f0;">
+        <a href="pet?type=petManager.toggleBind"><%= current.isBound ? '🔓解绑' : '🔒绑定' %></a>
+        <a href="pet?type=petManager.discard&params=<%= current.id %>" style="color:#c62828; margin-left:8px;" onclick="return confirm('确定丢弃<%= current.name %>？')">丢弃</a>
+    </div>
+</div>
+<% } else { %>
+    <p style="color:#999; font-size:0.85em; text-align:center; padding:10px;">请选择一只宠物查看详情</p>
+<% } %>
+
+<!-- 系统说明 -->
+<details style="font-size:0.82em; color:#666; margin:8px 0;">
+    <summary style="color:#888; cursor:pointer;">系统说明</summary>
+    <div style="padding:6px; background:#f8f9fa; border-radius:4px; margin-top:4px;">
+        <div>· 战斗胜利后宠物获得怪物经验（受天赋加成）</div>
+        <div>· ⭐ 先天技能：孵化时随机获得1~2个</div>
+        <div>· 📖 每升5级自动领悟1个新技能（最多<%= current ? (current.maxLearnableSkills || 8) : 8 %>个）</div>
+        <div>· QQ宠物孵化时疗伤技能概率翻倍</div>
+    </div>
+</details>
+
+<div style="text-align:center; margin:8px 0; font-size:0.85em;">
+    <a href="pet-hatch">孵化栏</a> · <a href="pet-skills">技能详情</a>
+</div>

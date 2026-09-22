@@ -1,0 +1,736 @@
+[
+  {
+    "submitLocation": "汉堡居民区",
+    "receiveNpc": "商人米卢",
+    "submitNpc": "佛雷",
+    "taskType": "送物品",
+    "targetName": "药物",
+    "quantity": "1",
+    "name": "sos！",
+    "targetAddress": "汉堡居民区",
+    "receiveLocation": "伦敦商店",
+    "content": "把药物送到汉堡居民区的佛雷。",
+    "index": 60,
+    "receiveDialog": [
+      "商人米卢：佛雷急需药物，你快点送去给他吧。",
+      "你：好的，救人如救火，我马上就去。"
+    ],
+    "submitDialog": [
+      "佛雷：药物送到了吗？",
+      "你：送到了，这是你需要的药物。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    },
+    "level": 15
+  },
+  {
+    "receiveNpc": "佛雷",
+    "submitNpc": "迪福",
+    "taskType": "对话",
+    "name": "去找迪福聊聊",
+    "receiveLocation": "汉堡居民区",
+    "submitLocation": "伦敦警察局",
+    "content": "去找迪福聊聊",
+    "index": 61,
+    "receiveDialog": [
+      "佛雷：接下来你去伦敦警察局找迪福聊聊，他有些事情要处理。",
+      "你：警察局？有什么事吗？"
+    ],
+    "submitDialog": [
+      "迪福：哦，佛雷让你来的？有什么事吗？",
+      "你：他说你有些事情要处理。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "迪福",
+    "submitNpc": "迪福",
+    "taskType": "打怪",
+    "targetName": "双头蛇",
+    "quantity": "5",
+    "name": "毒蛇扰民",
+    "targetAddress": "伦敦断臂山",
+    "receiveLocation": "伦敦警察局",
+    "content": "去北城站外的断臂山东边抓5条双头蛇，回警察局找迪福。",
+    "index": 62,
+    "receiveDialog": [
+      "迪福：最近北城站外的断臂山东边出现了双头蛇，严重扰民。",
+      "你：双头蛇？这听起来很危险，我去处理。"
+    ],
+    "submitDialog": [
+      "迪福：双头蛇都处理完了吗？",
+      "你：处理完了，5条双头蛇已经被我清除。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 23
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "迪福",
+    "submitNpc": "大卫",
+    "taskType": "打怪",
+    "targetName": "偷渡客",
+    "quantity": "8",
+    "name": "伦敦偷渡客",
+    "targetAddress": "伦敦海滩",
+    "receiveLocation": "伦敦警察局",
+    "content": "去东城门外的海滩捉8个偷渡客，回警察局找大卫。",
+    "index": 63,
+    "receiveDialog": [
+      "迪福：东城门外的海滩有偷渡客活动，你去捉8个回来。",
+      "你：偷渡客？这可是违法行为，我这就去处理。"
+    ],
+    "submitDialog": [
+      "大卫：偷渡客都捉到了吗？",
+      "你：捉到了，8个偷渡客一个都没跑掉。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 22
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "大卫",
+    "submitNpc": "大卫",
+    "taskType": "打怪",
+    "targetName": "走私客",
+    "quantity": "8",
+    "name": "伦敦走私客",
+    "targetAddress": "伦敦海滩",
+    "receiveLocation": "伦敦警察局",
+    "content": "去东城门外的海滩捉8个走私客，回警察局找大卫。",
+    "index": 64,
+    "receiveDialog": [
+      "大卫：除了偷渡客，还有走私客在活动，你也一并处理了吧。",
+      "你：走私客？看来问题还挺严重的，交给我吧。"
+    ],
+    "submitDialog": [
+      "大卫：走私客也都处理完了？",
+      "你：处理完了，8个走私客已经被我一网打尽。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 21
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "大卫",
+    "submitNpc": "大卫",
+    "taskType": "打怪",
+    "targetName": "米罗",
+    "quantity": "1",
+    "name": "抓住米罗",
+    "targetAddress": "威尼斯暗礁",
+    "receiveLocation": "伦敦警察局",
+    "content": "去东城门外的暗礁捉住米罗，回警察局找大卫。",
+    "index": 65,
+    "receiveDialog": [
+      "大卫：走私集团的头目米罗藏在东城门外的暗礁，你去把他捉拿归案。",
+      "你：米罗？既然是头目，一定不好对付，但我不会退缩的。"
+    ],
+    "submitDialog": [
+      "大卫：米罗捉到了吗？",
+      "你：捉到了，这个走私头目现在在你手里。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 30
+  },
+  {
+    "submitLocation": "阿姆斯特丹警察局",
+    "receiveNpc": "大卫",
+    "submitNpc": "科库",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "通知阿姆斯特丹警察局",
+    "targetAddress": "阿姆斯特丹警察局",
+    "receiveLocation": "伦敦警察局",
+    "content": "去阿姆斯特丹警察局通报情况",
+    "index": 66,
+    "receiveDialog": [
+      "大卫：接下来你去阿姆斯特丹警察局通报这里的情况，他们可能也需要帮助。",
+      "你：好的，我这就去阿姆斯特丹。"
+    ],
+    "submitDialog": [
+      "科库：哦，伦敦警察局派你来的？有什么情况要通报？",
+      "你：大卫让我来通报一些关于走私集团的情况。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "阿姆斯特丹警察局",
+    "receiveNpc": "科库",
+    "submitNpc": "科库",
+    "taskType": "打怪",
+    "targetName": "毒贩子",
+    "quantity": "8",
+    "name": "清剿大麻种植地",
+    "targetAddress": "阿姆斯特丹秘密庄园",
+    "receiveLocation": "阿姆斯特丹警察局",
+    "content": "",
+    "index": 67,
+    "receiveDialog": [
+      "科库：我们这里也有些问题，北城门外的秘密庄园有大麻种植地，你去清剿一下。",
+      "你：大麻种植地？这违法的事情必须制止。"
+    ],
+    "submitDialog": [
+      "科库：大麻种植地都清剿完了吗？",
+      "你：清剿完了，那些毒贩子都被我处理了。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 24
+  },
+  {
+    "submitLocation": "阿姆斯特丹警察局",
+    "receiveNpc": "科库",
+    "submitNpc": "科库",
+    "taskType": "打怪",
+    "targetName": "挪威海盗",
+    "quantity": "15",
+    "name": "清剿挪威海盗",
+    "targetAddress": "奥斯陆暗礁",
+    "receiveLocation": "阿姆斯特丹警察局",
+    "content": "去奥斯陆东城门外的暗礁清剿15名挪威海盗，回阿姆斯特丹警察局找科库。",
+    "index": 68,
+    "receiveDialog": [
+      "科库：挪威海盗在奥斯陆东城门外的暗礁活动猖獗，你去清剿15名。",
+      "你：挪威海盗？北欧的海盗果然到处都有。"
+    ],
+    "submitDialog": [
+      "科库：挪威海盗都清剿完了吗？",
+      "你：清剿完了，15名挪威海盗已经被我全部解决。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 26
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "科库",
+    "submitNpc": "大卫",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "通知伦敦",
+    "targetAddress": "伦敦警察局",
+    "receiveLocation": "阿姆斯特丹警察局",
+    "content": "去伦敦警察局找大卫",
+    "index": 69,
+    "receiveDialog": [
+      "科库：你回去通知大卫这里的情况，让他知道我们的进展。",
+      "你：好的，我这就回去向他汇报。"
+    ],
+    "submitDialog": [
+      "大卫：科库都告诉你什么了？",
+      "你：他让我向你汇报阿姆斯特丹的情况。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "大卫",
+    "submitNpc": "大卫",
+    "taskType": "打怪",
+    "targetName": "挪威海盗",
+    "quantity": "10",
+    "name": "保卫伦敦",
+    "targetAddress": "伦敦暗礁",
+    "receiveLocation": "伦敦警察局",
+    "content": "去东城门外的暗礁清理10个挪威海盗，回警察局找大卫。",
+    "index": 70,
+    "receiveDialog": [
+      "大卫：挪威海盗也入侵到我们伦敦了，你去东城门外的暗礁清理10个。",
+      "你：什么？海盗入侵到伦敦了？我马上去处理。"
+    ],
+    "submitDialog": [
+      "大卫：挪威海盗都清理完了吗？",
+      "你：清理完了，10个挪威海盗已经被我全部清除。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 26
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "大卫",
+    "submitNpc": "大卫",
+    "taskType": "打怪",
+    "targetName": "约根森",
+    "quantity": "1",
+    "name": "抓住约根森",
+    "targetAddress": "伦敦居民区",
+    "receiveLocation": "伦敦警察局",
+    "content": "去伦敦城内找到约根森，并捉住他。回警察局找大卫。",
+    "index": 71,
+    "receiveDialog": [
+      "大卫：海盗集团的头目约根森潜入了伦敦城内，你去把他捉拿归案。",
+      "你：约根森潜入伦敦了？这可不能掉以轻心，我这就去抓他。"
+    ],
+    "submitDialog": [
+      "大卫：约根森捉到了吗？",
+      "你：捉到了，这个海盗头目现在在你手里。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 33
+  },
+  {
+    "receiveNpc": "大卫",
+    "submitNpc": "茹科",
+    "taskType": "对话",
+    "name": "去找茹科聊聊",
+    "receiveLocation": "伦敦警察局",
+    "submitLocation": "伦敦居民区",
+    "content": "去找茹科聊聊",
+    "index": 72,
+    "receiveDialog": [
+      "大卫：接下来你去伦敦居民区找茹科聊聊，他有些事情需要处理。",
+      "你：茹科？他是什么人？"
+    ],
+    "submitDialog": [
+      "茹科：哦，大卫让你来的？有什么事吗？",
+      "你：他说你有些事情需要处理。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "伦敦居民区",
+    "receiveNpc": "茹科",
+    "submitNpc": "茹科",
+    "taskType": "收集",
+    "targetName": "奶牛",
+    "quantity": "5",
+    "name": "坏牛奶",
+    "targetAddress": "伦敦青草牧场",
+    "receiveLocation": "伦敦居民区",
+    "content": "去北城门外的青草牧场抓5只奶牛回来居民区找茹科。",
+    "index": 73,
+    "receiveDialog": [
+      "茹科：我需要一些新鲜的牛奶，你去北城门外的青草牧场抓5只奶牛回来。",
+      "你：抓奶牛？这听起来有点奇怪，不过我试试看。"
+    ],
+    "submitDialog": [
+      "茹科：奶牛都抓到了吗？",
+      "你：抓到了，这是你要的5只奶牛。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 20
+  },
+  {
+    "submitLocation": "伦敦广场",
+    "receiveNpc": "茹科",
+    "submitNpc": "广场行政官",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "通知行政官",
+    "targetAddress": "伦敦广场",
+    "receiveLocation": "伦敦居民区",
+    "content": "把三聚氰胺的事情告诉伦敦的广场行政官。",
+    "index": 74,
+    "receiveDialog": [
+      "茹科：这些牛奶有问题，你去通知伦敦广场的行政官，让他处理这件事。",
+      "你：牛奶有问题？我马上去通知他。"
+    ],
+    "submitDialog": [
+      "广场行政官：哦，茹科让你来的？有什么事要报告？",
+      "你：他说牛奶有问题，让我来向你报告。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "广场行政官",
+    "submitNpc": "杰克警官",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "通知杰克警官",
+    "targetAddress": "伦敦警察局",
+    "receiveLocation": "伦敦广场",
+    "content": "把坏牛奶的事情通知杰克警官。",
+    "index": 75,
+    "receiveDialog": [
+      "广场行政官：你去警察局通知杰克警官这件事，让他展开调查。",
+      "你：好的，我这就去警察局。"
+    ],
+    "submitDialog": [
+      "杰克警官：行政官让你来的？有什么情况要通报？",
+      "你：他说牛奶有问题，让我来向你报告。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "杰克警官",
+    "submitNpc": "杰",
+    "taskType": "打怪",
+    "targetName": "阿什利",
+    "quantity": "1",
+    "name": "抓住阿什利通知杰克警官",
+    "targetAddress": "伦敦赌场",
+    "receiveLocation": "伦敦警察局",
+    "content": "去赌场白领阿什利，回警察局找杰。",
+    "index": 76,
+    "receiveDialog": [
+      "杰克警官：嫌疑人阿什利在赌场，你去把他抓回来。",
+      "你：阿什利在赌场？我这就去把他抓回来。"
+    ],
+    "submitDialog": [
+      "杰：阿什利抓到了吗？",
+      "你：抓到了，这个嫌疑人现在在你手里。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 22
+  },
+  {
+    "submitLocation": "伦敦警察局",
+    "receiveNpc": "杰",
+    "submitNpc": "杰克",
+    "taskType": "打怪",
+    "targetName": "赌徒",
+    "quantity": "5",
+    "name": "赌博集团",
+    "targetAddress": "伦敦老鹰巷",
+    "receiveLocation": "伦敦警察局",
+    "content": "去老鹰巷抓5名赌徒。",
+    "index": 77,
+    "receiveDialog": [
+      "杰：老鹰巷有个赌博集团，你去抓5名赌徒回来。",
+      "你：赌博集团？这违法的事情必须制止。"
+    ],
+    "submitDialog": [
+      "杰克：赌徒都抓到了吗？",
+      "你：抓到了，5名赌徒一个都没跑掉。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 22
+  },
+  {
+    "submitLocation": "伦敦花园",
+    "receiveNpc": "杰克",
+    "submitNpc": "巴斯雷",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "赌博集团2",
+    "targetAddress": "伦敦花园",
+    "receiveLocation": "伦敦警察局",
+    "content": "去伦敦花园巴斯雷，回警察局找杰克。",
+    "index": 78,
+    "receiveDialog": [
+      "杰克：你去伦敦花园找巴斯雷了解一些情况，然后回来告诉我。",
+      "你：好的，我这就去伦敦花园。"
+    ],
+    "submitDialog": [
+      "巴斯雷：哦，杰克让你来的？有什么事要了解？",
+      "你：他让我来了解一下赌博集团的情况。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    },
+    "level": 26
+  },
+  {
+    "receiveNpc": "巴斯雷",
+    "submitNpc": "温格",
+    "taskType": "对话",
+    "name": "去找温格聊聊",
+    "receiveLocation": "伦敦花园",
+    "submitLocation": "伦敦居民区",
+    "content": "去找温格聊聊",
+    "index": 79,
+    "receiveDialog": [
+      "巴斯雷：接下来你去伦敦居民区找温格聊聊，他可能知道更多情况。",
+      "你：温格？他是什么人？"
+    ],
+    "submitDialog": [
+      "温格：哦，巴斯雷让你来的？有什么事吗？",
+      "你：他说你可能知道一些关于赌博集团的情况。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "伦敦居民区",
+    "receiveNpc": "温格",
+    "submitNpc": "温格",
+    "taskType": "打怪",
+    "targetName": "流浪狗",
+    "quantity": "5",
+    "name": "肥皂试验",
+    "targetAddress": "伦敦垃圾站",
+    "receiveLocation": "伦敦居民区",
+    "content": "去南城门外的垃圾站捉5只流浪狗，回来居民区找温格。",
+    "index": 80,
+    "receiveDialog": [
+      "温格：我正在做肥皂试验，需要一些实验材料，你去南城门外的垃圾站捉5只流浪狗。",
+      "你：捉流浪狗？这和做肥皂有什么关系？"
+    ],
+    "submitDialog": [
+      "温格：流浪狗都捉到了吗？",
+      "你：捉到了，这是你要的5只流浪狗。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 20
+  },
+  {
+    "submitLocation": "伦敦珠宝店",
+    "receiveNpc": "温格",
+    "submitNpc": "玛丽小姐",
+    "taskType": "送物品",
+    "targetName": "肥皂",
+    "quantity": "1",
+    "name": "爱美的玛丽",
+    "targetAddress": "伦敦珠宝店",
+    "receiveLocation": "伦敦居民区",
+    "content": "把肥皂带给珠宝店的玛丽小姐。",
+    "index": 81,
+    "receiveDialog": [
+      "温格：肥皂做好了，你带给珠宝店的玛丽小姐，她一直在等这个。",
+      "你：玛丽小姐？她要肥皂做什么？"
+    ],
+    "submitDialog": [
+      "玛丽小姐：你就是温格派来的？肥皂带来了吗？",
+      "你：带来了，这是温格专门为你制作的肥皂。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "伦敦居民区",
+    "receiveNpc": "玛丽小姐",
+    "submitNpc": "温格",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "肥皂的味道",
+    "targetAddress": "伦敦居民区",
+    "receiveLocation": "伦敦珠宝店",
+    "content": "把玛丽的话带给居民区的温格。",
+    "index": 82,
+    "receiveDialog": [
+      "玛丽小姐：请你把我的反馈带给温格，他应该知道怎么做。",
+      "你：好的，我这就回去告诉他。"
+    ],
+    "submitDialog": [
+      "温格：玛丽小姐说什么了？",
+      "你：她说肥皂很好用，让你继续改进配方。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "伦敦居民区",
+    "receiveNpc": "温格",
+    "submitNpc": "温格",
+    "taskType": "收集",
+    "targetName": "香料",
+    "quantity": "10",
+    "name": "收集香料",
+    "targetAddress": "伦敦商店",
+    "receiveLocation": "伦敦居民区",
+    "content": "去伦敦商店购买10块香料，拿给居民区找温格",
+    "index": 83,
+    "receiveDialog": [
+      "温格：我需要一些香料来改进肥皂的味道，你去伦敦商店买10块回来。",
+      "你：香料？这应该不难买到。"
+    ],
+    "submitDialog": [
+      "温格：香料买到了吗？",
+      "你：买到了，这是你要的10块香料。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "伦敦居民区",
+    "receiveNpc": "温格",
+    "submitNpc": "蔻蔻",
+    "taskType": "打怪",
+    "targetName": "疯野猪",
+    "quantity": "5",
+    "name": "好吃的曲奇饼",
+    "targetAddress": "伦敦葡萄园",
+    "receiveLocation": "伦敦居民区",
+    "content": "去伦敦西城门外的葡萄园杀5只疯野猪",
+    "index": 84,
+    "receiveDialog": [
+      "温格：我需要一些野猪肉来做曲奇饼，你去伦敦西城门外的葡萄园杀5只疯野猪。",
+      "你：曲奇饼用野猪肉？这听起来很特别。"
+    ],
+    "submitDialog": [
+      "蔻蔻：疯野猪都杀完了吗？",
+      "你：杀完了，5只疯野猪已经被我处理了。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 20
+  },
+  {
+    "submitLocation": "伦敦居民区",
+    "receiveNpc": "蔻蔻",
+    "submitNpc": "蔻蔻",
+    "taskType": "收集",
+    "targetName": "蛇胆",
+    "quantity": "10",
+    "name": "歌唱比赛",
+    "targetAddress": "伦敦断臂山",
+    "receiveLocation": "伦敦居民区",
+    "content": "去伦敦北城门外的断臂山收集10个蛇胆，交给居民区的蔻蔻",
+    "index": 85,
+    "receiveDialog": [
+      "蔻蔻：我要参加歌唱比赛，需要一些蛇胆来润嗓子，你去断臂山收集10个。",
+      "你：蛇胆润嗓子？这我还是第一次听说。"
+    ],
+    "submitDialog": [
+      "蔻蔻：蛇胆收集齐了吗？",
+      "你：收集齐了，这是你要的10个蛇胆。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "阿姆斯特丹居民区",
+    "receiveNpc": "蔻蔻",
+    "submitNpc": "马瑞纳丝",
+    "taskType": "送物品",
+    "targetName": "信",
+    "quantity": "1",
+    "name": "一封家书",
+    "targetAddress": "阿姆斯特丹居民区",
+    "receiveLocation": "伦敦居民区",
+    "content": "把信送到阿姆斯特丹居民区的马瑞纳丝",
+    "index": 86,
+    "receiveDialog": [
+      "蔻蔻：我有封家书需要送到阿姆斯特丹居民区的马瑞纳丝，你能帮忙吗？",
+      "你：没问题，包在我身上。"
+    ],
+    "submitDialog": [
+      "马瑞纳丝：你是蔻蔻派来的信使吗？信带来了吗？",
+      "你：是的，这是蔻蔻让我带给你的信。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "伦敦居民区",
+    "receiveNpc": "马瑞纳丝",
+    "submitNpc": "戴维斯",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "母亲的口信",
+    "targetAddress": "伦敦居民区",
+    "receiveLocation": "阿姆斯特丹居民区",
+    "content": "把马瑞纳丝的口信带给伦敦居民区的戴维斯关键任务",
+    "index": 87,
+    "receiveDialog": [
+      "马瑞纳丝：请你把我的口信带给伦敦居民区的戴维斯，这很重要。",
+      "你：好的，我这就回去找他。"
+    ],
+    "submitDialog": [
+      "戴维斯：马瑞纳丝说什么了？",
+      "你：她说一切都好，让你不要担心。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  }
+]

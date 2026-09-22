@@ -1,0 +1,68 @@
+﻿<% var backpack = user.backpack %>
+<% var play = user.getPlay() %>
+<% var type = query.type || 1 %>
+
+<!-- 货币信息 -->
+<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#f8f9fa; border-radius:5px; margin-bottom:8px; font-size:0.85em;">
+    <div>
+        <span style="color:#a07828;">●</span> <%= play.gold %>
+        <span style="color:#bbb; margin:0 4px;">|</span>
+        <span style="color:#999;">●</span> <%= play.showSilver %>
+        <span style="color:#bbb; margin:0 4px;">|</span>
+        <span style="color:#cd7f32;">●</span> <%= play.showCopper %>
+    </div>
+    <small style="color:#888;">⚖ <%= backpack.weight %>/<%= backpack.maxWeight %></small>
+</div>
+
+<!-- 分类标签 -->
+<div style="display:flex; flex-wrap:wrap; gap:3px; margin-bottom:10px;">
+    <% var cats = [
+        {k:'1', l:'装备'}, {k:'3,4', l:'药品'}, {k:'33', l:'任务'},
+        {k:'34', l:'材料'}, {k:'5', l:'宝石'}, {k:'6', l:'宠物'},
+        {k:'37', l:'卡片'}, {k:'38', l:'图纸'}, {k:'39', l:'礼包'}, {k:'2,7,8,10,11,12,13,14', l:'其他'}
+    ]; %>
+    <% cats.forEach(function(c) { %>
+        <a href="?type=<%= c.k %>" class="btn <%= type == c.k ? 'btn-primary' : 'btn-ghost' %>" style="padding:2px 8px; font-size:0.78em;"><%= c.l %></a>
+    <% }); %>
+</div>
+
+<!-- 物品列表 -->
+<%
+var itemsToShow = backpack.items.filter(function (item) {
+    return String(type).split(',').includes(String(item.type));
+});
+%>
+
+<% if (itemsToShow.length === 0) { %>
+    <div class="section" style="text-align:center; color:#999; font-size:0.85em;">此分类暂无物品</div>
+<% } else { %>
+    <div class="section">
+        <% for (var i = 0; i < itemsToShow.length; i++) {
+            var item = itemsToShow[i]; 
+            var bsl = item.info.strengthenLevel || 0; 
+            var bsd = bsl > 0 ? user.getStrengthenDisplay(bsl) : null; 
+        %>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid #f5f5f5;">
+            <div style="flex:1;">
+                <span style="color:#bbb; font-size:0.78em; margin-right:4px;"><%= i + 1 %>.</span>
+                <a href="item-info?params=<%= item.id %>" style="color:<%= bsd ? bsd.color : '#333' %>;"><%= item.name %></a>
+                <% if (bsd) { %><span class="tag" style="background:<%= bsd.color %>15; color:<%= bsd.color %>; font-size:0.78em;">+<%= bsl %></span><% } %>
+                <% if (item.num > 1) { %><small style="color:#888;">×<%= item.num %></small><% } %>
+                <% if (item.status == 2) { %><span class="tag tag-blue" style="font-size:0.78em;">装</span><% } %>
+                <% if (item.locked) { %><small style="color:#ccc;">🔒</small><% } %>
+            </div>
+            <div style="font-size:0.82em; display:flex; gap:4px;">
+                <% if (item.status != 2 && item.type === 1 && item.info && item.info.type) { %>
+                    <a href="equip-item?params=<%= item.info.type %>" class="btn btn-primary" style="padding:1px 6px; font-size:0.82em;">穿戴</a>
+                <% } %>
+                <% if ((item.type === 3 || item.type === 4 || item.type === 5 || item.type === 7) && !(item.info && item.info.cardId)) { %>
+                    <a href="backpack?type=play.useItem&params=<%= item.id %>,<%= i %>" class="btn btn-ghost" style="padding:1px 6px; font-size:0.82em;">使用</a>
+                <% } %>
+                <a href="backpack?type=play.toggleLockItem&params=<%= item.id %>,<%= i %>" style="color:#bbb; font-size:0.85em;">
+                    <%= item.locked ? '🔒' : '🔓' %>
+                </a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+<% } %>

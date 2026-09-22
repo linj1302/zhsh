@@ -1,0 +1,22 @@
+﻿<div>
+    <div style="margin: 10px 0px;">
+        【创建帮会】
+    </div>
+
+    <% if (typeof gangInfo !== 'undefined' && gangInfo && gangInfo.id) { %>
+        <div>您已经是一个帮会的成员，无法创建新帮会。</div>
+        <div style="margin-top: 20px;">
+            <a href="/gang-list">返回帮会列表</a>
+        </div>
+    <% } else { %>
+        <form action="/my-gang?type=createGang" method="post">
+            <div>
+                <label for="gangName">帮会名称:</label>
+                <input type="text" id="gangName" name="gangName" required>
+            </div>
+            <div style="margin-top: 20px;">
+                <input type="submit" value="创建帮会">
+            </div>
+        </form>
+    <% } %>
+</div>

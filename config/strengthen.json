@@ -1,0 +1,17 @@
+{
+  "1":  { "color": "#ff0000", "tag": "红",   "symbol": "",  "cssColor": "red" },
+  "2":  { "color": "#ff8c00", "tag": "橙",   "symbol": "",  "cssColor": "orange" },
+  "3":  { "color": "#ffd700", "tag": "黄",   "symbol": "",  "cssColor": "gold" },
+  "4":  { "color": "#32cd32", "tag": "绿",   "symbol": "",  "cssColor": "limegreen" },
+  "5":  { "color": "#00cccc", "tag": "青",   "symbol": "",  "cssColor": "darkcyan" },
+  "6":  { "color": "#4169e1", "tag": "蓝",   "symbol": "",  "cssColor": "royalblue" },
+  "7":  { "color": "#9b59b6", "tag": "紫",   "symbol": "",  "cssColor": "purple" },
+  "8":  { "color": "#ff69b4", "tag": "粉",   "symbol": "",  "cssColor": "hotpink" },
+  "9":  { "color": "#e040fb", "tag": "幻",   "symbol": "",  "cssColor": "#e040fb" },
+  "10": { "color": "#87ceeb", "tag": "天",   "symbol": "☆", "cssColor": "skyblue" },
+  "11": { "color": "#dc143c", "tag": "弑",   "symbol": "☆", "cssColor": "crimson" },
+  "12": { "color": "#ffd700", "tag": "神",   "symbol": "★", "cssColor": "goldenrod" },
+  "13": { "color": "#c0c0c0", "tag": "灵",   "symbol": "★", "cssColor": "silver" },
+  "14": { "color": "#00ff00", "tag": "真",   "symbol": "★★", "cssColor": "lime" },
+  "15": { "color": "#ff00ff", "tag": "玄",   "symbol": "★★★", "cssColor": "magenta" }
+}

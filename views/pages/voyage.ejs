@@ -1,0 +1,86 @@
+﻿<div>
+    <div>
+        【出航】
+    </div>
+    <% if (tip) { %>
+        <div style="color: red;"><%= tip %></div>
+    <% } %>
+    <% if(typeof type !== 'undefined' && type === 'encounter'){ %>
+        <span><%= name %></span>
+        <a href="trial-map?type=sailing.enterSailFb">进入</a>
+    <% } %>
+    <% var sailingStatus = user.getSailing() %>
+    <% if (sailingStatus && sailingStatus.from) { %>
+        <% if (sailingStatus.showEncounterButton && sailingStatus.encounterLocation) { %>
+            <div>
+                <span>发现神秘岛屿</span>
+                <a href="trial-map?type=sailing.enterEncounter">进入</a>
+            </div>
+        <% } %>
+    <% } %>
+    <div>
+        <% if (sailingStatus && sailingStatus.from) { %>
+            <a href="voyage?type=sailing.sail" id="sail-link">继续航行</a>
+            <% if (sailingStatus.isAutoSailing) { %>
+                <a href="voyage?type=sailing.toggleAutoSailing">关闭自动航行</a>
+            <% } else { %>
+                <a href="voyage?type=sailing.toggleAutoSailing">开启自动航行</a>
+            <% } %>
+            <% if (!sailingStatus.hasReturned) { %>
+                <a href="voyage?type=sailing.returnSailing">返航</a>
+            <% } %>
+            <!-- 添加钓鱼链接 -->
+            <a href="fishing?type=fish.clear">钓鱼</a>
+        <% } else { %>
+            <div style="color: red;">请先在导航页面选择目标城市开始航行</div>
+        <% } %>
+    </div>
+    <!-- 航行信息 -->
+    <div>
+        <div>
+            <% if (sailingStatus && sailingStatus.from) { %>
+                <div>
+                    <%= sailingTips[parseInt(Math.random() * sailingTips.length)] %>
+                </div>
+                <div>航行信息：从 <span><%= sailingStatus.from %></span> 到 <span><%= sailingStatus.to %></span></div>
+                <div>总距离：<span><%= sailingStatus.totalDistance %></span> 海里</div>
+                <div>
+                    剩余距离：(<span><%= sailingStatus.remainingDistance %></span> /
+                    <span><%= sailingStatus.totalDistance %></span> )海里
+                    <span>(-<%= sailingStatus.speed %>海里)</span>
+                </div>
+                <div>使用船只：<span><%= sailingStatus.ship.name %></span> (航速：<span><%= sailingStatus.speed %></span> 海里)
+                </div>
+                <% if (sailingStatus.isAutoSailing) { %>
+                    <div style="color: green;">自动航行已开启</div>
+                <% } %>
+
+                <div>
+                    你可以：<a href="diving?type=sailing.diving">潜水</a> | <a href="fishing?type=fish.clear">钓鱼</a>
+                </div>
+            <% } else { %>
+                <div>当前未在航行中</div>
+            <% } %>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // 自动航行功能
+    document.addEventListener('DOMContentLoaded', function () {
+        <% if (sailingStatus && sailingStatus.isAutoSailing) { %>
+        const sailLink = document.getElementById('sail-link');
+        const interval = setInterval(function () {
+            if (sailLink) {
+                sailLink.click();
+            }
+        }, 1000);
+
+        // 当页面即将卸载时清除定时器
+        window.addEventListener('beforeunload', function () {
+            clearInterval(interval);
+        });
+        <% } %>
+    });
+</script>

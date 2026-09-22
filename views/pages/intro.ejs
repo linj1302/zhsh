@@ -1,0 +1,80 @@
+﻿<style>
+
+    .sentence {
+        display: none;
+    }
+
+    .sentence.active {
+        display: block;
+        animation: fadeIn 1s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+<div class="container">
+
+    <div id="sentence1" class="sentence active">
+        金色的沙滩，蔚蓝的海洋，跳动的海浪，击打着海边的礁石，在这美丽的海边小镇上，世界各地远航的水手和冒险者们坐在小镇的酒吧里。
+        <div class="progress">
+            <a href="#" onclick="showNext(1)">推门进入</a>
+        </div>
+    </div>
+
+    <div id="sentence2" class="sentence">
+        他们畅饮着手中的朗姆酒，分享着在世界各地遇到的种种经历，其中有着关于地中海的希腊神话、妩媚动人的北海女巫、神秘莫测的非洲大陆和繁荣富饶古代中国等等。
+        <div class="progress">
+            <a href="#" onclick="showNext(2)">充满期待</a>
+        </div>
+    </div>
+
+    <div id="sentence3" class="sentence">
+        其中更不乏一场场惊险刺激的战斗，海洋中的海妖、森林里的巨兽、古堡里的吸血鬼、沙漠中的木乃伊都是让不少勇士经历了这生与死的战斗。
+        <div class="progress">
+            <a href="#" onclick="showNext(3)">跃跃欲试</a>
+        </div>
+    </div>
+
+    <div id="sentence4" class="sentence">
+        逐渐听着入迷的我，脑袋里不断的想象着这一幅幅精彩的画面，决心一定要自己亲眼见到这所有的一切。于是，我即刻背上行囊踏上了远航的帆船，决定追逐梦想！
+        <div class="progress">
+            <a href="#" onclick="showNext(4)">为梦起航</a>
+        </div>
+    </div>
+
+    <div id="sentence5" class="sentence">
+        我乘着帆船，航行在蔚蓝的海上，吹拂着清爽的海风，聆听着海鸥的欢鸣，告别了熟悉的小镇，怀着希望与梦想驶向神秘而向往的彼端！
+        <div class="progress">
+            <a href="#" onclick="showNext(5)">进发</a>
+        </div>
+    </div>
+
+    <div id="sentence6" class="sentence">
+        哎哟！正当你脑袋满是幻想中的幸福景象时，一阵强烈的碰撞让你酿跄的跌倒在夹板上。这时一群海盗从旁边的大船上顺着绳索滑下，跳落到你的帆船上并且团团将你围住。
+        <div class="progress">
+            <a href="#" onclick="showNext(6)">海..海盗</a>
+        </div>
+    </div>
+
+    <div id="sentence7" class="sentence">
+        你恐惧的看向这群穿着怪异的海盗。人群中那最彪悍的海盗船长，此时他从人群中缓缓走出来，面带狰狞的对你说了一句：小家伙！你的航海梦想结束了！
+        <div class="progress">
+            <a href="main">不，不要！</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showNext(currentIndex) {
+        // 隐藏当前句子
+        document.getElementById('sentence' + currentIndex).classList.remove('active');
+        // 显示下一句
+        document.getElementById('sentence' + (currentIndex + 1)).classList.add('active');
+    }
+</script>

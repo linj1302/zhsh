@@ -1,0 +1,135 @@
+﻿<div>
+    <%
+    var itemId = query.itemId;
+    var play = user.getPlay();
+    var backpack = user.backpack;
+    var item = backpack.getItemInfo(itemId);
+     
+    if (!item) { %>
+        <div>未找到该装备!</div>
+<% } else {
+        var strengthenLevel = item.info.strengthenLevel || 0;
+        %>
+        
+        <div>
+            <p>【装备强化】</p>
+        </div>
+        
+        <div>
+            <% var sd = strengthenLevel > 0 ? user.getStrengthenDisplay(strengthenLevel) : null; %>
+            <p style="color: <%= sd ? sd.color : 'inherit' %>">当前装备：<%= item.name %> <% if (sd) { %><span style="font-size: 0.85em"><%= sd.symbol %><%= sd.tag %></span>[+<%= strengthenLevel %>]<% } else { %>[+0]<% } %></p>
+            <p>装备等级：<%= item.info.level %>级</p>
+        </div>
+
+        <!-- 强化属性总览 -->
+        <div style="margin-top: 8px; padding: 6px 0;">
+            <p style="color: #21ba45;"><strong>[当前属性]</strong><% if (strengthenLevel) { %> <span style="font-size:0.85em">(含强化+<%= strengthenLevel %>)</span><% } %></p>
+            <p>攻击：<%= (item.info.attack||0) + strengthenLevel %> - 最大攻击：<%= (item.info.maxAttack||(item.info.attack||0)) + strengthenLevel %></p>
+            <p>防御：<%= (item.info.defense||0) + strengthenLevel %></p>
+            <p>敏捷：<%= (item.info.agility||0) + Math.floor(strengthenLevel/2) %></p>
+            <p>士气：<%= (item.info.morale||0) + Math.floor(strengthenLevel/3) %></p>
+            <p>体力：<%= (item.info.health||0) + strengthenLevel*2 %></p>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <p><strong>强化规则：</strong></p>
+            <ul>
+                <li>1-3级强化：消耗铜币</li>
+                <li>4-6级强化：消耗铜币和龙泉水</li>
+                <li>7-15级强化：消耗铜币、龙泉水和正龙泉水</li>
+                <li>6级以上强化可能出现异常属性加成</li>
+            </ul>
+        </div>
+        
+        <% 
+        // 计算强化成功率和消耗
+        var costInfo = user.strengthen.calculateStrengthenCost(strengthenLevel);
+        var successRate = costInfo.successRate;
+        var costCoins = costInfo.costCoins;
+        var costMaterials = costInfo.costMaterials;
+        %>
+        
+        <% if (successRate <= 0) { %>
+        <div style="margin-top: 10px;">
+            <p style="color: red;">该装备已达到最高强化等级！</p>
+        </div>
+        <% } else { %>
+        <div style="margin-top: 10px;">
+            <p><strong>您的货币：</strong></p>
+            <p>
+                金贝：<%= play.gold || 0 %> | 
+                银贝：<%= play.showSilver %> | 
+                铜币：<%= play.showCopper %>
+            </p>
+            <p style="color: #666; font-size: 0.9em;">（总计：<%= play.copper %>铜币 = <%= play.showSilver %>银贝<%= play.showCopper %>铜币）</p>
+        </div>
+        
+        <div style="margin-top: 10px;">
+            <p><strong>本次强化：</strong></p>
+            <p>目标等级：+<%= strengthenLevel + 1 %></p>
+            <p>成功率：<%= successRate %>%</p>
+            <% var costSilver = Math.floor(costCoins / 1000); var costRemainCopper = costCoins % 1000; %>
+            <p>消耗：<%= costCoins %>铜币
+                <% if (costSilver > 0) { %>(<%= costSilver %>银贝<% if (costRemainCopper > 0) { %><%= costRemainCopper %>铜币<% } %>)<% } %>
+            </p>
+            
+            <% if (costMaterials.length > 0) { %>
+            <p>消耗材料：
+                <% costMaterials.forEach(function(material, index) { %>
+                    <%= material.name %>*<%= material.count %><%= index < costMaterials.length - 1 ? '，' : '' %>
+                <% }); %>
+            </p>
+            <% } %>
+        </div>
+        
+        <div style="margin-top: 10px;">
+            <% 
+            // 检查玩家是否有足够资源
+            var canStrengthen = true;
+            var errorMsg = "";
+            var paymentNote = "";
+            
+            var totalCopper = play.copper || 0;
+            if (totalCopper < costCoins) {
+                // 检查金贝是否可以补足
+                var copperShortage = costCoins - totalCopper;
+                var goldNeeded = Math.ceil(copperShortage / 1000);
+                if (play.gold && play.gold >= goldNeeded) {
+                    canStrengthen = true;
+                    paymentNote = "（铜币不足，将自动兑换" + goldNeeded + "金贝 = " + (goldNeeded * 1000) + "铜币补足）";
+                } else {
+                    canStrengthen = false;
+                    var totalSilver = Math.floor(totalCopper / 1000);
+                    var totalRemain = totalCopper % 1000;
+                    errorMsg = "货币不足！需要" + costCoins + "铜币(" + costSilver + "银贝" + (costRemainCopper > 0 ? costRemainCopper + "铜币" : "") + ")，当前只有" + totalSilver + "银贝" + totalRemain + "铜币" + (play.gold && play.gold > 0 ? " + " + play.gold + "金贝" : "");
+                }
+            } else if (play.showCopper < costCoins && play.showSilver > 0) {
+                // 铜币不够但银贝可以补足
+                paymentNote = "（将自动使用银贝支付：" + costSilver + "银贝" + (costRemainCopper > 0 ? " + " + costRemainCopper + "铜币" : "") + "）";
+            }
+            
+            if (canStrengthen) {
+                costMaterials.forEach(function(material) {
+                    if (!backpack.hasItem(material.name, material.count)) {
+                        canStrengthen = false;
+                        errorMsg = "材料不足：" + material.name;
+                    }
+                });
+            }
+            %>
+            
+            <% if (canStrengthen) { %>
+            <form action="do-strengthen" method="get">
+                <input type="hidden" name="itemId" value="<%= itemId %>">
+                <button type="submit">强化装备</button>
+            </form>
+            <% if (paymentNote) { %>
+            <p style="color: #888; font-size: 0.9em;"><%= paymentNote %></p>
+            <% } %>
+            <% } else { %>
+            <button disabled>无法强化(<%= errorMsg %>)</button>
+            <% } %>
+        </div>
+        <% } %>
+<% } %>
+</div>

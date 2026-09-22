@@ -1,0 +1,81 @@
+﻿<div>
+    <div style="margin: 10px 0px;">
+        【帮会捐献】
+    </div>
+
+    <% if (typeof gangInfo !== 'undefined' && gangInfo && gangInfo.id) { %>
+        <!-- 帮会基本信息 -->
+        <div>
+            帮会名称: <span><%= gangInfo.name %></span>
+        </div>
+        <div>
+            帮会等级: <span><%= gangInfo.level %></span>
+        </div>
+        <div>
+            帮会资金: <span><%= gangInfo.fund %> / <%= gangInfo.level * 20000 %></span>
+        </div>
+        <div>
+            我的贡献值: <span><%= gangInfo.contribution %></span>
+        </div>
+
+        <!-- 捐献选项 -->
+        <div>
+            捐献选项
+        </div>
+
+        <div>
+            <div>
+                <div>
+                    <div>捐献银贝</div>
+                    <div>
+                        <div>消耗: 10银贝</div>
+                        <div>获得贡献: 10</div>
+                        <div>剩余次数: 10/10</div>
+                    </div>
+                    <div>
+                        <a href="/gang-donation?type=donateToGang&params=silver,10,10">捐 献</a>
+                    </div>
+                </div>
+                <div>
+                    <div>捐献金贝</div>
+                    <div>
+                        <div>消耗: 1金贝</div>
+                        <div>获得贡献: 100</div>
+                        <div>剩余次数: 10/10</div>
+                    </div>
+                    <div>
+                        <a href="/gang-donation?type=donateToGang&params=gold,1,100">捐 献</a>
+                    </div>
+                </div>
+                <div>
+                    <div>捐献帮会令</div>
+                    <div>
+                        <div>消耗: 1帮会令</div>
+                        <div>获得贡献: 100</div>
+                        <div>剩余数量: 0</div>
+                    </div>
+                    <div>
+                        <a style="color: #999; cursor: not-allowed;">捐 献</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 捐献记录 -->
+        <div>
+            捐献记录
+        </div>
+
+        <div>
+            <% if (typeof donationRecords !== 'undefined' && donationRecords && donationRecords.length > 0) { %>
+                <% donationRecords.forEach(function(record) { %>
+                    <div><%= record.username %>捐献了<%= record.amount %><%= record.donation_type === 'silver' ? '银贝' : record.donation_type === 'gold' ? '金贝' : '帮会令' %></div>
+                <% }); %>
+            <% } else { %>
+                <div>暂无捐献记录</div>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div>您还没有加入任何帮会</div>
+    <% } %>
+</div>

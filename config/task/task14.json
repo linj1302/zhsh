@@ -1,0 +1,264 @@
+[
+  {
+    "submitLocation": "长安码头",
+    "receiveNpc": "垂钓老人",
+    "submitNpc": "小和尚",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "杭州灵隐寺",
+    "name": "美味任务1",
+    "receiveLocation": "长安码头",
+    "content": "去杭州灵隐寺找小和尚聊聊",
+    "index": 170,
+    "level": 20,
+    "receiveDialog": [
+      "垂钓老人：我这里有个任务，需要你去杭州灵隐寺找小和尚聊聊。",
+      "你：好的，钓鱼的事情就交给我吧！"
+    ],
+    "submitDialog": [
+      "小和尚：你是垂钓老人介绍来的吧？有什么事吗？",
+      "你：是的，他让我来问问关于钓鱼的事情。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 1,
+      "铜贝": 3000
+    }
+  },
+  {
+    "submitLocation": "杭州灵隐寺",
+    "receiveNpc": "小和尚",
+    "submitNpc": "小和尚",
+    "taskType": "打怪",
+    "targetName": "水怪",
+    "quantity": "8个",
+    "targetAddress": "杭州西湖",
+    "name": "美味任务2（52级）",
+    "receiveLocation": "杭州灵隐寺",
+    "content": "去灵隐寺旁边的西湖消灭水怪8个，然后回灵隐寺找小和尚",
+    "index": 171,
+    "receiveDialog": [
+      "小和尚：最近西湖里出现了水怪，你去消灭8个吧。",
+      "你：水怪？没问题，包在我身上！"
+    ],
+    "submitDialog": [
+      "小和尚：水怪都消灭了吗？",
+      "你：消灭了，8个水怪一个不留！"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 3,
+      "铜贝": 2300,
+      "清水": 1
+    },
+    "level": 52
+  },
+  {
+    "submitLocation": "杭州灵隐寺",
+    "receiveNpc": "小和尚",
+    "submitNpc": "垂钓老人",
+    "taskType": "送物品",
+    "targetName": "清水",
+    "quantity": "1",
+    "targetAddress": "长安码头",
+    "name": "美味任务3",
+    "receiveLocation": "杭州灵隐寺",
+    "content": "将清水交给长安码头的垂钓老人",
+    "index": 172,
+    "receiveDialog": [
+      "小和尚：这是清水，你把它交给长安码头的垂钓老人吧。",
+      "你：好的，我这就送去。"
+    ],
+    "submitDialog": [
+      "垂钓老人：清水带来了吗？",
+      "你：带来了，这是小和尚给的清水。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 1,
+      "铜贝": 2200
+    }
+  },
+  {
+    "submitLocation": "长安码头",
+    "receiveNpc": "垂钓老人",
+    "submitNpc": "卖生姜的商贩",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "京都市场",
+    "name": "美味任务4",
+    "receiveLocation": "长安码头",
+    "content": "京都市场有个卖生姜的商贩你去买三块生姜。",
+    "index": 173,
+    "receiveDialog": [
+      "垂钓老人：你去京都市场找卖生姜的商贩买三块生姜回来。",
+      "你：买生姜？这任务有点接地气啊，我去去就回。"
+    ],
+    "submitDialog": [
+      "卖生姜的商贩：你要的生姜我准备好了。",
+      "你：太好了，这下垂钓老人应该满意了。"
+    ],
+    "prize": {
+      "经验": 1550,
+      "声望": 2,
+      "铜贝": 2500
+    }
+  },
+  {
+    "submitLocation": "京都市场",
+    "receiveNpc": "卖生姜的商贩",
+    "submitNpc": "王管家",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "京都王家大宅",
+    "name": "美味任务5",
+    "receiveLocation": "京都市场",
+    "content": "找京都王家大宅的王管家聊聊。",
+    "index": 174,
+    "receiveDialog": [
+      "卖生姜的商贩：你去找京都王家大宅的王管家聊聊。",
+      "你：好的，我这就去王家大宅。"
+    ],
+    "submitDialog": [
+      "王管家：你是卖生姜的商贩介绍来的？有什么事？",
+      "你：是的，他说让我来找您聊聊。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "京都王家大宅",
+    "receiveNpc": "王管家",
+    "submitNpc": "王管家",
+    "taskType": "收集",
+    "targetName": "野猪火腿",
+    "quantity": "5个",
+    "targetAddress": "京都森林",
+    "name": "美味任务6",
+    "receiveLocation": "京都王家大宅",
+    "content": "去北城门外的森林猎杀几头野猪将野猪腿肉交给王家大宅的管家",
+    "index": 175,
+    "receiveDialog": [
+      "王管家：我需要5个野猪火腿，你去北城门外的森林猎杀野猪获取。",
+      "你：野猪火腿？这任务越来越有味道了，我去准备。"
+    ],
+    "submitDialog": [
+      "王管家：野猪火腿带来了吗？",
+      "你：带来了，这是5个新鲜的野猪火腿。"
+    ],
+    "prize": {
+      "经验": 22000,
+      "声望": 5,
+      "生姜": 3
+    }
+  },
+  {
+    "submitLocation": "京都王家大宅",
+    "receiveNpc": "王管家",
+    "submitNpc": "垂钓老人",
+    "taskType": "送物品",
+    "targetName": "生姜",
+    "quantity": "3",
+    "targetAddress": "长安码头",
+    "name": "美味任务7",
+    "receiveLocation": "京都王家大宅",
+    "content": "将获得的生姜交给长安码头的垂钓老人",
+    "index": 176,
+    "receiveDialog": [
+      "王管家：这是3块生姜，你带给长安码头的垂钓老人吧。",
+      "你：好的，我这就送去。"
+    ],
+    "submitDialog": [
+      "垂钓老人：生姜带来了吗？",
+      "你：带来了，这是王管家给的生姜。"
+    ],
+    "prize": {
+      "经验": 18888,
+      "声望": 1
+    }
+  },
+  {
+    "submitLocation": "长安码头",
+    "receiveNpc": "垂钓老人",
+    "submitNpc": "小丫",
+    "taskType": "对话",
+    "quantity": "",
+    "targetAddress": "泉州渔村",
+    "name": "美味任务8",
+    "receiveLocation": "长安码头",
+    "content": "去泉州的渔村找小丫弄点大蒜回来",
+    "index": 177,
+    "receiveDialog": [
+      "垂钓老人：你去泉州的渔村找小丫弄点大蒜回来。",
+      "你：钓鱼需要大蒜？这搭配有点意思，我去看看。"
+    ],
+    "submitDialog": [
+      "小丫：你是垂钓老人介绍来的？要大蒜是吧？",
+      "你：是的，他说让我来找你要点大蒜。"
+    ],
+    "prize": {
+      "经验": 13000,
+      "声望": 1,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "泉州渔村",
+    "receiveNpc": "小丫",
+    "submitNpc": "小丫",
+    "taskType": "打怪",
+    "targetName": "老鹰",
+    "quantity": "",
+    "targetAddress": "泉州白云山",
+    "name": "美味任务9",
+    "receiveLocation": "泉州渔村",
+    "content": "去泉州的白云山上（西城门往西）杀死老鹰替小丫夺回小狗。",
+    "index": 178,
+    "receiveDialog": [
+      "小丫：我的小狗被老鹰叼走了，你去白云山上把小狗救回来吧。",
+      "你：老鹰抓小狗？这剧情有点熟悉啊，交给我吧！"
+    ],
+    "submitDialog": [
+      "小丫：小狗救回来了吗？",
+      "你：救回来了，那只老鹰再也不能作恶了。"
+    ],
+    "prize": {
+      "经验": 17500,
+      "声望": 2,
+      "铜贝": 2210,
+      "香葱": 4
+    }
+  },
+  {
+    "submitLocation": "长安码头",
+    "receiveNpc": "小丫",
+    "submitNpc": "垂钓老人",
+    "taskType": "送物品",
+    "targetName": "香葱",
+    "quantity": "4",
+    "targetAddress": "长安码头",
+    "name": "美味任务10",
+    "receiveLocation": "泉州渔村",
+    "content": "将香葱带长安码头交给垂钓老人做鱼汤。",
+    "index": 179,
+    "receiveDialog": [
+      "小丫：这是4根香葱，你带给垂钓老人做鱼汤吧。",
+      "你：好的，我这就送去。"
+    ],
+    "submitDialog": [
+      "垂钓老人：香葱带来了吗？",
+      "你：带来了，这是小丫给的香葱，用来做鱼汤的。"
+    ],
+    "prize": {
+      "经验": 16280,
+      "声望": 20,
+      "铜贝": 3000
+    }
+  }
+]

@@ -1,0 +1,87 @@
+﻿<div>
+    <!-- 消息提示 -->
+
+    <% var npc = query.npc; var info = trial.find(v => v.receiveNpc === npc) %>
+    <% var isTrial = info != null %>
+    <!-- NPC 基本信息 -->
+    <div>
+        <div>
+            <% if (isTrial && info.receiveDialog && info.receiveDialog.length > 0) { %>
+                <span><%= info.receiveDialog[0] %></span>
+            <% } %>
+        </div>
+
+        <% if (isTrial) { %>
+            <!-- 副本信息 -->
+            <div>
+                <div>
+                    副本名称:【<span><%= info.name %></span>】
+                </div>
+                <div>
+                    副本时间:<span><%= info.timeLimit %></span>
+                </div>
+                <div>
+                    副本人数:<span><%= info.playerRequirement %></span>
+                </div>
+                <div>
+                    副本描述:<span><%= info.description %></span>
+                </div>
+                <div>
+                    等级要求:<span><%= info.levelRequirement %></span>
+                </div>
+            </div>
+
+            <!-- 副本目标 -->
+            <div>
+                <div><strong>副本目标:</strong></div>
+                <% if (info.target.monsters && info.target.monsters.length > 0) { %>
+                    <% info.target.monsters.forEach(monster => { %>
+                        <div>
+                            击杀 <%= monster.name %>: <span>(0/<%= monster.quantity %>)</span>
+                        </div>
+                    <% }) %>
+                <% } %>
+
+                <% if (info.target.items && info.target.items.length > 0) { %>
+                    <% info.target.items.forEach(item => { %>
+                        <div>
+                            收集 <%= item.name %>: <span>(0/<%= item.quantity %>)</span>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+
+            <!-- 副本奖励 -->
+            <div>
+                <div><strong>副本奖励:</strong></div>
+                <% if (info.prize) { %>
+                    <% Object.keys(info.prize).forEach(key => { %>
+                        <div>
+                            <%= key %>: <span><%= info.prize[key] %></span>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+
+            <!-- 世界BOSS信息 -->
+            <% if (info.boss) { %>
+                <div>
+                    <div><strong>世界BOSS:</strong></div>
+                    <div><%= info.boss.name %>: <%= info.boss.quantity %> 只</div>
+                </div>
+            <% } %>
+
+        <% } %>
+    </div>
+
+    <div>
+        <div>
+            <a href="/team">我的队伍</a>
+        </div>
+        <div>
+            <% if (isTrial) { %>
+                <a href="trial-map?type=trial.enterTrial&params=<%= info.name %>">进入副本</a>
+            <% } %>
+        </div>
+    </div>
+</div>

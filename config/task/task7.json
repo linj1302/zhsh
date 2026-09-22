@@ -1,0 +1,81 @@
+[
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "威尼斯公主",
+    "submitNpc": "露丝",
+    "taskType": "送物品",
+    "targetName": "发卡",
+    "quantity": "1",
+    "name": "露丝的发卡",
+    "targetAddress": "",
+    "receiveLocation": "威尼斯珠宝店",
+    "content": "拿到露丝的发卡，去威尼斯酒馆找露丝。",
+    "index": 41,
+    "receiveDialog": [
+      "威尼斯公主：露丝的发卡在珠宝店，你去拿回来给她送去吧。",
+      "你：没问题，这对我来说是小菜一碟。"
+    ],
+    "submitDialog": [
+      "露丝：你拿到我的发卡了吗？",
+      "你：当然，公主让我专门送来给你。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    },
+    "level": 8
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "露丝",
+    "submitNpc": "露丝",
+    "taskType": "收集",
+    "targetName": "兔毛",
+    "quantity": "6",
+    "name": "兔毛发卡",
+    "targetAddress": "威尼斯草原",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去南城门外的草原收集6根兔毛，回酒馆交给露丝。",
+    "index": 42,
+    "receiveDialog": [
+      "露丝：我想自己做一个兔毛发卡，你能帮我收集一些兔毛吗？",
+      "你：兔毛？这听起来挺简单的，我去去就回。"
+    ],
+    "submitDialog": [
+      "露丝：兔毛收集齐了吗？",
+      "你：这是你要的6根兔毛，应该足够做发卡了。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    }
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "露丝",
+    "submitNpc": "露丝",
+    "taskType": "收集",
+    "targetName": "丝巾",
+    "quantity": "1",
+    "name": "露丝的朋友",
+    "targetAddress": "威尼斯商店",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去商店买条丝巾交给酒馆的露丝。",
+    "index": 43,
+    "receiveDialog": [
+      "露丝：我还需要一条丝巾来装饰我的发卡，你能去商店帮我买一条吗？",
+      "你：当然可以，你想要什么样的丝巾？"
+    ],
+    "submitDialog": [
+      "露丝：丝巾买到了吗？",
+      "你：买到了，这是一条非常漂亮的丝巾。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    }
+  }
+]

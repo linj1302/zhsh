@@ -1,0 +1,54 @@
+﻿<% var play = user.getPlay() %>
+<% var shopItems = user.npc.getShopItems(query.shopType) %>
+
+<!-- 货币信息 -->
+<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#f8f9fa; border-radius:5px; margin-bottom:8px; font-size:0.85em;">
+    <div>
+        <span style="color:#a07828;">●</span> <%= play.gold %>
+        <span style="color:#bbb; margin:0 4px;">|</span>
+        <span style="color:#999;">●</span> <%= play.showSilver %>
+        <span style="color:#bbb; margin:0 4px;">|</span>
+        <span style="color:#cd7f32;">●</span> <%= play.showCopper %>
+    </div>
+    <a href="exchange?changeType=1" style="font-size:0.82em;">兑换</a>
+</div>
+
+<!-- 商品列表 -->
+<div class="section">
+    <% for (var i = 0; i < shopItems.length; i++) {
+        var shopItem = shopItems[i];
+        var price = shopItem.price;
+        var priceType = shopItem.priceType || "copper";
+        var showPrice = "";
+
+        if (priceType === "gold") {
+            showPrice = price + "金贝";
+        } else if (priceType === "silver") {
+            showPrice = price + "银贝";
+        } else {
+            showPrice = price + "铜币";
+            if (price >= 1000) {
+                var silver = Math.floor(price / 1000);
+                var copper = price % 1000;
+                if (copper > 0) {
+                    showPrice = silver + "银" + copper + "铜";
+                } else {
+                    showPrice = silver + "银";
+                }
+            }
+        }
+    %>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid #f5f5f5;">
+        <div style="flex:1;">
+            <span style="color:#bbb; font-size:0.78em; margin-right:4px;"><%= i + 1 %>.</span>
+            <a href="shop-item?shopType=<%= query.shopType %>&i=<%= i %>"><%= shopItem.name %></a>
+            <small style="color:#888;"><%= shopItem.level || 1 %>级</small>
+        </div>
+        <div style="display:flex; align-items:center; gap:6px;">
+            <small style="color:#666;"><%= showPrice %></small>
+            <a href="shop?type=npc.buy&params=<%= query.shopType + ',' + i %>&shopType=<%= query.shopType %>" 
+               class="btn btn-primary" style="padding:1px 8px; font-size:0.78em;">购买</a>
+        </div>
+    </div>
+    <% } %>
+</div>

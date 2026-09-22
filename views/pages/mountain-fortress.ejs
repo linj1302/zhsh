@@ -1,0 +1,143 @@
+<div class="wap_class">
+    <h2>🏔️ 山寨</h2>
+
+    <% if (typeof tip !== 'undefined' && tip) { %>
+    <div style="color: green; font-weight: bold; margin-bottom: 10px;"><%= tip %></div>
+    <% } %>
+
+    <% var fortressStatus = user.mountainFortress?.getStatus() || {} %>
+    <% var play = user.getPlay() %>
+    <% var currentLevel = play.level || 0 %>
+
+    <!-- ========== 农场区域 ========== -->
+    <div class="section">
+        <h3>🌾 农场</h3>
+        <p>三块田地，种植作物获取铜币和经验。7天成熟，成熟后请及时收获以免枯萎。</p>
+
+        <table border="1" cellpadding="8">
+            <tr>
+                <% var plots = fortressStatus.farmPlots || [] %>
+                <% for (var i = 0; i < 3; i++) { %>
+                    <%
+                        var plot = plots[i] || { status: 'empty', icon: '🟫', label: '空地' };
+                        var cropConfigs = fortressStatus.cropConfigs || [];
+                    %>
+                    <td style="text-align: center; width: 33%; vertical-align: top;">
+                        <p style="font-size: 40px;"><%= plot.icon %></p>
+                        <p><strong>地块<%= i + 1 %></strong></p>
+                        <p><%= plot.label %></p>
+
+                        <% if (plot.status === 'empty') { %>
+                            <p style="font-size: 12px;">选择作物种植：</p>
+                            <% cropConfigs.forEach(function(crop) { %>
+                                <a href="/mountain-fortress?type=mountainFortress.plantCrop&params=<%= i %>,<%= crop.id %>"
+                                   style="display: block; font-size: 13px;">
+                                   <%= crop.icon %> <%= crop.name %>（种子<%= Math.floor(crop.harvestCopper * 0.2) %>铜）
+                                </a>
+                            <% }); %>
+
+                        <% } else if (plot.status === 'growing') { %>
+                            <p><%= plot.cropName %></p>
+                            <p style="font-size: 12px; color: orange;">
+                                剩余：<%= plot.remainingHours %>小时<%= plot.remainingMinutes %>分钟
+                            </p>
+                            <a href="/mountain-fortress?type=mountainFortress.clearPlot&params=<%= i %>"
+                               style="color: gray; font-size: 12px;">
+                                [清除]
+                            </a>
+
+                        <% } else if (plot.status === 'mature') { %>
+                            <p style="color: green;"><%= plot.cropName %> 已成熟！</p>
+                            <a href="/mountain-fortress?type=mountainFortress.harvestCrop&params=<%= i %>"
+                               style="font-weight: bold; color: green;">
+                                收获
+                            </a>
+
+                        <% } else if (plot.status === 'wilted') { %>
+                            <p style="color: red;"><%= plot.cropName %></p>
+                            <p style="color: red;">已枯萎</p>
+                            <a href="/mountain-fortress?type=mountainFortress.clearPlot&params=<%= i %>">
+                                清理
+                            </a>
+                        <% } %>
+                    </td>
+                <% } %>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ========== 练功房区域 ========== -->
+    <div class="section">
+        <h3>🥋 练功房</h3>
+
+        <% var trainingRoom = fortressStatus.trainingRoom || {} %>
+
+        <% if (!trainingRoom.opened) { %>
+            <p>练功房尚未开通。</p>
+            <a href="/mountain-fortress?type=mountainFortress.openTrainingRoom">开通练功房</a>
+            <p style="font-size: 12px; color: gray;">开通即赠送练功娃【野球草人】</p>
+
+        <% } else { %>
+            <p>练功房已开通 ✅</p>
+            <p>累计练功：<%= trainingRoom.totalTrainingMinutes || 0 %>分钟</p>
+
+            <!-- 练功娃信息 -->
+            <% var dolls = trainingRoom.dolls || [] %>
+            <h4>练功娃：</h4>
+            <% if (dolls.length > 0) { %>
+                <% dolls.forEach(function(doll) { %>
+                    <p>
+                        🧸 <strong><%= doll.name %></strong>
+                        - 每分钟经验：<%= doll.expPerMinute %>
+                    </p>
+                <% }); %>
+            <% } else { %>
+                <p style="color: gray;">暂无练功娃</p>
+            <% } %>
+
+            <!-- 练功状态 -->
+            <% if (currentLevel >= 200) { %>
+                <p style="color: orange;">⚠️ 已达200级，练功房不再增加经验</p>
+            <% } else { %>
+
+                <% if (trainingRoom.isTraining) { %>
+                    <% var progress = trainingRoom.trainingProgress || {} %>
+                    <p style="color: green;">
+                        正在练功中…
+                        <% if (progress.location === 'friend') { %>
+                            （在好友 <%= progress.friendName || '未知' %> 的练功房）
+                        <% } %>
+                        已练功：<%= progress.elapsedMinutes || 0 %>分钟
+                    </p>
+                    <a href="/mountain-fortress?type=mountainFortress.stopTraining">停止练功（结算经验）</a>
+
+                <% } else { %>
+                    <p>当前不在练功状态</p>
+                    <a href="/mountain-fortress?type=mountainFortress.startOwnTraining">在自己的练功房练功</a>
+                <% } %>
+            <% } %>
+
+            <!-- 好友练功房 -->
+            <% if (currentLevel < 200) { %>
+                <h4>好友练功房：</h4>
+                <% var friends = fortressStatus.friends || [] %>
+                <% if (friends.length > 0) { %>
+                    <p style="font-size: 12px; color: blue;">💡 在好友练功房打坐可获得 <%= Math.floor((trainingRoom.friendExpBonus - 1) * 100) %>% 经验加成</p>
+                    <ul>
+                    <% friends.forEach(function(friend) { %>
+                        <li>
+                            <%= friend.nickname %>
+                            <a href="/mountain-fortress?type=mountainFortress.startFriendTraining&params=<%= friend.id %>">
+                                [进入练功]
+                            </a>
+                        </li>
+                    <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p style="color: gray;">暂无好友可访问练功房</p>
+                <% } %>
+            <% } %>
+        <% } %>
+    </div>
+
+</div>

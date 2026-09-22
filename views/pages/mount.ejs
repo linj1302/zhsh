@@ -1,0 +1,60 @@
+﻿<h2 class="mount-header">坐骑系统</h2>
+
+<% var mountStatus = user.mount?.getStatus() || {} %>
+<% var play = user.getPlay() %>
+<% var level = play.level || 0 %>
+
+<div class="section">
+    <h3>当前坐骑</h3>
+    <% if (mountStatus.currentMount) { %>
+        <div style="font-size:0.9em;">
+            <p>骑乘：<strong style="color:#5d4037;"><%= mountStatus.currentMount.name %></strong></p>
+            <div style="margin:6px 0;">
+                <div class="stat-row"><span class="stat-label">攻击</span><span class="stat-value" style="color:#e74c3c;">+<%= mountStatus.bonus.attack || 0 %></span></div>
+                <div class="stat-row"><span class="stat-label">防御</span><span class="stat-value" style="color:#3498db;">+<%= mountStatus.bonus.defense || 0 %></span></div>
+                <div class="stat-row"><span class="stat-label">敏捷</span><span class="stat-value" style="color:#2ecc71;">+<%= mountStatus.bonus.agility || 0 %></span></div>
+                <div class="stat-row"><span class="stat-label">体力</span><span class="stat-value" style="color:#e91e63;">+<%= mountStatus.bonus.health || 0 %></span></div>
+            </div>
+            <a href="/mount?action=dismount" class="btn btn-ghost">下坐骑</a>
+        </div>
+    <% } else { %>
+        <p style="color:#999; font-size:0.9em;">当前未骑乘任何坐骑</p>
+    <% } %>
+</div>
+
+<div class="section">
+    <h3>可用坐骑</h3>
+    <table>
+        <tr>
+            <th>坐骑</th>
+            <th>等级</th>
+            <th>加成</th>
+            <th></th>
+        </tr>
+        <% 
+        var mounts = [
+            {name: '暴风狮鹫', level: 80, bonus: '攻防敏体 +100'},
+            {name: '炽焰战蝎', level: 160, bonus: '攻防敏体 +200'},
+            {name: '仙境古兽', level: 200, bonus: '攻防敏体 +300'},
+            {name: '暗月战狼', level: 210, bonus: '攻防敏体 +5%'},
+            {name: '虚空幻影', level: 210, bonus: '攻防敏体 +45%'},
+            {name: '魔法飞毯', level: 210, bonus: '攻防敏体 +55%'},
+            {name: '机甲蝰蛇', level: 210, bonus: '攻防敏体 +65%'}
+        ];
+        mounts.forEach(function(mount) { 
+        %>
+            <tr>
+                <td style="font-weight:600;"><%= mount.name %></td>
+                <td><small><%= mount.level %>级</small></td>
+                <td><small><%= mount.bonus %></small></td>
+                <td>
+                    <% if (level >= mount.level) { %>
+                        <a href="/mount?action=ride&mount=<%= mount.name %>" class="btn btn-primary" style="padding:2px 8px; font-size:0.82em;">骑乘</a>
+                    <% } else { %>
+                        <small style="color:#bbb;">需<%= mount.level %>级</small>
+                    <% } %>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+</div>

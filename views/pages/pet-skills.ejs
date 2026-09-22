@@ -1,0 +1,126 @@
+<div class="wap_class">
+    <h2>📖 宠物技能领悟</h2>
+
+    <% if (typeof tip !== 'undefined' && tip) { %>
+    <div style="color: green; font-weight: bold; margin-bottom: 10px; padding: 6px; background: #e8f5e9; border-radius: 6px;"><%= tip %></div>
+    <% } %>
+
+    <%
+    var pets = user.petManager?.getPets() || [];
+    var petIndex = (typeof query !== 'undefined' && query.petIndex) ? parseInt(query.petIndex) : 0;
+    if (isNaN(petIndex) || petIndex < 0 || petIndex >= pets.length) petIndex = 0;
+    var selectedPet = pets.length > 0 ? user.petManager?.getPetDetail(petIndex) : null;
+    %>
+
+    <!-- 宠物选择 -->
+    <% if (pets.length > 0) { %>
+    <div style="display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;">
+        <% pets.forEach(function(p, i) { %>
+            <a href="/pet-skills?petIndex=<%= i %>" style="padding: 4px 10px; border-radius: 4px; text-decoration: none; font-size: 13px;
+               <%= i === petIndex ? 'background: #1976d2; color: white;' : 'background: #e0e0e0; color: #333;' %>">
+                <%= p.name || '宠物' %><%= p.petType ? '(' + (user.petManager?.getPetTypeInfo?.(p.petType)?.category || '') + ')' : '' %>
+            </a>
+        <% }); %>
+    </div>
+    <% } %>
+
+    <% if (!selectedPet) { %>
+        <div class="section" style="text-align: center; color: #999; padding: 20px;">
+            <p>还没有宠物，先去孵化一只吧！</p>
+            <a href="/pet-hatch">前往孵化 →</a>
+        </div>
+    <% } else { %>
+        <%
+        var level = selectedPet.level || 1;
+        var nextUnlockLevel = Math.ceil(level / 5) * 5;
+        if (nextUnlockLevel <= level) nextUnlockLevel = level + 5;
+        var prevUnlockLevel = nextUnlockLevel - 5;
+        var progressToNext = nextUnlockLevel > prevUnlockLevel ? Math.floor((level - prevUnlockLevel) / (nextUnlockLevel - prevUnlockLevel) * 100) : 0;
+        var maxSkills = selectedPet.maxLearnableSkills || 8;
+        var innateSkills = selectedPet.innateSkills || [];
+        var learnedSkills = selectedPet.skills || [];
+        var totalSkills = innateSkills.length + learnedSkills.length;
+        %>
+
+        <!-- 宠物信息 -->
+        <div class="section" style="border: 2px solid #ff9800; border-radius: 10px; background: linear-gradient(135deg, #fff8e1, #fff3e0); padding: 10px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                    <strong style="font-size: 1.2em;"><%= selectedPet.name %></strong>
+                    <span style="color: #888; margin-left: 6px;"><%= level %>级</span>
+                </div>
+                <div style="font-size: 13px; color: #666;">
+                    技能：<strong><%= totalSkills %></strong> / <%= maxSkills %>
+                </div>
+            </div>
+        </div>
+
+        <!-- 技能领悟进度 -->
+        <div class="section" style="margin-bottom: 12px;">
+            <h3>🎯 下次技能领悟</h3>
+            <% if (totalSkills >= maxSkills) { %>
+                <p style="color: #4caf50; font-weight: bold;">✅ 已达到最大技能数量！</p>
+            <% } else { %>
+                <div style="margin-bottom: 6px;">
+                    <span style="font-size: 14px; color: #666;">
+                        等级 <strong><%= level %></strong> → 下一次领悟在 <strong style="color: #ff9800;"><%= nextUnlockLevel %>级</strong>
+                    </span>
+                </div>
+                <!-- 进度条 -->
+                <div style="background: #e0e0e0; border-radius: 8px; height: 20px; overflow: hidden; position: relative;">
+                    <div style="background: linear-gradient(90deg, #ff9800, #f57c00); height: 100%; width: <%= progressToNext %>%; border-radius: 8px; transition: width 0.3s;"></div>
+                    <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 11px; color: #333; text-shadow: 0 0 3px rgba(255,255,255,0.8);">
+                        <%= level %> / <%= nextUnlockLevel %>
+                    </span>
+                </div>
+                <p style="font-size: 12px; color: #888; margin-top: 4px;">
+                    每5级自动领悟一个随机技能（战斗中获得经验升级时触发）
+                </p>
+            <% } %>
+        </div>
+
+        <!-- 已学会技能 -->
+        <div class="section">
+            <h3>📜 已学会技能</h3>
+            <% if (innateSkills.length > 0) { %>
+                <h4 style="font-size: 13px; color: #666; margin-bottom: 6px;">⭐ 先天技能</h4>
+                <% innateSkills.forEach(function(sk) { %>
+                    <div style="border: 1px solid #ddd; border-radius: 6px; padding: 6px 10px; margin-bottom: 4px; background: #fafafa;">
+                        <strong style="color: #e65100;"><%= sk.name %></strong>
+                        <span style="font-size: 12px; color: #888; margin-left: 6px;"><%= sk.type || '' %></span>
+                        <br><span style="font-size: 12px; color: #666;"><%= sk.desc || '' %></span>
+                    </div>
+                <% }); %>
+            <% } %>
+
+            <% if (learnedSkills.length > 0) { %>
+                <h4 style="font-size: 13px; color: #666; margin: 8px 0 6px 0;">📖 领悟技能</h4>
+                <% learnedSkills.forEach(function(sk) { %>
+                    <div style="border: 1px solid #ddd; border-radius: 6px; padding: 6px 10px; margin-bottom: 4px; background: #fafafa;">
+                        <strong style="color: #1976d2;"><%= sk.name %></strong>
+                        <span style="font-size: 12px; color: #888; margin-left: 6px;"><%= sk.type || '' %></span>
+                        <br><span style="font-size: 12px; color: #666;"><%= sk.desc || '' %></span>
+                    </div>
+                <% }); %>
+            <% } %>
+
+            <% if (totalSkills === 0) { %>
+                <p style="color: #999; text-align: center;">尚未学会任何技能</p>
+            <% } %>
+        </div>
+
+        <!-- 技能池说明 -->
+        <div class="section">
+            <h3>💡 技能领悟说明</h3>
+            <ul style="font-size: 13px; color: #666;">
+                <li>宠物每升5级（5/10/15/20...）自动领悟一个随机技能</li>
+                <li>最多可学 <%= maxSkills %> 种技能<%= maxSkills === 9 ? '（已食用魔纹果实+1）' : '（食用魔纹果实后可达9种）' %></li>
+                <li>领悟的技能从尚未学会的技能池中随机选取</li>
+                <li>先天技能在孵化时随机获得，不受领悟限制</li>
+            </ul>
+        </div>
+    <% } %>
+
+    <br>
+    <a href="/pet">← 返回宠物列表</a>
+</div>

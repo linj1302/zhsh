@@ -1,0 +1,22 @@
+﻿<div>
+    <div>【举办婚宴】</div>
+    
+    <% if (typeof marriageInfo !== 'undefined' && marriageInfo) { %>
+        <div>
+            您已与 <%= marriageInfo.user1_id == user.id ? marriageInfo.user2_nickname : marriageInfo.user1_nickname %> 结为夫妻，可以举办婚宴。
+        </div>
+        
+        <div style="margin: 15px 0;">
+            举办婚宴需要消耗金贝或银贝，参与人数达到8人即可自动结为夫妻。
+        </div>
+        
+        <div>
+            <div><a href="/marriage?type=hostWedding">举办婚宴</a></div>
+        </div>
+    <% } else { %>
+        <div>您没有已同意的求婚申请，无法举办婚礼</div>
+    <% } %>
+
+    <div>
+</div>
+</div>

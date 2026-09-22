@@ -1,0 +1,87 @@
+<div class="wap_class">
+    <h2>🏆 成就系统</h2>
+
+    <% if (typeof tip !== 'undefined' && tip) { %>
+    <div style="color: green; font-weight: bold; margin-bottom: 10px;"><%= tip %></div>
+    <% } %>
+
+    <% var achievementStatus = user.achievement?.getStatus() || {} %>
+    <% var categories = achievementStatus.categories || [] %>
+    <% var achievementsByCategory = achievementStatus.achievementsByCategory || {} %>
+
+    <div class="section">
+        <h3>成就总览</h3>
+        <p>已达成：<%= achievementStatus.completedCount || 0 %>/<%= achievementStatus.totalCount || 0 %></p>
+        <p>已领取：<%= achievementStatus.claimedCount || 0 %>/<%= achievementStatus.totalCount || 0 %></p>
+        <p>成就点数：<strong><%= achievementStatus.totalPoints || 0 %></strong></p>
+        
+        <% var traits = achievementStatus.traits || [] %>
+        <% if (traits.length > 0) { %>
+            <p>已获称号：
+            <% traits.forEach(function(trait) { %>
+                <span style="color: #ff6600; font-weight: bold">【<%= trait %>】</span>
+            <% }); %>
+            </p>
+        <% } %>
+    </div>
+
+    <div class="section">
+        <h3>成就列表</h3>
+        
+        <% var categoryIcons = {
+            '等级': '📊', '财富': '💰', '声望': '📢', '战斗': '⚔️',
+            '帮会': '🏠', '社交': '💬', '宠物': '🐾', '生活': '🎣',
+            '运道': '🍀', '装备': '🛡️'
+        } %>
+
+        <% categories.forEach(function(cat) { %>
+            <% var catAchievements = achievementsByCategory[cat] || [] %>
+            <div class="section" style="margin-bottom: 10px;">
+                <h4><%= categoryIcons[cat] || '📌' %> <%= cat %>类成就</h4>
+                <table border="1" cellpadding="5">
+                    <tr>
+                        <th>成就</th>
+                        <th>描述</th>
+                        <th>奖励</th>
+                        <th>状态</th>
+                    </tr>
+                    <% catAchievements.forEach(function(ach) { %>
+                        <tr>
+                            <td><%= ach.icon %> <%= ach.name %></td>
+                            <td><%= ach.description %></td>
+                            <td>
+                                <% if (ach.rewards.stamina) { %>体力+<%= ach.rewards.stamina %> <% } %>
+                                <% if (ach.rewards.achievementPoints) { %>成就点数+<%= ach.rewards.achievementPoints %><% } %>
+                                <% if (ach.rewards.trait) { %>称号【<%= ach.rewards.trait %>】<% } %>
+                            </td>
+                            <td>
+                                <% if (ach.claimed) { %>
+                                    <span style="color: green">已领取</span>
+                                <% } else if (ach.completed) { %>
+                                    <a href="/achievement?type=achievement.claim&params=<%= ach.id %>" style="color: blue">可领取</a>
+                                <% } else { %>
+                                    <span style="color: gray">未达成</span>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        <% }); %>
+
+        <% if (categories.length === 0) { %>
+            <p>暂无成就数据</p>
+        <% } %>
+    </div>
+
+    <div class="section">
+        <h3>成就说明</h3>
+        <ul>
+            <li>完成各类目标可获得成就称号和丰厚奖励</li>
+            <li>成就奖励包括：体力、成就点数、称号等</li>
+            <li>满足条件后须点击"可领取"按钮领取奖励</li>
+            <li>称号展示您的个性和实力，其他玩家可以看到</li>
+        </ul>
+    </div>
+
+</div>

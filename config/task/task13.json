@@ -1,0 +1,1770 @@
+[
+  {
+    "submitLocation": "锡兰市场",
+    "receiveNpc": "大明皇帝",
+    "submitNpc": "贸易官",
+    "taskType": "运货",
+    "targetName": "陶瓷",
+    "quantity": "200",
+    "name": "通商锡兰",
+    "targetAddress": "",
+    "receiveLocation": "长安皇宫",
+    "content": "去泉州买200箱陶瓷器，带上大明皇帝的通商诏去锡兰市场找贸易官;",
+    "index": 101,
+    "receiveDialog": [
+      "大明皇帝：朕要你去泉州购买200箱陶瓷器，然后带着通商诏去锡兰市场找贸易官。",
+      "你：遵命，陛下。通商之事交给我吧。"
+    ],
+    "submitDialog": [
+      "贸易官：陶瓷器带来了吗？",
+      "你：带来了，这是大明皇帝的通商诏和200箱陶瓷器。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 36
+  },
+  {
+    "submitLocation": "长安皇宫",
+    "receiveNpc": "贸易官",
+    "submitNpc": "大明皇帝",
+    "taskType": "运货",
+    "targetName": "香草,茶",
+    "quantity": "100,100",
+    "name": "锡兰的答复",
+    "targetAddress": "",
+    "receiveLocation": "锡兰市场",
+    "content": "拿上锡兰通商许可并带上100箱当地特产香草和100箱茶回长安皇宫复命;",
+    "index": 102,
+    "receiveDialog": [
+      "贸易官：你带着这些香草和茶叶回长安皇宫复命吧，锡兰的通商许可也一并带上。",
+      "你：好的，我这就回去向陛下复命。"
+    ],
+    "submitDialog": [
+      "大明皇帝：锡兰的特产带来了吗？",
+      "你：带来了，陛下。这是100箱香草和100箱茶，还有锡兰的通商许可。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "孟买市场",
+    "receiveNpc": "大明皇帝",
+    "submitNpc": "贸易官",
+    "taskType": "运货",
+    "targetName": "陶瓷",
+    "quantity": "200",
+    "name": "通商孟买",
+    "targetAddress": "",
+    "receiveLocation": "长安皇宫",
+    "content": "拿大明皇帝的通商诏带上200箱陶瓷去孟买市场找贸易官；任务要求：运陶瓷器200",
+    "index": 103,
+    "receiveDialog": [
+      "大明皇帝：这次你去孟买市场，同样带着200箱陶瓷器和通商诏。",
+      "你：遵命，陛下。我会尽快完成任务。"
+    ],
+    "submitDialog": [
+      "贸易官：陶瓷器送到了吗？",
+      "你：送到了，这是大明皇帝的通商诏和200箱陶瓷器。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "孟买市场",
+    "receiveNpc": "贸易官",
+    "submitNpc": "贸易官",
+    "taskType": "打怪",
+    "targetName": "索马里海盗",
+    "quantity": "20",
+    "name": "混乱的孟买",
+    "targetAddress": "孟买珠宝店",
+    "receiveLocation": "孟买市场",
+    "content": "在城市内清理20个索马里海盗（珠宝店，铁匠铺都有这些疯狂的海盗），回市场找贸易官。",
+    "index": 104,
+    "receiveDialog": [
+      "贸易官：城市里出现了索马里海盗，你去清理20个，珠宝店和铁匠铺都有。",
+      "你：海盗？看来孟买市场不太平啊，交给我吧。"
+    ],
+    "submitDialog": [
+      "贸易官：索马里海盗都清理完了吗？",
+      "你：清理完了，20个索马里海盗已经被我全部解决。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    },
+    "level": 47
+  },
+  {
+    "submitLocation": "长安皇宫",
+    "receiveNpc": "贸易官",
+    "submitNpc": "大明皇帝",
+    "taskType": "运货",
+    "targetName": "米",
+    "quantity": "100",
+    "name": "孟买的答复",
+    "targetAddress": "",
+    "receiveLocation": "孟买市场",
+    "content": "拿孟买通商许可带上100箱当地特产回长安皇宫复命。任务要求：运米100",
+    "index": 105,
+    "receiveDialog": [
+      "贸易官：你带着这些特产和通商许可回长安皇宫复命吧。",
+      "你：好的，我这就回去向陛下复命。"
+    ],
+    "submitDialog": [
+      "大明皇帝：孟买的特产带来了吗？",
+      "你：带来了，陛下。这是100箱大米，还有孟买的通商许可。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "孟买市场",
+    "receiveNpc": "大明皇帝",
+    "submitNpc": "贸易官",
+    "taskType": "运货",
+    "targetName": "木材",
+    "quantity": "200",
+    "name": "支援孟买",
+    "targetAddress": "",
+    "receiveLocation": "长安皇宫",
+    "content": "给孟买的贸易官送去200箱木材支持他们的建设。任务要求：运木材200箱 (木材在马达加斯买)",
+    "index": 106,
+    "receiveDialog": [
+      "大明皇帝：孟买需要200箱木材支援建设，你去马达加斯购买后送去。",
+      "你：遵命，陛下。我会尽快完成任务。"
+    ],
+    "submitDialog": [
+      "贸易官：木材送到了吗？",
+      "你：送到了，这是200箱木材，用于支援孟买的建设。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "长安皇宫",
+    "receiveNpc": "贸易官",
+    "submitNpc": "大明皇帝",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "叩谢天恩",
+    "targetAddress": "长安皇宫",
+    "receiveLocation": "孟买市场",
+    "content": "去长安面见大明皇帝，带去孟买的谢意。",
+    "index": 107,
+    "receiveDialog": [
+      "贸易官：你去长安面见大明皇帝，代我向他表达谢意。",
+      "你：好的，我这就去皇宫面见陛下。"
+    ],
+    "submitDialog": [
+      "大明皇帝：孟买方面有什么消息吗？",
+      "你：他们对陛下的支援非常感激，让我代为表达谢意。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "荷姆兹市场",
+    "receiveNpc": "大明皇帝",
+    "submitNpc": "贸易官",
+    "taskType": "运货",
+    "targetName": "小麦",
+    "quantity": "300",
+    "name": "通商荷姆兹",
+    "targetAddress": "",
+    "receiveLocation": "长安皇宫",
+    "content": "给荷姆兹的贸易官送去300箱小麦作为见面礼。任务要求：运小麦300箱 (长安市场有小麦可买)",
+    "index": 108,
+    "receiveDialog": [
+      "大明皇帝：你去长安市场购买300箱小麦，作为见面礼送给荷姆兹的贸易官。",
+      "你：遵命，陛下。我会尽快完成任务。"
+    ],
+    "submitDialog": [
+      "贸易官：小麦送到了吗？",
+      "你：送到了，这是300箱小麦，作为大明皇帝的见面礼。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "长安皇宫",
+    "receiveNpc": "贸易官",
+    "submitNpc": "大明皇帝",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "关于圣火令",
+    "targetAddress": "长安皇宫",
+    "receiveLocation": "荷姆兹市场",
+    "content": "去长安皇宫，和大明皇帝谈谈圣火令的事情。",
+    "index": 109,
+    "receiveDialog": [
+      "贸易官：你去长安皇宫和大明皇帝谈谈圣火令的事情。",
+      "你：好的，我这就去皇宫面见陛下。"
+    ],
+    "submitDialog": [
+      "大明皇帝：圣火令的事情调查得怎么样了？",
+      "你：陛下，荷姆兹方面也对此事十分关注。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "长安三清观",
+    "receiveNpc": "大明皇帝",
+    "submitNpc": "张真人",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "明教故人",
+    "targetAddress": "长安三清观",
+    "receiveLocation": "长安皇宫",
+    "content": "去长安三清观找张真人。",
+    "index": 110,
+    "receiveDialog": [
+      "大明皇帝：你去长安三清观找张真人，他可能知道圣火令的线索。",
+      "你：遵命，陛下。我这就去三清观。"
+    ],
+    "submitDialog": [
+      "张真人：大明皇帝让你来的？有什么事吗？",
+      "你：陛下让我来向您请教圣火令的事情。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "泉州铁匠铺",
+    "receiveNpc": "张真人",
+    "submitNpc": "干将",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "去找干将吧",
+    "targetAddress": "泉州铁匠铺",
+    "receiveLocation": "长安三清观",
+    "content": "去泉州铁匠铺找干将。",
+    "index": 111,
+    "receiveDialog": [
+      "张真人：你去泉州铁匠铺找干将，他或许能帮上忙。",
+      "你：干将？那可是著名的铸剑师，我这就去泉州。"
+    ],
+    "submitDialog": [
+      "干将：张真人让你来的？有什么事吗？",
+      "你：他说你可能知道圣火令的线索。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "泉州铁匠铺",
+    "receiveNpc": "干将",
+    "submitNpc": "干将",
+    "taskType": "收集",
+    "targetName": "精铁矿",
+    "quantity": "10",
+    "name": "大量铁矿石",
+    "targetAddress": "泉州丹霞山",
+    "receiveLocation": "泉州铁匠铺",
+    "content": "去丹霞山击溃强悍劫匪，收集10个精铁矿，回铁匠铺找干将。",
+    "index": 112,
+    "receiveDialog": [
+      "干将：我需要一些精铁矿来制作特殊工具，你去丹霞山击溃劫匪收集10个。",
+      "你：精铁矿？这可是好东西，交给我吧。"
+    ],
+    "submitDialog": [
+      "干将：精铁矿收集齐了吗？",
+      "你：收集齐了，这是你要的10个精铁矿。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 2,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "长安三清观",
+    "receiveNpc": "干将",
+    "submitNpc": "张真人",
+    "taskType": "对话",
+    "targetName": "铁圣火令",
+    "quantity": "1",
+    "name": "验证圣火令",
+    "targetAddress": "长安三清观",
+    "receiveLocation": "泉州铁匠铺",
+    "content": "带上铁圣火令去长安三清观找张真人",
+    "index": 113,
+    "receiveDialog": [
+      "干将：你带着铁圣火令去长安三清观找张真人，让他验证一下。",
+      "你：好的，我这就去三清观。"
+    ],
+    "submitDialog": [
+      "张真人：铁圣火令带来了吗？",
+      "你：带来了，这是干将让我带来的铁圣火令。"
+    ],
+    "prize": {
+      "经验": 6000,
+      "声望": 1,
+      "铜贝": 600
+    }
+  },
+  {
+    "submitLocation": "泉州铁匠铺",
+    "receiveNpc": "张真人",
+    "submitNpc": "干将",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "寒冰玄铁",
+    "targetAddress": "泉州铁匠铺",
+    "receiveLocation": "长安三清观",
+    "content": "去泉州铁匠铺找干将商量怎么找寒冰玄铁。",
+    "index": 114,
+    "receiveDialog": [
+      "张真人：你去泉州铁匠铺找干将商量怎么找寒冰玄铁。",
+      "你：好的，我这就去泉州找他。"
+    ],
+    "submitDialog": [
+      "干将：寒冰玄铁的事情有眉目了吗？",
+      "你：张真人让我来和你商量这件事。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "杭州灵隐寺",
+    "receiveNpc": "干将",
+    "submitNpc": "剑仙",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "杭州灵隐寺",
+    "name": "又见剑仙去杭州灵隐寺找剑仙;",
+    "receiveLocation": "泉州铁匠铺",
+    "content": "又见剑仙去杭州灵隐寺找剑仙;",
+    "index": 115,
+    "receiveDialog": [
+      "干将：你去杭州灵隐寺找剑仙，他可能知道寒冰玄铁的下落。",
+      "你：剑仙？那可是传说中的人物，我这就去杭州。"
+    ],
+    "submitDialog": [
+      "剑仙：干将让你来的？有什么事吗？",
+      "你：他说你可能知道寒冰玄铁的下落。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "杭州灵隐寺",
+    "receiveNpc": "剑仙",
+    "submitNpc": "剑仙",
+    "taskType": "收集",
+    "targetName": "狮子奶",
+    "quantity": "10",
+    "targetAddress": "",
+    "name": "剑仙的法力",
+    "receiveLocation": "杭州灵隐寺",
+    "content": "去伊斯坦华堡买10瓶狮子奶给剑仙。任务要求：收集狮子奶10个",
+    "index": 116,
+    "receiveDialog": [
+      "剑仙：我需要一些狮子奶来恢复法力，你去伊斯坦华堡买10瓶回来。",
+      "你：狮子奶？这听起来很珍贵，我这就去购买。"
+    ],
+    "submitDialog": [
+      "剑仙：狮子奶买到了吗？",
+      "你：买到了，这是你要的10瓶狮子奶。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "泉州铁匠铺",
+    "receiveNpc": "剑仙",
+    "submitNpc": "干将",
+    "taskType": "对话",
+    "targetName": "玄铁重剑",
+    "quantity": "1",
+    "targetAddress": "泉州铁匠铺",
+    "name": "玄铁重剑带上玄铁重剑去泉州找干将!",
+    "receiveLocation": "杭州灵隐寺",
+    "content": "玄铁重剑带上玄铁重剑去泉州找干将!",
+    "index": 117,
+    "receiveDialog": [
+      "剑仙：你带着玄铁重剑去泉州找干将，他会知道怎么处理。",
+      "你：好的，我这就去泉州找他。"
+    ],
+    "submitDialog": [
+      "干将：玄铁重剑带来了吗？",
+      "你：带来了，这是剑仙让我带来的玄铁重剑。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "长安三清观",
+    "receiveNpc": "干将",
+    "submitNpc": "张真人",
+    "taskType": "对话",
+    "targetName": "圣火令",
+    "quantity": "1",
+    "targetAddress": "长安三清观",
+    "name": "再造圣火令带上圣火令去找张真人",
+    "receiveLocation": "泉州铁匠铺",
+    "content": "再造圣火令带上圣火令去找张真人",
+    "index": 118,
+    "receiveDialog": [
+      "干将：你带着圣火令去长安三清观找张真人，让他再造一个。",
+      "你：好的，我这就去三清观。"
+    ],
+    "submitDialog": [
+      "张真人：圣火令带来了吗？",
+      "你：带来了，这是干将让我带来的圣火令。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "长安皇宫",
+    "receiveNpc": "张真人",
+    "submitNpc": "大明皇帝",
+    "taskType": "对话",
+    "targetName": "圣火令",
+    "quantity": "1",
+    "targetAddress": "长安皇宫",
+    "name": "真圣火令带上圣火令去找皇帝",
+    "receiveLocation": "长安三清观",
+    "content": "真圣火令带上圣火令去找皇帝",
+    "index": 119,
+    "receiveDialog": [
+      "张真人：你带着再造的圣火令去长安皇宫找大明皇帝。",
+      "你：好的，我这就去皇宫面见陛下。"
+    ],
+    "submitDialog": [
+      "大明皇帝：圣火令再造成功了吗？",
+      "你：成功了，陛下。这是再造的圣火令。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "荷姆兹市场",
+    "receiveNpc": "大明皇帝",
+    "submitNpc": "荷姆兹外交官",
+    "taskType": "运货",
+    "targetName": "陶瓷",
+    "quantity": "300",
+    "targetAddress": "荷姆兹市场",
+    "name": "通商荷姆兹2",
+    "receiveLocation": "长安皇宫",
+    "content": "带上圣火令，通商诏以及300箱瓷器前往荷姆兹。任务要求：运陶瓷器300",
+    "index": 120,
+    "receiveDialog": [
+      "大明皇帝：你带着圣火令、通商诏和300箱瓷器去荷姆兹市场。",
+      "你：遵命，陛下。我会尽快完成任务。"
+    ],
+    "submitDialog": [
+      "荷姆兹外交官：瓷器送到了吗？",
+      "你：送到了，这是大明皇帝的圣火令、通商诏和300箱瓷器。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "长安皇宫",
+    "receiveNpc": "荷姆兹外交官",
+    "submitNpc": "大明皇帝",
+    "taskType": "送物品",
+    "targetName": "通商文件",
+    "quantity": "1",
+    "targetAddress": "长安皇宫",
+    "name": "荷姆兹的答复",
+    "receiveLocation": "荷姆兹市场",
+    "content": "带上荷姆兹的通商文件回长安面见大明皇帝。",
+    "index": 121,
+    "receiveDialog": [
+      "荷姆兹外交官：你带着通商文件回长安面见大明皇帝吧。",
+      "你：好的，我这就回去向陛下复命。"
+    ],
+    "submitDialog": [
+      "大明皇帝：荷姆兹的通商文件带来了吗？",
+      "你：带来了，陛下。这是荷姆兹的通商文件。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "亚丁市场",
+    "receiveNpc": "大明皇帝",
+    "submitNpc": "市场商人",
+    "taskType": "运货",
+    "targetName": "丝织品",
+    "quantity": "300",
+    "targetAddress": "亚丁市场",
+    "name": "通商亚丁",
+    "receiveLocation": "长安皇宫",
+    "content": "带上通商诏，以及杭州特产300箱丝织物前往亚丁；",
+    "index": 122,
+    "receiveDialog": [
+      "大明皇帝：你带着通商诏和300箱丝织物去亚丁市场。",
+      "你：遵命，陛下。我会尽快完成任务。"
+    ],
+    "submitDialog": [
+      "市场商人：丝织物送到了吗？",
+      "你：送到了，这是大明皇帝的通商诏和300箱丝织物。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "亚丁商店",
+    "receiveNpc": "市场商人",
+    "submitNpc": "商人阿卜杜勒",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "亚丁商店",
+    "name": "亚丁的实权派去亚丁商店找商人阿卜杜勒谈谈",
+    "receiveLocation": "亚丁市场",
+    "content": "亚丁的实权派去亚丁商店找商人阿卜杜勒谈谈",
+    "index": 123,
+    "receiveDialog": [
+      "市场商人：你去亚丁商店找商人阿卜杜勒谈谈，他才是真正有实权的人。",
+      "你：好的，我这就去商店找他。"
+    ],
+    "submitDialog": [
+      "商人阿卜杜勒：市场商人让你来的？有什么事吗？",
+      "你：他说你才是真正有实权的人，让我来和你谈谈。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "亚丁市场",
+    "receiveNpc": "商人阿卜杜勒",
+    "submitNpc": "贸易官",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "亚丁市场",
+    "name": "尴尬的贸易官",
+    "receiveLocation": "亚丁商店",
+    "content": "去找亚丁的市场找贸易官",
+    "index": 124,
+    "receiveDialog": [
+      "商人阿卜杜勒：你去亚丁市场找贸易官，让他处理通商事宜。",
+      "你：好的，我这就去市场找他。"
+    ],
+    "submitDialog": [
+      "贸易官：阿卜杜勒让你来的？有什么事吗？",
+      "你：他说让你处理通商事宜。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "亚丁古村落",
+    "receiveNpc": "贸易官",
+    "submitNpc": "阿巴斯",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "亚丁古村落",
+    "name": "探访古村落",
+    "receiveLocation": "亚丁市场",
+    "content": "去亚丁北城门外的古村落寻找村落首领阿巴斯",
+    "index": 125,
+    "receiveDialog": [
+      "贸易官：你去亚丁北城门外的古村落寻找村落首领阿巴斯。",
+      "你：好的，我这就去古村落。"
+    ],
+    "submitDialog": [
+      "阿巴斯：贸易官让你来的？有什么事吗？",
+      "你：他说让我来找你了解一些情况。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "亚丁古村落",
+    "receiveNpc": "阿巴斯",
+    "submitNpc": "阿巴斯",
+    "taskType": "打怪",
+    "targetName": "亚丁海盗,亚丁海盗头子",
+    "quantity": "20,4",
+    "targetAddress": "亚丁海盗巢穴",
+    "name": "保证村落安宁",
+    "receiveLocation": "亚丁古村落",
+    "content": "在古村落的北部捣毁海盗巢穴；击杀20名亚丁海盗和4名亚丁海盗头子；回古村落找阿巴斯;",
+    "index": 126,
+    "receiveDialog": [
+      "阿巴斯：古村落北部有海盗巢穴，你去捣毁并击杀20名亚丁海盗和4名海盗头子。",
+      "你：海盗？看来这里不太平啊，交给我吧。"
+    ],
+    "submitDialog": [
+      "阿巴斯：海盗巢穴捣毁了吗？",
+      "你：捣毁了，20名亚丁海盗和4名海盗头子都被我解决了。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    },
+    "level": 51
+  },
+  {
+    "submitLocation": "亚丁古村落",
+    "receiveNpc": "阿巴斯",
+    "submitNpc": "阿巴斯",
+    "taskType": "打怪",
+    "targetName": "村落首领",
+    "quantity": "5",
+    "targetAddress": "亚丁村庄",
+    "name": "统一北方",
+    "receiveLocation": "亚丁古村落",
+    "content": "在亚丁北部的村庄周围的村落击败5个村落首领回古村落找阿巴斯;",
+    "index": 127,
+    "receiveDialog": [
+      "阿巴斯：亚丁北部的村庄需要统一，你去击败5个村落首领。",
+      "你：统一北方？这可是大工程，交给我吧。"
+    ],
+    "submitDialog": [
+      "阿巴斯：村落首领都击败了吗？",
+      "你：击败了，5个村落首领都被我搞定了。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    },
+    "level": 54
+  },
+  {
+    "submitLocation": "亚丁古村落",
+    "receiveNpc": "阿巴斯",
+    "submitNpc": "阿巴斯",
+    "taskType": "运货",
+    "targetName": "木材",
+    "quantity": "300",
+    "targetAddress": "",
+    "name": "改善居民住宅",
+    "receiveLocation": "亚丁古村落",
+    "content": "去采购300箱木材，交给亚丁古村落的阿巴斯。任务要求：运木材300箱 (木材在马达加斯买)",
+    "index": 128,
+    "receiveDialog": [
+      "阿巴斯：我需要300箱木材来改善居民住宅，你去马达加斯采购。",
+      "你：好的，我这就去马达加斯购买木材。"
+    ],
+    "submitDialog": [
+      "阿巴斯：木材采购回来了吗？",
+      "你：采购回来了，这是300箱木材，用于改善居民住宅。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "亚丁古村落",
+    "receiveNpc": "阿巴斯",
+    "submitNpc": "阿巴斯",
+    "taskType": "收集",
+    "targetName": "黑铁矿",
+    "quantity": "10",
+    "targetAddress": "亚丁矿山",
+    "name": "打造兵器的铁矿石",
+    "receiveLocation": "亚丁古村落",
+    "content": "去亚丁古村落最北边的矿山挖10块黑矿石回村落找阿巴斯;",
+    "index": 129,
+    "receiveDialog": [
+      "阿巴斯：我需要10块黑铁矿来打造兵器，你去最北边的矿山挖回来。",
+      "你：黑铁矿？这可是好东西，交给我吧。"
+    ],
+    "submitDialog": [
+      "阿巴斯：黑铁矿挖回来了吗？",
+      "你：挖回来了，这是你要的10块黑铁矿。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "泉州铁匠铺",
+    "receiveNpc": "阿巴斯",
+    "submitNpc": "干将",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "泉州铁匠铺",
+    "name": "繁忙的干将去泉州找干将帮忙打造武器;",
+    "receiveLocation": "亚丁古村落",
+    "content": "繁忙的干将去泉州找干将帮忙打造武器;",
+    "index": 130,
+    "receiveDialog": [
+      "阿巴斯：你去泉州铁匠铺找干将帮忙打造武器。",
+      "你：好的，我这就去泉州找他。"
+    ],
+    "submitDialog": [
+      "干将：阿巴斯让你来的？需要打造什么武器？",
+      "你：他说让你帮忙打造一些武器。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "泉州民巷",
+    "receiveNpc": "干将",
+    "submitNpc": "干将夫人",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "泉州民巷",
+    "name": "干将夫人的抱怨",
+    "receiveLocation": "泉州铁匠铺",
+    "content": "去泉州民巷找干将的夫人。",
+    "index": 131,
+    "receiveDialog": [
+      "干将：你去泉州民巷找我夫人，她有些事情要处理。",
+      "你：好的，我这就去民巷找她。"
+    ],
+    "submitDialog": [
+      "干将夫人：干将让你来的？有什么事吗？",
+      "你：他说你有些事情要处理。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "泉州民巷",
+    "receiveNpc": "干将夫人",
+    "submitNpc": "干将夫人",
+    "taskType": "打怪",
+    "targetName": "黑野猪",
+    "quantity": "8",
+    "targetAddress": "泉州麦田",
+    "name": "清理麦田",
+    "receiveLocation": "泉州民巷",
+    "content": "去西城门外的麦田清理黑野猪8只,麦田要出了西城门一直往西走才能走到；回泉州民巷找干将夫人;",
+    "index": 132,
+    "receiveDialog": [
+      "干将夫人：西城门外的麦田有黑野猪，你去清理8只。",
+      "你：黑野猪？这会破坏庄稼的，交给我吧。"
+    ],
+    "submitDialog": [
+      "干将夫人：黑野猪都清理完了吗？",
+      "你：清理完了，8只黑野猪已经被我全部解决。"
+    ],
+    "prize": {
+      "经验": 20000
+    },
+    "level": 48
+  },
+  {
+    "submitLocation": "泉州民巷",
+    "receiveNpc": "干将夫人",
+    "submitNpc": "干将夫人",
+    "taskType": "打怪",
+    "targetName": "臭鼬",
+    "quantity": "8",
+    "targetAddress": "泉州棉花地",
+    "name": "清理棉花地",
+    "receiveLocation": "泉州民巷",
+    "content": "去西城门外的棉花地赶走8只臭鼬；回泉州民巷找干将夫人;",
+    "index": 133,
+    "receiveDialog": [
+      "干将夫人：西城门外的棉花地有臭鼬，你去赶走8只。",
+      "你：臭鼬？这会破坏棉花的，交给我吧。"
+    ],
+    "submitDialog": [
+      "干将夫人：臭鼬都赶走了吗？",
+      "你：赶走了，8只臭鼬已经被我全部解决。"
+    ],
+    "prize": {
+      "经验": 20000
+    },
+    "level": 48
+  },
+  {
+    "submitLocation": "泉州民巷",
+    "receiveNpc": "干将夫人",
+    "submitNpc": "干将夫人",
+    "taskType": "收集",
+    "targetName": "红薯",
+    "quantity": "20",
+    "targetAddress": "泉州红薯地",
+    "name": "挖红薯",
+    "receiveLocation": "泉州民巷",
+    "content": "去西城门外的红薯地挖20个红薯，回民巷交干将夫人。西城门一直往西，到第一块麦田往南再往南就到了.",
+    "index": 134,
+    "receiveDialog": [
+      "干将夫人：我需要20个红薯做食物，你去西城门外的红薯地挖回来。",
+      "你：红薯？这可是好东西，交给我吧。"
+    ],
+    "submitDialog": [
+      "干将夫人：红薯挖回来了吗？",
+      "你：挖回来了，这是你要的20个红薯。"
+    ],
+    "prize": {
+      "经验": 20000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "泉州铁匠铺",
+    "receiveNpc": "干将夫人",
+    "submitNpc": "干将",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "泉州铁匠铺",
+    "name": "武器打造完毕去泉州铁匠铺找干将。",
+    "receiveLocation": "泉州民巷",
+    "content": "武器打造完毕去泉州铁匠铺找干将。",
+    "index": 135,
+    "receiveDialog": [
+      "干将夫人：武器打造完毕了，你去泉州铁匠铺找干将。",
+      "你：好的，我这就去铁匠铺。"
+    ],
+    "submitDialog": [
+      "干将：武器打造完毕了吗？",
+      "你：完毕了，这是打造好的武器。"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 1,
+      "铜贝": 800
+    }
+  },
+  {
+    "submitLocation": "泉州造办处",
+    "receiveNpc": "干将",
+    "submitNpc": "张公公",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "泉州造办处",
+    "name": "去找张公公",
+    "receiveLocation": "泉州铁匠铺",
+    "content": "去泉州造办处找张公公。",
+    "index": 136,
+    "receiveDialog": [
+      "干将：你去泉州造办处找张公公，他有些事情要处理。",
+      "你：好的，我这就去造办处。"
+    ],
+    "submitDialog": [
+      "张公公：干将让你来的？有什么事吗？",
+      "你：他说你有些事情要处理。"
+    ],
+    "prize": {
+      "经验": 10000
+    }
+  },
+  {
+    "submitLocation": "长安内务府",
+    "receiveNpc": "张公公",
+    "submitNpc": "魏千岁",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "长安内务府",
+    "name": "去找魏千岁",
+    "receiveLocation": "泉州造办处",
+    "content": "去长安内务府找魏千岁。",
+    "index": 137,
+    "receiveDialog": [
+      "张公公：你去长安内务府找魏千岁，他有些事情要处理。",
+      "你：好的，我这就去内务府。"
+    ],
+    "submitDialog": [
+      "魏千岁：张公公让你来的？有什么事吗？",
+      "你：他说你有些事情要处理。"
+    ],
+    "prize": {
+      "经验": 10000
+    }
+  },
+  {
+    "submitLocation": "长安内务府",
+    "receiveNpc": "魏千岁",
+    "submitNpc": "魏千岁",
+    "taskType": "运货",
+    "targetName": "人参",
+    "quantity": "200",
+    "targetAddress": "",
+    "name": "200箱人参",
+    "receiveLocation": "长安内务府",
+    "content": "去京都买200箱人参回来长安内务府找魏千岁。",
+    "index": 138,
+    "receiveDialog": [
+      "魏千岁：我需要200箱人参，你去京都购买回来。",
+      "你：人参？这可是好东西，交给我吧。"
+    ],
+    "submitDialog": [
+      "魏千岁：人参买回来了吗？",
+      "你：买回来了，这是200箱人参。"
+    ],
+    "prize": {
+      "经验": 50000
+    }
+  },
+  {
+    "submitLocation": "泉州造办处",
+    "receiveNpc": "魏千岁",
+    "submitNpc": "张公公",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "泉州造办处",
+    "name": "又见张公公",
+    "receiveLocation": "长安内务府",
+    "content": "去泉州造办处找张公公，领回兵刃。",
+    "index": 139,
+    "receiveDialog": [
+      "魏千岁：你去泉州造办处找张公公，领回兵刃。",
+      "你：好的，我这就去造办处。"
+    ],
+    "submitDialog": [
+      "张公公：兵刃准备好了吗？",
+      "你：魏千岁让我来领回兵刃。"
+    ],
+    "prize": {
+      "经验": 10000
+    }
+  },
+  {
+    "submitLocation": "泉州铁匠铺",
+    "receiveNpc": "张公公",
+    "submitNpc": "干将",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "泉州铁匠铺",
+    "name": "拿到兵刃",
+    "receiveLocation": "泉州造办处",
+    "content": "去泉州铁匠铺找干将。",
+    "index": 140,
+    "receiveDialog": [
+      "张公公：你去泉州铁匠铺找干将，拿回兵刃。",
+      "你：好的，我这就去铁匠铺。"
+    ],
+    "submitDialog": [
+      "干将：兵刃准备好了吗？",
+      "你：张公公让我来拿回兵刃。"
+    ],
+    "prize": {
+      "经验": 20000
+    }
+  },
+  {
+    "submitLocation": "亚丁古村落",
+    "receiveNpc": "干将",
+    "submitNpc": "阿巴斯",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "亚丁古村落",
+    "name": "又见阿巴斯",
+    "receiveLocation": "泉州铁匠铺",
+    "content": "去亚丁北城门外的古村落找阿巴斯。",
+    "index": 141,
+    "receiveDialog": [
+      "干将：你去亚丁北城门外的古村落找阿巴斯，把兵刃交给他。",
+      "你：好的，我这就去古村落。"
+    ],
+    "submitDialog": [
+      "阿巴斯：兵刃带来了吗？",
+      "你：带来了，这是干将打造的兵刃。"
+    ],
+    "prize": {
+      "经验": 30000
+    }
+  },
+  {
+    "submitLocation": "亚丁古村落",
+    "receiveNpc": "阿巴斯",
+    "submitNpc": "阿巴斯",
+    "taskType": "打怪",
+    "targetName": "阿卜杜勒",
+    "quantity": "1",
+    "targetAddress": "亚丁商店",
+    "name": "击杀阿卜杜勒",
+    "receiveLocation": "亚丁古村落",
+    "content": "去商店击杀阿卜杜勒。然后回古村落找阿巴斯（体力:1250）。",
+    "index": 142,
+    "receiveDialog": [
+      "阿巴斯：阿卜杜勒在亚丁商店，你去击杀他。",
+      "你：阿卜杜勒？看来是个重要人物，交给我吧。"
+    ],
+    "submitDialog": [
+      "阿巴斯：阿卜杜勒击杀了嗎？",
+      "你：击杀了，这个叛徒再也不能作恶了。"
+    ],
+    "prize": {
+      "经验": 50000,
+      "亡者之魂": 1
+    },
+    "level": 53
+  },
+  {
+    "submitLocation": "荷姆兹商店",
+    "receiveNpc": "阿巴斯",
+    "submitNpc": "侯赛因",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "荷姆兹商店",
+    "name": "亚丁的权杖",
+    "receiveLocation": "亚丁古村落",
+    "content": "去荷姆兹商店找侯赛因",
+    "index": 143,
+    "receiveDialog": [
+      "阿巴斯：你去荷姆兹商店找侯赛因，他有亚丁的权杖。",
+      "你：好的，我这就去荷姆兹商店。"
+    ],
+    "submitDialog": [
+      "侯赛因：阿巴斯让你来的？有什么事吗？",
+      "你：他说你有亚丁的权杖。"
+    ],
+    "prize": {
+      "经验": 10000
+    }
+  },
+  {
+    "submitLocation": "荷姆兹商店",
+    "receiveNpc": "侯赛因",
+    "submitNpc": "侯赛因",
+    "taskType": "运货",
+    "targetName": "人参",
+    "quantity": "100",
+    "targetAddress": "",
+    "name": "商人逐利",
+    "receiveLocation": "荷姆兹商店",
+    "content": "去京都买100箱人参回荷姆兹商店找侯赛因。",
+    "index": 144,
+    "receiveDialog": [
+      "侯赛因：我需要100箱人参，你去京都购买回来。",
+      "你：人参？这可是好东西，交给我吧。"
+    ],
+    "submitDialog": [
+      "侯赛因：人参买回来了吗？",
+      "你：买回来了，这是100箱人参。"
+    ],
+    "prize": {
+      "经验": 30000
+    }
+  },
+  {
+    "submitLocation": "荷姆兹商店",
+    "receiveNpc": "侯赛因",
+    "submitNpc": "侯赛因",
+    "taskType": "收集",
+    "targetName": "鲷鱼,石斑鱼",
+    "quantity": "5,5",
+    "targetAddress": "",
+    "name": "刺身拼盘",
+    "receiveLocation": "荷姆兹商店",
+    "content": "在从拉古扎到雅典钓5条鲷鱼，在马六甲和杭州这段路上钓5条石斑鱼交给荷姆兹商店的侯赛因。",
+    "index": 145,
+    "receiveDialog": [
+      "侯赛因：我需要一些新鲜鱼类制作刺身拼盘，你去钓鱼回来。",
+      "你：钓鱼？这可是我的拿手好戏，交给我吧。"
+    ],
+    "submitDialog": [
+      "侯赛因：鱼钓回来了吗？",
+      "你：钓回来了，这是5条鲷鱼和5条石斑鱼。"
+    ],
+    "prize": {
+      "经验": 50000
+    }
+  },
+  {
+    "submitLocation": "泉州码头",
+    "receiveNpc": "侯赛因",
+    "submitNpc": "钓鱼老人",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "泉州码头",
+    "name": "学··级钓鱼术",
+    "receiveLocation": "荷姆兹商店",
+    "content": "去泉州码头找钓鱼老人，学习钓鱼术。",
+    "index": 146,
+    "receiveDialog": [
+      "侯赛因：你去泉州码头找钓鱼老人，学习钓鱼术。",
+      "你：钓鱼老人？我这就去码头找他。"
+    ],
+    "submitDialog": [
+      "钓鱼老人：侯赛因让你来的？要学钓鱼术？",
+      "你：是的，他说让我来向你学习。"
+    ],
+    "prize": {
+      "经验": 10000
+    }
+  },
+  {
+    "submitLocation": "泉州码头",
+    "receiveNpc": "钓鱼老人",
+    "submitNpc": "钓鱼老人",
+    "taskType": "收集",
+    "targetName": "小黄鱼",
+    "quantity": "8",
+    "targetAddress": "",
+    "name": "修炼钓鱼术",
+    "receiveLocation": "泉州码头",
+    "content": "在东亚海域钓8条小黄鱼，交泉州码头的钓鱼老人",
+    "index": 147,
+    "receiveDialog": [
+      "钓鱼老人：你去东亚海域钓8条小黄鱼，练习钓鱼术。",
+      "你：小黄鱼？这可是常见的鱼类，交给我吧。"
+    ],
+    "submitDialog": [
+      "钓鱼老人：小黄鱼钓到了吗？",
+      "你：钓到了，这是8条小黄鱼。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "优质鱼饵": 202
+    },
+    "level": 22
+  },
+  {
+    "submitLocation": "荷姆兹商店",
+    "receiveNpc": "钓鱼老人",
+    "submitNpc": "侯赛因",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "荷姆兹商店",
+    "name": "侯赛因的要求3",
+    "receiveLocation": "泉州码头",
+    "content": "去荷姆兹商店找侯赛因",
+    "index": 148,
+    "receiveDialog": [
+      "钓鱼老人：你去荷姆兹商店找侯赛因，他还有其他要求。",
+      "你：好的，我这就去荷姆兹商店。"
+    ],
+    "submitDialog": [
+      "侯赛因：钓鱼老人让你来的？还有其他要求吗？",
+      "你：他说你还有其他要求。"
+    ],
+    "prize": {
+      "经验": 10000
+    }
+  },
+  {
+    "submitLocation": "荷姆兹商店",
+    "receiveNpc": "侯赛因",
+    "submitNpc": "侯赛因",
+    "taskType": "收集",
+    "targetName": "金枪鱼",
+    "quantity": "5",
+    "targetAddress": "",
+    "name": "美味金枪鱼",
+    "receiveLocation": "荷姆兹商店",
+    "content": "去大阪附近的海域调5条金枪鱼，交给荷姆兹的侯赛因;",
+    "index": 149,
+    "receiveDialog": [
+      "侯赛因：我需要5条金枪鱼制作美食，你去大阪附近海域钓回来。",
+      "你：金枪鱼？这可是高级鱼类，交给我吧。"
+    ],
+    "submitDialog": [
+      "侯赛因：金枪鱼钓到了吗？",
+      "你：钓到了，这是5条金枪鱼。"
+    ],
+    "prize": {
+      "经验": 30000
+    }
+  },
+  {
+    "submitLocation": "亚丁市场",
+    "receiveNpc": "侯赛因",
+    "submitNpc": "阿巴斯",
+    "taskType": "送物品",
+    "targetName": "权杖",
+    "quantity": "1",
+    "targetAddress": "亚丁市场",
+    "name": "权杖归来",
+    "receiveLocation": "荷姆兹商店",
+    "content": "到亚丁市场找阿巴斯，把权杖交给他;",
+    "index": 150,
+    "receiveDialog": [
+      "侯赛因：你带着权杖到亚丁市场找阿巴斯，交给他。",
+      "你：好的，我这就去亚丁市场。"
+    ],
+    "submitDialog": [
+      "阿巴斯：权杖带来了吗？",
+      "你：带来了，这是侯赛因让我带来的权杖。"
+    ],
+    "prize": {
+      "经验": 20000
+    }
+  },
+  {
+    "submitLocation": "长安皇宫",
+    "receiveNpc": "阿巴斯",
+    "submitNpc": "大明皇帝",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "长安皇宫",
+    "name": "亚丁的答复去长安皇宫面见大明皇帝;",
+    "receiveLocation": "亚丁市场",
+    "content": "亚丁的答复去长安皇宫面见大明皇帝;",
+    "index": 151,
+    "receiveDialog": [
+      "阿巴斯：你去长安皇宫面见大明皇帝，带去亚丁的答复。",
+      "你：好的，我这就去皇宫面见陛下。"
+    ],
+    "submitDialog": [
+      "大明皇帝：亚丁方面有什么答复吗？",
+      "你：陛下，阿巴斯让我带去了亚丁的答复。"
+    ],
+    "prize": {
+      "经验": 100000,
+      "铜贝": 100000
+    }
+  },
+  {
+    "receiveNpc": "大明皇帝",
+    "submitNpc": "魏千岁",
+    "taskType": "对话",
+    "name": "去找魏千岁聊聊",
+    "receiveLocation": "长安皇宫",
+    "submitLocation": "长安内务府",
+    "content": "去找魏千岁聊聊",
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    },
+    "index": 152,
+    "receiveDialog": [
+      "大明皇帝：你去长安内务府找魏千岁聊聊，他有些事情要处理。",
+      "你：好的，我这就去内务府。"
+    ],
+    "submitDialog": [
+      "魏千岁：大明皇帝让你来的？有什么事吗？",
+      "你：他说你有些事情要处理。"
+    ]
+  },
+  {
+    "submitLocation": "长安太医阁",
+    "receiveNpc": "魏千岁",
+    "submitNpc": "韩太医",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "长安太医阁",
+    "name": "天生异相",
+    "receiveLocation": "长安内务府",
+    "content": "关于天生异相，魏千岁让你去太医院找韩太医聊聊;",
+    "index": 153,
+    "receiveDialog": [
+      "魏千岁：你去长安太医阁找韩太医聊聊，关于天生异相的事。",
+      "你：天生异相？这听起来很神秘，我这就去太医阁。"
+    ],
+    "submitDialog": [
+      "韩太医：魏千岁让你来的？关于天生异相？",
+      "你：是的，他说让我来向你请教。"
+    ],
+    "prize": {
+      "经验": 8888
+    }
+  },
+  {
+    "submitLocation": "威尼斯码头",
+    "receiveNpc": "韩太医",
+    "submitNpc": "渔夫",
+    "taskType": "送物品",
+    "targetName": "信件",
+    "quantity": "1",
+    "targetAddress": "威尼斯码头",
+    "name": "太医的信件",
+    "receiveLocation": "长安太医阁",
+    "content": "带上韩太医的信件前往地中海威尼斯码头去找渔夫，他知道奥布帕斯的线索",
+    "index": 154,
+    "receiveDialog": [
+      "韩太医：你带着我的信件前往地中海威尼斯码头去找渔夫，他知道奥布帕斯的线索。",
+      "你：奥布帕斯？这名字听起来很熟悉，我这就去威尼斯。"
+    ],
+    "submitDialog": [
+      "渔夫：韩太医的信件带来了吗？",
+      "你：带来了，这是韩太医让我带来的信件。"
+    ],
+    "prize": {
+      "经验": 10000
+    }
+  },
+  {
+    "submitLocation": "威尼斯码头",
+    "receiveNpc": "渔夫",
+    "submitNpc": "渔夫",
+    "taskType": "打怪",
+    "targetName": "鲛人",
+    "quantity": "10",
+    "name": "船夫的刁难",
+    "targetAddress": "威尼斯沙山",
+    "receiveLocation": "威尼斯码头",
+    "content": "到威尼斯东城门外最东边的沙山上（东城门一直往东，多带点二锅头）杀死10个鲛人",
+    "index": 155,
+    "receiveDialog": [
+      "渔夫：威尼斯东城门外最东边的沙山上有鲛人，你去杀死10个。",
+      "你：鲛人？这可是传说中的生物，交给我吧。"
+    ],
+    "submitDialog": [
+      "渔夫：鲛人都杀死了吗？",
+      "你：杀死了，10个鲛人已经被我全部解决。"
+    ],
+    "prize": {
+      "经验": 15000,
+      "声望": 1,
+      "铜贝": 2000
+    },
+    "level": 49
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "渔夫",
+    "submitNpc": "奥布帕斯",
+    "taskType": "送物品",
+    "targetName": "信件",
+    "quantity": "1",
+    "targetAddress": "威尼斯酒馆",
+    "name": "寻找奥布帕斯将韩太医的信件交给酒馆的奥布帕斯",
+    "receiveLocation": "威尼斯码头",
+    "content": "寻找奥布帕斯将韩太医的信件交给酒馆的奥布帕斯",
+    "index": 156,
+    "receiveDialog": [
+      "渔夫：你带着韩太医的信件去威尼斯酒馆找奥布帕斯。",
+      "你：好的，我这就去酒馆找他。"
+    ],
+    "submitDialog": [
+      "奥布帕斯：韩太医的信件带来了吗？",
+      "你：带来了，这是韩太医让我带来的信件。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 1,
+      "铜贝": 1000
+    }
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "奥布帕斯",
+    "submitNpc": "奥布帕斯",
+    "taskType": "打怪",
+    "targetName": "白虎王",
+    "quantity": "1",
+    "targetAddress": "威尼斯矿山",
+    "name": "屠杀白虎王",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "向奥布帕斯证明自己的实力，去威尼斯矿山最北部杀死白虎王（体力:1620）。",
+    "index": 157,
+    "receiveDialog": [
+      "奥布帕斯：你去威尼斯矿山最北部杀死白虎王，向我证明你的实力。",
+      "你：白虎王？这可是强大的妖兽，不过我不会退缩的。"
+    ],
+    "submitDialog": [
+      "奥布帕斯：白虎王杀死了吗？",
+      "你：杀死了，这个强大的妖兽再也不能作恶了。"
+    ],
+    "prize": {
+      "经验": 22000,
+      "声望": 5,
+      "铜贝": 4000
+    },
+    "level": 65
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "奥布帕斯",
+    "submitNpc": "德鲁克",
+    "taskType": "送物品",
+    "targetName": "红酒",
+    "quantity": "1",
+    "targetAddress": "威尼斯居民区",
+    "name": "西街的醉鬼",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "带上一瓶红酒到威尼斯居民区向醉鬼德鲁克问龙珠的事情。",
+    "index": 158,
+    "receiveDialog": [
+      "奥布帕斯：你带着这瓶上等红酒去威尼斯居民区找德鲁克，他或许知道龙珠的线索。",
+      "你：好的，我这就去找这个醉鬼聊聊。"
+    ],
+    "submitDialog": [
+      "德鲁克：哟，这不是奥布帕斯派来的勇士吗？红酒带来了吗？",
+      "你：带来了，这是奥布帕斯让我带来的上等红酒。"
+    ],
+    "prize": {
+      "经验": 11000,
+      "声望": 1,
+      "铜贝": 1500
+    }
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "德鲁克",
+    "submitNpc": "德鲁克",
+    "taskType": "收集",
+    "targetName": "巨红蜈蚣触须",
+    "quantity": "10",
+    "targetAddress": "威尼斯甘风峡谷",
+    "name": "德鲁克的冷骨病",
+    "receiveLocation": "威尼斯居民区",
+    "content": "去威尼斯西城门森林北边的甘风峡谷，杀死巨红蜈蚣，得10条触须，交给威尼斯居民区的德鲁克",
+    "index": 159,
+    "receiveDialog": [
+      "德鲁克：我最近冷骨病又犯了，需要巨红蜈蚣的触须入药，你去甘风峡谷给我弄10条来。",
+      "你：巨红蜈蚣？听起来挺辣手的，不过为了龙珠线索，我豁出去了！"
+    ],
+    "submitDialog": [
+      "德鲁克：巨红蜈蚣触须带来了吗？我的老寒腿就靠它治了。",
+      "你：带来了，这是你要的10条触须，够不够？"
+    ],
+    "prize": {
+      "经验": 13000,
+      "声望": 2,
+      "铜贝": 3000
+    }
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "德鲁克",
+    "submitNpc": "德鲁克",
+    "taskType": "收集",
+    "targetName": "亚特兰蒂斯航海图",
+    "quantity": "1",
+    "targetAddress": "威尼斯甘风峡谷",
+    "name": "夺回航海图",
+    "receiveLocation": "威尼斯居民区",
+    "content": "去威尼斯西城门森林北边的甘风峡谷杀死巨红蜈蚣王取得亚特兰蒂斯航海图1个",
+    "index": 160,
+    "receiveDialog": [
+      "德鲁克：想要找到亚特兰蒂斯，你得先拿到亚特兰蒂斯航海图，它在巨红蜈蚣王手里，去甘风峡谷夺回来吧。",
+      "你：又是蜈蚣？看来我和蜈蚣真是八字不合啊！"
+    ],
+    "submitDialog": [
+      "德鲁克：亚特兰蒂斯航海图拿到了吗？有了它你就能出海寻找传说中的亚特兰蒂斯了。",
+      "你：拿到了，这蜈蚣王还真不好对付，差点就变成它的触须收藏品了！"
+    ],
+    "prize": {
+      "经验": 21000,
+      "声望": 5,
+      "铜贝": 4500,
+      "信件": 1
+    }
+  },
+  {
+    "submitLocation": "亚特兰蒂斯村庄",
+    "receiveNpc": "德鲁克",
+    "submitNpc": "卡拉迪",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "亚特兰蒂斯村庄",
+    "name": "前往亚特兰蒂斯岛",
+    "receiveLocation": "威尼斯居民区",
+    "content": "到亚特兰蒂斯岛找村长卡拉迪询问更多的事情。",
+    "index": 161,
+    "receiveDialog": [
+      "德鲁克：你终于拿到航海图了，快去亚特兰蒂斯岛找村长卡拉迪打听龙珠的消息吧。",
+      "你：好的，我现在就启程前往亚特兰蒂斯岛！"
+    ],
+    "submitDialog": [
+      "卡拉迪：你是从威尼斯来的吧？听说你拿到了亚特兰蒂斯航海图？",
+      "你：没错，我是来打听龙珠的事情的。"
+    ],
+    "prize": {
+      "经验": 18000,
+      "声望": 2,
+      "铜贝": 2000
+    }
+  },
+  {
+    "submitLocation": "亚特兰蒂斯码头",
+    "receiveNpc": "卡拉迪",
+    "submitNpc": "卡拉迪",
+    "taskType": "打怪",
+    "targetName": "大白鲨",
+    "quantity": "5个",
+    "targetAddress": "亚特兰蒂斯浅海",
+    "name": "勇士的证明",
+    "receiveLocation": "亚特兰蒂斯码头",
+    "content": "到亚特兰蒂斯岛村庄西边的浅海杀死大白鲨5个（体力:2500）证明自己的力量，然后回码头找卡拉迪。",
+    "index": 162,
+    "receiveDialog": [
+      "卡拉迪：想要了解龙珠的秘密，你必须先证明自己的实力。去村庄西边的浅海杀死5个大白鲨吧。",
+      "你：没问题，这点小场面难不倒我！看我的深海猎手技能！"
+    ],
+    "submitDialog": [
+      "卡拉迪：大白鲨都解决了？很好，你确实有成为勇者的潜质。",
+      "你：小意思啦，现在可以告诉我龙珠的秘密了吧？"
+    ],
+    "prize": {
+      "经验": 22000,
+      "声望": 1,
+      "铜贝": 3000
+    },
+    "level": 72
+  },
+  {
+    "submitLocation": "亚特兰蒂斯码头",
+    "receiveNpc": "卡拉迪",
+    "submitNpc": "马尔巴克",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "亚特兰蒂斯村庄",
+    "name": "马尔巴克到亚特兰蒂斯村庄找马尔巴克聊聊。",
+    "receiveLocation": "亚特兰蒂斯码头",
+    "content": "马尔巴克到亚特兰蒂斯村庄找马尔巴克聊聊。",
+    "index": 163,
+    "receiveDialog": [
+      "卡拉迪：现在你可以去找马尔巴克了，他是我们村的智者，知道很多古老的秘密。",
+      "你：太好了，我正想多了解一些关于龙珠的传说呢！"
+    ],
+    "submitDialog": [
+      "马尔巴克：卡拉迪让你来的？是想了解龙珠的事情吧？",
+      "你：没错，我听说您知道很多关于龙珠的秘密。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 1,
+      "铜贝": 3000
+    }
+  },
+  {
+    "submitLocation": "亚特兰蒂斯村庄",
+    "receiveNpc": "马尔巴克",
+    "submitNpc": "马尔巴克",
+    "taskType": "收集",
+    "targetName": "岩虫壳",
+    "quantity": "5个",
+    "targetAddress": "亚特兰蒂斯火山",
+    "name": "马尔巴克的要求",
+    "receiveLocation": "亚特兰蒂斯村庄",
+    "content": "到亚特兰蒂斯北边火山，杀死火山岩虫，取5个岩虫壳交给亚特兰蒂斯村庄的马尔巴克",
+    "index": 164,
+    "receiveDialog": [
+      "马尔巴克：想要了解龙珠的秘密，我需要一些特殊材料来占卜。去北边火山杀死火山岩虫，取5个岩虫壳给我。",
+      "你：放心吧，我这就去火山走一趟，顺便烤点岩虫串！"
+    ],
+    "submitDialog": [
+      "马尔巴克：岩虫壳带来了吗？让我看看能否占卜出龙珠的下落。",
+      "你：带来了，这些壳还挺坚硬的，费了我不少功夫呢！"
+    ],
+    "prize": {
+      "经验": 12500,
+      "声望": 1,
+      "铜贝": 2900
+    }
+  },
+  {
+    "submitLocation": "亚特兰蒂斯村庄",
+    "receiveNpc": "马尔巴克",
+    "submitNpc": "马尔巴克",
+    "taskType": "收集",
+    "targetName": "发光的岩石",
+    "quantity": "1",
+    "targetAddress": "亚特兰蒂斯火山洞穴",
+    "name": "神秘的碧光",
+    "receiveLocation": "亚特兰蒂斯村庄",
+    "content": "前往火山洞穴探险，说不定有奇遇在等着你，探险完后回村庄找马尔巴克。（杀死火岩结晶可以获取发光的岩石。)",
+    "index": 165,
+    "receiveDialog": [
+      "马尔巴克：根据岩虫壳的占卜，你需要前往火山洞穴寻找发光的岩石，这是解开龙珠秘密的关键道具。",
+      "你：火山洞穴？听起来很刺激啊，我最喜欢探险了！"
+    ],
+    "submitDialog": [
+      "马尔巴克：发光的岩石找到了？太好了，这下龙珠的秘密即将揭晓！",
+      "你：嘿嘿，不愧是我，这么快就找到了关键道具！"
+    ],
+    "prize": {
+      "经验": 22000,
+      "声望": 5,
+      "铜贝": 2200,
+      "龙珠碎片": 1
+    }
+  },
+  {
+    "submitLocation": "亚特兰蒂斯村庄",
+    "receiveNpc": "马尔巴克",
+    "submitNpc": "江湖郎中",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "亚特兰蒂斯酒馆",
+    "name": "寻找郎中到亚特兰蒂斯酒馆找江湖郎中聊聊",
+    "receiveLocation": "亚特兰蒂斯村庄",
+    "content": "寻找郎中到亚特兰蒂斯酒馆找江湖郎中聊聊",
+    "index": 166,
+    "receiveDialog": [
+      "马尔巴克：现在你需要去酒馆找江湖郎中，他或许知道更多关于龙珠的信息。",
+      "你：郎中？那我是不是应该带点酒去？毕竟酒壮怂人胆嘛！"
+    ],
+    "submitDialog": [
+      "江湖郎中：咦，马尔巴克让你来的？是想了解龙珠的事情吧？",
+      "你：没错没错，听说您老是这方面的专家？"
+    ],
+    "prize": {
+      "经验": 8000,
+      "声望": 2,
+      "铜贝": 4000
+    }
+  },
+  {
+    "submitLocation": "亚特兰蒂斯酒馆",
+    "receiveNpc": "江湖郎中",
+    "submitNpc": "江湖郎中",
+    "taskType": "打怪",
+    "targetName": "火山岩虫头领",
+    "quantity": "1个",
+    "targetAddress": "亚特兰蒂斯火山悬崖",
+    "name": "火山岩虫头领",
+    "receiveLocation": "亚特兰蒂斯酒馆",
+    "content": "在火山悬崖找到火山岩虫头领，杀死他取得火灵芝1个，回亚特兰蒂斯酒馆找郎中。多打两个，以后妖气长安282用。",
+    "index": 167,
+    "receiveDialog": [
+      "江湖郎中：想要获得火灵芝，你得去火山悬崖打败火山岩虫头领，那可是个大家伙。",
+      "你：哈哈，正合我意，好久没遇到像样的对手了！"
+    ],
+    "submitDialog": [
+      "江湖郎中：火灵芝拿到了？有了它我就能炼制更强的药丸了！",
+      "你：当然拿到了，那家伙还挺能蹦跶的，不过最后还是被我收拾了！"
+    ],
+    "prize": {
+      "经验": 12000,
+      "声望": 5,
+      "铜贝": 4000
+    }
+  },
+  {
+    "submitLocation": "亚特兰蒂斯酒馆",
+    "receiveNpc": "江湖郎中",
+    "submitNpc": "垂钓老人",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "targetAddress": "长安码头",
+    "name": "垂钓老人到东亚长安码头找垂钓老人聊聊",
+    "receiveLocation": "亚特兰蒂斯酒馆",
+    "content": "垂钓老人到东亚长安码头找垂钓老人聊聊",
+    "index": 168,
+    "receiveDialog": [
+      "江湖郎中：现在你需要去东亚长安码头找垂钓老人，他可能知道龙珠的下落。",
+      "你：垂钓老人？难道龙珠掉海里了？我这就去找他！"
+    ],
+    "submitDialog": [
+      "垂钓老人：哦，江湖郎中让你来的？是为了龙珠的事情吧？",
+      "你：没错没错，听说您老是这方面的行家？"
+    ],
+    "prize": {
+      "经验": 1800,
+      "声望": 5,
+      "铜贝": 4000
+    }
+  },
+  {
+    "submitLocation": "长安码头",
+    "receiveNpc": "垂钓老人",
+    "submitNpc": "垂钓老人",
+    "taskType": "打怪",
+    "targetName": "山匪",
+    "quantity": "8个",
+    "targetAddress": "长安望马坡",
+    "name": "消灭山匪",
+    "receiveLocation": "长安码头",
+    "content": "消灭长安望马坡的山匪8个 (龙门镖局一直向北走)",
+    "index": 169,
+    "receiveDialog": [
+      "垂钓老人：在长安望马坡有一群山匪作乱，你去消灭8个，为民除害。",
+      "你：山匪？小菜一碟，看我一路平A过去！"
+    ],
+    "submitDialog": [
+      "垂钓老人：山匪都消灭了？干得漂亮！",
+      "你：那当然，我可是专业的！现在可以告诉我龙珠的线索了吧？"
+    ],
+    "prize": {
+      "经验": 16000,
+      "声望": 2,
+      "铜贝": 3000
+    },
+    "level": 52
+  }
+]

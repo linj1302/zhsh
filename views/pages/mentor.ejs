@@ -1,0 +1,259 @@
+﻿<h2 style="font-weight:700; color:#1565c0; text-align:center;">🎓 师徒系统</h2>
+
+<% var mentorStatus = user.mentor?.getStatus(user.id) || {} %>
+<% var play = user.getPlay() %>
+<% var level = play.level %>
+<% var currentTab = (typeof query !== 'undefined' && query.tab) ? query.tab : 'main'; %>
+<% var bonus = mentorStatus.bonus || {} %>
+
+<!-- 导航标签 -->
+<div style="display:flex; gap:4px; margin-bottom:10px; flex-wrap:wrap;">
+    <% var tabs = [
+        {key:'main', label:'📋 状态'},
+        {key:'find_mentor', label:'👨‍🏫 拜师'},
+        {key:'find_disciple', label:'👦 收徒'},
+        {key:'history', label:'📜 历史'}
+    ]; %>
+    <% tabs.forEach(function(t) { %>
+        <a href="/mentor<%= t.key === 'main' ? '' : '?tab=' + t.key %>" 
+           class="btn <%= currentTab === t.key ? 'btn-primary' : 'btn-ghost' %>" 
+           style="font-size:0.82em;"><%= t.label %></a>
+    <% }); %>
+</div>
+
+<% if (currentTab === 'main' || currentTab === '') { %>
+<!-- ====== 状态总览 ====== -->
+<div class="section" style="border-color:#bbdefb;">
+    <h3 style="border-color:#e3f2fd;">
+        <span style="color:#1565c0;">🎓</span> 当前状态
+    </h3>
+    
+    <% if (mentorStatus.hasMentor) { %>
+        <!-- 我是徒弟 -->
+        <div style="padding:8px; background:#f5f9fd; border-radius:6px; margin:6px 0;">
+            <div style="font-size:0.9em;">
+                <strong style="color:#1565c0;">👨‍🏫 我的师傅</strong>
+                <a href="/role-status?userId=<%= mentorStatus.mentor.mentor_id %>" style="margin-left:6px; font-weight:600;">
+                    <%= mentorStatus.mentor.mentor_nickname %>
+                </a>
+            </div>
+            <div style="margin-top:6px; font-size:0.85em; color:#666;">
+                <div class="stat-row">
+                    <span class="stat-label">授业天数</span>
+                    <span class="stat-value"><%= mentorStatus.teachingDays %> 天</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">师傅师德</span>
+                    <span class="stat-value" style="color:#7b1fa2;"><%= mentorStatus.virtue %> 点</span>
+                </div>
+                <% if (bonus.active) { %>
+                <div class="stat-row">
+                    <span class="stat-label">在线加成</span>
+                    <span class="tag tag-green">攻+10% 防+10% 经验+20%</span>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        
+        <!-- 徒弟操作 -->
+        <div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; font-size:0.85em;">
+            <% if (level >= 10) { %>
+                <a href="/mentor?type=mentor.showGratitudeWithCheck&params=1" 
+                   class="btn btn-ghost" style="font-size:0.82em;"
+                   onclick="return confirm('消耗5银贝，增加师傅10点师德？')">感恩(10级/5银)</a>
+            <% } %>
+            <% if (level >= 20) { %>
+                <a href="/mentor?type=mentor.showGratitudeWithCheck&params=2" 
+                   class="btn btn-ghost" style="font-size:0.82em;"
+                   onclick="return confirm('消耗10银贝，增加师傅20点师德？')">感恩(20级/10银)</a>
+            <% } %>
+            <% if (level >= 30) { %>
+                <a href="/mentor?type=mentor.showGratitudeWithCheck&params=3" 
+                   class="btn btn-ghost" style="font-size:0.82em;"
+                   onclick="return confirm('消耗20银贝，增加师傅30点师德？')">感恩(30级/20银)</a>
+            <% } %>
+            <a href="/mentor?type=mentor.breakRelationship" 
+               style="color:#c62828; margin-left:auto; font-size:0.82em;"
+               onclick="return confirm('确定要解除师徒关系吗？')">解除关系</a>
+        </div>
+        
+    <% } else if (mentorStatus.hasDisciples) { %>
+        <!-- 我是师傅 -->
+        <div style="padding:8px; background:#fffcf5; border-radius:6px; margin:6px 0;">
+            <div style="font-size:0.9em;">
+                <strong style="color:#e65100;">👦 我的徒弟</strong>
+                <span style="color:#888; font-size:0.85em;">(共<%= mentorStatus.disciples.length %>人)</span>
+            </div>
+            <div style="margin-top:6px;">
+                <% mentorStatus.disciples.forEach(function(d) { %>
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; border-bottom:1px solid #f5f5f5; font-size:0.85em;">
+                        <div>
+                            <a href="/role-status?userId=<%= d.disciple_user_id || d.disciple_id %>"><%= d.disciple_nickname %></a>
+                            <small style="color:#888;"><%= d.level %>级</small>
+                        </div>
+                        <div style="font-size:0.82em;">
+                            <% if (d.level >= 40) { %>
+                                <a href="/mentor?type=mentor.graduate&params=<%= d.disciple_id %>" class="btn btn-gold" style="padding:1px 6px; font-size:0.82em;">出师</a>
+                            <% } else { %>
+                                <small style="color:#888;">40级出师</small>
+                            <% } %>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+            <div style="margin-top:6px; font-size:0.85em; color:#666;">
+                <div class="stat-row">
+                    <span class="stat-label">我的师德</span>
+                    <span class="stat-value" style="color:#7b1fa2;"><%= mentorStatus.virtue %> 点</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">授业天数</span>
+                    <span class="stat-value"><%= mentorStatus.teachingDays %> 天</span>
+                </div>
+                <% if (bonus.active) { %>
+                <div class="stat-row">
+                    <span class="stat-label">在线加成</span>
+                    <span class="tag tag-green">攻+10% 防+10% 经验+5%</span>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        
+        <!-- 师傅操作 -->
+        <div style="margin-top:8px; font-size:0.85em;">
+            <a href="/mentor?type=mentor.breakRelationship" 
+               style="color:#c62828;"
+               onclick="return confirm('确定要解除师徒关系吗？')">解除关系</a>
+        </div>
+        
+    <% } else { %>
+        <!-- 无师徒关系 -->
+        <div style="text-align:center; padding:12px; color:#888; font-size:0.9em;">
+            <p>你目前没有师徒关系</p>
+            <div style="margin-top:8px; font-size:0.85em;">
+                <% if (level >= 6 && level < 30) { %>
+                    <a href="/mentor?tab=find_mentor" class="btn btn-primary">寻找师傅</a>
+                <% } %>
+                <% if (level >= 30) { %>
+                    <a href="/mentor?tab=find_disciple" class="btn btn-primary">寻找徒弟</a>
+                <% } %>
+                <% if (level < 6) { %>
+                    <small>需要达到 6 级才能拜师</small>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<!-- 师徒奖励说明 -->
+<details style="font-size:0.82em; color:#666; margin:8px 0;">
+    <summary style="color:#888; cursor:pointer;">师徒奖励说明</summary>
+    <div style="padding:6px; background:#f8f9fa; border-radius:4px; margin-top:4px;">
+        <div>· 师徒同时在线：攻防 +10%</div>
+        <div>· 徒弟打怪经验 +20% / 师傅 +5%</div>
+        <div>· 徒弟每升10级，师傅获得经验和银贝奖励</div>
+        <div>· 徒弟首次加入帮会，师傅获得1万经验+10银</div>
+        <div>· 徒弟满40级自动出师</div>
+        <div>· 徒弟可在10/20/30级感恩，增加师傅师德</div>
+    </div>
+</details>
+
+<% } else if (currentTab === 'find_mentor') { %>
+<!-- ====== 寻找师傅 ====== -->
+<div class="section">
+    <h3>👨‍🏫 可拜师的玩家</h3>
+    
+    <% if (level < 6) { %>
+        <p style="color:#c62828; font-size:0.85em;">需要达到 6 级才能拜师（当前 <%= level %> 级）</p>
+    <% } else if (mentorStatus.hasMentor) { %>
+        <p style="color:#888; font-size:0.85em;">你已经有师傅了</p>
+    <% } else { %>
+        <% var availableMentors = user.mentor.findAvailableMentors() %>
+        <% if (availableMentors.length === 0) { %>
+            <p style="color:#888; font-size:0.85em;">暂无可拜师的玩家</p>
+        <% } else { %>
+            <table>
+            <tr><th>玩家</th><th>等级</th><th>师德</th><th></th></tr>
+            <% availableMentors.forEach(function(m) { %>
+            <tr>
+                <td>
+                    <a href="/role-status?userId=<%= m.id %>"><%= m.nickname %></a>
+                    <% if (m.isOnline) { %><span class="tag tag-green" style="font-size:0.78em;">在线</span><% } %>
+                </td>
+                <td><%= m.level %>级</td>
+                <td><%= m.virtue %>点</td>
+                <td>
+                    <a href="/mentor?type=mentor.becomeDisciple&params=<%= m.id %>" 
+                       class="btn btn-primary" style="padding:2px 8px; font-size:0.78em;"
+                       onclick="return confirm('确定要拜 <%= m.nickname %> 为师吗？')">拜师</a>
+                </td>
+            </tr>
+            <% }); %>
+            </table>
+        <% } %>
+    <% } %>
+</div>
+
+<% } else if (currentTab === 'find_disciple') { %>
+<!-- ====== 寻找徒弟 ====== -->
+<div class="section">
+    <h3>👦 可收徒的玩家</h3>
+    
+    <% if (level < 30) { %>
+        <p style="color:#c62828; font-size:0.85em;">需要达到 30 级才能收徒（当前 <%= level %> 级）</p>
+    <% } else if (mentorStatus.hasDisciples) { %>
+        <p style="color:#888; font-size:0.85em;">你已经有徒弟了</p>
+    <% } else { %>
+        <% var availableDisciples = user.mentor.findAvailableDisciples() %>
+        <% if (availableDisciples.length === 0) { %>
+            <p style="color:#888; font-size:0.85em;">暂无可收徒的玩家</p>
+        <% } else { %>
+            <table>
+            <tr><th>玩家</th><th>等级</th><th></th></tr>
+            <% availableDisciples.forEach(function(d) { %>
+            <tr>
+                <td>
+                    <a href="/role-status?userId=<%= d.id %>"><%= d.nickname %></a>
+                    <% if (d.isOnline) { %><span class="tag tag-green" style="font-size:0.78em;">在线</span><% } %>
+                </td>
+                <td><%= d.level %>级</td>
+                <td>
+                    <a href="/mentor?type=mentor.acceptDisciple&params=<%= d.id %>" 
+                       class="btn btn-primary" style="padding:2px 8px; font-size:0.78em;"
+                       onclick="return confirm('确定要收 <%= d.nickname %> 为徒吗？')">收徒</a>
+                </td>
+            </tr>
+            <% }); %>
+            </table>
+        <% } %>
+    <% } %>
+</div>
+
+<% } else if (currentTab === 'history') { %>
+<!-- ====== 出师历史 ====== -->
+<div class="section">
+    <h3>📜 出师记录</h3>
+    
+    <% var graduated = mentorStatus.graduated || [] %>
+    <% if (graduated.length === 0) { %>
+        <p style="color:#888; font-size:0.85em;">暂无出师记录</p>
+    <% } else { %>
+        <table>
+        <tr><th>角色</th><th>对方</th><th>出师时间</th></tr>
+        <% graduated.forEach(function(g) { %>
+        <tr>
+            <td>
+                <% if (g.role === '师傅') { %>
+                    <span class="tag tag-orange">师傅</span>
+                <% } else { %>
+                    <span class="tag tag-blue">徒弟</span>
+                <% } %>
+            </td>
+            <td><%= g.role === '师傅' ? g.disciple_name : g.mentor_name %></td>
+            <td><small><%= g.graduated_at ? new Date(g.graduated_at).toLocaleDateString() : '-' %></small></td>
+        </tr>
+        <% }); %>
+        </table>
+    <% } %>
+</div>
+<% } %>

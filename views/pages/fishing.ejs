@@ -1,0 +1,103 @@
+﻿<div>
+    <% var fish = user.fish;var fishingState = fish.fishingState;var rods = fish.getRods();var baits = fish.getBaits(); %>
+
+    <% if (!fishingState) { %>
+        <!-- 选择鱼竿和鱼饵 -->
+        <div>
+            <h3>选择鱼竿</h3>
+            <% if (rods.length > 0) { %>
+                <ul>
+                    <% rods.forEach(function(rod, index) { %>
+                        <li>
+                            <%= rod.name %>
+                            <% if (rod.num > 1) { %>(<%= rod.num %>个)
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <div style="color: red;">背包中没有鱼竿</div>
+            <% } %>
+        </div>
+
+        <div>
+            <h3>选择鱼饵</h3>
+            <% if (baits.length > 0) { %>
+                <ul>
+                    <% baits.forEach(function(bait, index) { %>
+                        <li>
+                            <%= bait.name %>
+                            <% if (bait.num > 1) { %>(<%= bait.num %>个)
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <div style="color: red;">背包中没有鱼饵</div>
+            <% } %>
+        </div>
+
+        <% if (rods.length > 0 && baits.length > 0) { %>
+            <div style="margin-top: 20px;">
+                <!-- 需要选择鱼竿和鱼饵的具体ID -->
+                <form action="fishing" method="GET">
+                    <input type="hidden" name="type" value="fish.startFishing">
+                    <label for="rodIndex">选择鱼竿:</label>
+                    <select name="rodIndex" id="rodIndex">
+                        <% rods.forEach(function(rod, index) { %>
+                            <option value="<%= index %>"><%= rod.name %>
+                                <% if (rod.num > 1) { %>(<%= rod.num %>个)
+                                <% } %>
+                            </option>
+                        <% }); %>
+                    </select>
+
+                    <label for="baitIndex">选择鱼饵:</label>
+                    <select name="baitIndex" id="baitIndex">
+                        <% baits.forEach(function(bait, index) { %>
+                            <option value="<%= index %>"><%= bait.name %>
+                                <% if (bait.num > 1) { %>(<%= bait.num %>个)
+                                <% } %>
+                            </option>
+                        <% }); %>
+                    </select>
+
+                    <input type="submit" value="开始钓鱼">
+                </form>
+            </div>
+        <% } %>
+    <% } else { %>
+        <!-- 钓鱼过程中 -->
+        <div>
+            <div>使用鱼竿：<%= fishingState.rod.name %></div>
+            <div>使用鱼饵：<%= fishingState.bait.name %></div>
+            <div>当前位置：<%= fishingState.location[0] %> 到 <%= fishingState.location[1] %></div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <div>钓鱼操作：</div>
+            <div>
+                <% if (!fishingState.step || fishingState.step === 'waiting') { %>
+                    <a href="fishing?type=fish.cast">抛竿</a>
+                <% } else { %>
+                    <a href="fishing?type=fish.wait">等待</a> |
+                    <a href="fishing?type=fish.reelIn">收线</a> |
+                    <a href="fishing?type=fish.letOut">放线</a>
+                <% } %>
+            </div>
+        </div>
+
+        <% if (fishingState.waitCount > 0 || fishingState.reelInCount > 0 || fishingState.letOutCount > 0) { %>
+            <div style="margin-top: 20px;">
+                <h4>钓鱼统计：</h4>
+                <div>等待次数：<%= fishingState.waitCount %></div>
+                <div>收线次数：<%= fishingState.reelInCount %></div>
+                <div>放线次数：<%= fishingState.letOutCount %></div>
+            </div>
+        <% } %>
+    <% } %>
+
+    <div style="margin-top: 20px;">
+        <a href="fishing?type=fish.clear&returnTo=voyage">结束钓鱼并返回航行</a>
+    </div>
+</div>

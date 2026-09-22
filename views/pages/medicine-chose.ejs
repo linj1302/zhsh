@@ -1,0 +1,31 @@
+﻿<div>
+    <% var backpack = user.backpack %>
+    <% var type = query.type || 'view' %>
+    
+    <div>【选择设置药品】</div>
+
+    <!-- 显示成功/错误消息 -->
+    <% if (typeof result !== 'undefined' && result.message) { %>
+        <div style="color: <%= result.success ? 'green' : 'red' %>; margin-bottom: 10px;">
+            <%= result.message %>
+        </div>
+    <% } %>
+
+    <% 
+    var medicines = backpack.getItemsByType(3).concat(backpack.getItemsByType(4));
+    %>
+
+    <% if (medicines.length > 0) { %>
+        <% medicines.forEach(function(medicine) { %>
+            <div>
+                <span><%= medicine.name %></span>
+                <% if (medicine.num > 1) { %>
+                    <span>(<%= medicine.num %>)</span>
+                <% } %>
+                <a href="medicine-setting?type=setMedicine&slot=<%= query.slot %>&itemId=<%= medicine.id %>">确定</a>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <div>背包中没有可用的药品</div>
+    <% } %>
+</div>

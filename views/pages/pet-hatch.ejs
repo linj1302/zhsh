@@ -1,0 +1,75 @@
+﻿<div class="wap_class">
+    <h2>🥚 宠物孵化栏</h2>
+
+    <% if (typeof tip !== 'undefined' && tip) { %>
+        <div style="background:#d4edda; padding:6px; border-radius:4px; margin:6px 0; font-weight:bold; color:#155724;"><%= tip %></div>
+    <% } %>
+
+    <% var si = (typeof slotInfo !== 'undefined') ? slotInfo : { current: 0, max: 3, remaining: 3 }; %>
+    <div style="background:#f0f4f8; padding:6px; border-radius:4px; margin:4px 0; font-size:0.9em;">
+        🏠 宠物栏: <b><%= si.current %></b> / <b><%= si.max %></b>
+        <% if (si.remaining <= 0) { %>
+            <span style="color:#cc3300;">（已满，使用迷你兽栏扩容后再来孵化）</span>
+        <% } %>
+    </div>
+
+    <!-- 各类宠物蛋 -->
+    <div style="border:1px solid #ddd; border-radius:6px; padding:8px; margin:6px 0;">
+        <h3 style="margin:0 0 6px 0; font-size:0.95em;">🥚 普通宠物蛋 <span style="color:#888;">x<%= (typeof 宠物蛋 !== 'undefined') ? 宠物蛋 : 0 %></span></h3>
+        <div style="font-size:0.82em; color:#666; margin:2px 0;">可孵出: 月虎 | 暗狼 | 龙猫 | 霸熊</div>
+        <% if (si.remaining > 0) { %>
+            <a href="pet-hatch?type=petManager.hatch&params=normal" style="display:inline-block; padding:3px 10px; background:#4caf50; color:#fff; border-radius:3px; text-decoration:none;"
+               onclick="return confirm('确定孵化普通宠物蛋？')">孵化</a>
+        <% } else { %>
+            <span style="color:#cc3300; font-size:0.85em;">宠物栏已满</span>
+        <% } %>
+    </div>
+
+    <div style="border:1px solid #ddd; border-radius:6px; padding:8px; margin:6px 0;">
+        <h3 style="margin:0 0 6px 0; font-size:0.95em;">💕 QQ宠物蛋 <span style="color:#888;">x<%= (typeof QQ宠物蛋 !== 'undefined') ? QQ宠物蛋 : 0 %></span></h3>
+        <div style="font-size:0.82em; color:#666; margin:2px 0;">可孵出: QQ月虎 | QQ暗狼 | QQ龙猫 | QQ霸熊</div>
+        <div style="font-size:0.82em; color:#e67e22;">✨ QQ宠物特性：疗伤技能概率翻倍</div>
+        <% if (si.remaining > 0) { %>
+            <a href="pet-hatch?type=petManager.hatch&params=qq" style="display:inline-block; padding:3px 10px; background:#e91e63; color:#fff; border-radius:3px; text-decoration:none;"
+               onclick="return confirm('确定孵化QQ宠物蛋？')">孵化</a>
+        <% } else { %>
+            <span style="color:#cc3300; font-size:0.85em;">宠物栏已满</span>
+        <% } %>
+    </div>
+
+    <div style="border:1px solid #ddd; border-radius:6px; padding:8px; margin:6px 0;">
+        <h3 style="margin:0 0 6px 0; font-size:0.95em;">🏛️ 远古宠物蛋 <span style="color:#888;">x<%= (typeof 远古宠物蛋 !== 'undefined') ? 远古宠物蛋 : 0 %></span></h3>
+        <div style="font-size:0.82em; color:#666; margin:2px 0;">可孵出: 麒麟 | 九尾狐 | 雷霆战鹰</div>
+        <div style="font-size:0.82em; color:#9b59b6;">✨ 远古宠物：保底普通资质和天赋</div>
+        <% if (si.remaining > 0) { %>
+            <a href="pet-hatch?type=petManager.hatch&params=ancient" style="display:inline-block; padding:3px 10px; background:#9b59b6; color:#fff; border-radius:3px; text-decoration:none;"
+               onclick="return confirm('确定孵化远古宠物蛋？')">孵化</a>
+        <% } else { %>
+            <span style="color:#cc3300; font-size:0.85em;">宠物栏已满</span>
+        <% } %>
+    </div>
+
+    <div style="border:1px solid #ddd; border-radius:6px; padding:8px; margin:6px 0;">
+        <h3 style="margin:0 0 6px 0; font-size:0.95em;">🌟 远古双超宠物蛋 <span style="color:#888;">x<%= (typeof 远古双超宠物蛋 !== 'undefined') ? 远古双超宠物蛋 : 0 %></span></h3>
+        <div style="font-size:0.82em; color:#666; margin:2px 0;">可孵出: 混沌麒麟 | 九天灵狐</div>
+        <div style="font-size:0.82em; color:#cc3300;">✨ 双超宠：根骨悟性满值，全属性卓越</div>
+        <% if (si.remaining > 0) { %>
+            <a href="pet-hatch?type=petManager.hatch&params=ancient_super" style="display:inline-block; padding:3px 10px; background:#cc3300; color:#fff; border-radius:3px; text-decoration:none;"
+               onclick="return confirm('确定孵化远古双超宠物蛋？')">孵化</a>
+        <% } else { %>
+            <span style="color:#cc3300; font-size:0.85em;">宠物栏已满</span>
+        <% } %>
+    </div>
+
+    <!-- 说明 -->
+    <div style="font-size:0.82em; color:#666; margin:8px 0; padding:6px; background:#f8f9fa; border-radius:4px;">
+        <b>宠物蛋获取途径：</b>
+        <div>• 普通宠物蛋：牛头山怪物掉落、主线任务、商城</div>
+        <div>• QQ宠物蛋：活动奖励、特殊副本</div>
+        <div>• 远古宠物蛋：高级副本BOSS、活动奖励</div>
+        <div>• 远古双超宠物蛋：限时活动、稀有掉落</div>
+        <div style="margin-top:4px;">• 迷你兽栏：每个+1宠物栏位（最多3个）</div>
+    </div>
+
+    <a href="pet">← 返回宠物管理</a>
+</div>

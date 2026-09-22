@@ -1,0 +1,201 @@
+﻿<h2 class="holymark-header">圣痕系统</h2>
+
+<% const hstatus = user.holymark.getStatus(); %>
+<% const qColor = {white:'#bbb',green:'#4caf50',blue:'#1976d2',purple:'#7b1fa2'}; %>
+<% const qName = {white:'白',green:'绿',blue:'蓝',purple:'紫'}; %>
+<% var currentTab = (typeof query !== 'undefined' && query.tab) ? query.tab : 'main'; %>
+<% var unequippedMarks = (hstatus.allMarks || []).filter(function(m) { return !m.isEquipped; }); %>
+
+<!-- 导航标签 -->
+<div style="display:flex; gap:4px; margin-bottom:10px; flex-wrap:wrap;">
+    <% var tabs = [
+        {key:'main', label:'✦ 圣化'},
+        {key:'collection', label:'📦 收集'},
+        {key:'devour', label:'⚡ 吞噬'},
+        {key:'wiki', label:'📖 百科'}
+    ]; %>
+    <% tabs.forEach(function(t) { %>
+        <a href="/holymark<%= t.key === 'main' ? '' : '?tab=' + t.key %>" 
+           class="btn <%= currentTab === t.key ? 'btn-primary' : 'btn-ghost' %>" 
+           style="font-size:0.82em;"><%= t.label %></a>
+    <% }); %>
+</div>
+
+<% if (currentTab === 'main' || currentTab === '') { %>
+<!-- ====== 主页面：圣化槽位 ====== -->
+<div class="section" style="border-color:#e1bee7;">
+    <h3 style="border-color:#f3e5f5;">
+        <span style="color:#7b1fa2;">✦</span> 圣化槽位（<%= (hstatus.equippedMarks || []).length %>/<%= hstatus.maxSlots %>）
+    </h3>
+    <% if (hstatus.allSlots) { %>
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; text-align:center;">
+            <% hstatus.allSlots.forEach(function(sl) { %>
+            <div style="padding:8px; background:#fafafa; border:1px solid #eee; border-radius:6px;">
+                <small style="color:#888;">槽<%= sl.slotLabel %></small>
+                <% if (sl.mark) { %>
+                    <div style="font-size:1.3em; margin:2px 0;"><%= sl.mark.typeIcon %></div>
+                    <div style="font-weight:600; font-size:0.82em;"><%= sl.mark.typeName %></div>
+                    <div style="color:<%= sl.mark.qualityColor %>; font-size:0.78em;"><%= sl.mark.qualityName %><%= sl.mark.level > 1 ? sl.mark.level + '级' : '' %></div>
+                    <div style="margin-top:4px; display:flex; gap:4px; justify-content:center;">
+                        <a href="holymark?type=holymark.unsanctify&params=<%= sl.markId %>" style="font-size:0.78em; color:#c62828;">[卸下]</a>
+                        <a href="holymark?type=holymark.devourAll&params=<%= sl.markId %>" onclick="return confirm('将所有可吞噬圣痕喂给此圣痕？')" style="font-size:0.78em; color:#e65100;">[吞噬]</a>
+                    </div>
+                <% } else { %>
+                    <div style="font-size:1.3em; color:#ddd; margin:2px 0;">○</div>
+                    <% if (unequippedMarks.length > 0) { %>
+                        <form action="holymark" method="get" style="margin:2px 0;">
+                            <input type="hidden" name="type" value="holymark.sanctify">
+                            <select name="params" style="font-size:0.7em; width:100%; padding:1px;">
+                                <% unequippedMarks.forEach(function(m) { %>
+                                    <option value="<%= m.id %>,<%= sl.slot %>"><%= m.typeIcon %><%= m.typeName %>[<%= m.qualityName %>]</option>
+                                <% }); %>
+                            </select>
+                            <input type="submit" value="圣化到槽<%= sl.slotLabel %>" style="font-size:0.7em; width:100%; margin-top:2px;">
+                        </form>
+                    <% } else { %>
+                        <small style="color:#ccc;">空</small>
+                    <% } %>
+                <% } %>
+            </div>
+            <% }); %>
+        </div>
+    <% } %>
+</div>
+
+<!-- 属性总览 -->
+<div class="section">
+    <h3>📊 属性加成</h3>
+    <% var bonus = hstatus.totalBonus || {}; %>
+    <% if (Object.keys(bonus).length === 0) { %>
+        <p style="color:#999; font-size:0.85em;">尚未圣化任何圣痕</p>
+    <% } else { %>
+        <%
+var attrLabels = {
+            attack:'攻击', defense:'防御', agility:'敏捷', morale:'士气',
+            attackPercent:'攻击%', defensePercent:'防御%', healthPercent:'体力%', agilityPercent:'敏捷%',
+            vampire:'吸血率', combo:'连击率', ironWall:'铁壁率', critChance:'必杀率',
+            lifeStealPercent:'生命吸收', damageReflectionChance:'反射触发率',
+            damageReflectionPercent:'反射伤害', debuffBonusMultiplier:'负面增伤'
+        };
+        var pctKeys = ['attackPercent','defensePercent','healthPercent','agilityPercent','vampire','combo','ironWall','critChance',
+                       'lifeStealPercent','damageReflectionChance','damageReflectionPercent','debuffBonusMultiplier'];
+        for (var k in bonus) {
+            var v = bonus[k];
+            var isPct = pctKeys.indexOf(k) >= 0;
+            if (v !== 0) {
+        %>
+            <div class="stat-row">
+                <span class="stat-label"><%= attrLabels[k] || k %></span>
+                <span class="stat-value" style="color:#7b1fa2;">+<%= isPct ? (v * 100).toFixed(1) + '%' : Math.round(v) %></span>
+            </div>
+        <% } } %>
+    <% } %>
+</div>
+
+<% } else if (currentTab === 'collection') { %>
+<!-- ====== 收集列表 ====== -->
+<div class="section">
+    <h3>📦 已收集（<%= hstatus.totalMarks || 0 %>枚）</h3>
+    <% if (hstatus.allMarks && hstatus.allMarks.length > 0) { %>
+        <table>
+        <tr><th>类型</th><th>品质</th><th>等级</th><th>状态</th><th></th></tr>
+        <% hstatus.allMarks.forEach(function(m) { %>
+        <tr>
+            <td><%= m.typeIcon %> <strong><%= m.typeName %></strong></td>
+            <td><span style="color:<%= m.qualityColor %>; font-weight:600;"><%= m.qualityName %></span></td>
+            <td><%= m.level %>级</td>
+            <td>
+                <% if (m.isEquipped) { %>
+                    <span class="tag tag-purple">槽<%= m.slotNum %></span>
+                <% } else { %>
+                    <small style="color:#999;">未装备</small>
+                <% } %>
+            </td>
+            <td>
+                <% if (!m.isEquipped) { %>
+                    <form action="holymark" method="get" style="display:inline-flex; gap:2px; align-items:center; margin:0;">
+                        <input type="hidden" name="type" value="holymark.sanctify">
+                        <select name="params" style="font-size:0.75em; padding:1px;">
+                            <% for (var s = 0; s < hstatus.maxSlots; s++) { %>
+                                <option value="<%= m.id %>,<%= s %>">槽<%= s + 1 %></option>
+                            <% } %>
+                        </select>
+                        <input type="submit" value="圣化" class="btn btn-primary" style="padding:1px 6px; font-size:0.75em;">
+                    </form>
+                <% } else { %>
+                    <a href="holymark?type=holymark.unsanctify&params=<%= m.id %>" style="color:#c62828; font-size:0.82em;">卸</a>
+                <% } %>
+            </td>
+        </tr>
+        <% }); %>
+        </table>
+    <% } else { %>
+        <p style="color:#999; font-size:0.85em;">尚未收集任何圣痕</p>
+        <small style="color:#888;">战斗胜利有概率获得圣痕</small>
+    <% } %>
+</div>
+
+<% } else if (currentTab === 'devour') { %>
+<!-- ====== 吞噬升级 ====== -->
+<div class="section">
+    <h3>⚡ 吞噬升级</h3>
+    <small style="color:#888;">吞噬其他圣痕增加目标经验：同类圣痕全部可吞，不同类仅限蓝色及以下品质</small>
+    
+    <% if (hstatus.allMarks && hstatus.allMarks.length >= 2) { %>
+        <div style="margin:8px 0;">
+            <a href="holymark?type=holymark.devourAll" 
+               onclick="return confirm('一键吞噬所有可吞噬圣痕？不可撤销！')"
+               class="btn btn-danger">⚡ 一键吞噬全部</a>
+        </div>
+
+        <!-- 按品质批量吞噬 -->
+        <div style="margin:8px 0; padding:8px; background:#f8f9fa; border-radius:4px;">
+            <small style="font-weight:600;">按品质批量吞噬：</small>
+            <% hstatus.allMarks.forEach(function(m) { %>
+                <% if (!m.isEquipped) { %>
+                <div style="margin:3px 0; font-size:0.85em;">
+                    <span><%= m.typeIcon %> <strong><%= m.typeName %></strong> <span style="color:<%= m.qualityColor %>;">[<%= m.qualityName %>]</span>：</span>
+                    <a href="holymark?type=holymark.devourByQuality&params=<%= m.id %>,white" style="color:#999;" onclick="return confirm('吞噬品质≤白的可用圣痕→<%= m.typeName %>？')">白</a>
+                    <a href="holymark?type=holymark.devourByQuality&params=<%= m.id %>,green" style="color:#4caf50;" onclick="return confirm('吞噬品质≤绿的可用圣痕→<%= m.typeName %>？')">绿</a>
+                    <a href="holymark?type=holymark.devourByQuality&params=<%= m.id %>,blue" style="color:#1976d2;" onclick="return confirm('吞噬品质≤蓝的可用圣痕→<%= m.typeName %>？')">蓝</a>
+                    <a href="holymark?type=holymark.devourByQuality&params=<%= m.id %>,purple" style="color:#7b1fa2;" onclick="return confirm('按规则全部吞噬→<%= m.typeName %>？（同类全吞，异类最多到蓝）')">紫</a>
+                </div>
+                <% } %>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <p style="color:#999; font-size:0.85em;">需要至少2个圣痕才能吞噬</p>
+    <% } %>
+</div>
+
+<% } else if (currentTab === 'wiki') { %>
+<!-- ====== 圣痕百科 ====== -->
+<div class="section">
+    <h3>📖 圣痕百科</h3>
+    <table>
+    <tr><th>图标</th><th>名称</th><th>效果（白/绿/蓝/紫）</th></tr>
+    <tr><td>⚡</td><td>神力</td><td><small>攻击+5/10/15/20(×等级)</small></td></tr>
+    <tr><td>🐉</td><td>逆鳞</td><td><small>攻击%+1/2/3/4(×等级)</small></td></tr>
+    <tr><td>🩸</td><td>血魂</td><td><small>吸血+1/2/3/4%(×等级)</small></td></tr>
+    <tr><td>⚔️</td><td>疾闪</td><td><small>敏捷+5/10/15/20(×等级)</small></td></tr>
+    <tr><td>🛡️</td><td>英勇</td><td><small>士气+5/10/15/20(×等级)</small></td></tr>
+    <tr><td>⚖️</td><td>审判之光</td><td><small>必杀率+1/2/3/4%(×等级)</small></td></tr>
+    <tr><td>🔩</td><td>钢铁之轮</td><td><small>防御%+1/2/3/4(×等级)</small></td></tr>
+    <tr><td>👻</td><td>先祖之魂</td><td><small>体力%+1/2/3/4(×等级)</small></td></tr>
+    <tr><td>🌪️</td><td>飓风之灵</td><td><small>敏捷%+1/2/3/4(×等级)</small></td></tr>
+    <tr><td>🎵</td><td>天堂之歌</td><td><small>连击+1/2/3/4% & 闪避+1/2/3/4%(×等级)</small></td></tr>
+    </table>
+</div>
+
+<details style="font-size:0.82em; color:#666; margin:8px 0;">
+    <summary style="color:#888; cursor:pointer;">系统说明</summary>
+    <div style="padding:6px; background:#f8f9fa; border-radius:4px; margin-top:4px;">
+        <div>· 圣痕是远古众神留下的能量气息</div>
+        <div>· 战斗胜利有概率获得圣痕碎片</div>
+        <div>· 圣化：装备到1-6号槽位获得属性加成</div>
+        <div>· 吞噬：同类圣痕全部可吞，异类仅限蓝色及以下；每级+20%效果</div>
+        <div>· 品质：白→绿→蓝→紫</div>
+        <div>· 属性百分比总加成上限50%</div>
+    </div>
+</details>
+<% } %>

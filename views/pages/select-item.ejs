@@ -1,0 +1,103 @@
+﻿<div>
+    <h2>选择要发送的物品</h2>
+    
+    <% if (typeof message !== 'undefined' && message) { %>
+        <div style="color: <%= message.type === 'success' ? 'green' : 'red' %>;">
+            <%= message.text %>
+        </div>
+    <% } %>
+
+    <% if (typeof targetUser !== 'undefined' && targetUser) { %>
+    <div>
+        <h3>收件人: <%= targetUser.nickname %></h3>
+    </div>
+
+    <% var backpack = user.backpack %>
+    <% var play = user.getPlay() %>
+    <% var type = query.type || 1 %>
+
+    <!-- 背包信息 -->
+    <div>
+        <div>
+            <span>金贝：</span><span><%= play.gold %></span>
+        </div>
+        <div>
+            <span>银贝：</span><span><%= play.showSilver %></span>
+            <span>铜币：</span><span><%= play.showCopper %></span>
+        </div>
+        <div>
+            <span>负重：（</span><span><%= backpack.weight %></span> / <span><%= backpack.maxWeight %></span>）
+        </div>
+    </div>
+
+    <!-- 物品类型选择 -->
+    <div>
+        【
+        <a href="?type=1&targetUserId=<%= targetUser.id %>"
+           style="margin-right: 8px;<%= (typeof type === 'undefined' || type == 1) ? 'font-weight:bold' : '' %>">装备</a>
+        <span> 丨</span>
+
+        <a href="?type=2,3,4&targetUserId=<%= targetUser.id %>" style="margin-right: 8px;<%= type == '2,3,4' ? 'font-weight:bold' : '' %>">药物</a>
+        <span> 丨</span>
+
+        <a href="?type=33,34&targetUserId=<%= targetUser.id %>" style="margin-right: 8px;<%= type == '33,34' ? 'font-weight:bold' : '' %>">材料</a>
+        <span> 丨</span>
+
+        <a href="?type=5&targetUserId=<%= targetUser.id %>" style="margin-right: 8px;<%= type == 5 ? 'font-weight:bold' : '' %>">宝石</a>
+        <span> 丨</span>
+
+        <a href="?type=6&targetUserId=<%= targetUser.id %>" style="margin-right: 8px;<%= type == 6 ? 'font-weight:bold' : '' %>">宠物</a>
+        <span> 丨</span>
+
+        <a href="?type=10&targetUserId=<%= targetUser.id %>" style="<%= type == 10 ? 'font-weight:bold' : '' %>">其他</a>
+        】
+    </div>
+
+    <!-- 物品列表 -->
+    <div>
+        <%
+        var itemsToShow = backpack.items;
+        if (typeof type !== 'undefined') {
+            itemsToShow = backpack.items.filter(function (item) {
+                return String(type).split(',').includes(String(item.type));
+            });
+        }
+        %>
+        <% for (var i = 0; i < itemsToShow.length; i++) {
+            var item = itemsToShow[i]; %>
+        <div>
+            <span><%= i + 1 %></span>.
+            <a href="item-info?params=<%= item.id %>"><%= item.name %></a>
+            <% if (item.num > 1) { %>
+                <span>*<%= item.num %></span>
+            <% } %>
+            <% if (item.status === 2) { %>
+                <span style="margin-left: 5px;">(装)</span>
+            <% } %>
+            
+            <!-- 发送物品表单 -->
+            <form method="get" action="/select-item" style="display: inline;">
+                <input type="hidden" name="targetUserId" value="<%= targetUser.id %>">
+                <input type="hidden" name="type" value="sendItem">
+                <input type="hidden" name="itemId" value="<%= item.id %>">
+                <input type="hidden" name="itemName" value="<%= item.name %>">
+                <input type="hidden" name="itemType" value="<%= item.type %>">
+                <input type="hidden" name="itemInfo" value='<%= JSON.stringify(item.info) %>'>
+                <% if (item.type !== 1) { %>
+                    <!-- 非装备类物品可以输入数量 -->
+                    <label>数量: 
+                        <input type="number" name="quantity" min="1" max="<%= item.num %>" value="1" style="width: 60px;">
+                    </label>
+                <% } else { %>
+                    <!-- 装备类物品默认发送1个 -->
+                    <input type="hidden" name="quantity" value="1">
+                <% } %>
+                <button type="submit" style="margin-left: 10px; color: green;">[发送]</button>
+            </form>
+        </div>
+        <% } %>
+    </div>
+    <% } else { %>
+        <p>未指定收件人</p>
+    <% } %>
+</div>

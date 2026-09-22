@@ -1,0 +1,118 @@
+<%
+/* ── 城内地图 · 中国传统城市布局（长方形 7 列 × 5 行）──
+   规制依《周礼·考工记》"匠人营国"与历代都城制度：
+   · 居中而王：王宫（或市政中心）居长方形中点
+   · 旁门四达：北门居上中、南门居下中、西门居左中、东门居右中（小城市仅开实际存在的城门）
+   · 面朝后市：宫城之北为市（商业区），之南为朝（官署区）
+   · 左祖右社：宫城之东为祖庙/宗教区，之西为社稷/里坊民居
+   · 市井百戏（酒肆赌场）附于市两侧；码头临水居南墙外
+   输入：spots（地点数组，缺省取当前城内地图）、currentPos（当前位置名）
+*/
+%>
+<% var _spots = (typeof spots !== 'undefined' && spots) ? spots : user.city.getInsideMap(); %>
+<% var _current = (typeof currentPos !== 'undefined' && currentPos) ? currentPos : user.city.getStatus().position; %>
+<%
+function _cls(n) {
+    if (/北城门/.test(n)) return 'N';
+    if (/南城门/.test(n)) return 'S';
+    if (/西城门/.test(n)) return 'W';
+    if (/东城门/.test(n)) return 'E';
+    if (/王宫|皇宫|天守阁|荷里路德宫|王家大宅|神赐殿堂|御剑阁/.test(n)) return 'P';
+    if (/码头|港口/.test(n)) return 'dock';
+    if (/市场|集市|商店|铁匠铺|珠宝店|古董店|书店|造办处|当铺|大道/.test(n)) return 'market';
+    if (/寺庙|寺$|观$|庵$|教堂|占星|巫师公会|花园|百花谷|莲花亭|何花亭|碧云轩|云霄阁|望尘居|神社/.test(n)) return 'temple';
+    if (/翰林院|太医|内务府|炼丹房|公爵府|警察局|监狱|银行|研究院|协会|福利院|镖局|学院/.test(n)) return 'gov';
+    if (/酒馆|酒肆|酒窖|茶僚|茶寮|茶楼|怡红院|娱乐|歌舞伎|赌场|球场|客栈/.test(n)) return 'fun';
+    if (/居民区|居名区|民巷|住宅区|村庄|村落|后巷|渔村|村$|镇$/.test(n)) return 'house';
+    return 'other';
+}
+/* 固定点：北门(0,3) 西门(2,0) 宫城(2,3) 东门(2,6) 南门(4,3) */
+var _FIXED = { N: [0,3], W: [2,0], P: [2,3], E: [2,6], S: [4,3] };
+/* 分区偏好格（[row,col]，按"自宫城向外"的次序填充） */
+var _PREF = {
+    market: [[1,3],[0,2],[0,4],[1,2],[1,4]],
+    fun:    [[0,1],[0,5],[1,1],[1,5]],
+    temple: [[2,5],[1,6],[0,6],[3,6]],
+    gov:    [[3,3],[3,2],[3,4],[2,2],[2,4],[3,5]],
+    house:  [[2,1],[1,0],[0,0],[3,0],[4,0],[3,1],[4,1]],
+    dock:   [[4,2],[4,4],[4,5],[4,6]]
+};
+/* 由中心向外的 BFS 兜底序（溢出地点就近安放） */
+var _bfs = [];
+(function () {
+    var seen = { '2,3': 1 };
+    var q = [[2,3]];
+    while (q.length) {
+        var cur = q.shift();
+        _bfs.push(cur);
+        [[cur[0]-1,cur[1]],[cur[0]+1,cur[1]],[cur[0],cur[1]-1],[cur[0],cur[1]+1]].forEach(function (nc) {
+            if (nc[0] >= 0 && nc[0] < 5 && nc[1] >= 0 && nc[1] < 7 && !seen[nc[0]+','+nc[1]]) {
+                seen[nc[0]+','+nc[1]] = 1; q.push(nc);
+            }
+        });
+    }
+})();
+
+var _grid = {};   /* "r,c" -> 地点名 */
+var _byCls = { market: [], fun: [], temple: [], gov: [], house: [], dock: [], other: [] };
+var _fixed = {};
+_spots.forEach(function (s) {
+    var k = _cls(s);
+    if (_FIXED[k]) { _fixed[k] = s; } else { _byCls[k].push(s); }
+});
+Object.keys(_FIXED).forEach(function (k) {
+    if (_fixed[k]) _grid[_FIXED[k][0] + ',' + _FIXED[k][1]] = _fixed[k];
+});
+/* 无宫城时：广场（市政中心）居中，其次 other，其次商业 */
+if (!_fixed.P) {
+    var _cand = null;
+    var _gi = _byCls.other.findIndex(function (n) { return /广场/.test(n); });
+    if (_gi >= 0) { _cand = _byCls.other.splice(_gi, 1)[0]; }
+    else if (_byCls.other.length) { _cand = _byCls.other.shift(); }
+    else if (_byCls.market.length) { _cand = _byCls.market.shift(); }
+    if (_cand) _grid['2,3'] = _cand;
+}
+/* 分区填充：市 → 市井 → 祖庙 → 朝署 → 里坊 → 水岸 */
+['market', 'fun', 'temple', 'gov', 'house', 'dock'].forEach(function (clsName) {
+    var pref = _PREF[clsName] || [];
+    _byCls[clsName].forEach(function (name) {
+        var cell = null;
+        for (var i = 0; i < pref.length; i++) {
+            var key = pref[i][0] + ',' + pref[i][1];
+            if (!_grid[key]) { cell = key; break; }
+        }
+        if (!cell) {
+            for (var j = 0; j < _bfs.length; j++) {
+                var key2 = _bfs[j][0] + ',' + _bfs[j][1];
+                if (!_grid[key2]) { cell = key2; break; }
+            }
+        }
+        if (cell) _grid[cell] = name;
+    });
+});
+/* other 与溢出地点兜底 */
+_byCls.other.forEach(function (name) {
+    for (var j = 0; j < _bfs.length; j++) {
+        var key = _bfs[j][0] + ',' + _bfs[j][1];
+        if (!_grid[key]) { _grid[key] = name; break; }
+    }
+});
+%>
+<div style="border:2px solid #8b7355; border-radius:6px; background:#f7f3ea; padding:6px; margin:4px 0;">
+    <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:2px; font-size:0.75em; line-height:1.5;">
+    <% for (var _r = 0; _r < 5; _r++) { for (var _c = 0; _c < 7; _c++) {
+        var _key = _r + ',' + _c;
+        var _name = _grid[_key];
+        var _isGate = _name && /城门$/.test(_name);
+        var _isPalace = _key === '2,3';
+    %>
+        <% if (_name === _current) { %>
+            <span style="text-align:center; color:#c62828; font-weight:700; background:#fff; border-radius:3px; padding:1px 0;">◆<%= _name %></span>
+        <% } else if (_name) { %>
+            <a href="/main?type=city.moveToPosition&params=<%= _name %>" style="text-align:center; padding:1px 0; border-radius:3px; <%= _isPalace ? 'background:#fdf3d9; color:#8a6d1a; font-weight:600;' : (_isGate ? 'background:#ede4d3; color:#6d5438; font-weight:600;' : 'background:#fffdf8; color:#44607a;') %>"><%= _name === '码头' ? '★' : '' %><%= _name %></a>
+        <% } else { %>
+            <span style="text-align:center; color:#d8cfc0;">·</span>
+        <% } %>
+    <% } } %>
+    </div>
+</div>

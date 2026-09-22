@@ -1,0 +1,23 @@
+<%
+/* 羽翼展示块：当前羽翼、加成、翼形术；未装备显示空槽 */
+var wingStatus = (targetUser.wing && targetUser.wing.getStatus) ? targetUser.wing.getStatus() : null;
+var wingSkillLv = wingStatus ? (wingStatus.wingSkillLevel || 0) : 0;
+var wingLines = [];
+if (wingStatus && wingStatus.currentWing) {
+    wingLines.push('当前羽翼 <b>' + escapeFn(wingStatus.currentWing.name) + '</b>');
+    var wingBonus = wingStatus.bonus || {};
+    var wingLabels = { healthPercent: '体魄', vampire: '吸血', combo: '连击', ironWall: '铁壁', attackPercent: '攻击', defensePercent: '防御' };
+    var wingBonusParts = [];
+    Object.keys(wingLabels).forEach(function(key) {
+        if (wingBonus[key]) { wingBonusParts.push(wingLabels[key] + '+' + (wingBonus[key] * 100).toFixed(0) + '%'); }
+    });
+    wingLines.push('加成 ' + (wingBonusParts.length > 0 ? wingBonusParts.join(' ') : '<span class="asc-dim">无</span>'));
+    wingLines.push('翼形术 ' + wingSkillLv + '级');
+    if (isSelf) { wingLines.push('<a href="/wing">管理</a>'); }
+} else {
+    wingLines.push('<span class="asc-dim">（空）未装备羽翼</span>');
+    wingLines.push('翼形术 ' + wingSkillLv + '级');
+    if (isSelf) { wingLines.push('<a href="/wing">羽翼管理</a>'); }
+}
+%>
+<%- include('partials/ascii-box', { boxTitle: '伙伴 · 羽翼', boxLines: wingLines }) %>

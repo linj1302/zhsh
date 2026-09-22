@@ -1,0 +1,89 @@
+<div>
+    <h2>⚔️ 组队副本</h2>
+
+    <% if (typeof tip !== 'undefined' && tip) { %>
+        <p style="color: #ff6600; font-weight: bold; padding: 6px; background: #fff3e0; border-radius: 6px;"><%= tip %></p>
+    <% } %>
+
+<pre style="line-height: 1.1em; color: #8d6e63;">
+  /\    /\    /\
+ /  \  /  \  /  \
+/    \/    \/    \
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+</pre>
+
+    <!-- 我的队伍 -->
+    <div class="section">
+        <h3>👥 我的队伍</h3>
+        <% if (myTeam && myTeam.members && myTeam.members.length > 0) { %>
+            <p>
+                队伍：<%= myTeam.name || myTeam.id %>
+                （队长：<%= myTeam.leader ? myTeam.leader.name : '-' %>，<%= myTeam.members.length %> 人）
+            </p>
+            <% myTeam.members.forEach(function(m) { %>
+                <span><%= m.name %>(<%= m.level %>级)</span> .
+            <% }); %>
+        <% } else { %>
+            <p style="color: #999;">尚未组队，请先去 <a href="/team">队伍</a> 创建或加入队伍。</p>
+        <% } %>
+    </div>
+
+    <!-- 当前副本 -->
+    <% if (currentDungeon) { %>
+    <div class="section" style="border: 2px solid #c62828; border-radius: 8px; padding: 10px; margin: 10px 0;">
+        <h3 style="color: #c62828; margin: 4px 0;">🔥 副本进行中：<%= currentDungeon.dungeonId %></h3>
+        <% if (currentDungeon.status === 'active') { %>
+            <p>
+                Boss 血量：<%= currentDungeon.hp %> / <%= currentDungeon.maxHp %>
+                （回合数 <%= currentDungeon.turns %>，参战 <%= currentDungeon.members %> 人）
+            </p>
+            <a href="/team-dungeon?dungeonId=<%= currentDungeon.id %>&type=teamDungeon.attackBoss&params=<%= currentDungeon.id %>,<%= user.id %>">[攻击Boss]</a>
+            <a href="/team-dungeon?type=teamDungeon.leaveDungeon&params=<%= currentDungeon.id %>">[离开副本]</a>
+        <% } else if (currentDungeon.status === 'completed') { %>
+            <p style="color: green;">🎉 Boss 已被击败，副本完成！</p>
+        <% } else { %>
+            <p style="color: gray;">副本状态：<%= currentDungeon.status %></p>
+        <% } %>
+    </div>
+    <% } %>
+
+    <!-- 其他活跃副本 -->
+    <% var openDungeons = dungeonList.filter(function(d) { return d.status === 'active' && (!currentDungeon || d.id !== currentDungeon.id); }); %>
+    <% if (openDungeons.length > 0) { %>
+    <div class="section">
+        <h3>🚪 进行中的副本</h3>
+        <% openDungeons.forEach(function(d) { %>
+            <p>
+                【<%= d.dungeonId %>】<%= d.members %> 人在战，Boss 余血 <%= d.hp %>/<%= d.maxHp %>
+                <a href="/team-dungeon?type=teamDungeon.joinDungeon&params=<%= d.id %>">[加入]</a>
+            </p>
+        <% }); %>
+    </div>
+    <% } %>
+
+    <!-- 发起副本 -->
+    <div class="section">
+        <h3>🗺️ 发起组队副本</h3>
+        <p style="font-size: 14px; color: #666;">按副本要求人数组队后发起挑战，队伍全员将一同参战：</p>
+        <% var teamTrials = (trial || []).filter(function(t) {
+               var m = String(t.playerRequirement || '').match(/(\d+)\s*人/);
+               return m && Number(m[1]) >= 2;
+           }); %>
+        <% teamTrials.forEach(function(t) { %>
+            <p>
+                【<%= t.name %>】<%= t.levelRequirement || '无限制' %> . <%= t.playerRequirement %>
+                <a href="/team-dungeon?type=teamDungeon.createDungeon&params=<%= encodeURIComponent(t.name) %>">[发起]</a>
+            </p>
+        <% }); %>
+    </div>
+
+    <div class="section" style="font-size: 14px; color: #666;">
+        <h3>📖 玩法说明</h3>
+        <ul>
+            <li>发起副本时按队伍快照生成参战成员，Boss 强度随副本档位而定</li>
+            <li>每回合攻击会对 Boss 造成伤害，同时承受 Boss 反击</li>
+            <li>过半成员倒下则挑战失败；击败 Boss 可获得副本奖励</li>
+        </ul>
+    </div>
+
+</div>

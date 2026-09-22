@@ -1,0 +1,95 @@
+[
+  {
+    "id": 1,
+    "name": "自由之翼",
+    "level": 80,
+    "wingSkillLevel": 1,
+    "bonuses": {
+      "healthPercent": 0.03,
+      "vampire": 0.03
+    },
+    "effectText": "体魄 +3%、吸血 +3%"
+  },
+  {
+    "id": 2,
+    "name": "魔龙之翼",
+    "level": 160,
+    "wingSkillLevel": 2,
+    "bonuses": {
+      "healthPercent": 0.04,
+      "vampire": 0.04
+    },
+    "effectText": "体魄 +4%、吸血 +4%"
+  },
+  {
+    "id": 3,
+    "name": "死亡之翼",
+    "level": 200,
+    "wingSkillLevel": 2,
+    "bonuses": {
+      "healthPercent": 0.05,
+      "vampire": 0.05
+    },
+    "effectText": "体魄 +5%、吸血 +5%"
+  },
+  {
+    "id": 4,
+    "name": "血魂之翼",
+    "level": 210,
+    "wingSkillLevel": 3,
+    "bonuses": {
+      "combo": 0.05,
+      "attackPercent": 0.03
+    },
+    "description": "攻击导向羽翼，提升连击和攻击力",
+    "effectText": "连击 +5%"
+  },
+  {
+    "id": 5,
+    "name": "守护之翼",
+    "level": 210,
+    "wingSkillLevel": 3,
+    "bonuses": {
+      "combo": 0.05,
+      "defensePercent": 0.03
+    },
+    "description": "防御导向羽翼，提升连击和防御力",
+    "effectText": "连击 +5%"
+  },
+  {
+    "id": 6,
+    "name": "堕落之翼",
+    "level": 210,
+    "wingSkillLevel": 3,
+    "bonuses": {
+      "combo": 0.05,
+      "ironWall": 0.05
+    },
+    "description": "堕落之翼，连击与反弹伤害",
+    "effectText": "连击 +5%、铁壁 +5%"
+  },
+  {
+    "id": 7,
+    "name": "希望之翼",
+    "level": 210,
+    "wingSkillLevel": 3,
+    "bonuses": {
+      "combo": 0.05,
+      "ironWall": 0.05,
+      "healthPercent": 0.02
+    },
+    "description": "希望之翼，连击、反弹与生命恢复",
+    "effectText": "连击 +5%、铁壁 +5%"
+  },
+  {
+    "id": 10,
+    "name": "公海之翼",
+    "level": 220,
+    "wingSkillLevel": 3,
+    "bonuses": {
+      "combo": 0.10,
+      "ironWall": 0.10
+    },
+    "effectText": "连击 +10%、铁壁 +10%"
+  }
+]

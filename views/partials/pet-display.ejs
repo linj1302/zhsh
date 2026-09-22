@@ -1,0 +1,22 @@
+<%
+/* 宠物字符画卡片：出战/首只宠物，属性条形图；无宠物时空槽引导 */
+var pets = targetUser.petManager ? targetUser.petManager.getUserPets() : [];
+var activePet = pets.find(function(pet) { return pet.isFighting; }) || (pets.length > 0 ? pets[0] : null);
+var petLines = [];
+if (activePet) {
+    var petDetail = targetUser.petManager.getPetDetail(activePet.id) || activePet;
+    var petMax = Math.max(petDetail.attack || 0, petDetail.defense || 0, petDetail.agility || 0, 1);
+    var petHead = '名讳 ' + escapeFn(petDetail.name) + ' · ' + (petDetail.level || 1) + '级'
+        + ' ｜ 资质 ' + escapeFn(petDetail.qualification || '普通')
+        + ' · 天赋 ' + escapeFn(petDetail.talent || '普通');
+    if (petDetail.isFighting) { petHead += ' <span style="color:#28a745;">[出战]</span>'; }
+    petLines.push(petHead);
+    petLines.push('攻 ' + include('partials/progress-bar', { current: petDetail.attack || 0, max: petMax, width: 10 }) + ' ' + (petDetail.attack || 0));
+    petLines.push('防 ' + include('partials/progress-bar', { current: petDetail.defense || 0, max: petMax, width: 10 }) + ' ' + (petDetail.defense || 0));
+    petLines.push('敏 ' + include('partials/progress-bar', { current: petDetail.agility || 0, max: petMax, width: 10 }) + ' ' + (petDetail.agility || 0));
+    if (isSelf) { petLines.push('<a href="/pet">管理</a>'); }
+} else {
+    petLines.push('<span class="asc-dim">（空）尚无宠物</span>' + (isSelf ? ' <a href="/pet">宠物管理</a>' : ''));
+}
+%>
+<%- include('partials/ascii-box', { boxTitle: '伙伴 · 宠物', boxLines: petLines }) %>

@@ -1,0 +1,51 @@
+﻿<div class="game-container">
+    <div>
+        【帮会成员】
+    </div>
+
+    <% if (typeof gangInfo !== 'undefined' && gangInfo && gangInfo.id) { %>
+        <!-- 帮会名称 -->
+        <div>
+            帮会名称: <span class="left-cls"><%= gangInfo.name %></span>
+        </div>
+
+        <% if (typeof gangMembers !== 'undefined' && gangMembers && gangMembers.length > 0) { %>
+            <!-- 成员列表 -->
+            <div class="member-list">
+                <div>
+                    <% gangMembers.forEach(function(member, index) { %>
+                        <div class="member-item">
+                            <span style="font-weight: bold;"><%= index + 1 %></span>
+
+                            <!-- 成员姓名 -->
+                            <a class="link-item"><%= member.username %></a>
+
+                            <!-- 在线状态 -->
+                            <span class="left-cls">
+                                <span class="online-status">未知位置</span>
+                            </span>
+
+                            <!-- 贡献值 -->
+                            <span class="left-cls">贡献 <%= member.contribution %></span>
+
+                            <!-- 职位显示 -->
+                            <% if (member.role === 'leader') { %>
+                                <span class="role-badge role-master">帮主</span>
+                            <% } else if (member.role === 'elder') { %>
+                                <span class="role-badge">长老</span>
+                            <% } else { %>
+                                <span class="role-badge">帮众</span>
+                            <% } %>
+
+                            <!-- 管理操作 -->
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        <% } else { %>
+            <div>暂无成员信息</div>
+        <% } %>
+    <% } else { %>
+        <div>您还没有加入任何帮会</div>
+    <% } %>
+</div>

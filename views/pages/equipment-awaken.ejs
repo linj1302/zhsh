@@ -1,0 +1,105 @@
+﻿<h2 class="awaken-title">装备觉醒</h2>
+<p style="text-align:center; font-size:0.82em; color:#888; margin-bottom:10px;">唤醒远古之力，铸就传说神兵</p>
+
+<% var awakenData = user.equipmentAwaken.getPageData(); %>
+<% var effectColors = {vampire:'#e74c3c',blade:'#e67e22',ironwall:'#3498db',physique:'#2ecc71',thorns:'#9b59b6',antiThorns:'#1abc9c',dmgReduce:'#95a5a6',combo:'#f39c12'}; %>
+
+<!-- 系统说明 -->
+<div style="background:#f8f9fa; padding:8px 10px; border-radius:6px; margin:8px 0; font-size:0.82em; color:#666;">
+    <div>✦ 觉醒随机获得一种效果，每件装备只能觉醒一种</div>
+    <div>✦ 每种效果最高10级（每级=1%），觉醒后继续升级同一效果</div>
+    <div>✦ 1-5级100%成功 | 6-8级80% | 9级50% | 10级30%</div>
+</div>
+
+<% awakenData.slots.forEach(function(slot) { %>
+    <div class="section" style="border-color:<%= slot.hasItem ? '#e0d4f5' : '#eee' %>;">
+        <h3 style="border-color:#f0e8ff;">
+            <span style="color:#7c4dff;">✦</span> <%= slot.label %>
+            <% if (slot.hasItem) { %>
+                <span style="color:#333; font-weight:normal;">— <%= slot.itemName %></span>
+                <small>(<%= slot.itemLevel %>级)</small>
+                <% if (slot.strengthenLevel > 0) { %>
+                    <span class="tag tag-orange">+<%= slot.strengthenLevel %></span>
+                <% } %>
+            <% } else { %>
+                <small style="color:#ccc;">（空槽位）</small>
+            <% } %>
+        </h3>
+
+        <% if (slot.hasItem) { %>
+            <% 
+            // 找出已觉醒的效果
+            var activeEffect = slot.awakenEffects.find(function(ef) { return ef.currentLevel > 0; });
+            // 找出可觉醒的最低等级（用于消耗显示）
+            var awakenCostInfo = null;
+            var canAwaken = false;
+            if (activeEffect) {
+                awakenCostInfo = activeEffect.cost;
+                canAwaken = activeEffect.cost && activeEffect.cost.canAfford && !activeEffect.isMaxed;
+            } else if (slot.awakenEffects.length > 0) {
+                // 未觉醒时，用第一个效果的消耗信息作为参考（实际消耗取决于随机结果）
+                awakenCostInfo = slot.awakenEffects[0].cost;
+                canAwaken = slot.awakenEffects.some(function(ef) { return ef.cost && ef.cost.canAfford; });
+            }
+            %>
+
+            <% if (activeEffect) { %>
+                <!-- 已觉醒：显示当前效果 -->
+                <div style="padding:6px 0; font-size:0.85em;">
+                    <span style="color:<%= effectColors[activeEffect.id] || '#333' %>; font-weight:600;">
+                        ✦ <%= activeEffect.name %>
+                    </span>
+                    <span style="margin-left:6px;">
+                        <% for (var i = 1; i <= activeEffect.maxLevel; i++) { %>
+                            <span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:<%= i <= activeEffect.currentLevel ? (effectColors[activeEffect.id] || '#333') : '#e8e8e8' %>;"></span>
+                        <% } %>
+                    </span>
+                    <small style="margin-left:4px;"><%= activeEffect.currentLevel %>/<%= activeEffect.maxLevel %></small>
+                    <div style="color:<%= effectColors[activeEffect.id] || '#333' %>; margin-top:2px;">
+                        <%= activeEffect.desc.replace('{val}', activeEffect.currentVal) %>
+                    </div>
+                </div>
+            <% } else { %>
+                <!-- 未觉醒：显示可能效果 -->
+                <div style="padding:4px 0; font-size:0.82em; color:#888;">
+                    可能觉醒：<% slot.awakenEffects.forEach(function(ef, idx) { %><span style="color:<%= effectColors[ef.id] || '#333' %>;"><%= ef.name %></span><%= idx < slot.awakenEffects.length - 1 ? '、' : '' %><% }); %>（随机）
+                </div>
+            <% } %>
+
+            <!-- 觉醒按钮 -->
+            <div style="margin-top:6px;">
+                <% if (activeEffect && activeEffect.isMaxed) { %>
+                    <span class="tag tag-green">已满级</span>
+                <% } else if (canAwaken) { %>
+                    <a href="equipment-awaken?type=equipmentAwaken.awaken&params=<%= slot.itemId %>,<%= slot.key %>"
+                       class="btn btn-purple"
+                       onclick="return confirm('<%= activeEffect ? '继续觉醒' + activeEffect.name + '？' : '随机觉醒？效果不可选择。' %>消耗<%= awakenCostInfo.stoneName %> x<%= awakenCostInfo.stoneCount %>，成功率<%= awakenCostInfo.successRate %>%')">
+                        ✦ 觉醒 <% if (activeEffect) { %><%= activeEffect.currentLevel + 1 %>级<% } %>
+                    </a>
+                    <small style="color:#888; margin-left:6px;"><%= awakenCostInfo.stoneName %> x<%= awakenCostInfo.stoneCount %></small>
+                <% } else if (awakenCostInfo) { %>
+                    <small style="color:#ccc;">
+                        <%= awakenCostInfo.strengthenMet ? '觉醒石不足' : '强化等级不足' %>
+                    </small>
+                <% } else { %>
+                    <small style="color:#999;">该部位无可觉醒效果</small>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+<% }); %>
+
+<!-- 部位效果参考表 -->
+<details style="margin:10px 0; font-size:0.82em;">
+    <summary style="color:#888; cursor:pointer;">部位可觉醒效果参考</summary>
+    <table style="margin-top:6px; font-size:0.9em;">
+    <tr><th>部位</th><th>可觉醒效果</th></tr>
+    <tr><td>手持</td><td>利刃、吸血</td></tr>
+    <tr><td>副手</td><td>利刃、铁壁、体魄、荆棘、抗反弹、免伤、连击、吸血</td></tr>
+    <tr><td>头部</td><td>铁壁、荆棘、免伤、抗反弹</td></tr>
+    <tr><td>躯体</td><td>铁壁、荆棘、免伤、抗反弹</td></tr>
+    <tr><td>腰部</td><td>铁壁、荆棘、免伤、抗反弹</td></tr>
+    <tr><td>脚部</td><td>铁壁、荆棘、免伤、抗反弹</td></tr>
+    <tr><td>配饰</td><td>连击、体魄、免伤、抗反弹</td></tr>
+    </table>
+</details>

@@ -1,0 +1,55 @@
+[
+  {
+    "submitLocation": "威尼斯赌场",
+    "receiveNpc": "博内拉",
+    "submitNpc": "博内拉",
+    "taskType": "收集",
+    "targetName": "虎皮",
+    "quantity": "8",
+    "name": "虎皮大衣",
+    "targetAddress": "威尼斯矿山",
+    "receiveLocation": "威尼斯赌场",
+    "content": "去北城门外的矿山最东边收集8块虎皮，回赌场交给博内拉。",
+    "index": 48,
+    "receiveDialog": [
+      "博内拉：我想要一件虎皮大衣，你能去北城门外的矿山最东边帮我收集一些虎皮吗？",
+      "你：虎皮？这听起来挺值钱的。"
+    ],
+    "submitDialog": [
+      "博内拉：虎皮收集齐了吗？",
+      "你：这是你要的8块虎皮，应该够做一件大衣了。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    },
+    "level": 10
+  },
+  {
+    "submitLocation": "威尼斯赌场",
+    "receiveNpc": "博内拉",
+    "submitNpc": "博内拉",
+    "taskType": "收集",
+    "targetName": "金瓶梅",
+    "quantity": "1",
+    "name": "金瓶梅",
+    "targetAddress": "威尼斯商店",
+    "receiveLocation": "威尼斯赌场",
+    "content": "去威尼斯商店买一本《金瓶梅》回赌场交给博内拉。",
+    "index": 49,
+    "receiveDialog": [
+      "博内拉：我还需要一本《金瓶梅》来配我的新大衣，你能去商店帮我买一本吗？",
+      "你：《金瓶梅》？这书名听起来挺特别的。"
+    ],
+    "submitDialog": [
+      "博内拉：书买到了吗？",
+      "你：买到了，这是一本《金瓶梅》。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    }
+  }
+]

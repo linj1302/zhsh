@@ -1,0 +1,39 @@
+﻿<div class="wap_class">
+    <div><%= query.npc %>的任务</div>
+    <br>
+    <% if (!query.npc) { %>
+        <p>未指定NPC</p>
+    <% } else { %>
+        <% var taskSystem = user.task %>
+
+        <%
+            // 获取该NPC相关的可提交任务
+            const submittableTasks = taskSystem.getSubmittableTasksForNpc(query.npc);
+        %>
+
+        <% if (submittableTasks.length > 0) { %>
+            <% submittableTasks.forEach(task => { %>
+                <div class="task-item">
+                    <a href="/task-detail?taskIndex=<%= task.index %>">
+                        <%= task.name %>
+                    </a>
+                </div>
+            <% }); %>
+        <% } %>
+
+        <%
+            // 获取该NPC相关的可接任务
+            const availableTasks = taskSystem.getAvailableTasksForNpc(query.npc);
+        %>
+
+        <% if (availableTasks.length > 0) { %>
+            <% availableTasks.forEach(task => { %>
+                <div class="task-item">
+                    <a href="/task-detail?taskIndex=<%= task.index %>">
+                        <%= task.name %>
+                    </a>
+                </div>
+            <% }); %>
+        <% } %>
+    <% } %>
+</div>

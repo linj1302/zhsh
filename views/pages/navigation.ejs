@@ -1,0 +1,42 @@
+﻿<div>
+    <div style="margin: 10px 0px;">
+        【城市列表】
+    </div>
+
+    <% var city = user.getCity() %>
+    <% var viewWorld = query.viewWorld||city.world %>
+    <% var sailing = user.sailing %>
+
+    <div style="margin-top: 20px; line-height: 1.6;">
+        <div>
+            <% for (let i of worldMap[viewWorld]) { %>
+            <div>
+                <% if (i !== city.city) { %>
+                    <a href="voyage?type=sailing.startSailing&params=<%= i %>"><%= i %></a>
+                    <span>(<%= sailing.calculateDistance(city.city, i) %>海里)</span>
+                <% } else { %>
+                    <span><%= i %></span>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+
+    </div>
+
+    <div>
+        【
+        <% for (let i in worldMap) { %>
+        <span>
+            <% if( i === viewWorld) { %>
+            <span><%= i %></span>
+            <% } else {%>
+            <a href="?viewWorld=<%= i %>"><%= i %></a>
+            <% } %>
+        </span>
+        <% } %>
+        】
+    </div>
+<div>
+
+    </div>
+</div>

@@ -1,0 +1,142 @@
+﻿<div>
+    <div style="margin: 10px 0px;">
+        【队伍列表】
+    </div>
+
+    <% /* 已在队时显示当前队伍状态条与退出/解散快捷入口（队长退队自动转让，仅剩队长时退队即解散） */ %>
+    <% if (myTeam) { %>
+        <div style="background:#e8f5e9; border-radius:6px; padding:8px 10px; margin-bottom:10px; font-size:0.9em;">
+            已在队伍【<%= myTeam.name %>】（队长:<%= myTeam.leader.name %>，<%= myTeam.members.length %>/5）
+            <% if (myTeam.leader.id === user.id) { %>
+                <% var _succ = myTeam.members.find(function(m) { return m.id !== user.id; }); %>
+                <% var _leaveMsg = _succ ? '退队后队长将自动转让给 ' + _succ.name + '，确定退出吗？' : '队伍仅剩你一人，退队将同时解散队伍，确定退出吗？'; %>
+                ｜<a href="/team?type=leaveTeam&teamId=<%= myTeam.id %>" style="color:#c0392b;" onclick="return confirm('<%= _leaveMsg %>');">退出队伍</a>
+                ｜<a href="/team?type=disbandTeam&teamId=<%= myTeam.id %>" style="color:#c0392b;" onclick="return confirm('确定解散队伍吗？解散后所有队员都将离队。');">解散队伍</a>
+            <% } else { %>
+                ｜<a href="/team?type=leaveTeam&teamId=<%= myTeam.id %>" style="color:#c0392b;" onclick="return confirm('确定退出队伍吗？');">退出队伍</a>
+            <% } %>
+            ｜<a href="/my-team">我的队伍</a>
+        </div>
+    <% } %>
+
+    <div style="margin-top: 20px; line-height: 1.6;">
+        <div>
+            <% if (teams && teams.length > 0) { %>
+                <% teams.forEach(function(team, index) { %>
+                    <div>
+                        <span><%= index + 1 %>.</span>
+                        <span><%= team.type %></span>
+                        <a><%= team.leader.name %></a>
+                        <span style="margin-left: 5px;">(<%= team.members.length %>/5)</span>
+                        <a style="margin-left: 15px;" href="/team?type=joinTeam&teamId=<%= team.id %>">加入</a>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div>暂无队伍</div>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- 分页组件 -->
+    <style>
+        .pagination-container {
+            margin: 15px 0;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            background: #fff;
+            flex-wrap: nowrap;
+        }
+
+        .pagination .prev,
+        .pagination .next {
+            height: 30px;
+            line-height: 28px;
+            padding: 0 12px;
+            margin: 0 5px;
+            font-size: 14px;
+            background: #fff;
+            color: #606266;
+            transition: all 0.3s;
+            text-decoration: none;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .pagination .prev:hover,
+        .pagination .next:hover {
+            color: #409eff;
+            border-color: #c6e2ff;
+            background-color: #ecf5ff;
+        }
+
+        .pagination .prev.disabled,
+        .pagination .next.disabled {
+            opacity: 0.6;
+            background: #f8f9fa;
+            color: #c0c4cc;
+            cursor: not-allowed;
+        }
+
+        .pagination .info {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #606266;
+            margin: 0 10px;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .pagination .info .page {
+            margin-right: 8px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .pagination .info .total {
+            color: #909399;
+        }
+    </style>
+    <div>
+        <!-- 计算总页数 -->
+        <div style="display: flex; align-items: center; width: 100%; justify-content: center;">
+            <!-- 上一页按钮 -->
+            <% if (teamPage > 1) { %>
+                <a href="/team?page=<%= teamPage - 1 %>">‹ 上一页</a>
+            <% } else { %>
+                <span>‹ 上一页</span>
+            <% } %>
+
+            <!-- 页码信息 -->
+            <div>
+                <span>第<%= teamPage %> / <%= teamTotalPages %>页</span>
+                <span>共 <%= teamTotal %> 条数据</span>
+            </div>
+
+            <!-- 下一页按钮 -->
+            <% if (teamPage < teamTotalPages) { %>
+                <a href="/team?page=<%= teamPage + 1 %>">下一页 ›</a>
+            <% } else { %>
+                <span>下一页 ›</span>
+            <% } %>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px; line-height: 1.6;">
+        <div>
+            <% if (!myTeam) { %>
+                <a href="/team?type=createTeam">创建队伍</a>
+            <% } %>
+        </div>
+        <div>
+            <a href="/my-team">我的队伍</a>
+        </div>
+</div>
+</div>

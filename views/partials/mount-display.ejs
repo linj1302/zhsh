@@ -1,0 +1,14 @@
+<%
+/* 坐骑展示块：当前坐骑与属性加成；未骑乘显示空槽 */
+var mountStatus = (targetUser.mount && targetUser.mount.getStatus) ? targetUser.mount.getStatus() : null;
+var mountLines = [];
+if (mountStatus && mountStatus.currentMount) {
+    var mountBonus = mountStatus.bonus || {};
+    mountLines.push('当前骑乘 <b>' + escapeFn(mountStatus.currentMount.name) + '</b>');
+    mountLines.push('加成 攻+' + (mountBonus.attack || 0) + ' 防+' + (mountBonus.defense || 0) + ' 敏+' + (mountBonus.agility || 0) + ' 体+' + (mountBonus.health || 0));
+    if (isSelf) { mountLines.push('<a href="/mount">管理</a>'); }
+} else {
+    mountLines.push('<span class="asc-dim">（空）未骑乘任何坐骑</span>' + (isSelf ? ' <a href="/mount">坐骑管理</a>' : ''));
+}
+%>
+<%- include('partials/ascii-box', { boxTitle: '伙伴 · 坐骑', boxLines: mountLines }) %>

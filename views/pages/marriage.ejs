@@ -1,0 +1,79 @@
+﻿<div>
+    <div>证婚人： 今日以红花艳蕊相示，定将沥心相待意中人，不惧千难万险忠心不渝，携手相伴白头一生无悔。</div>
+    
+    <% if (typeof tip !== 'undefined' && tip) { %>
+        <div style="margin: 10px 0; padding: 8px; background: #f5f5f5; color: <%= tip.includes('成功') || tip.includes('已发送') || tip.includes('已接受') || tip.includes('已加入') || tip.includes('已成功') ? 'green' : 'red' %>;">
+            <%= tip %>
+        </div>
+    <% } %>
+
+    <div style="margin: 15px 0;">
+        <div><a href="/marriage-proposal">发起求婚</a></div>
+        <div><a href="/marriage-banquet">参加婚宴</a></div>
+        <div><a href="/marriage-wedding">举办婚宴</a></div>
+        <div><a href="/marriage-divorce">强制离婚</a></div>
+        <div><a href="/marriage-proposal">求婚信息</a></div>
+        <div><a href="/marriage-info">婚姻说明</a></div>
+    </div>
+
+    <% if (typeof marriageInfo !== 'undefined' && marriageInfo) { %>
+        <div>
+            【婚姻状态】
+            <div>您已与 <%= marriageInfo.user1_id == user.id ? marriageInfo.user2_nickname : marriageInfo.user1_nickname %> 结为夫妻</div>
+        </div>
+    <% } %>
+
+    <% if (typeof receivedProposals !== 'undefined' && receivedProposals && receivedProposals.length > 0) { %>
+        <div>
+            【收到的求婚申请】
+            <% receivedProposals.forEach(function(proposal) { %>
+                <div style="padding: 5px 0;">
+                    <span><%= proposal.proposer_nickname %></span>
+                    <a href="/marriage?type=acceptProposal&proposalId=<%= proposal.id %>">接受</a>
+                    <a href="/marriage?type=rejectProposal&proposalId=<%= proposal.id %>">拒绝</a>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <div>收到的求婚申请：暂无求婚申请</div>
+    <% } %>
+
+    <% if (typeof activeBanquets !== 'undefined' && activeBanquets && activeBanquets.length > 0) { %>
+        <div>
+            【进行中的婚宴】
+            <% activeBanquets.forEach(function(banquet) { %>
+                <div style="padding: 5px 0;">
+                    <span><%= banquet.host_nickname %> 正在举办婚宴</span>
+                    <a href="/marriage?type=joinBanquet&banquetId=<%= banquet.id %>">参加</a>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <div>进行中的婚宴：暂无</div>
+    <% } %>
+
+    <% if (typeof sentProposals !== 'undefined' && sentProposals && sentProposals.length > 0) { %>
+        <div>
+            【已发送的求婚申请】
+            <% sentProposals.forEach(function(proposal) { %>
+                <div style="padding: 5px 0;">
+                    <span>向 <%= proposal.proposee_nickname %> 发起的求婚申请</span>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <% if (typeof eligibleFriends !== 'undefined' && eligibleFriends && eligibleFriends.length > 0) { %>
+        <div>
+            【可求婚的好友列表】
+            <% eligibleFriends.forEach(function(friend) { %>
+                <div style="padding: 5px 0;">
+                    <span><%= friend.nickname %></span>
+                    <a href="/marriage?type=propose&targetUserId=<%= friend.id %>">求婚</a>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <div>可求婚的好友列表：暂无可求婚的好友（对方需未结婚且未有 pending 求婚）</div>
+    <% } %>
+</div>

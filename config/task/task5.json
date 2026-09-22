@@ -1,0 +1,497 @@
+[
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "罗西",
+    "submitNpc": "老板（新手指引）",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "罗西的美酒",
+    "targetAddress": "威尼斯酒馆",
+    "receiveLocation": "威尼斯居民区",
+    "content": "去威尼斯酒馆找老板问问怎么能弄到好酒。",
+    "index": 21,
+    "receiveDialog": [
+      "罗西：嗨，朋友！我听说你是这里的新面孔。我想请你帮我个忙。",
+      "你：什么事？说来听听。"
+    ],
+    "submitDialog": [
+      "老板（新手指引）：哦，罗西让你来的？他想要好酒？",
+      "你：是的，他很想知道哪里能弄到好酒。"
+    ],
+    "prize": {
+      "经验": 4000,
+      "声望": 1,
+      "铜贝": 400
+    },
+    "level": 6
+  },
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "老板（新手指引）",
+    "submitNpc": "威尼斯公主",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "罗西的美酒2",
+    "targetAddress": "威尼斯王宫",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去王宫找威尼斯公主问问怎么才能弄到美酒。",
+    "index": 22,
+    "receiveDialog": [
+      "老板（新手指引）：去王宫找威尼斯公主吧，她对美酒的了解比任何人都深。",
+      "你：公主？她会帮我弄到好酒吗？"
+    ],
+    "submitDialog": [
+      "威尼斯公主：哦，你是酒馆老板介绍来的？想要好酒？",
+      "你：是的，罗西很想知道哪里能弄到好酒。"
+    ],
+    "prize": {
+      "经验": 2000,
+      "声望": 1,
+      "铜贝": 200
+    }
+  },
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "威尼斯公主",
+    "submitNpc": "威尼斯公主",
+    "taskType": "收集",
+    "targetName": "狮子奶",
+    "quantity": "1",
+    "name": "公主的条件",
+    "targetAddress": "伊斯坦堡商店",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去伊斯坦堡的商店买狮子奶，回威尼斯王宫找公主",
+    "index": 23,
+    "receiveDialog": [
+      "威尼斯公主：想要好酒，首先得证明你的诚意。去伊斯坦堡的商店买一瓶狮子奶回来给我。",
+      "你：狮子奶？这听起来很稀有啊。"
+    ],
+    "submitDialog": [
+      "威尼斯公主：你买到狮子奶了吗？",
+      "你：这是你要的狮子奶，应该没弄错吧？"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    }
+  },
+  {
+    "receiveNpc": "威尼斯公主",
+    "submitNpc": "多纳多",
+    "taskType": "对话",
+    "name": "去找多纳多聊聊",
+    "receiveLocation": "威尼斯王宫",
+    "submitLocation": "威尼斯王宫",
+    "content": "去找多纳多聊聊",
+    "index": 24,
+    "receiveDialog": [
+      "威尼斯公主：接下来你去找多纳多聊聊吧，他有些事情需要处理。",
+      "你：多纳多？他是做什么的？"
+    ],
+    "submitDialog": [
+      "多纳多：哦，公主让你来的？有什么事吗？",
+      "你：她说你有些事情需要处理。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "多纳多",
+    "submitNpc": "多纳多",
+    "taskType": "打怪",
+    "targetName": "海贼",
+    "quantity": "8",
+    "name": "清剿海贼",
+    "targetAddress": "威尼斯沙滩",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去东城门外的沙滩杀死8个海贼，回王宫找多纳多。",
+    "index": 25,
+    "receiveDialog": [
+      "多纳多：最近东城门外的沙滩出现了海贼，严重威胁到居民安全。",
+      "你：海贼？这可不能不管。"
+    ],
+    "submitDialog": [
+      "多纳多：海贼都被你清理了吗？",
+      "你：没错，8个海贼已经全部解决了。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    },
+    "level": 9
+  },
+  {
+    "submitLocation": "威尼斯王宫",
+    "receiveNpc": "多纳多",
+    "submitNpc": "多纳多",
+    "taskType": "打怪",
+    "targetName": "海贼头目",
+    "quantity": "5",
+    "name": "擒贼先擒王",
+    "targetAddress": "威尼斯海滩",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去东城门外的海滩杀5个海贼头目，回王宫找治安官多纳多。",
+    "index": 26,
+    "receiveDialog": [
+      "多纳多：清理了普通海贼还不够，他们的头目还在兴风作浪。",
+      "你：那我去把他们的头目也解决了。"
+    ],
+    "submitDialog": [
+      "多纳多：海贼头目都解决了吗？",
+      "你：5个海贼头目已经全部清除，海滩应该安全了。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    },
+    "level": 10
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "多纳多",
+    "submitNpc": "安德鲁",
+    "taskType": "对话",
+    "targetName": "",
+    "quantity": "",
+    "name": "安德鲁的秘密",
+    "targetAddress": "威尼斯酒馆",
+    "receiveLocation": "威尼斯王宫",
+    "content": "去威尼斯酒馆请找安德鲁聊聊天。",
+    "index": 27,
+    "receiveDialog": [
+      "多纳多：接下来你去酒馆找安德鲁聊聊，他可能知道一些有用的信息。",
+      "你：安德鲁？他是什么人？"
+    ],
+    "submitDialog": [
+      "安德鲁：哦，多纳多让你来的？有什么事要问我吗？",
+      "你：他让我来找你聊聊，看看有什么情报可以提供。"
+    ],
+    "prize": {
+      "经验": 2000,
+      "声望": 1,
+      "铜贝": 200
+    }
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "安德鲁",
+    "submitNpc": "安德鲁",
+    "taskType": "打怪",
+    "targetName": "灰熊",
+    "quantity": "8",
+    "name": "安德鲁的试炼",
+    "targetAddress": "威尼斯森林",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去西城门外的森林最西边杀死8只灰熊，回酒馆找安德鲁。",
+    "index": 28,
+    "receiveDialog": [
+      "安德鲁：想要获得情报，首先得证明你有保护情报的能力。",
+      "你：怎么证明？"
+    ],
+    "submitDialog": [
+      "安德鲁：灰熊都解决了吗？",
+      "你：当然，8只灰熊已经全部猎杀。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    },
+    "level": 13
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "安德鲁",
+    "submitNpc": "安德鲁",
+    "taskType": "打怪",
+    "targetName": "棕熊",
+    "quantity": "6",
+    "name": "学习攻击术",
+    "targetAddress": "威尼斯森林",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去西城门外的森林杀死6只棕熊，回酒馆找安德鲁。",
+    "index": 29,
+    "receiveDialog": [
+      "安德鲁：光有力量还不够，还需要技巧。去西城门外的森林猎杀6只棕熊，磨练你的攻击技巧。",
+      "你：攻击技巧？这听起来很有用。"
+    ],
+    "submitDialog": [
+      "安德鲁：攻击技巧练得怎么样了？",
+      "你：6只棕熊已经解决，我觉得我的攻击技巧提升了不少。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    },
+    "level": 14
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "安德鲁",
+    "submitNpc": "安德鲁",
+    "taskType": "打怪",
+    "targetName": "猛虎",
+    "quantity": "8",
+    "name": "学习防御术",
+    "targetAddress": "威尼斯森林",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去西城门外森林杀8只猛虎，回酒馆找安德鲁。",
+    "index": 30,
+    "receiveDialog": [
+      "安德鲁：攻击力强还不够，防御同样重要。去西城门外森林猎杀8只猛虎，锻炼你的防御能力。",
+      "你：防御术？这确实很重要。"
+    ],
+    "submitDialog": [
+      "安德鲁：防御术练得如何？",
+      "你：8只猛虎已经解决，我觉得我的防御能力提升了不少。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    },
+    "level": 14
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "安德鲁",
+    "submitNpc": "安德鲁",
+    "taskType": "打怪",
+    "targetName": "猴子",
+    "quantity": "8",
+    "name": "学习敏捷术",
+    "targetAddress": "威尼斯森林",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去西城门外森林杀8只猴子，回酒馆找安德鲁。",
+    "index": 31,
+    "receiveDialog": [
+      "安德鲁：最后是敏捷性，这也是战斗中不可缺少的能力。",
+      "你：去猎杀猴子？这能锻炼敏捷性？"
+    ],
+    "submitDialog": [
+      "安德鲁：敏捷性练得怎么样了？",
+      "你：8只猴子已经解决，我觉得我的反应速度提升了不少。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    },
+    "level": 14
+  },
+  {
+    "submitLocation": "威尼斯酒馆",
+    "receiveNpc": "安德鲁",
+    "submitNpc": "安德鲁",
+    "taskType": "收集",
+    "targetName": "神秘铁箱",
+    "quantity": "1",
+    "name": "钓鱼去啦！",
+    "targetAddress": "",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "在从拉古扎到雅典的海域上钓鱼收集神秘铁箱1个，一有发现就回威尼斯酒馆找安德鲁。",
+    "index": 32,
+    "receiveDialog": [
+      "安德鲁：现在有个更重要的任务，需要你去从拉古扎到雅典的海域钓鱼，看看能否钓到神秘铁箱。",
+      "你：钓鱼？这和冒险有什么关系？"
+    ],
+    "submitDialog": [
+      "安德鲁：钓到神秘铁箱了吗？",
+      "你：运气不错，还真钓到了一个神秘铁箱。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    }
+  },
+  {
+    "submitLocation": "威尼斯铁匠铺",
+    "receiveNpc": "安德鲁",
+    "submitNpc": "卡萨诺",
+    "taskType": "对话",
+    "targetName": "神秘铁箱",
+    "quantity": "1",
+    "name": "神秘铁箱",
+    "targetAddress": "威尼斯铁匠铺",
+    "receiveLocation": "威尼斯酒馆",
+    "content": "去铁匠铺找卡萨诺帮忙打开铁箱。",
+    "index": 33,
+    "receiveDialog": [
+      "安德鲁：把这个神秘铁箱带到铁匠铺，找卡萨诺帮忙打开。",
+      "你：铁匠能打开这种神秘箱子？"
+    ],
+    "submitDialog": [
+      "卡萨诺：哦，安德鲁让你来的？带来了什么？",
+      "你：这是一个神秘铁箱，需要你帮忙打开。"
+    ],
+    "prize": {
+      "经验": 2000,
+      "声望": 1,
+      "铜贝": 200
+    }
+  },
+  {
+    "submitLocation": "伊斯坦堡铁匠铺",
+    "receiveNpc": "卡萨诺",
+    "submitNpc": "小卡萨诺",
+    "taskType": "对话",
+    "targetName": "神秘图纸",
+    "quantity": "1",
+    "name": "神秘图纸",
+    "targetAddress": "伊斯坦堡铁匠铺",
+    "receiveLocation": "威尼斯铁匠铺",
+    "content": "去伊斯坦堡铁匠铺找小卡萨诺帮忙。",
+    "index": 34,
+    "receiveDialog": [
+      "卡萨诺：我年纪大了，这种精密工作需要找我儿子小卡萨诺。",
+      "你：他在伊斯坦堡？"
+    ],
+    "submitDialog": [
+      "小卡萨诺：哦，我父亲让你来的？有什么需要帮忙的？",
+      "你：这个神秘铁箱需要你帮忙打开。"
+    ],
+    "prize": {
+      "经验": 2000,
+      "声望": 1,
+      "铜贝": 200
+    }
+  },
+  {
+    "submitLocation": "伊斯坦堡铁匠铺",
+    "receiveNpc": "小卡萨诺",
+    "submitNpc": "小卡萨诺",
+    "taskType": "收集",
+    "targetName": "鲨鱼皮",
+    "quantity": "10",
+    "name": "潜水器的材料",
+    "targetAddress": "伊斯坦堡浅海",
+    "receiveLocation": "伊斯坦堡铁匠铺",
+    "content": "去伊斯坦堡的浅海收集10块鲨鱼皮，回铁匠铺找小卡萨诺。",
+    "index": 35,
+    "receiveDialog": [
+      "小卡萨诺：要打开这个箱子，我需要制作一个特殊工具。",
+      "你：需要什么材料？"
+    ],
+    "submitDialog": [
+      "小卡萨诺：鲨鱼皮都收集齐了吗？",
+      "你：这是你要的10块鲨鱼皮。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    }
+  },
+  {
+    "submitLocation": "伊斯坦堡铁匠铺",
+    "receiveNpc": "小卡萨诺",
+    "submitNpc": "小卡萨诺",
+    "taskType": "收集",
+    "targetName": "海皇的宝箱",
+    "quantity": "1",
+    "name": "海皇的宝箱",
+    "targetAddress": "",
+    "receiveLocation": "伊斯坦堡铁匠铺",
+    "content": "在伊斯坦堡到雅典的航线上潜水，进入海皇宫殿，找到海皇的宝箱，回伊斯坦堡铁匠铺找小卡萨诺。在伊斯坦堡到雅典的航线上潜水，进入海皇宫殿，找海皇的宝箱。<在航线上重复潜水就可以到海皇宫殿，进入",
+    "index": 36,
+    "receiveDialog": [
+      "小卡萨诺：有了鲨鱼皮，我还需要海皇的宝箱里的魔法水晶才能制作工具。",
+      "你：海皇的宝箱？这听起来很危险啊。"
+    ],
+    "submitDialog": [
+      "小卡萨诺：你拿到海皇的宝箱了吗？",
+      "你：费了九牛二虎之力才拿到，这东西真不简单。"
+    ],
+    "prize": {
+      "经验": 5000,
+      "声望": 2,
+      "铜贝": 500
+    }
+  },
+  {
+    "receiveNpc": "小卡萨诺",
+    "submitNpc": "威尼斯公主",
+    "taskType": "对话",
+    "name": "去找威尼斯公主聊聊",
+    "receiveLocation": "伊斯坦堡铁匠铺",
+    "submitLocation": "威尼斯王宫",
+    "content": "去找威尼斯公主聊聊",
+    "index": 37,
+    "receiveDialog": [
+      "小卡萨诺：工具制作完成，箱子也打开了。你把里面的东西带给威尼斯公主看看。",
+      "你：好的，我这就去王宫找公主。"
+    ],
+    "submitDialog": [
+      "威尼斯公主：哦，你回来了。箱子里是什么？",
+      "你：这是从箱子里找到的东西，小卡萨诺让我带给你看看。"
+    ],
+    "prize": {
+      "经验": 1000,
+      "声望": 1,
+      "铜贝": 100
+    }
+  },
+  {
+    "submitLocation": "伦敦酒馆",
+    "receiveNpc": "威尼斯公主",
+    "submitNpc": "詹姆斯",
+    "taskType": "对话",
+    "targetName": "神秘徽章",
+    "quantity": "1",
+    "name": "去找詹姆斯",
+    "targetAddress": "伦敦酒馆",
+    "receiveLocation": "威尼斯王宫",
+    "content": "带着公主给你的神秘徽章,出航去北海区的伦敦酒馆找詹姆斯了解情况。关键任务",
+    "index": 38,
+    "receiveDialog": [
+      "威尼斯公主：这个徽章关系重大，你带着它去北海区的伦敦酒馆找詹姆斯，他会告诉你一切。",
+      "你：詹姆斯？他是什么人？"
+    ],
+    "submitDialog": [
+      "詹姆斯：哦，威尼斯公主让你来的？还带着这个徽章？",
+      "你：是的，公主让我来找你了解情况。"
+    ],
+    "prize": {
+      "经验": 4000,
+      "声望": 1,
+      "铜贝": 400
+    }
+  },
+  {
+    "submitLocation": "威尼斯居民区",
+    "receiveNpc": "詹姆斯",
+    "submitNpc": "罗西",
+    "taskType": "送物品",
+    "targetName": "好酒",
+    "quantity": "1",
+    "name": "罗西的美酒3",
+    "targetAddress": "威尼斯居民区",
+    "receiveLocation": "威尼斯王宫",
+    "content": "拿着好酒去威尼斯居民区找罗西",
+    "index": 39,
+    "receiveDialog": [
+      "詹姆斯：公主托我为你调制了一瓶好酒，你拿回去给罗西吧。",
+      "你：太好了，罗西一定会很高兴的。"
+    ],
+    "submitDialog": [
+      "罗西：你回来了！酒拿到了吗？",
+      "你：当然，这是詹姆斯专门为你们调制的好酒。"
+    ],
+    "prize": {
+      "经验": 10000,
+      "声望": 2,
+      "铜贝": 1000
+    }
+  }
+]

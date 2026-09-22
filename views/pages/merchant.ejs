@@ -1,0 +1,24 @@
+﻿<div>
+    <% var play = user.getPlay() %>
+    <% var merchantItems = user.npc.getShopItems(105) %>
+    <div>
+        <div>
+            <span>金贝：</span><span><%= play.gold %></span>
+        </div>
+        <div>
+            <span>银贝：</span><span><%= play.showSilver %></span>
+            <span>铜币：</span><span><%= play.showCopper %></span>
+        </div>
+    </div>
+
+    <div>
+        <a href="shop?shopType=105">购买商品</a>
+        <br>
+        <a href="merchant-sell">卖出商品</a>
+    </div>
+
+    <div>
+        <p>欢迎来到商店！这里提供各种日常用品和装备。</p>
+        <p>您可以在这里购买商品，也可以卖出您不需要的物品。</p>
+    </div>
+</div>

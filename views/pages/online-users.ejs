@@ -1,0 +1,25 @@
+﻿<div>
+    <% 
+        const users = locals.onlineUsers || [];
+        const currentUser = locals.user;
+    %>
+
+    <p>位置: <%= locals.currentCity %> <%= locals.currentPosition %></p>
+    
+    <% if (users.length > 0) { %>
+        <div style="margin: 10px 0;">
+            <% users.forEach(function(onlineUser) { %>
+                <div>
+                    <a href="/role-status?userId=<%= onlineUser.id %>"><%= onlineUser.nickname || onlineUser.username %></a>
+                    <% if (onlineUser.id !== currentUser.id) { %>
+                        [<a href="/chat?channel=private&targetUserId=<%= onlineUser.id %>">私聊</a>]
+                    <% } %>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <p>当前区域暂无其他在线玩家。</p>
+    <% } %>
+    
+    <br>
+</div>

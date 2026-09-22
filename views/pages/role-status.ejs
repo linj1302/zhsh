@@ -1,0 +1,389 @@
+﻿<%
+/* ═══ 角色状态页 · 卡片式紧凑布局 ═══ */
+var escapeFn = (typeof globalEscapeFn === 'function') ? globalEscapeFn : function(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
+var play = targetUser.getPlay();
+var playStatus = play.getStatus();
+var equip = targetUser.getEquipment();
+var expNeed = exp[play.level] || play.getExpToNextLevel();
+var equipStatus = equip;  // getEquipment() 已返回 getStatus() 结果
+var strengthenConf = typeof strengthen !== 'undefined' ? strengthen : {};
+
+/* ── 装备显示辅助函数 ── */
+function formatEquipName(item, slotLabel) {
+    if (!item) return '<span style="color:#bbb;">空</span>';
+    var name = item.info ? (item.info.name || item.name) : item.name;
+    var level = item.info ? (item.info.level || '') : (item.level || '');
+    var slv = item.info ? (item.info.strengthenLevel || 0) : 0;
+    
+    /* 强化颜色/标记 */
+    var strengthenTag = '';
+    if (slv > 0) {
+        var sd = targetUser.getStrengthenDisplay(slv);
+        if (sd) {
+            strengthenTag = '<span style="color:' + sd.color + ';">' + sd.tag + 'の</span>';
+        }
+    }
+    
+    /* 觉醒标记 */
+    var awakenMark = '';
+    try {
+        var awakenData = targetUser.equipmentAwaken?.getAwakenData(item.id);
+        var awakenLevels = awakenData?.awakenLevels || {};
+        var totalAwakenLevel = 0;
+        var awakenTypes = Object.keys(awakenLevels);
+        for (var ai = 0; ai < awakenTypes.length; ai++) {
+            totalAwakenLevel += (awakenLevels[awakenTypes[ai]] || 0);
+        }
+        if (totalAwakenLevel >= 50) {
+            awakenMark = '<span style="color:#ff6600;">★★</span>';
+        } else if (totalAwakenLevel > 0) {
+            awakenMark = '<span style="color:#ff9800;">★</span>';
+        }
+    } catch(e) { /* 静默 */ }
+    
+    /* 镶嵌标记 */
+    var socketMark = '';
+    if (item.info && item.info.sockets && item.info.sockets.length > 0) {
+        var hasGem = item.info.sockets.some(function(s) { return s && s.gemId; });
+        if (hasGem) socketMark = '<span style="color:#00bcd4;">*</span>';
+    }
+    
+    /* 套装标记 */
+    var setMark = '';
+    var activeSets = play.getActiveSets();
+    for (var si = 0; si < activeSets.length; si++) {
+        var set = activeSets[si];
+        if (set.bonusLevel > 0) {
+            /* 简化检测：如果装备名包含套装中任一物品名 */
+            for (var j = 0; j < (set.items || []).length; j++) {
+                if (name.indexOf(set.items[j]) >= 0 || set.items[j].indexOf(name) >= 0) {
+                    setMark = '<span style="color:#4caf50;">+</span>';
+                    break;
+                }
+            }
+        }
+        if (setMark) break;
+    }
+    
+    var html = awakenMark + socketMark + setMark + strengthenTag + name;
+    if (level) html += '<span style="color:#888; font-size:0.85em;">(' + level + '级)</span>';
+    if (slv > 0) html += '<span style="font-size:0.82em; color:#e67e22;">[+' + slv + ']</span>';
+    return html;
+}
+
+/* ── 区块数据准备 ── */
+var slotItems = [
+    { label: '手持', item: equipStatus.weapon, param: '1', unequip: 'role-status?type=play.unequip&params=1' },
+    { label: '副手', item: equipStatus.offhand, param: '7', unequip: 'role-status?type=play.unequip&params=7' },
+    { label: '头戴', item: equipStatus.headgear, param: '2', unequip: 'role-status?type=play.unequip&params=2' },
+    { label: '身穿', item: equipStatus.clothes, param: '3', unequip: 'role-status?type=play.unequip&params=3' },
+    { label: '腰戴', item: equipStatus.belt, param: '4', unequip: 'role-status?type=play.unequip&params=4' },
+    { label: '脚穿', item: equipStatus.shoes, param: '5', unequip: 'role-status?type=play.unequip&params=5' },
+];
+var accItems = equipStatus.accessories || [];
+
+var activeSets = play.getActiveSets();
+
+/* 伙伴数据（查看他人时从 targetUser 获取） */
+var _src = isSelf ? user : targetUser;
+var pets = _src.petManager ? _src.petManager.getPets() : [];
+var fightingPet = pets.find(function(p) { return p.isFighting; });
+var followers = _src.follower ? _src.follower.getFollowers() : [];
+var fightingFollower = followers.find(function(f) { return f.state === 'fighting'; });
+
+/* 已圣化圣痕 */
+var sanctifiedMarks = [];
+try { sanctifiedMarks = _src.holymark ? _src.holymark.getSanctifiedMarks() : []; } catch(e) {}
+
+/* 已附魔卡片 */
+var enchantedCards = [];
+try { enchantedCards = _src.card ? _src.card.getEquippedCards() : []; } catch(e) {}
+
+/* ── 加成来源实时计算（play 上的 _teamMemberCount/_marriageIntimacy 仅战斗时注入，展示需实时查询） ── */
+var _teamObj = null;
+try { _teamObj = _src.team ? _src.team.getMyTeam(_src.id) : null; } catch(e) {}
+/* 与 play.setTeamBonus/teamBonusPercent 一致：每名在线队友+5%，最多+20% */
+var _teamPct = _teamObj ? Math.max(0, Math.min(5, (_teamObj.members.length || 1) - 1)) * 5 : 0;
+var _marriageInfo = null;
+try { _marriageInfo = _src.getMarriageInfo ? _src.getMarriageInfo() : null; } catch(e) {}
+/* 与 play.marriageBonusPercent 一致：亲密度×0.1%，满100亲密=+10%；展示上限按 3000 */
+var _spouseName = '';
+var _marrPct = 0;
+var _intimacy = 0;
+if (_marriageInfo) {
+    _intimacy = _marriageInfo.intimacy || 0;
+    _marrPct = Math.min(10, Math.round(_intimacy * 0.1 * 10) / 10);
+    _spouseName = (_marriageInfo.user1_id == _src.id) ? (_marriageInfo.user2_nickname || '') : (_marriageInfo.user1_nickname || '');
+}
+var _bonusNote = [];
+if (_teamPct > 0) _bonusNote.push('队+' + _teamPct + '%');
+if (_marrPct > 0) _bonusNote.push('婚+' + _marrPct + '%');
+var _bonusNoteStr = _bonusNote.length ? '(' + _bonusNote.join(' ') + ')' : '';
+var _expMult = play.expMultiplier || 1;
+var _sinValue = play.reputation || 0;
+-%>
+
+<% if (!isSelf) { %>
+    <div style="text-align:center; margin:4px 0; font-size:0.9em; color:#666;">
+        查看 <b><%= escapeFn(targetUser.nickname) %></b> 的航海档案
+    </div>
+<% } %>
+
+<!-- ═══ 区块1: 角色头像与基本信息 ═══ -->
+<div style="background:#f8f9fa; border-radius:8px; padding:10px; margin:6px 0; display:flex; align-items:center;">
+    <div style="width:60px; height:60px; flex-shrink:0; font-size:12px; overflow:hidden; border-radius:6px; background:#e0e0e0; display:flex; align-items:center; justify-content:center;">
+        <div class="avatar-svg" style="width:56px; height:56px;"><%= (targetUser.avatar || user.avatar || '👤') %></div>
+    </div>
+    <div style="margin-left:10px; flex:1; font-size:0.9em;">
+        <div><b style="font-size:1.05em;"><%= escapeFn(targetUser.nickname) %></b>
+            <span style="color:#888; font-size:0.85em;">编号:<%= targetUser.id %></span>
+        </div>
+        <div><%= play.level %>级 <%= typeof targetGender !== 'undefined' && targetGender === 'female' ? '♀' : '♂' %>
+            | <%= escapeFn(targetUser.getMarriageStatus ? targetUser.getMarriageStatus() : '单身') %>
+        </div>
+        <% if (_marriageInfo) { %>
+        <div style="font-size:0.85em; color:#666;">
+            婚姻加成: 攻+<%=_marrPct%>%/防+<%=_marrPct%>%
+            <span style="color:#e91e63;">♥ <%= _intimacy %>/3000</span>
+            <div style="background:#f3e5f5; height:4px; border-radius:2px; margin-top:2px; max-width:140px;">
+                <div style="background:#e91e63; height:4px; border-radius:2px; width:<%= Math.min(100, _intimacy / 30) %>%"></div>
+            </div>
+        </div>
+        <% } %>
+        <% if (!isSelf) { %>
+        <div style="margin-top:2px;">
+            <a href="/friend?userId=<%= targetUser.id %>&action=add" style="font-size:0.85em;">加好友</a>
+            <a href="/chat?channel=private&targetUserId=<%= targetUser.id %>" style="font-size:0.85em;">私聊</a>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<!-- ═══ 区块2: 战斗属性 ═══ -->
+<div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:10px; margin:6px 0;">
+    <div style="font-weight:bold; color:#44607a; margin-bottom:6px; font-size:0.95em;">⚔ 战斗属性</div>
+    
+    <!-- 经验条 -->
+    <div style="font-size:0.85em; margin:3px 0;">
+        经验 <%= play.exp %>/<%= expNeed %><% if (_expMult > 1) { %> <span style="color:#9c27b0;">(特殊经验加成:<%= Math.round(_expMult * 100) %>%)</span><% } %>
+        <div style="background:#e0e0e0; height:6px; border-radius:3px; margin:2px 0;">
+            <div style="background:#4caf50; height:6px; border-radius:3px; width:<%= Math.min(100, (play.exp / expNeed) * 100) %>%"></div>
+        </div>
+    </div>
+    
+    <!-- 体力条 -->
+    <div style="font-size:0.85em; margin:3px 0;">
+        体力 <%= play.currentHealth %>/<%= play.health %><% if (playStatus.currentStaminaAllHp > 0) { %> <span style="color:#888;">(体力宝:<%= playStatus.currentStaminaAllHp %>)</span><% } %>
+        <div style="background:#e0e0e0; height:6px; border-radius:3px; margin:2px 0;">
+            <div style="background:#e74c3c; height:6px; border-radius:3px; width:<%= Math.min(100, (play.currentHealth / play.health) * 100) %>%"></div>
+        </div>
+    </div>
+    
+    <!-- 属性数值 -->
+    <div style="display:flex; flex-wrap:wrap; gap:6px; margin:6px 0; font-size:0.85em;">
+        <span style="background:#fff3e0; padding:2px 8px; border-radius:4px;"><span style="color:#e74c3c;">攻</span> <%= play.attack %>-<%= play.maxAttack %><% if (_bonusNoteStr) { %><span style="color:#ff9800; font-size:0.9em;"><%= _bonusNoteStr %></span><% } %></span>
+        <span style="background:#e3f2fd; padding:2px 8px; border-radius:4px;"><span style="color:#3498db;">防</span> <%= play.defense %><% if (_bonusNoteStr) { %><span style="color:#ff9800; font-size:0.9em;"><%= _bonusNoteStr %></span><% } %></span>
+        <span style="background:#e8f5e9; padding:2px 8px; border-radius:4px;"><span style="color:#2ecc71;">敏</span> <%= play.agility %><% if (_bonusNoteStr) { %><span style="color:#ff9800; font-size:0.9em;"><%= _bonusNoteStr %></span><% } %></span>
+        <span style="background:#fce4ec; padding:2px 8px; border-radius:4px;"><span style="color:#e91e63;">士气</span> <%= play.morale %></span>
+    </div>
+    
+    <!-- 负面状态与罪恶值 -->
+    <div style="font-size:0.82em; color:#888;">
+        负面: <span style="color:#dd9f41;"><%= Object.entries(play.statusEffects || {}).filter(function(e) { return e[1] && e[1] !== 0; }).map(function(e) { return displayLabels.statusEffects[e[0]] + (typeof e[1] === 'number' && e[1] > 0 ? '(' + e[1] + ')' : ''); }).join(', ') || '无' %></span>
+        <% if (_sinValue > 0) { %>| 罪恶值: <span style="color:#d32f2f; font-weight:bold;"><%= _sinValue %>点</span><% if (isSelf) { %><span style="color:#999; font-size:0.9em;">(神父处忏悔可减)</span><% } %><% } else { %>| 罪恶值: <span style="color:#4caf50;">0点</span><% } %>
+    </div>
+</div>
+
+<% if (isSelf) { %>
+<!-- ═══ 区块3: 财富 ═══ -->
+<div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:10px; margin:6px 0;">
+    <div style="font-weight:bold; color:#44607a; margin-bottom:6px; font-size:0.95em;">💰 财富</div>
+    <div style="display:flex; gap:10px; font-size:0.9em;">
+        <span><span style="color:#ffd700;">●</span> 金 <%= playStatus.gold %></span>
+        <span><span style="color:#c0c0c0;">●</span> 银 <%= playStatus.showSilver %></span>
+        <span><span style="color:#cd7f32;">●</span> 铜 <%= playStatus.showCopper %></span>
+    </div>
+</div>
+<% } %>
+
+<!-- ═══ 区块4: 装备 ═══ -->
+<div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:10px; margin:6px 0;">
+    <div style="font-weight:bold; color:#44607a; margin-bottom:6px; font-size:0.95em;">🛡 装备</div>
+    <table style="width:100%; font-size:0.85em; border-collapse:collapse;">
+    <% slotItems.forEach(function(s) { %>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+            <td style="padding:4px 2px; color:#44607a; white-space:nowrap; width:40px;"><%= s.label %></td>
+            <td style="padding:4px 2px;">
+                <% if (s.item) { %>
+                    <span style="color:#333;"><%- formatEquipName(s.item, s.label) %></span>
+                    <% if (isSelf) { %>
+                        <a href="item-info?params=<%= s.item.id %>" style="font-size:0.82em; margin-left:4px;">详情</a>
+                        <a href="equip-item?params=<%= s.param %>" style="font-size:0.82em; margin-left:4px;">换</a>
+                        <a href="<%= s.unequip %>" style="color:red; font-size:0.82em; margin-left:4px;">卸</a>
+                    <% } %>
+                <% } else { %>
+                    <span style="color:#ccc;">空</span>
+                    <% if (isSelf) { %>
+                        <a href="equip-item?params=<%= s.param %>" style="font-size:0.82em; margin-left:4px;">穿</a>
+                    <% } %>
+                <% } %>
+            </td>
+        </tr>
+    <% }); %>
+    <!-- 佩饰（3槽合并为一行，统一"佩饰"标识） -->
+    <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:4px 2px; color:#44607a; white-space:nowrap; width:40px; vertical-align:top;">佩饰</td>
+        <td style="padding:4px 2px;">
+            <% for (var ai = 0; ai < 3; ai++) { %>
+                <% if (accItems[ai]) { %>
+                    <span style="white-space:nowrap;">
+                        <span style="color:#333;"><%- formatEquipName(accItems[ai], '佩饰') %></span>
+                        <% if (isSelf) { %>
+                            <a href="item-info?params=<%= accItems[ai].id %>" style="font-size:0.82em; margin-left:2px;">详情</a>
+                            <a href="equip-item?params=6" style="font-size:0.82em; margin-left:2px;">换</a>
+                            <a href="role-status?type=play.unequip&params=6,<%= ai %>" style="color:red; font-size:0.82em; margin-left:2px;">卸</a>
+                        <% } %>
+                    </span>
+                <% } else { %>
+                    <span style="color:#ccc; white-space:nowrap;">空</span>
+                <% } %>
+                <% if (ai < 2) { %><span style="color:#ddd; margin:0 5px;">|</span><% } %>
+            <% } %>
+        </td>
+    </tr>
+    </table>
+    <% if (isSelf) { %>
+    <div style="text-align:right; margin-top:3px;">
+        <a href="equip-item?params=6" style="font-size:0.82em;">佩戴饰品</a>
+    </div>
+    <% } %>
+</div>
+
+<% if (isSelf) { %>
+<!-- ═══ 区块5: 套装 ═══ -->
+<% var SET_ATTR_CN = {
+    attack: '攻击', defense: '防御', agility: '敏捷', morale: '士气', health: '体力',
+    criticalChance: '暴击',
+    weakInflict: '虚弱', poisonInflict: '中毒', curseInflict: '诅咒',
+    slowInflict: '缓慢', depressedInflict: '沮丧', paralysisInflict: '麻痹'
+}; %>
+<% if (activeSets.length > 0) { %>
+<div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:10px; margin:6px 0;">
+    <div style="font-weight:bold; color:#44607a; margin-bottom:6px; font-size:0.95em;">✨ 套装</div>
+    <% activeSets.forEach(function(set) { %>
+        <div style="margin:3px 0; font-size:0.85em;">
+            <span style="color:#4caf50; font-weight:bold;"><%= escapeFn(set.name) %></span>
+            <span style="color:#888;">(<%= set.equippedCount %>/<%= set.totalCount %>)</span>
+            <% if (set.bonusLevel > 0) { %>
+                <span style="color:#21ba45; font-size:0.85em;">[激活<%= set.bonusLevel %>件]</span>
+                <% if (set.bonuses) { %>
+                    <div style="font-size:0.82em; color:#666; margin-left:12px;">
+                        <% for (var bk in set.bonuses) { %>
+                            <span style="margin-right:6px;"><%= SET_ATTR_CN[bk] || bk %> +<%= set.bonuses[bk] %></span>
+                        <% } %>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    <% }); %>
+</div>
+<% } %>
+<% } %>
+
+<!-- ═══ 区块6: 伙伴 ═══ -->
+<div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:10px; margin:6px 0;">
+    <div style="font-weight:bold; color:#44607a; margin-bottom:6px; font-size:0.95em;">🐾 伙伴</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px;">
+        <!-- 宠物 -->
+        <div style="flex:1; min-width:100px; background:#fff8e1; border-radius:6px; padding:6px; font-size:0.85em;">
+            <div style="color:#e67e22; font-weight:bold;">🐾 宠物</div>
+            <% if (fightingPet) { %>
+                <div><%= fightingPet.name %> <%= fightingPet.level %>级</div>
+                <div style="color:#888;">攻<%= fightingPet.attack || '?' %> 防<%= fightingPet.defense || '?' %></div>
+            <% } else if (pets.length > 0) { %>
+                <div style="color:#999;">未出战 (<%= pets.length %>只)</div>
+            <% } else { %>
+                <div style="color:#ccc;">无</div>
+            <% } %>
+            <% if (isSelf) { %><a href="pet" style="font-size:0.82em;">管理</a><% } %>
+        </div>
+        <!-- 随从 -->
+        <div style="flex:1; min-width:100px; background:#e8f5e9; border-radius:6px; padding:6px; font-size:0.85em;">
+            <div style="color:#2e7d32; font-weight:bold;">👤 随从</div>
+            <% if (fightingFollower) { %>
+                <div><%= fightingFollower.name %> <%= fightingFollower.level %>级</div>
+            <% } else if (followers.length > 0) { %>
+                <div style="color:#999;">未出战 (<%= followers.length %>人)</div>
+            <% } else { %>
+                <div style="color:#ccc;">无</div>
+            <% } %>
+            <% if (isSelf) { %><a href="follower" style="font-size:0.82em;">管理</a><% } %>
+        </div>
+        <!-- 羽翼 -->
+        <div style="flex:1; min-width:100px; background:#e3f2fd; border-radius:6px; padding:6px; font-size:0.85em;">
+            <div style="color:#1565c0; font-weight:bold;">🪽 羽翼</div>
+            <% var wingStatus = _src.wing ? _src.wing.getStatus() : null; %>
+            <% if (wingStatus && wingStatus.name) { %>
+                <div><%= wingStatus.name %> <%= wingStatus.level || 1 %>级</div>
+            <% } else { %>
+                <div style="color:#ccc;">未装备</div>
+            <% } %>
+            <% if (isSelf) { %><a href="wing" style="font-size:0.82em;"><%= (wingStatus && wingStatus.name) ? '管理' : '选择' %></a><% } %>
+        </div>
+        <!-- 坐骑 -->
+        <div style="flex:1; min-width:100px; background:#fce4ec; border-radius:6px; padding:6px; font-size:0.85em;">
+            <div style="color:#c62828; font-weight:bold;">🐴 坐骑</div>
+            <% var mountStatus = _src.mount ? _src.mount.getStatus() : null; %>
+            <% if (mountStatus && mountStatus.name) { %>
+                <div><%= mountStatus.name %> <%= mountStatus.level || 1 %>级</div>
+            <% } else { %>
+                <div style="color:#ccc;">未骑乘</div>
+            <% } %>
+            <% if (isSelf) { %><a href="mount" style="font-size:0.82em;"><%= (mountStatus && mountStatus.name) ? '管理' : '选择' %></a><% } %>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ 区块8: 圣痕与卡片 ═══ -->
+<% if (sanctifiedMarks.length > 0 || (!isSelf && enchantedCards.length > 0)) { %>
+<div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:10px; margin:6px 0;">
+    <% if (sanctifiedMarks.length > 0) { %>
+    <div style="font-weight:bold; color:#6a1b9a; margin-bottom:6px; font-size:0.95em;">✦ 已圣化圣痕</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
+        <% sanctifiedMarks.forEach(function(sm) { %>
+            <% var m = sm.mark; if (!m) return; %>
+            <% var typeDef = { name: m.mark_type || '?' }; %>
+            <div style="background:#fdf5ff; border:1px solid #e1bee7; border-radius:4px; padding:4px 8px; font-size:0.82em;">
+                <span style="color:#6a1b9a; font-weight:bold;"><%= m.name || typeDef.name %></span>
+                <span style="color:#888;"> <%= m.quality || '' %>级</span>
+            </div>
+        <% }); %>
+    </div>
+    <% } %>
+    <% if (!isSelf && enchantedCards.length > 0) { %>
+    <div style="font-weight:bold; color:#00695c; margin-bottom:6px; font-size:0.95em;">🃏 已附魔卡片</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px;">
+        <% enchantedCards.forEach(function(ec) { %>
+            <% var c = ec.card || ec; %>
+            <div style="background:#f5fdfc; border:1px solid #b2dfdb; border-radius:4px; padding:4px 8px; font-size:0.82em;">
+                <span style="color:#00695c; font-weight:bold;"><%= c.name || c.card_name || '?' %></span>
+                <span style="color:#888;"> <%= c.quality || '' %>级</span>
+            </div>
+        <% }); %>
+    </div>
+    <% } %>
+</div>
+<% } %>
+
+<% if (isSelf) { %>
+<div style="background:#f8f9fa; border-radius:8px; padding:10px; margin:6px 0; font-size:0.9em;">
+    <a href="special-attributes">特性</a>
+    <a href="ships">船队</a>
+    <a href="backpack">背包</a>
+    <a href="mail-list">邮箱</a>
+    <a href="holymark">圣痕</a>
+    <a href="card">卡片</a>
+    <a href="equipment-awaken">觉醒</a>
+    <a href="holiday">活动</a>
+</div>
+<% } %>

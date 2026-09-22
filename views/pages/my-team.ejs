@@ -1,0 +1,44 @@
+﻿<div>
+    <% if (myTeam) { %>
+        <div>【队伍信息】</div>
+        <div>队伍名称:<%= myTeam.name %></div>
+
+        <div>
+            队伍类型:<%= myTeam.type %></div>
+        <div>
+            队伍目标:<%= myTeam.target %></div>
+        <div>
+            队伍成员:
+        </div>
+        <div>
+            队长: <%= myTeam.leader.name %>(<%= myTeam.leader.level %>级) (在线)
+        </div>
+
+        <% myTeam.members.forEach(function(member) { %>
+            <% if (member.id !== myTeam.leader.id) { %>
+                <div> 队员: <%= member.name %>(<%= member.level %>级) (<%= member.status %>)</div>
+            <% } %>
+        <% }); %>
+
+        <% if (myTeam.leader.id === user.id) { %>
+            <% var _succ = myTeam.members.find(function(m) { return m.id !== user.id; }); %>
+            <% var _leaveMsg = _succ ? '退队后队长将自动转让给 ' + _succ.name + '，确定退出吗？' : '队伍仅剩你一人，退队将同时解散队伍，确定退出吗？'; %>
+            <a href="/team?type=leaveTeam&teamId=<%= myTeam.id %>" style="color:#c0392b;" onclick="return confirm('<%= _leaveMsg %>');">退出队伍</a>
+            <a href="/team?type=disbandTeam&teamId=<%= myTeam.id %>" style="color:#c0392b; margin-left:8px;" onclick="return confirm('确定解散队伍吗？解散后所有队员都将离队。');">解散队伍</a>
+        <% } else { %>
+            <a href="/team?type=leaveTeam&teamId=<%= myTeam.id %>" style="color:#c0392b;" onclick="return confirm('确定退出队伍吗？');">退出队伍</a>
+        <% } %>
+    <% } else { %>
+        您当前不在任何队伍中
+    <% } %>
+
+    <br/>
+    <br/>
+    <div>
+        <a href="/team">队伍列表</a>
+    </div>
+    <div>
+        <a href="/chat?channel=team">队伍聊天</a>
+    </div>
+    <br/>
+</div>

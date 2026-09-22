@@ -1,0 +1,88 @@
+<div>
+    <% var monster = user.getMonster() %>
+    <% var play = user.getPlay() %>
+
+    <div>🏆 你战胜了 <b><%= monster.winName %></b>!</div>
+
+    <div style="margin:6px 0;">
+        <span>📈 经验: +<%= monster.exp %></span>
+        <% if (monster.petExpResult) { %>
+            <span> | 🐾 <%= monster.petExpResult.gained %> 宠物经验</span>
+            <% if (monster.petExpResult.leveledUp) { %>
+                <span style="color:#ff6600;">（宠物升级到 <%= monster.petExpResult.newLevel %>级！）</span>
+            <% } %>
+        <% } %>
+        &nbsp;|&nbsp; <span>💰 铜币: +<%= monster.copper %></span>
+    </div>
+
+    <!-- 掉落物品播报 -->
+    <%
+    var dropDisplay = monster._dropDisplay;
+    var hasAutoPickup = (typeof monster._autoPickupNote !== 'undefined' && monster._autoPickupNote);
+    var displayItems = hasAutoPickup ? dropDisplay : monster.winGoods;
+    %>
+    <% if (displayItems && displayItems.length > 0) { %>
+        <div style="color: #d4a017; margin: 8px 0;">
+            📦 【掉落】怪物掉落了 <%= displayItems.length %> 件物品
+        </div>
+        <div>
+            掉落物品：
+            <% for (var i = 0; i < displayItems.length; i++) {
+                var item = displayItems[i];
+            %>
+            <span><%= item.name %></span>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div style="color: #999; margin: 8px 0;">
+            📦 【掉落】怪物没有掉落物品
+        </div>
+    <% } %>
+
+    <!-- 手动拾取链接 -->
+    <% if (!hasAutoPickup && monster.winGoods && monster.winGoods.length > 0) { %>
+        <div style="margin-top: 5px;">
+            <% for (var i = 0; i < monster.winGoods.length; i++) {
+                var item = monster.winGoods[i];
+            %>
+            <a href="attack-win?type=monster.pickUp&params=<%= i %>">[拾取<%= item.name %>]</a>
+            <% } %>
+        </div>
+    <% } %>
+
+    <!-- 百宝箱自动拾取 -->
+    <% if (hasAutoPickup) { %>
+        <div style="color: green; margin: 8px 0; font-weight: bold;">
+            🎁 <%= monster._autoPickupNote %>
+        </div>
+    <% } %>
+
+    <!-- 卡片/圣痕掉落播报（仅在掉落成功时渲染） -->
+    <% if (typeof cardDropResult !== 'undefined' && cardDropResult && cardDropResult.success) { %>
+        <div style="color: #cc3300; margin: 6px 0; font-weight: bold;">
+            🃏 【卡片掉落】<%= cardDropResult.tip %>
+        </div>
+    <% } %>
+    <% if (typeof holyMarkDropResult !== 'undefined' && holyMarkDropResult && holyMarkDropResult.success) { %>
+        <div style="color: #d4a017; margin: 6px 0; font-weight: bold;">
+            ✨ 【圣痕掉落】<%= holyMarkDropResult.tip %>
+        </div>
+    <% } %>
+
+    <!-- 战斗日志摘要 -->
+    <% if (typeof battleLog !== 'undefined' && battleLog && battleLog.length > 0) { %>
+        <div style="max-height:100px; overflow-y:auto; background:#eef; padding:4px; margin-top:4px; font-size:0.9em;">
+            <% battleLog.slice(Math.max(0, battleLog.length - 5)).forEach(function(log) { %>
+                <div>· <%= log %></div>
+            <% }); %>
+            <% if (battleLog.length > 5) { %><div style="color:#999;">... 共 <%= battleLog.length %> 条日志</div><% } %>
+        </div>
+    <% } %>
+
+    <% var inInstance = user.trial.isInTrial() || user.sailing.isInSailingFb() %>
+    <a class="link-item" href="<%= inInstance ? 'trial-map' : 'main' %>">继续</a>
+
+    <div class="hp-display">
+        剩余体力(<%= play.currentHealth %>/<%= play.health %>)
+    </div>
+</div>

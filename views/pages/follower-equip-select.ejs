@@ -1,0 +1,46 @@
+<div class="wap_class">
+    <h2>⚔️ 随从装备</h2>
+
+    <% var follower = typeof follower !== 'undefined' ? follower : null %>
+    <% var slot = typeof slot !== 'undefined' ? slot : 'weapon' %>
+    <% var slotName = typeof slotName !== 'undefined' ? slotName : '武器' %>
+    <% var equippableItems = typeof equippableItems !== 'undefined' ? equippableItems : [] %>
+    <% var recruitId = typeof query !== 'undefined' && query.recruitId ? query.recruitId : '' %>
+
+    <% if (follower) { %>
+        <p>为 <strong><%= follower.name %></strong> 选择<strong><%= slotName %></strong></p>
+    <% } %>
+
+    <% if (equippableItems.length > 0) { %>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>物品</th>
+                <th>属性</th>
+                <th>操作</th>
+            </tr>
+            <% equippableItems.forEach(function(item) { %>
+                <tr>
+                    <td><%= item.name %><% if (item.type === 1) { %>(装备)<% } %></td>
+                    <td>
+                        <% if (item.info) { %>
+                            <% if (item.info.attack) { %>攻+<%= item.info.attack %> <% } %>
+                            <% if (item.info.defense) { %>防+<%= item.info.defense %> <% } %>
+                            <% if (item.info.agility) { %>敏+<%= item.info.agility %> <% } %>
+                            <% if (item.info.health) { %>体+<%= item.info.health %> <% } %>
+                        <% } else { %>无附加属性<% } %>
+                    </td>
+                    <td>
+                        <a href="/follower?action=equip&recruitId=<%= recruitId %>&slot=<%= slot %>&itemId=<%= item.id %>">
+                            装备
+                        </a>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+    <% } else { %>
+        <p style="color: gray;">背包中没有可装备的物品。请先在背包中获得并"解除绑定"（status=1）的装备。</p>
+    <% } %>
+
+    <br>
+    <a href="/follower">← 返回随从列表</a>
+</div>

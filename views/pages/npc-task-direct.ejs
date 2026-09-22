@@ -1,0 +1,282 @@
+﻿<%
+const npcName = query.npc;
+let tipMessage = '';
+let nextTaskIndex = null;
+let taskSystem = user.task;
+
+if (!npcName) {
+    tipMessage = '未指定NPC';
+} else {
+    // 检查是否是继续任务操作
+    const continueTaskIndex = query.continueTask ? parseInt(query.continueTask) : null;
+    if (continueTaskIndex !== null) {
+        try {
+            const result = taskSystem.acceptTask(continueTaskIndex);
+            tipMessage = result.tip.join('\n');
+
+            // 检查是否有后续任务
+            const series = taskSystem.getTaskSeries(continueTaskIndex);
+            const nextTask = taskSystem.getTaskData(continueTaskIndex + 1);
+
+            // 如果有后续任务且属于同一系列，检查是否可以接受
+            if (nextTask && taskSystem.getTaskSeries(continueTaskIndex + 1) === series) {
+                // 检查后续任务是否可以被接受（前置任务已完成且等级满足要求）
+                const prevTaskIndex = taskSystem.getPrevTaskInSeries(continueTaskIndex + 1, series);
+                if (prevTaskIndex === null || taskSystem.isTaskCompleted(prevTaskIndex)) {
+                    // 检查等级要求
+                    if (!nextTask.level || user.play.level >= nextTask.level) {
+                        nextTaskIndex = continueTaskIndex + 1;
+                    }
+                }
+            }
+        } catch (error) {
+            tipMessage = error.message;
+        }
+    } else {
+        // 获取该NPC相关的可提交任务
+        const submittableTasks = taskSystem.getSubmittableTasksForNpc(npcName);
+
+        // 获取该NPC相关的可接任务
+        const availableTasks = taskSystem.getAvailableTasksForNpc(npcName);
+
+
+        const receiveTasks = taskSystem.getReceiveTasksForNpc(npcName);
+        // 获取该NPC相关的已接受但未完成的任务
+        const acceptedTasks = [];
+        const allTasks = taskSystem.getAllTasks();
+        allTasks.forEach(task => {
+            // 任务已经被接受但未完成，并且与当前NPC有关（接受NPC或提交NPC）
+            if (taskSystem.isTaskAccepted(task.index) && !taskSystem.isTaskCompleted(task.index) &&
+                    (task.receiveNpc === npcName || task.submitNpc === npcName)) {
+                acceptedTasks.push(task);
+            }
+        });
+
+        // 构建提示信息
+        let messages = [];
+
+        function showTaskDetails(taskToSubmit) {
+            // 显示任务详细信息而不是简单的错误信息
+            messages.push('【' + taskToSubmit.name + '】');
+            messages.push(taskToSubmit.content);
+
+            if (taskToSubmit.targetName && taskToSubmit.quantity) {
+                const taskTypeText = taskToSubmit.taskType === '打怪' ? '击杀' :
+                        (taskToSubmit.taskType === '收集' ? '收集' : '送达');
+
+                const targetNames = taskToSubmit.targetName.split(',');
+                const quantities = taskToSubmit.quantity.toString().split(',');
+
+                let taskTargetText = '任务：' + taskTypeText;
+                if (targetNames.length > 1 && quantities.length === targetNames.length) {
+                    // 多个目标
+                    targetNames.forEach((name, i) => {
+                        if (i > 0) taskTargetText += '、';
+                        taskTargetText += name + quantities[i] + '个';
+                    });
+                } else {
+                    // 单个目标
+                    taskTargetText += taskToSubmit.targetName + taskToSubmit.quantity + '个';
+                }
+                taskTargetText += '！';
+                messages.push(taskTargetText);
+            }
+
+            let prizeText = '任务奖励：';
+            if (taskToSubmit.prize) {
+                Object.keys(taskToSubmit.prize).forEach((key, index, array) => {
+                    if (index > 0) prizeText += '、';
+                    prizeText += key + '+' + taskToSubmit.prize[key];
+                });
+            } else {
+                prizeText += '铜钱+100';
+            }
+            messages.push(prizeText);
+
+            messages.push('');
+            const processText = taskSystem.getTaskProgress(taskToSubmit);
+            if (processText) {
+                messages.push('当前进度: ' + taskSystem.getTaskProgress(taskToSubmit));
+            }
+
+            tipMessage = messages.join('\n');
+        }
+
+        // 如果有可提交任务，优先处理提交
+        if (submittableTasks.length > 0) {
+            const taskToSubmit = submittableTasks[0]; // 只处理第一个任务
+            try {
+                const result = taskSystem.submitTask(taskToSubmit.index);
+                tipMessage = result.tip.join('\n');
+
+                // 检查是否有后续任务
+                const series = taskSystem.getTaskSeries(taskToSubmit.index);
+                const nextTask = taskSystem.getTaskData(taskToSubmit.index + 1);
+
+                // 如果有后续任务且属于同一系列，检查是否可以接受
+                if (nextTask && taskSystem.getTaskSeries(taskToSubmit.index + 1) === series) {
+                    // 检查后续任务是否可以被接受（前置任务已完成且等级满足要求）
+                    const prevTaskIndex = taskSystem.getPrevTaskInSeries(taskToSubmit.index + 1, series);
+                    if (prevTaskIndex === null || taskSystem.isTaskCompleted(prevTaskIndex)) {
+                        // 检查等级要求
+                        if (!nextTask.level || user.play.level >= nextTask.level) {
+                            nextTaskIndex = taskToSubmit.index + 1;
+                        }
+                    }
+                }
+            } catch (error) {
+                showTaskDetails(taskToSubmit)
+            }
+        }
+        // 如果有可接任务，处理接受任务
+        else if (availableTasks.length > 0) {
+            const taskToAccept = availableTasks[0]; // 只处理第一个任务
+            try {
+                const result = taskSystem.acceptTask(taskToAccept.index);
+                tipMessage = result.tip.join('\n');
+
+                // 检查是否有后续任务
+                const series = taskSystem.getTaskSeries(taskToAccept.index);
+                const nextTask = taskSystem.getTaskData(taskToAccept.index + 1);
+
+                // 如果有后续任务且属于同一系列，检查是否可以接受
+                if (nextTask && taskSystem.getTaskSeries(taskToAccept.index + 1) === series) {
+                    // 检查后续任务是否可以被接受（前置任务已完成且等级满足要求）
+                    const prevTaskIndex = taskSystem.getPrevTaskInSeries(taskToAccept.index + 1, series);
+                    if (prevTaskIndex === null || taskSystem.isTaskCompleted(prevTaskIndex)) {
+                        // 检查等级要求
+                        if (!nextTask.level || user.play.level >= nextTask.level) {
+                            nextTaskIndex = taskToAccept.index + 1;
+                        }
+                    }
+                }
+            } catch (error) {
+                tipMessage = error.message;
+            }
+        } else if (receiveTasks.length > 0) {
+            showTaskDetails(receiveTasks[0])
+        } else {
+            // 没有自动处理的任务，显示任务状态
+            if (messages.length > 0) {
+                tipMessage = messages.join('\n');
+            } else {
+                tipMessage = '暂时没有可接或可提交的任务';
+            }
+        }
+    }
+}
+let messages = tipMessage.split('\n');
+
+// 获取背包中引路蜂的数量
+let guideBeeCount = 0;
+const items = user.backpack.items;
+for (const item of items) {
+    if (item.name === "引路蜂") {
+        guideBeeCount += +item.num;
+    }
+}
+%>
+<div class="wap_class">
+    <div><%= npcName %>的任务</div>
+    <br>
+    <% for (let i = 0; i < messages.length; i++) { %>
+        <div><%= messages[i] %></div>
+    <% } %>
+    <br>
+
+    <% if (nextTaskIndex !== null) { %>
+        <a href="/npc-task-direct?npc=<%= npcName %>&continueTask=<%= nextTaskIndex %>">继续</a><br>
+    <% } %>
+
+    <%
+    // 引路蜂逻辑
+    let guideBeeTask = null;
+    let guideBeeAction = "";
+
+    // 获取该NPC相关的可提交任务
+    const submittableTasks = user.task.getSubmittableTasksForNpc(npcName);
+    // 获取该NPC相关的可接任务
+    const availableTasks = user.task.getAvailableTasksForNpc(npcName);
+    // 获取该NPC相关的已接受但未完成的任务
+    const acceptedTasks = [];
+    const allTasks = user.task.getAllTasks();
+    allTasks.forEach(task => {
+        if (user.task.isTaskAccepted(task.index) && !user.task.isTaskCompleted(task.index) &&
+                (task.receiveNpc === npcName || task.submitNpc === npcName)) {
+            acceptedTasks.push(task);
+        }
+    });
+
+    // 判断显示哪个任务的引路蜂按钮
+    if (submittableTasks.length > 0) {
+        // 优先显示可提交任务
+        guideBeeTask = submittableTasks[0];
+        if (guideBeeTask.submitLocation) {
+            guideBeeAction = "submit";
+        }
+    } else if (availableTasks.length > 0) {
+        // 其次显示可接受任务
+        guideBeeTask = availableTasks[0];
+        if (guideBeeTask.targetAddress) {
+            guideBeeAction = "target";
+        }
+    } else if (acceptedTasks.length > 0) {
+        // 最后显示已接受但未完成的任务
+        guideBeeTask = acceptedTasks[0];
+        if (guideBeeTask.targetAddress) {
+            guideBeeAction = "target";
+        }
+    }
+
+    // 检查是否显示引路蜂按钮
+    let showGuideBeeButton = false;
+    if (guideBeeTask && user.backpack.hasItem("引路蜂", 1)) {
+        // 不显示引路蜂按钮的条件：
+        // 1. 任务有type属性且为0
+        // 2. 未完成的任务没有targetAddress
+        // 3. 接收和提交在不同城市且是未完成任务
+
+        if (guideBeeTask.type !== 0) {  // 任务type不为0
+            if (guideBeeAction === "target") {
+                // 未完成任务，需要有targetAddress
+                if (guideBeeTask.targetAddress) {
+                    showGuideBeeButton = true;
+                }
+            } else if (guideBeeAction === "submit") {
+                // 已完成未提交任务，显示submitLocation
+                showGuideBeeButton = true;
+            }
+        }
+    }
+
+    // 特殊处理：对于已接受但未完成的任务，使用isTaskCompletable方法判断是否已完成所有条件
+    if (guideBeeTask && user.backpack.hasItem("引路蜂", 1) && guideBeeTask.type !== 0) {
+        if (user.task.isTaskAccepted(guideBeeTask.index) && !user.task.isTaskCompleted(guideBeeTask.index)) {
+            const isCompletable = user.task.isTaskCompletable(guideBeeTask.index);
+            if (isCompletable && guideBeeTask.submitLocation) {
+                // 任务已完成但未提交，跳转到提交地点
+                guideBeeAction = "submit";
+                showGuideBeeButton = true;
+            } else if (!isCompletable && guideBeeTask.targetAddress) {
+                // 任务未完成，跳转到目标地点
+                guideBeeAction = "target";
+                showGuideBeeButton = true;
+            }
+
+            // 检查接收和提交是否在不同城市
+            if (showGuideBeeButton && guideBeeAction === "target" &&
+                    guideBeeTask.receiveLocation && guideBeeTask.submitLocation) {
+                const receiveCity = guideBeeTask.receiveLocation.split(' ')[0];
+                const submitCity = guideBeeTask.submitLocation.split(' ')[0];
+                if (receiveCity !== submitCity) {
+                    showGuideBeeButton = false;
+                }
+            }
+        }
+    }
+    %>
+
+    <% if (showGuideBeeButton && nextTaskIndex == null) { %>
+        <a href="/main?taskId=<%= guideBeeTask.index %>&type=task.useGuideBee">使用引路蜂(<%= guideBeeCount %>) </a><br>
+    <% } %>
+</div>

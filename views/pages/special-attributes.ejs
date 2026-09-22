@@ -1,0 +1,36 @@
+﻿<div>【角色特性】</div>
+<% 
+  const play = user.getPlay();
+  const status = play.getStatus();
+  const inflictChances = status.inflictStatusChances || {};
+  const resistances = status.resistances || {};
+  
+  // 定义所有可能的特殊属性
+  const specialAttributes = [
+    /*    { name: '伤害', value: 0.0 },
+        { name: '体魄', value: 0.0 },
+        { name: '免伤', value: 0.0 },
+        { name: '利刃', value: 0.0 },*/
+    { name: '反弹', value: 0.0 },
+    { name: '吸血', value: 0.0 },
+    { name: '抗反弹', value: 0.0 },
+    { name: '抗毒攻', value: (resistances.poison || 0) * 100 },
+    { name: '抗沮丧', value: (resistances.depressed || 0) * 100 },
+    { name: '抗虚弱', value: (resistances.weak || 0) * 100 },
+    { name: '抗诅咒', value: (resistances.curse || 0) * 100 },
+    { name: '抗麻痹', value: (resistances.paralysis || 0) * 100 },
+    { name: '暴击率', value: 0.0 }, // 固定值
+    { name: '毒攻', value: (inflictChances.poison || 0) * 100 },
+    { name: '沮丧攻', value: (inflictChances.depressed || 0) * 100 },
+    { name: '物品掉落', value: 0.0 },
+    { name: '虚弱攻', value: (inflictChances.weak || 0) * 100 },
+    { name: '诅咒攻', value: (inflictChances.curse || 0) * 100 },
+    { name: '麻痹攻', value: (inflictChances.paralysis || 0) * 100 }
+  ];
+
+  
+  // 显示所有激活的属性
+  specialAttributes.forEach(attr => {
+%>
+<div><%= attr.name %>： +<%= attr.value.toFixed(1) %>%</div>
+<% }); %>

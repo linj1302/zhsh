@@ -1,0 +1,32 @@
+﻿<div>
+    <div>【药品栏设置】</div>
+
+    <!-- 显示成功/错误消息 -->
+    <% if (typeof result !== 'undefined' && result.message) { %>
+        <div style="color: <%= result.success ? 'green' : 'red' %>; margin-bottom: 10px;">
+            <%= result.message %>
+        </div>
+    <% } %>
+
+    <div>
+        <% for (var i = 0; i < 6; i++) { %>
+            <div>
+                <div>
+                    <span>药品栏<%= i+1 %>: </span>
+                    <% if (user.medicineSettings && user.medicineSettings[i]) { %>
+                        <span><%= user.medicineSettings[i].name %></span>
+                    <% } else { %>
+                        <span>未设置</span>
+                    <% } %>
+                </div>
+                <div>
+                    <a href="medicine-chose?slot=<%= i %>">设置</a>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+    <div>
+        <a href="?type=clearMedicineSettings">清空药品栏</a>
+    </div>
+</div>

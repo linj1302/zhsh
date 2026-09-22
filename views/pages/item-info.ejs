@@ -1,0 +1,99 @@
+﻿<div class="game-section">
+    <div>
+        【物品信息】
+    </div>
+    <% var backpack = user.backpack;
+    var itemId = query.params;
+    var item = backpack.getItemById(itemId);
+    %>
+    <div>
+
+    <% var sl = item.info.strengthenLevel || 0;
+       var sd = sl > 0 ? user.getStrengthenDisplay(sl) : null; %>
+        名称:<span class="left-cls" style="color: <%= sd ? sd.color : 'inherit' %>"><%= item.name %>
+            <% if (item.num && item.num > 1) { %> * <%= item.num %>
+            <% } %>
+        <% if (sd) { %><span style="font-size: 0.9em; margin-left: 4px;"><%= sd.symbol %><%= sd.tag %> [+<%= sl %>]</span><% } %>
+    </div>
+    <div>
+        描述:<span class="left-cls"><%= item.info.tip || item.name %></span>
+    </div>
+    <div>
+        等级:<span class="left-cls"><%= item.info.level || 1 %></span>
+    </div>
+    <div>
+        负重:<span class="left-cls">1</span>
+    </div>
+
+
+    <!-- 装备属性 -->
+    <% if(item.info.attack) { %>
+        <div>
+            攻击:<span class="left-cls"><%= item.info.attack %></span> - <span><%= item.info.maxAttack %></span>
+            <% if (sl) { %>
+                <span style="color:#21ba45;">（强化 +<%= sl %>）</span>
+            <% } %>
+        </div>
+    <% } %>
+
+    <!-- 镶嵌信息 -->
+    <% if(item.info.sockets) { %>
+        <div>
+            镶嵌:（<%= item.info.sockets.filter(socket => socket !== null).length %>/<%= item.info.sockets.length %>）
+        </div>
+        <% item.info.sockets.forEach(function(socket, idx) { %>
+            <% if (socket !== null) { %>
+                <div><%= socket.name %>: <%= socket.info.tip %></div>
+            <% } %>
+        <% }); %>
+    <% } %>
+
+    <% if(item.info.defense)   { %>
+        <div>
+            防御: <span class="left-cls"><%= item.info.defense %></span>
+            <% if (sl) { %>
+                <span style="color:#21ba45;">（强化 +<%= sl %>）</span>
+            <% } %>
+        </div>
+    <% } %>
+
+    <% if(item.info.agility)   { %>
+        <div>
+            敏捷: <span class="left-cls"><%= item.info.agility %></span>
+            <% if (sl && sl >= 2) { %>
+                <span style="color:#21ba45;">（强化 +<%= Math.floor(sl/2) %>）</span>
+            <% } %>
+        </div>
+    <% } %>
+
+    <% if(item.info.morale)    { %>
+        <div>
+            士气: <span class="left-cls"><%= item.info.morale %></span>
+            <% if (sl && sl >= 3) { %>
+                <span style="color:#21ba45;">（强化 +<%= Math.floor(sl/3) %>）</span>
+            <% } %>
+        </div>
+    <% } %>
+
+    <% if(item.info.health)    { %>
+        <div>
+            体力: <span class="left-cls"><%= item.info.health %></span>
+            <% if (sl) { %>
+                <span style="color:#21ba45;">（强化 +<%= sl*2 %>）</span>
+            <% } %>
+        </div>
+    <% } %>
+
+    <!-- 宝石属性 -->
+    <% if(item.type == 5) { // 宝石类型   %>
+    <div>
+        宝石属性:<span class="left-cls"><%= item.info.tip %></span>
+    </div>
+    <% } %>
+
+    <% if(item.type == 1) { %>
+        <div class="row-cls">
+            <a class="link-item" href="role-status?type=play.equip&params=<%= item.id %>">穿戴装备</a>
+        </div>
+    <% } %>
+</div>

@@ -1,0 +1,36 @@
+﻿<div>
+    <%
+    var itemId = query.itemId;
+    var play = user.getPlay();
+    var backpack = user.backpack;
+    var item = backpack.getItemInfo(itemId);
+    var result = null;
+    
+    if (!item) {
+        %>
+        <div>未找到该装备!</div>
+<%
+    } else {
+        // 记录强化前的银贝铜币
+        var beforeSilver = play.showSilver;
+        var beforeCopper = play.showCopper;
+        var beforeGold = play.gold;
+        
+        result = user.strengthen.doStrengthen(item, play, backpack);
+        
+        // 计算消耗明细
+        var afterSilver = play.showSilver;
+        var afterCopper = play.showCopper;
+        var afterGold = play.gold;
+        %>
+        <div><%= result.message %></div>
+        <div style="margin-top: 5px; color: #666;">
+            <% if (beforeGold > afterGold) { %>
+                消耗金贝：-<%= beforeGold - afterGold %> | 
+            <% } %>
+            当前货币：<%= afterGold > 0 ? afterGold + '金贝 | ' : '' %><%= afterSilver > 0 ? afterSilver + '银贝' : '' %><%= afterCopper > 0 ? (afterSilver > 0 ? afterCopper : afterCopper) + '铜币' : '' %>
+        </div>
+<%
+    }
+    %>
+</div>

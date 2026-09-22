@@ -1,0 +1,105 @@
+﻿<div>
+    <% 
+    var backpack = user.backpack;
+    
+    // 获取装备ID
+    var itemId = typeof query.itemId !== 'undefined' ? query.itemId : '';
+
+    // 查找装备
+    var item = null;
+    
+    // 从背包中查找
+    if (itemId) {
+        var backpackItem = backpack.getItemById(itemId);
+        if (backpackItem && backpackItem.type === 1) { // 确保是装备
+            item = backpackItem;
+        }
+    }
+    
+    // 为装备添加孔位系统（如果还没有）
+    if (item) {
+        // 根据装备等级计算孔位数 (1-200级对应1-4个孔位)
+        var socketsCount = Math.max(1, Math.min(4, Math.ceil(item.info.level / 50)));
+        
+        // 初始化sockets数组（如果还没有）
+        if (!item.info.sockets) {
+            item.info.sockets = Array(socketsCount).fill(null);
+        }
+    }
+    %>
+
+    <div>【宝石镶嵌】</div>
+
+    <% if (!item) { %>
+        <div style="color: red;">未找到装备或装备无效</div>
+    <% } else { %>
+        <!-- 装备信息 -->
+        <div>
+            装备名称:
+            <span>
+                <span><%= item.name %>(<%= item.info.level %>级)</span>
+            </span>
+        </div>
+        
+        <!-- 宝石孔位 -->
+        <div style="margin-top: 20px;">
+            <div>【宝石孔位】</div>
+            <div>
+                <% for (var i = 0; i < item.info.sockets.length; i++) { %>
+                    <div>
+                        孔位<span><%= i + 1 %></span>:
+                        <% if (item.info.sockets[i]) { %>
+                            <span><%= item.info.sockets[i].name %></span>
+                        <% } else { %>
+                            <span>空</span>
+                        <% } %>
+                        
+                        <!-- 镶嵌/更换按钮 -->
+                        <% if (!item.info.sockets[i]) { %>
+                            <a href="gem-inlay-chose?itemId=<%= itemId %>&socketIndex=<%= i %>">镶嵌</a>
+                        <% } else { %>
+                            <a href="gem-inlay-chose?itemId=<%= itemId %>&socketIndex=<%= i %>">更换</a>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        
+        <!-- 可用宝石列表 -->
+        <div style="margin-top: 20px;">
+            <div>【可用宝石】</div>
+            <div>
+                <% 
+                var gemItems = [];
+                backpack.items.forEach(function(backpackItem, idx) {
+                    if (backpackItem.type === 5 && backpackItem.status !== 2) { // 宝石类型且未装备
+                        gemItems.push({
+                            item: backpackItem,
+                            id: backpackItem.id
+                        });
+                    }
+                });
+                %>
+                
+                <% if (gemItems.length === 0) { %>
+                    <div>背包中没有可用的宝石</div>
+                <% } else { %>
+                    <% gemItems.forEach(function(gem) { %>
+                        <div>
+                            <span><%= gem.item.name %>*<%= gem.item.num %></span>
+                        </div>
+                    <% }); %>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+
+    <!-- 说明文档 -->
+    <div>
+        <div>镶嵌说明：</div>
+        <div>1.佩戴只能镶嵌抗性类宝石和正龙珠，其他部位装备只能镶嵌攻击类宝石和正龙珠</div>
+        <div>2.宝石覆盖后无法找回，请谨慎操作</div>
+        <div>3.龙珠将修改装备可交易属性，请谨慎操作</div>
+        <div>4.装备根据等级拥有1-4个孔位（1-50级1孔，51-100级2孔，101-150级3孔，151-200级4孔）</div>
+    </div>
+</div>

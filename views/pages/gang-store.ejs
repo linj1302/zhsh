@@ -1,0 +1,56 @@
+﻿<div>
+    <div>
+        【帮会仓库】
+    </div>
+
+    <% if (typeof gangInfo !== 'undefined' && gangInfo && gangInfo.id) { %>
+        <!-- 帮会基本信息 -->
+        <div>
+            帮会名称: <span><%= gangInfo.name %></span>
+        </div>
+        <div>
+            帮会等级: <span><%= gangInfo.level %></span>
+        </div>
+        <div>
+            仓库容量: <span><%= storageItems.length %> / <%= 1000 + (gangInfo.level * 500) %></span>
+        </div>
+        <div style="color: red">
+            当前帮会已开启贡献值兑换装备，每件装备消耗<span>1</span>贡献
+        </div>
+        <div>
+            我的贡献值: <span><%= gangInfo.contribution %></span>
+        </div>
+
+        <% if (typeof storageItems !== 'undefined' && storageItems && storageItems.length > 0) { %>
+            <!-- 仓库物品列表 -->
+            <div>
+                仓库物品
+            </div>
+
+            <div>
+                <div>
+                    <% storageItems.forEach(function(item, index) { %>
+                        <div>
+                            <span><%= index + 1 %>.</span>
+                            <a><%= item.item_name %>(<%= item.item_level %>级)</a>
+                            <a href="/gang-store?type=removeGangStorageItem&params=<%= item.id %>">
+                                取出
+                            </a>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        <% } else { %>
+            <div>仓库暂无物品</div>
+        <% } %>
+
+        <!-- 存入物品按钮 -->
+        <div>
+            <a href="/gang-store-deposit">
+                存入物品
+            </a>
+        </div>
+    <% } else { %>
+        <div>您还没有加入任何帮会</div>
+    <% } %>
+</div>

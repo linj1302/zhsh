@@ -1,0 +1,17 @@
+{
+  "followerQuality": {
+    "normal": "普通",
+    "excellent": "优秀",
+    "elite": "精锐",
+    "perfect": "完美",
+    "legend": "传说"
+  },
+  "statusEffects": {
+    "slow": "缓慢",
+    "weak": "虚弱",
+    "curse": "诅咒",
+    "depressed": "沮丧",
+    "poison": "中毒",
+    "paralysis": "麻痹"
+  }
+}

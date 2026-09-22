@@ -1,0 +1,261 @@
+﻿<h2 style="font-weight:700; color:#e65100; text-align:center;">🎊 节日活动</h2>
+
+<%
+var overview = user.holiday?.getOverview() || {};
+var active = overview.active || [];
+var nearest = overview.nearest;
+var bonuses = overview.bonuses || {};
+var allEvents = overview.allEvents || [];
+var streakInfo = overview.streakInfo || {};
+var claimableCount = overview.claimableCount || 0;
+%>
+
+<!-- 状态横幅 -->
+<div class="section" style="text-align:center; margin-bottom:10px;">
+    <p style="font-size:1.1em; font-weight:bold; color:#c62828; margin:4px 0;">
+        <%= overview.systemMessage %>
+    </p>
+    <% if (bonuses) { %>
+    <div style="font-size:0.85em; color:#666;">
+        <% if (bonuses.expBoost > 1) { %><span class="tag tag-orange">⚡ 经验 x<%= bonuses.expBoost %></span><% } %>
+        <% if (bonuses.goldBoost > 1) { %><span class="tag tag-gold">🪙 金币 x<%= bonuses.goldBoost %></span><% } %>
+        <% if (bonuses.dropBoost > 1) { %><span class="tag tag-green">🎁 掉落 x<%= bonuses.dropBoost %></span><% } %>
+        <% if (bonuses.shopDiscount > 0) { %><span class="tag tag-blue">🛒 <%= bonuses.shopDiscount %>%折扣</span><% } %>
+        <% if (!(bonuses.expBoost > 1 || bonuses.goldBoost > 1 || bonuses.dropBoost > 1 || bonuses.shopDiscount > 0)) { %>
+            <small style="color:#999;">无额外倍率</small>
+        <% } %>
+    </div>
+    <% } %>
+</div>
+
+    <!-- 每日签到 + 一键领取 -->
+    <div class="section" style="margin-bottom: 12px; border: 2px solid #ff9800; border-radius: 10px; background: linear-gradient(135deg, #fffde7, #fff8e1); padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+                <strong style="color: #e65100; font-size: 1.1em;">📅 每日签到</strong>
+                <% if (streakInfo.currentStreak > 0) { %>
+                    <span style="margin-left: 8px; color: #cc3300; font-weight: bold;">
+                        连续 <%= streakInfo.currentStreak %> 天
+                    </span>
+                <% } %>
+                <div style="font-size: 12px; color: #888; margin-top: 4px;">
+                    <% if (streakInfo.currentStreak >= 30) { %>
+                        🏆 已达最高奖励档位（5000铜贝+5000经验）
+                    <% } else if (streakInfo.currentStreak >= 14) { %>
+                        再签到 <%= 30 - streakInfo.currentStreak %> 天解锁最高奖励
+                    <% } else if (streakInfo.currentStreak >= 7) { %>
+                        再签到 <%= 14 - streakInfo.currentStreak %> 天解锁14天奖励（3000铜贝+3000经验）
+                    <% } else { %>
+                        再签到 <%= 7 - streakInfo.currentStreak %> 天解锁7天奖励（1500铜贝+1500经验）
+                    <% } %>
+                </div>
+                <!-- 里程碑进度条 -->
+                <div style="margin-top: 6px; background: #e0e0e0; border-radius: 8px; height: 14px; width: 200px; max-width: 100%; overflow: hidden;">
+                    <%
+                    var nextMilestone = streakInfo.currentStreak >= 30 ? 30 : (streakInfo.currentStreak >= 14 ? 30 : (streakInfo.currentStreak >= 7 ? 14 : 7));
+                    var prevMilestone = streakInfo.currentStreak >= 30 ? 30 : (streakInfo.currentStreak >= 14 ? 14 : (streakInfo.currentStreak >= 7 ? 7 : 0));
+                    var progressPct = nextMilestone > prevMilestone ? Math.min(100, Math.floor((streakInfo.currentStreak - prevMilestone) / (nextMilestone - prevMilestone) * 100)) : 100;
+                    %>
+                    <div style="background: linear-gradient(90deg, #ff9800, #ff5722); height: 100%; width: <%= progressPct %>%; border-radius: 8px; transition: width 0.3s;"></div>
+                </div>
+                <div style="font-size: 11px; color: #999; margin-top: 2px;">
+                    <% if (streakInfo.currentStreak < 7) { %>
+                        <%= streakInfo.currentStreak %>/7 天
+                    <% } else if (streakInfo.currentStreak < 14) { %>
+                        <%= streakInfo.currentStreak %>/14 天
+                    <% } else if (streakInfo.currentStreak < 30) { %>
+                        <%= streakInfo.currentStreak %>/30 天
+                    <% } else { %>
+                        🏆 <%= streakInfo.currentStreak %> 天
+                    <% } %>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <% if (streakInfo.todayChecked) { %>
+                    <span style="color: green; font-weight: bold; padding: 6px 12px; background: #e8f5e9; border-radius: 6px; text-align: center;">✅ 已签到</span>
+                <% } else { %>
+                    <a href="/holiday?type=holiday.dailyCheckIn"
+                       style="display: block; padding: 6px 12px; background: linear-gradient(135deg, #ff9800, #f57c00); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; text-align: center;">
+                        签到领取奖励
+                    </a>
+                <% } %>
+                <% if (claimableCount > 0) { %>
+                    <a href="/holiday?type=holiday.claimAllRewards"
+                       style="display: block; padding: 6px 12px; background: linear-gradient(135deg, #e91e63, #c2185b); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; text-align: center;">
+                        🎁 一键领取 (<%= claimableCount %>)
+                    </a>
+                <% } %>
+            </div>
+        </div>
+        <!-- 里程碑标记 -->
+        <div style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <% (streakInfo.milestones || []).forEach(function(m) { %>
+                <span style="font-size: 12px; padding: 2px 8px; border-radius: 4px; 
+                    <%= m.claimed ? 'background: #c8e6c9; color: #2e7d32;' : 'background: #f5f5f5; color: #999;' %>">
+                    <%= m.claimed ? '✅' : '🔒' %> <%= m.days %>天
+                </span>
+            <% }); %>
+        </div>
+    </div>
+
+    <!-- 活跃节日卡片 -->
+    <% if (active.length > 0) { %>
+        <% active.forEach(function(event) { %>
+            <div class="section" style="
+                border: 2px solid #cc3300; border-radius: 12px; padding: 12px;
+                margin: 10px 0; background: linear-gradient(135deg, #fff5f5, #fff8e1);
+                box-shadow: 0 2px 8px rgba(204,51,0,0.15);">
+                
+                <h3 style="color: #cc3300; font-size: 1.3em; margin: 0 0 4px 0;">
+                    <%= event.icon %> <%= event.name %>
+                    <span style="font-size:0.78em; color: #999;">(<%= event.duration_days %>天)</span>
+                </h3>
+
+                <!-- 倒计时 -->
+                <% if (event.endTime) { %>
+                    <%
+                    var now = new Date();
+                    var end = new Date(event.endTime);
+                    var diffMs = end - now;
+                    var diffDays = Math.floor(diffMs / 86400000);
+                    var diffHours = Math.floor((diffMs % 86400000) / 3600000);
+                    %>
+                    <% if (diffMs > 0) { %>
+                        <div style="font-size: 13px; color: #d32f2f; margin-bottom: 6px;">
+                            ⏰ 剩余时间：<strong><%= diffDays %></strong>天<strong><%= diffHours %></strong>小时
+                        </div>
+                    <% } else { %>
+                        <div style="font-size: 13px; color: #999; margin-bottom: 6px;">活动即将结束</div>
+                    <% } %>
+                <% } %>
+                
+                <p style="color: #666; margin: 2px 0 8px 0;"><em><%= event.description %></em></p>
+                
+                <!-- 节日福利 -->
+                <% if (event.special_features && event.special_features.length > 0) { %>
+                <div style="background: #fff3e0; padding: 8px; border-radius: 6px; margin-bottom: 10px;">
+                    <strong style="color: #e65100;">🎁 节日福利：</strong>
+                    <ul style="margin: 4px 0; padding-left: 20px; color: #795548;">
+                        <% event.special_features.forEach(function(f) { %>
+                            <li><%= f %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+                <% } %>
+
+                <!-- 节日抽奖入口 -->
+                <div style="margin-bottom: 10px;">
+                    <a href="/holiday?type=holiday.lotteryDraw&params=<%= event.id %>"
+                       style="display: inline-block; padding: 4px 12px; background: linear-gradient(135deg, #9c27b0, #7b1fa2); color: white; text-decoration: none; border-radius: 6px; font-size: 13px;">
+                        🎰 节日抽奖（消耗节日代币）
+                    </a>
+                </div>
+                
+                <!-- 活动列表 -->
+                <% if (event.activities && event.activities.length > 0) { %>
+                <h4 style="margin: 8px 0 4px 0; color: #666;">📋 任务活动</h4>
+                <table border="1" cellpadding="4" style="border-collapse: collapse; width: 100%; font-size: 13px;">
+                    <tr style="background: #ffe0e0;">
+                        <th>活动</th>
+                        <th>描述</th>
+                        <th>进度/条件</th>
+                        <th>操作</th>
+                    </tr>
+                    <% event.activities.forEach(function(act) { %>
+                        <tr>
+                            <td>
+                                <%= act.isDaily ? '📅 ' : '' %><%= act.name %>
+                                <% if (act.isDaily) { %><br><small style="color:#999">(每日)</small><% } %>
+                                <% if (act.type === 'chain' && act.chainDetails) { %>
+                                    <br><small style="color:#999;">
+                                        <%= act.chainDetails.current %>/<%= act.chainDetails.total %> 步
+                                    </small>
+                                <% } %>
+                            </td>
+                            <td style="font-size: 12px;"><%= act.description %></td>
+                            <td style="color: #666; font-size: 12px;">
+                                <%= act.requirement || '—' %>
+                                <% if (act.chainDetails) { %>
+                                    <br>
+                                    <!-- 链式任务进度条 -->
+                                    <div style="background: #e0e0e0; border-radius: 4px; height: 10px; width: 100%; margin: 4px 0; overflow: hidden;">
+                                        <div style="background: linear-gradient(90deg, #4caf50, #2e7d32); height: 100%; width: <%= Math.floor(act.chainDetails.current / act.chainDetails.total * 100) %>%; border-radius: 4px;"></div>
+                                    </div>
+                                    <% act.chainDetails.steps.forEach(function(step) { %>
+                                        <span style="<%= step.completed ? 'color:green' : (step.current ? 'color:#cc3300;font-weight:bold' : 'color:#ccc') %>">
+                                            <%= step.name %><%= step.current ? '←' : '' %>
+                                        </span>
+                                    <% }); %>
+                                <% } %>
+                            </td>
+                            <td>
+                                <% if (act.status === 'claimable') { %>
+                                    <a href="/holiday?type=holiday.claimReward&params=<%= event.id %>,<%= act.id %>"
+                                       style="color: #007bff; font-weight: bold;">[领取]</a>
+                                <% } else if (act.status === 'completed') { %>
+                                    <span style="color: green;">✅ 已领</span>
+                                <% } else { %>
+                                    <span style="color: gray;">🔒</span>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </table>
+                <% } %>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <div class="section" style="text-align: center; padding: 20px; color: #999;">
+            <p style="font-size: 1.2em;">暂无进行中的节日活动</p>
+            <p>敬请期待下次节日～</p>
+        </div>
+    <% } %>
+
+    <!-- 即将到来的节日 -->
+    <% if (nearest) { %>
+    <div class="section" style="text-align: center; padding: 10px; background: #f0f7ff; border-radius: 8px;">
+        <p style="color: #666; font-size: 1.1em; margin: 0;">
+            📅 距离 <strong><%= nearest.icon %> <%= nearest.name %></strong> 还有 
+            <span style="color: #cc3300; font-weight: bold; font-size: 1.3em;"><%= nearest.daysUntil %></span> 天
+        </p>
+    </div>
+    <% } %>
+
+    <!-- 说明 -->
+    <div class="section">
+        <h3>📖 节日活动说明</h3>
+        <ul style="font-size: 14px;">
+            <li><strong>节日福利</strong>: 活动期间自动享受上方倍率加成</li>
+            <li><strong>每日签到</strong>: 连续签到天数越多奖励越丰厚（7/14/30天里程碑）</li>
+            <li><strong>节日抽奖</strong>: 消耗节日代币抽取限定奖励</li>
+            <li><strong>一次性活动</strong>: 游戏过程中达成条件后回来领奖</li>
+            <li><strong>连串任务</strong>: 按顺序完成每关要求，逐步获取丰厚回报</li>
+            <li>活动结束后无法参与，把握时机哦！</li>
+        </ul>
+    </div>
+
+    <!-- 全年节日日历 -->
+    <div class="section">
+        <h3>📅 全年节日一览</h3>
+        <table border="1" cellpadding="4" style="border-collapse: collapse; width: 100%; font-size: 13px;">
+            <tr style="background: #f0f0f0;">
+                <th>节日</th>
+                <th>日期</th>
+                <th>持续</th>
+                <th>福利</th>
+            </tr>
+            <% allEvents.forEach(function(ev) { %>
+                <tr>
+                    <td><%= ev.icon || '🎉' %> <%= ev.name %></td>
+                    <td>
+                        <% if (ev.date_type === 'lunar') { %>农历<% } else { %>公历<% } %>
+                        <%= ev.solar_month || ev.lunar_month %>.<%= ev.solar_day || ev.lunar_day %>
+                    </td>
+                    <td><%= ev.duration_days || 3 %>天</td>
+                    <td style="font-size: 12px; color: #666;">
+                        <%= (ev.special_features || []).slice(0, 2).join('；') %>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+    </div>

@@ -1,0 +1,128 @@
+﻿<div class="game-container">
+    <div style="margin: 10px 0px;">
+        【宝石合成】
+    </div>
+
+    <!-- 合成结果提示 -->
+    <% if (typeof tip !== 'undefined' && tip) { %>
+    <div class="tip-message"><%= tip %></div>
+    <% } %>
+
+    <% var backpack = user.backpack; %>
+    <% var play = user.getPlay(); %>
+    <% var city = user.getCity(); %>
+    
+    <!-- 统计背包中的宝石 -->
+    <% var gemCounts = {}; %>
+    <% backpack.items.forEach(function(item) { %>
+        <% if (item.type === 5) { // 宝石类型 %>
+            <% if (!gemCounts[item.name]) { %>
+                <% gemCounts[item.name] = 0; %>
+            <% } %>
+            <% gemCounts[item.name] += +item.num; %>
+        <% } %>
+    <% }); %>
+
+    <!-- 合成配方列表 -->
+    <div class="recipe-list">
+        <% 
+        // 定义宝石类型
+        var gemTypes = ['蛇牙', '天金石', '金丝藤', '绿宝石', '黑曜石', '红骷髅', '鲸须', '乌金', '水清石', '黄玉石', '锆石'];
+        var levels = ['小', '中', '高', '完美'];
+        
+        // 根据城市确定可合成的宝石等级
+        var maxLevel = 1; // 默认只能合成中级宝石
+        if (city.city === '泉州') {
+            maxLevel = 2; // 可合成高级宝石
+        } else if (city.city === '伦敦') {
+            maxLevel = 3; // 可合成完美宝石
+        }
+        
+        // 生成可合成的宝石配方
+        gemTypes.forEach(function(type) {
+            // 生成中级宝石合成配方
+            if (maxLevel === 1) {
+                var lowGem = '小' + type;
+                var highGem = '中' + type;
+                var lowCount = gemCounts[lowGem] || 0;
+                var canCraft = lowCount >= 3;
+        %>
+        <div class="recipe-item">
+            <a href="gem-info?name=<%= highGem %>"><%= highGem %></a>
+            <span style="margin-left: 10px;">(50铜币)</span>
+            <span style="margin-left: 10px;">拥有低级:<%= lowCount %></span>
+
+            <!-- 合成按钮 -->
+            <% if (canCraft) { %>
+            <% var maxBatches = Math.floor(lowCount / 3); %>
+            <input type="number" id="count_<%= lowGem %>" value="1" min="1" max="<%= maxBatches %>" style="width: 50px;">
+            <a href="#" onclick="var n=document.getElementById('count_<%= lowGem %>').value;location.href='gem-craft?type=npc.craftGem&params=<%= lowGem %>,'+n" style="margin-left: 5px;">合成</a>
+            <span style="color: #999;">(最多<%= maxBatches %>次)</span>
+            <% } else { %>
+            <span>合成</span>
+            <% } %>
+        </div>
+        <% 
+            }
+            
+            // 生成高级宝石合成配方
+            if (maxLevel === 2) {
+                var lowGem = '中' + type;
+                var highGem = '高' + type;
+                var lowCount = gemCounts[lowGem] || 0;
+                var canCraft = lowCount >= 3;
+        %>
+        <div class="recipe-item">
+            <a href="gem-info?name=<%= highGem %>"><%= highGem %></a>
+            <span style="margin-left: 10px;">(150铜币)</span>
+            <span style="margin-left: 10px;">拥有中级:<%= lowCount %></span>
+
+            <!-- 合成按钮 -->
+            <% if (canCraft) { %>
+            <% var maxBatches = Math.floor(lowCount / 3); %>
+            <input type="number" id="count_<%= lowGem %>" value="1" min="1" max="<%= maxBatches %>" style="width: 50px;">
+            <a href="#" onclick="var n=document.getElementById('count_<%= lowGem %>').value;location.href='gem-craft?type=npc.craftGem&params=<%= lowGem %>,'+n" style="margin-left: 5px;">合成</a>
+            <span style="color: #999;">(最多<%= maxBatches %>次)</span>
+            <% } else { %>
+            <span>合成</span>
+            <% } %>
+        </div>
+        <% 
+            }
+            
+            // 生成完美宝石合成配方
+            if (maxLevel === 3) {
+                var lowGem = '高' + type;
+                var highGem = '完美' + type;
+                var lowCount = gemCounts[lowGem] || 0;
+                var canCraft = lowCount >= 3;
+        %>
+        <div class="recipe-item">
+            <a href="gem-info?name=<%= highGem %>"><%= highGem %></a>
+            <span style="margin-left: 10px;">(450铜币)</span>
+            <span style="margin-left: 10px;">拥有高级:<%= lowCount %></span>
+
+            <!-- 合成按钮 -->
+            <% if (canCraft) { %>
+            <% var maxBatches = Math.floor(lowCount / 3); %>
+            <input type="number" id="count_<%= lowGem %>" value="1" min="1" max="<%= maxBatches %>" style="width: 50px;">
+            <a href="#" onclick="var n=document.getElementById('count_<%= lowGem %>').value;location.href='gem-craft?type=npc.craftGem&params=<%= lowGem %>,'+n" style="margin-left: 5px;">合成</a>
+            <span style="color: #999;">(最多<%= maxBatches %>次)</span>
+            <% } else { %>
+            <span>合成</span>
+            <% } %>
+        </div>
+        <% 
+            }
+        }); %>
+    </div>
+
+    <!-- 说明文档 -->
+    <div>
+        <div class="remark-cls">合成说明：</div>
+        <div class="remark-cls">1.每三个低级宝石合成一个更高一级宝石。</div>
+        <div class="remark-cls">2.中级宝石合成：威尼斯-珠宝商</div>
+        <div class="remark-cls">高级宝石合成：泉州-珠宝商</div>
+        <div class="remark-cls">完美宝石合成：伦敦-珠宝商</div>
+    </div>
+</div>

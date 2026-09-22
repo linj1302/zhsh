@@ -1,0 +1,31 @@
+<%
+/* 随从字符画卡片：品质符号分级、属性条形图；保留管理/休息链接 */
+var followerData = targetUser.follower ? targetUser.follower.getStatus() : null;
+var fightingFollower = followerData ? followerData.fightingFollower : null;
+var followerLines = [];
+if (fightingFollower) {
+    var qLabel = displayLabels.followerQuality;
+    var qSym = { normal: '○', excellent: '◆', elite: '▲', perfect: '★', legend: '✦' };
+    var eqStats = fightingFollower.equipStats || {};
+    var totalAtk = fightingFollower.stats.attack + (eqStats.attack || 0);
+    var totalDef = fightingFollower.stats.defense + (eqStats.defense || 0);
+    var totalAgi = fightingFollower.stats.agility + (eqStats.agility || 0);
+    var fMax = Math.max(totalAtk, totalDef, totalAgi, 1);
+    followerLines.push('出战 ' + (qSym[fightingFollower.quality] || '·') + ' ' + escapeFn(fightingFollower.name)
+        + '（' + escapeFn(String(qLabel[fightingFollower.quality] || fightingFollower.quality)) + ' · ' + fightingFollower.level + '级）');
+    followerLines.push('攻 ' + include('partials/progress-bar', { current: totalAtk, max: fMax, width: 10 }) + ' ' + totalAtk);
+    followerLines.push('防 ' + include('partials/progress-bar', { current: totalDef, max: fMax, width: 10 }) + ' ' + totalDef);
+    followerLines.push('敏 ' + include('partials/progress-bar', { current: totalAgi, max: fMax, width: 10 }) + ' ' + totalAgi);
+    if (isSelf) {
+        followerLines.push('<a href="/follower">管理</a> <a href="/follower?action=setState&state=rest&id=' + fightingFollower.recruit_id + '" style="color: red;">休息</a>');
+    }
+} else {
+    followerLines.push('<span class="asc-dim">（空）无出战随从</span>');
+    if (isSelf && followerData && followerData.followers && followerData.followers.length > 0) {
+        followerLines.push('<a href="/follower">出战随从</a>');
+    } else if (isSelf) {
+        followerLines.push('<a href="/follower">招募随从</a>');
+    }
+}
+%>
+<%- include('partials/ascii-box', { boxTitle: '伙伴 · 随从', boxLines: followerLines }) %>

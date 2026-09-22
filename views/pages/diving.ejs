@@ -1,0 +1,33 @@
+﻿<div>
+    <div>
+        【潜水】
+    </div>
+    <% var backpack = user.backpack; %>
+    <% if(typeof type !== 'undefined' && type === 'encounter'){ %>
+        <span><%= tip %></span>
+        <span><%= name %></span>
+        <a href="trial-map?type=sailing.enterSailFb">进入</a>
+    <% } %>
+    <div>
+        <span>你正在海底寻宝：</span>
+    </div>
+    <div>
+        <a href="diving?type=sailing.diving">潜水</a>
+    </div>
+    <!-- 航行信息 -->
+    <div>
+        <span>藏宝图</span><span>(<%= (backpack.getItemsByType(2).find(item => item.name === '藏宝图') || {num: 0}).num %>个)</span>：<a
+                href="?type=fish.useTreasureMap&params=1">使用</a>
+    </div>
+    <div>
+        <span>高级藏宝图</span><span>(<%= (backpack.getItemsByType(2).find(item => item.name === '高级藏宝图') || {num: 0}).num %>个)</span>：<a
+                href="?type=fish.useTreasureMap&params=2">使用</a>
+    </div>
+
+    <div>
+        <a href="role-status">状态</a> . <a href="backpack">物品</a>
+    </div>
+    <div>
+        <a href="voyage">返回游戏</a>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+﻿<div class="wap_class">
+    <h2>⚔️ 攻城系统</h2>
+    
+    <% var siegeStatus = siegeStatus || {} %>
+    <% var activeSieges = activeSieges || [] %>
+    <% var mySieges = mySieges || [] %>
+    
+    <div class="section">
+        <h3>当前攻城战</h3>
+        <% if (activeSieges.length > 0) { %>
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>发起帮会</th>
+                    <th>目标城市</th>
+                    <th>状态</th>
+                    <th>开始时间</th>
+                    <th>操作</th>
+                </tr>
+                <% activeSieges.forEach(function(siege) { %>
+                    <tr>
+                        <td><%= siege.gang_name || '未知' %></td>
+                        <td><%= siege.defender_city %></td>
+                        <td>
+                            <% if (siege.status === 'gathering') { %>
+                            <span style="color: orange">集合中</span>
+                            <% } else if (siege.status === 'fighting') { %>
+                            <span style="color: red">战斗中</span>
+                            <% } else { %>
+                            <span style="color: gray"><%= siege.status %></span>
+                            <% } %>
+                        </td>
+                        <td><%= new Date(siege.start_time).toLocaleString() %></td>
+                        <td>
+                            <% if (siege.status === 'gathering' || siege.status === 'fighting') { %>
+                                <% var myParticipation = mySieges.find(s => s.id === siege.id) %>
+                            <% if (myParticipation) { %>
+                                <a href="/siege?type=siege.leave&siegeId=<%= siege.id %>">离开攻城</a>
+                            <% } else { %>
+                                <a href="/siege?type=siege.join&siegeId=<%= siege.id %>">加入攻城</a>
+                            <% } %>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        <% } else { %>
+            <p>当前没有进行中的攻城战</p>
+        <% } %>
+    </div>
+
+    <div class="section">
+        <h3>我的攻城记录</h3>
+        <% if (mySieges.length > 0) { %>
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>发起帮会</th>
+                    <th>目标城市</th>
+                    <th>我的状态</th>
+                    <th>造成伤害</th>
+                    <th>结果</th>
+                </tr>
+                <% mySieges.forEach(function(siege) { %>
+                    <tr>
+                        <td><%= siege.gang_name || '未知' %></td>
+                        <td><%= siege.defender_city %></td>
+                        <td>
+                            <% if (siege.my_state === 'fighting') { %>
+                            参与战斗
+                            <% } else if (siege.my_state === 'retreated') { %>
+                            <span style="color: gray">不战而退</span>
+                            <% } else { %>
+                            未参与
+                            <% } %>
+                        </td>
+                        <td><%= siege.damage_dealt || 0 %></td>
+                        <td>
+                            <% if (siege.result) { %>
+                                <% if (siege.result === 'attack_win') { %>
+                                <span style="color: green">攻城成功</span>
+                            <% } else { %>
+                                <span style="color: red">攻城失败</span>
+                            <% } %>
+                            <% } else { %>
+                            进行中
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        <% } else { %>
+            <p>暂无攻城记录</p>
+        <% } %>
+    </div>
+
+    <div class="section">
+        <h3>发起攻城</h3>
+        <% var canInitiate = siegeStatus.canInitiate || {} %>
+        <% if (canInitiate.success) { %>
+            <p style="color: green">您可以发起攻城战</p>
+            <a href="/siege?type=siege.initiate&city=盟重土城">发起攻打盟重土城</a><br>
+            <a href="/siege?type=siege.initiate&city=沙巴克">发起攻打沙巴克</a><br>
+            <a href="/siege?type=siege.initiate&city=比奇城">发起攻打比奇城</a>
+        <% } else { %>
+            <p style="color: red"><%= canInitiate.message || '无法发起攻城' %></p>
+            <p>攻城要求：</p>
+            <ul>
+                <li>需要是帮主或帮副</li>
+                <li>帮会人数至少 20 人</li>
+                <li>在线人数至少 10 人</li>
+                <li>攻城时间：12:00-14:00 或 20:00-22:00</li>
+                <li>需要 10 银贝费用</li>
+            </ul>
+        <% } %>
+    </div>
+
+</div>
+

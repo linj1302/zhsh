@@ -1,0 +1,84 @@
+﻿<div>
+    <% 
+    var backpack = user.backpack;
+    
+    // 获取装备ID和孔位索引
+    var itemId = typeof query.itemId !== 'undefined' ? query.itemId : '';
+    var socketIndex = typeof query.socketIndex !== 'undefined' ? parseInt(query.socketIndex) : -1;
+    
+    // 查找装备
+    var item = null;
+    
+    // 从背包中查找
+    if (itemId) {
+        var backpackItem = backpack.getItemById(itemId);
+        if (backpackItem && backpackItem.type === 1) { // 确保是装备
+            item = backpackItem;
+        }
+    }
+    
+    // 为装备添加孔位系统（如果还没有）
+    if (item) {
+        // 根据装备等级计算孔位数 (1-200级对应1-4个孔位)
+        var socketsCount = Math.max(1, Math.min(4, Math.ceil(item.info.level / 50)));
+        
+        // 初始化sockets数组（如果还没有）
+        if (!item.info.sockets) {
+            item.info.sockets = Array(socketsCount).fill(null);
+        }
+    }
+    %>
+
+    <div>【选择宝石】</div>
+
+    <% if (!item || socketIndex < 0) { %>
+        <div style="color: red;">参数错误</div>
+    <% } else { %>
+        <!-- 装备信息 -->
+        <div>
+            装备名称:
+            <span>
+                <span><%= item.name %>(<%= item.info.level %>级)</span>
+            </span>
+        </div>
+        
+        <div style="margin-top: 10px;">
+            孔位: <%= socketIndex + 1 %>
+            <% if (item.info.sockets[socketIndex]) { %>
+                当前宝石: <%= item.info.sockets[socketIndex].name %>
+            <% } else { %>
+                当前状态: 空
+            <% } %>
+        </div>
+        
+        <!-- 可用宝石列表 -->
+        <div style="margin-top: 20px;">
+            <div>【可用宝石】</div>
+            <div>
+                <% 
+                var gemItems = [];
+                backpack.items.forEach(function(backpackItem) {
+                    if (backpackItem.type === 5 && backpackItem.status !== 2) { // 宝石类型且未装备
+                        gemItems.push({
+                            item: backpackItem,
+                            id: backpackItem.id
+                        });
+                    }
+                });
+                %>
+                
+                <% if (gemItems.length === 0) { %>
+                    <div>背包中没有可用的宝石</div>
+                <% } else { %>
+                    <% gemItems.forEach(function(gem) { %>
+                        <div>
+                            <span><%= gem.item.name %>*<%= gem.item.num %></span>
+                            <a href="main?type=npc.inlayGem&params=<%= gem.id %>,<%= itemId %>,<%= socketIndex %>" 
+                               style="margin-left: 10px;">选择</a>
+                        </div>
+                    <% }); %>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+</div>

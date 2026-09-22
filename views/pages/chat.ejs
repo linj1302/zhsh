@@ -1,0 +1,93 @@
+﻿<div class="game-section">
+    <% if (typeof sendTip !== 'undefined' && sendTip) { %>
+        <div style="background:#fff3cd; padding:4px 8px; border-radius:4px; margin-bottom:6px; font-size:0.82em; color:#856404;">
+            ⚠ <%= sendTip %>
+        </div>
+    <% } %>
+
+    <!-- 频道切换（紧凑顶栏） -->
+    <div style="display:flex; align-items:center; gap:2px; padding:4px 0; border-bottom:2px solid #7c4dff; margin-bottom:8px;">
+        <a href="/chat?channel=public" style="padding:4px 10px; font-size:0.85em; font-weight:<%= channel === 'public' ? '700' : '400' %>; color:<%= channel === 'public' ? '#7c4dff' : '#666' %>; border-bottom:<%= channel === 'public' ? '2px solid #7c4dff' : 'none' %>; margin-bottom:-6px;">📢 公共</a>
+        <% if (user.gang && user.gang.id) { %>
+            <a href="/chat?channel=gang" style="padding:4px 10px; font-size:0.85em; font-weight:<%= channel === 'gang' ? '700' : '400' %>; color:<%= channel === 'gang' ? '#7c4dff' : '#666' %>; border-bottom:<%= channel === 'gang' ? '2px solid #7c4dff' : 'none' %>; margin-bottom:-6px;">🏰 帮会</a>
+        <% } %>
+        <% var myTeam = user.team.getMyTeam(user.id); %>
+        <% if (myTeam) { %>
+            <a href="/chat?channel=team" style="padding:4px 10px; font-size:0.85em; font-weight:<%= channel === 'team' ? '700' : '400' %>; color:<%= channel === 'team' ? '#7c4dff' : '#666' %>; border-bottom:<%= channel === 'team' ? '2px solid #7c4dff' : 'none' %>; margin-bottom:-6px;">⚔ 队伍</a>
+        <% } %>
+        <a href="/chat?channel=private" style="padding:4px 10px; font-size:0.85em; font-weight:<%= channel === 'private' ? '700' : '400' %>; color:<%= channel === 'private' ? '#7c4dff' : '#666' %>; border-bottom:<%= channel === 'private' ? '2px solid #7c4dff' : 'none' %>; margin-bottom:-6px;">🔒 私聊</a>
+        <span style="flex:1;"></span>
+        <a href="/chat" style="font-size:0.78em; color:#aaa; padding:2px 6px;">🔄</a>
+    </div>
+
+    <% var canSend = (channel !== 'gang' || (user.gang && user.gang.id)) && (channel !== 'team' || myTeam); %>
+    <% var canShowInput = canSend && (channel !== 'private' || (typeof targetUser !== 'undefined' && targetUser)); %>
+
+    <!-- 私聊：会话 + 发起 -->
+    <% if (channel === 'private') { %>
+        <div style="display:flex; flex-wrap:wrap; gap:4px; align-items:center; margin-bottom:6px;">
+            <% if (typeof privateChatSessions !== 'undefined' && privateChatSessions && privateChatSessions.length > 0) { %>
+                <% privateChatSessions.forEach(function(sessionUser) { %>
+                    <a href="/chat?channel=private&targetUserId=<%= sessionUser.id %>"
+                       class="btn <%= channel === 'private' && typeof targetUser !== 'undefined' && targetUser && targetUser.id === sessionUser.id ? 'btn-primary' : 'btn-ghost' %>"
+                       style="padding:2px 8px; font-size:0.78em;"><%= sessionUser.nickname %></a>
+                <% }); %>
+                <span style="color:#ddd;">|</span>
+            <% } %>
+            <form method="get" action="/chat" style="display:flex; gap:3px; align-items:center; margin:0;">
+                <input type="hidden" name="channel" value="private">
+                <input type="text" name="targetUsername" placeholder="玩家名" style="width:80px; padding:3px 6px; font-size:0.78em; border:1px solid #ddd; border-radius:4px;">
+                <button type="submit" class="btn btn-ghost" style="padding:2px 6px; font-size:0.78em;">找</button>
+            </form>
+        </div>
+        <% if (typeof targetUser !== 'undefined' && targetUser) { %>
+            <div style="font-size:0.82em; color:#666; margin-bottom:4px;">
+                🔒 与 <b><%= targetUser.nickname %></b> 私聊
+            </div>
+        <% } %>
+    <% } %>
+
+    <!-- 发送输入框（紧跟顶部） -->
+    <% if (canShowInput) { %>
+        <form method="get" action="/chat" style="display:flex; gap:4px; margin-bottom:8px;">
+            <input type="hidden" name="type" value="sendChatMessage">
+            <input type="hidden" name="channel" value="<%= channel %>">
+            <% if (channel === 'private' && typeof targetUser !== 'undefined' && targetUser) { %>
+                <input type="hidden" name="targetUserId" value="<%= targetUser.id %>">
+            <% } %>
+            <input type="text" name="message" placeholder="<%= channel === 'public' ? '说点什么...' : channel === 'gang' ? '帮会频道' : channel === 'team' ? '队伍频道' : '私聊消息...' %>" required autocomplete="off" style="flex:1; padding:6px 10px; border:1px solid #ddd; border-radius:6px; font-size:0.85em;">
+            <button type="submit" class="btn btn-primary" style="padding:6px 12px; font-size:0.85em;">发送</button>
+        </form>
+    <% } %>
+
+    <!-- 帮会/队伍无权限提示 -->
+    <% if (!canSend) { %>
+        <div style="text-align:center; color:#999; padding:20px; font-size:0.85em;">
+            <%= channel === 'gang' ? '你还没有加入帮会' : '你还没有加入队伍' %>
+        </div>
+    <% } else { %>
+        <!-- 消息列表 -->
+        <div style="max-height:350px; overflow-y:auto;">
+            <% if (chatMessages && chatMessages.length > 0) { %>
+                <% chatMessages.forEach(function(msg) { %>
+                    <div style="padding:3px 0; border-bottom:1px solid #f5f5f5; font-size:0.85em; line-height:1.5;">
+                        <span style="color:#bbb; font-size:0.78em;"><%= new Date(msg.timestamp).toLocaleTimeString('zh-CN', {hour:'2-digit', minute:'2-digit'}) %></span>
+                        <a href="/role-status?userId=<%= msg.userId %>" style="color:#5c6bc0; font-weight:500;"><%= msg.user %></a>
+                        <% 
+                          var escaped = String(msg.message)
+                            .replace(/&/g, '&amp;')
+                            .replace(/</g, '&lt;')
+                            .replace(/>/g, '&gt;')
+                            .replace(/"/g, '&quot;')
+                            .replace(/'/g, '&#39;');
+                          var linked = escaped.replace(/(\/team\?type=joinTeam&amp;teamId=\d+)/g, '<a href="$1" style="color:#1565c0; text-decoration:underline;">加入队伍</a>');
+                        %>
+                        <span>: <%- linked %></span>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div style="text-align:center; color:#ccc; padding:20px; font-size:0.85em;">暂无消息</div>
+            <% } %>
+        </div>
+    <% } %>
+</div>

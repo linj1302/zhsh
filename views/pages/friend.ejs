@@ -1,0 +1,62 @@
+﻿<div>
+    <!-- 成功/错误消息显示 -->
+    <% if (typeof message !== 'undefined' && message) { %>
+        <div style="color: <%= message.type === 'success' ? 'green' : 'red' %>;">
+            <%= message.text %>
+        </div>
+    <% } %>
+
+    <% if (typeof showRequests !== 'undefined' && showRequests) { %>
+        <!-- 好友申请列表 -->
+        <div>
+            【好友申请】
+            <a href="/friend">返回好友列表</a>
+        </div>
+        <div>
+            <% if (friendRequests && friendRequests.length > 0) { %>
+                <% friendRequests.forEach(function(request) { %>
+                    <div style="padding: 10px 0;">
+                        <div>
+                            <span><%= request.nickname %></span>
+                            <span>(编号: <%= request.id %>)</span>
+                        </div>
+                        <div>
+                            <a href="/friend?action=accept&userId=<%= request.id %>">同意</a>
+                            <a href="/friend?action=reject&userId=<%= request.id %>">拒绝</a>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div>
+                    暂无好友申请
+                </div>
+            <% } %>
+        </div>
+    <% } else { %>
+        <!-- 好友列表 -->
+        <div>
+            【好友列表】
+            <a href="/friend?show=requests">查看好友申请</a>
+        </div>
+        <div>
+            <% if (friends && friends.length > 0) { %>
+                <% friends.forEach(function(friend) { %>
+                    <div style=" padding: 10px 0;">
+                        <div>
+                            <span><%= friend.nickname %></span>
+                            <span>(编号: <%= friend.id %>)</span>
+                        </div>
+                        <div>
+                            <a href="/role-status?userId=<%= friend.id %>">查看资料</a>
+                            <a href="/friend?action=remove&userId=<%= friend.id %>">删除好友</a>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div>
+                    暂无好友，快去添加吧！
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+</div>

@@ -1,0 +1,32 @@
+{
+  "name": "zhsh",
+  "version": "1.9.1",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "npm run build:webpack ",
+    "build:webpack": "webpack --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "纵横四海 MMORPG 游戏",
+  "dependencies": {
+    "javascript-obfuscator": "^4.1.1",
+    "@multiavatar/multiavatar": "^1.0.7",
+    "@turf/turf": "^7.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "file-loader": "^6.2.0",
+    "node-dir": "^0.1.17",
+    "node-polyfill-webpack-plugin": "^4.1.0",
+    "prettier": "^3.6.2",
+    "sql.js": "^1.13.0",
+    "string-replace-loader": "^3.2.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1"
+  }
+}

@@ -1,0 +1,125 @@
+﻿<%
+    // 获取背包中引路蜂的数量
+    let guideBeeCount = 0;
+    const items = user.backpack.items;
+    for (const item of items) {
+        if (item.name === "引路蜂") {
+            guideBeeCount += +item.num;
+        }
+    }
+%>
+<div class="wap_class">
+    <% if (typeof taskInfo !== 'undefined' && taskInfo) { %>
+        【<%= taskInfo.name %>】
+        <br>
+        <%= taskInfo.content %>
+        <br>
+        
+        <% if (taskInfo.targetName && taskInfo.quantity) { %>
+            任务：<%= taskInfo.taskType === '打怪' ? '击杀' : (taskInfo.taskType === '收集' ? '收集' : '送达') %>
+            <% 
+                const targetNames = taskInfo.targetName.split(',');
+                const quantities = taskInfo.quantity.toString().split(',');
+                if (targetNames.length > 1 && quantities.length === targetNames.length) {
+            %>
+                <%
+                    targetNames.forEach((name, i) => {
+                %>
+                    <%= name %><%= quantities[i] %>个
+                    <% if (i < targetNames.length - 1) { %>
+                        、
+                    <% } %>
+                <% }); %>
+            <% } else { %>
+                <%= taskInfo.targetName %><%= taskInfo.quantity %>个
+            <% } %>
+            ！
+            <br>
+        <% } %>
+        <br>
+        
+        任务奖励：
+        <% if (taskInfo.prize) { %>
+            <% Object.keys(taskInfo.prize).forEach((key, index, array) => { %>
+                <%= key %>+<%= taskInfo.prize[key] %>
+                <% if (index < array.length - 1) { %>
+                    、
+                <% } %>
+            <% }) %>
+        <% } else { %>
+            铜钱+100
+        <% } %>
+        <br>
+        
+        <% if (taskInfo.isAccepted && !taskInfo.isCompleted) { %>
+            当前进度：<%= user.task.getTaskProgress(taskInfo) %>
+            <br>
+        <% } %>
+        
+        <br>
+        
+        <% if (taskInfo.receiveLocation) { %>
+            接取地点：<%= taskInfo.receiveLocation %>
+            <br>
+        <% } %>
+        
+        <% if (taskInfo.targetAddress) { %>
+            目标地点：<%= taskInfo.targetAddress %>
+            <br>
+        <% } %>
+        
+        <% if (taskInfo.submitLocation) { %>
+            提交地点：<%= taskInfo.submitLocation %>
+            <br>
+        <% } %>
+        
+        <br>
+        <% 
+            // 判断是否显示引路蜂按钮
+            let showGuideBeeButton = false;
+            let guideBeeTarget = "";
+            
+            // 检查背包是否有引路蜂
+            if (user.backpack.hasItem("引路蜂", 1)) {
+                // 检查任务是否已完成但未提交
+                if (taskInfo.isAccepted && !taskInfo.isCompleted) {
+                    // 检查任务是否有type属性且为0
+                    if (taskInfo.type !== 0) {
+                        // 使用新方法判断任务是否已完成所有条件
+                        const isTaskCompletable = user.task.isTaskCompletable(taskInfo.index);
+                        
+                        if (isTaskCompletable) {
+                            // 已完成未提交任务，跳转到提交地点
+                            if (taskInfo.submitLocation) {
+                                showGuideBeeButton = true;
+                                guideBeeTarget = taskInfo.submitLocation;
+                            }
+                        } else {
+                            // 未完成任务，跳转到目标地点
+                            if (taskInfo.targetAddress) {
+                                showGuideBeeButton = true;
+                                // 如果有多个目标地址，使用第一个
+                                guideBeeTarget = taskInfo.targetAddress.split(',')[0];
+                            }
+                        }
+                        
+                        // 检查接收和提交是否在不同城市
+                        if (showGuideBeeButton && taskInfo.receiveLocation && taskInfo.submitLocation) {
+                            const receiveCity = taskInfo.receiveLocation.split(' ')[0]; // 假设城市名是地点的第一部分
+                            const submitCity = taskInfo.submitLocation.split(' ')[0];
+                            if (receiveCity !== submitCity && !isTaskCompletable) {
+                                showGuideBeeButton = false;
+                            }
+                        }
+                    }
+                }
+            }
+        %>
+        
+        <% if (showGuideBeeButton) { %>
+            <a href="/main?taskId=<%= taskInfo.index %>&type=task.useGuideBee">使用引路蜂(<%= guideBeeCount %>) </a><br>
+        <% } %>
+    <% } else { %>
+        <p>未找到任务信息</p>
+    <% } %>
+</div>

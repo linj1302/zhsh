@@ -1,0 +1,64 @@
+<div>
+    <h3>🏆 排行榜</h3>
+    
+    <div style="margin-bottom: 15px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <% rankingTypes.forEach(function(rt) { %>
+                <a href="ranking?rankingType=<%= rt.type %>" 
+                   style="padding: 6px 12px; background: <%= rankingType === rt.type ? '#1976d2' : '#f0f0f0' %>; 
+                          color: <%= rankingType === rt.type ? '#fff' : '#333' %>; 
+                          border-radius: 4px; text-decoration: none; font-size: 0.9em;">
+                    <%= rt.icon %> <%= rt.name %>
+                </a>
+            <% }); %>
+        </div>
+    </div>
+    
+    <% if (rankingData && rankingData.data && rankingData.data.length > 0) { %>
+        <div style="margin-bottom: 15px; padding: 10px; background: #f5f5f5; border-radius: 5px;">
+            <strong><%= rankingData.name %></strong>
+        </div>
+        
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #e0e0e0;">
+                    <th style="padding: 8px; text-align: center; width: 50px;">排名</th>
+                    <th style="padding: 8px; text-align: left;">玩家</th>
+                    <th style="padding: 8px; text-align: right; width: 100px;">数值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% rankingData.data.forEach(function(item) { %>
+                    <tr style="border-bottom: 1px solid #eee; <%= item.userId === user.id ? 'background: #fff9e6;' : '' %>">
+                        <td style="padding: 8px; text-align: center;">
+                            <% if (item.rank === 1) { %>
+                                <span style="color: #ffd700; font-weight: bold; font-size: 1.2em;">🥇</span>
+                            <% } else if (item.rank === 2) { %>
+                                <span style="color: #c0c0c0; font-weight: bold; font-size: 1.2em;">🥈</span>
+                            <% } else if (item.rank === 3) { %>
+                                <span style="color: #cd7f32; font-weight: bold; font-size: 1.2em;">🥉</span>
+                            <% } else { %>
+                                <span style="color: #666;"><%= item.rank %></span>
+                            <% } %>
+                        </td>
+                        <td style="padding: 8px;">
+                            <a href="role-status?userId=<%= item.userId %>" style="color: #1976d2; text-decoration: none;">
+                                <%= item.name %>
+                                <% if (item.userId === user.id) { %>
+                                    <span style="color: #ff9800; font-size: 0.8em;">(我)</span>
+                                <% } %>
+                            </a>
+                        </td>
+                        <td style="padding: 8px; text-align: right; font-weight: bold; color: #333;">
+                            <%= typeof item.value === 'number' ? item.value.toLocaleString() : item.value %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <div style="padding: 20px; text-align: center; color: #999;">
+            暂无排行数据
+        </div>
+    <% } %>
+</div>
