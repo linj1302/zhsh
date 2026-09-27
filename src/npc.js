@@ -532,7 +532,7 @@ export default class Npc {
                 .map(v => {
                     const k = nameToItem[v.name];
                     // value=0 为 falsy，原 `v.value || k.price` 会误回退默认价；这里显式判定正有限数
-                    return { ...k, price: Number.isFinite(+v.value) && +v.value > 0 ? +v.value : k.price };
+                    return { ...k, price: Number.isFinite(+v.value) && +v.value > 0 ? +v.value : k.price, priceType: v.priceType || k.priceType };
                 });
         }
         if (type === 102) {
