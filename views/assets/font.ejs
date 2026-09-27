@@ -1,10 +1,6 @@
-﻿<style>
-    @font-face {
-        font-family: 'testFont';
-        src: url('fontPath.otf')
-    }
-
+<style>
+    /* 性能优化：不再加载 19.2MB 的 fontPath.otf，改用系统原生字体，首屏零字体下载 */
     body, *, button {
-        font-family: 'testFont';
+        font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 </style>

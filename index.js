@@ -73,7 +73,13 @@ ejs.fileLoader = (name) => {
 // 静态资源收窄至 public/（避免暴露 user_data.db、src/、config/ 等）；
 // 用 fileURLToPath 取绝对路径，避免依赖进程工作目录（Windows 下正确解析盘符）
 const publicDir = fileURLToPath(new URL('./public', import.meta.url));
-app.use(express.static(publicDir));
+app.use(express.static(publicDir, {
+    // 性能优化：静态资源强缓存 1 年（fontPath.otf 达 19MB，避免每次重复下载）
+    maxAge: '365d',
+    immutable: true,
+    etag: true,
+    lastModified: true
+}));
 
 // 静态文件路径守卫：带扩展名的请求不是游戏页面（页面均为无扩展名短名），
 // 未被上方 express.static 命中即直接 404，防止被下方 /:page 通配路由拦截渲染为登录页，
