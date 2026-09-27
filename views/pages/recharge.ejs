@@ -1,0 +1,66 @@
+<% var play = user.getPlay() %>
+
+<div>
+    <div style="margin-bottom: 15px;">
+        <span>当前金贝：</span><span style="color:#a07828; font-weight:bold;"><%= play.gold %></span>
+    </div>
+
+    <!-- 充值比例说明 -->
+    <div style="background:#fff3e0; padding:10px; border-radius:5px; margin-bottom:15px;">
+        <div style="font-weight:bold; margin-bottom:5px;">充值比例</div>
+        <div>1 元人民币 = 100 金贝</div>
+    </div>
+
+    <!-- 充值表单 -->
+    <form method="get" action="recharge">
+        <input type="hidden" name="type" value="npc.recharge">
+
+        <div style="margin-bottom:15px;">
+            <label>充值金额（元）：</label>
+            <input type="number" name="amount" id="rmbAmount" placeholder="请输入充值金额" min="1" step="1" style="width:150px; padding:5px;">
+        </div>
+
+        <div style="margin-bottom:15px; background:#e8f5e9; padding:10px; border-radius:5px;">
+            <span>预计获得：</span>
+            <span id="goldAmount" style="color:#a07828; font-weight:bold; font-size:1.1em;">0</span>
+            <span> 金贝</span>
+        </div>
+
+        <!-- 微信赞赏码 -->
+        <div style="text-align:center; margin:20px 0; padding:15px; background:#f0faf0; border:1px solid #c8e6c9; border-radius:8px;">
+            <div style="font-weight:bold; color:#2e7d32; margin-bottom:10px;">请先扫描下方微信赞赏码付款</div>
+            <img src="/coffee.JPG" alt="微信赞赏码" style="max-width:240px; width:100%; border-radius:4px;">
+            <div style="font-size:0.82em; color:#666; margin-top:8px;">付款后点击下方按钮确认充值</div>
+        </div>
+
+        <div style="margin-top:20px;">
+            <input type="submit" value="我已完成付款，确认充值" style="background:#e74c3c; color:white; border:none; padding:8px 20px; border-radius:4px; cursor:pointer; font-size:0.95em;">
+        </div>
+    </form>
+
+    <!-- 充值说明 -->
+    <div style="margin-top:20px; padding:10px; background:#f8f9fa; border-radius:5px; font-size:0.85em; color:#666;">
+        <div style="font-weight:bold; margin-bottom:5px;">充值说明</div>
+        <ul style="margin:5px 0; padding-left:20px;">
+            <li>充值比例为 1:100，即 1 元 = 100 金贝</li>
+            <li>扫描微信赞赏码完成付款后，再点击确认充值</li>
+            <li>金贝可用于购买商店道具、强化装备等</li>
+            <li>充值后立即到账，无需等待</li>
+            <li>如有问题请联系客服</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const rmbInput = document.getElementById('rmbAmount');
+        const goldAmount = document.getElementById('goldAmount');
+
+        rmbInput.addEventListener('input', function () {
+            const amount = parseInt(this.value) || 0;
+            // 1元 = 100金贝
+            const gold = amount * 100;
+            goldAmount.textContent = gold;
+        });
+    });
+</script>

@@ -59,7 +59,7 @@ export default class Siege {
 
         const userData = db.loadUserData(this.userId);
         if (!userData || userData.play.showSilver < 10) {
-            return { success: false, message: '银贝不足，需要 10 银' };
+            return { success: false, message: '银元不足，需要 10 银' };
         }
 
         return { success: true, onlineCount };

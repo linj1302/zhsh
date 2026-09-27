@@ -1731,13 +1731,13 @@ export default class User {
         const diceResult = Math.floor(Math.random() * 6) + 1;
 
         if (playerGuess === diceResult) {
-            // 猜对了，赢得1银贝
+            // 猜对了，赢得1银元
             this.play.copper += 1000;
-            return {tip: `骰子结果是${diceResult}点，你猜对了！赢得1银贝。`};
+            return {tip: `骰子结果是${diceResult}点，你猜对了！赢得1银元。`};
         } else {
-            // 猜错了，输掉1银贝
+            // 猜错了，输掉1银元
             this.play.copper -= 1000;
-            return {tip: `骰子结果是${diceResult}点，你猜错了！输掉1银贝。`};
+            return {tip: `骰子结果是${diceResult}点，你猜错了！输掉1银元。`};
         }
     }
 
@@ -1770,11 +1770,11 @@ export default class User {
         ) {
             // 玩家胜利
             this.play.copper += 1000;
-            return {tip: `你出了${playerChoiceText}，庄家出了${bankerChoiceText}，你赢了！赢得1银贝。`};
+            return {tip: `你出了${playerChoiceText}，庄家出了${bankerChoiceText}，你赢了！赢得1银元。`};
         } else {
             // 玩家失败
             this.play.copper -= 1000;
-            return {tip: `你出了${playerChoiceText}，庄家出了${bankerChoiceText}，你输了！输掉1银贝。`};
+            return {tip: `你出了${playerChoiceText}，庄家出了${bankerChoiceText}，你输了！输掉1银元。`};
         }
     }
 

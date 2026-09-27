@@ -8,7 +8,7 @@
     if (priceType === "gold") {
         showPrice = price + "金贝";
     } else if (priceType === "silver") {
-        showPrice = price + "银贝";
+        showPrice = price + "银元";
     } else {
         // 默认为铜币
         showPrice = price + "铜币";
@@ -16,9 +16,9 @@
             var silver = Math.floor(price / 1000);
             var copper = price % 1000;
             if (copper > 0) {
-                showPrice = silver + "银贝" + copper + "铜币";
+                showPrice = silver + "银元" + copper + "铜币";
             } else {
-                showPrice = silver + "银贝";
+                showPrice = silver + "银元";
             }
         }
     }

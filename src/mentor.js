@@ -331,7 +331,7 @@ export default class Mentor {
             const mentorUserData = db.loadUserData(mentorId);
             if (mentorUserData && mentorUserData.play) {
                 mentorUserData.play.addExp(finalExpReward);
-                mentorUserData.play.addCopper(silverReward * 1000); // 银贝转换为铜贝
+                mentorUserData.play.addCopper(silverReward * 1000); // 银元转换为铜贝
             }
         }
     }
@@ -355,7 +355,7 @@ export default class Mentor {
 
         const mentorId = mentorRelation.mentor_id;
         
-        // 计算需要的银贝
+        // 计算需要的银元
         let requiredSilver = 0;
         let virtuePoints = 0;
 
@@ -378,13 +378,13 @@ export default class Mentor {
                 break;
         }
 
-        // 检查银贝是否足够
+        // 检查银元是否足够
         const userData = db.loadUserData(this.userId);
         if (!userData || userData.play.showSilver < requiredSilver) {
-            return { success: false, message: `银贝不足，需要${requiredSilver}银` };
+            return { success: false, message: `银元不足，需要${requiredSilver}银` };
         }
 
-        // 扣除银贝
+        // 扣除银元
         userData.play.addCopper(-requiredSilver * 1000);
 
         // 增加师傅师德
@@ -496,7 +496,7 @@ export default class Mentor {
         const mentorData = db.loadUserData(mentorId);
         if (mentorData && mentorData.play) {
             mentorData.play.addExp(10000);
-            mentorData.play.addCopper(10 * 1000); // 10 银贝
+            mentorData.play.addCopper(10 * 1000); // 10 银元
 
             // 记录徒弟已加入帮会
             this.markDiscipleAsJoinedGang(discipleId);

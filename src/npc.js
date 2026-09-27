@@ -90,16 +90,29 @@ export default class Npc {
             }
             this.play.gold -= count;
             this.play.copper += count * 300 * 1000;
-            return { tip: '成功兑换: 消耗' + count + '金贝，获得' + (count * 300) + '银币' };
+            return { tip: '成功兑换: 消耗' + count + '金贝，获得' + (count * 300) + '银元' };
         } else {
             const silverNeeded = count * 500 * 1000;
             if (this.play.copper < silverNeeded) {
-                return { tip: '银币不足' };
+                return { tip: '银元不足' };
             }
             this.play.copper -= silverNeeded;
             this.play.gold += count;
-            return { tip: '成功兑换: 消耗' + (count * 500) + '银币，获得' + count + '金贝' };
+            return { tip: '成功兑换: 消耗' + (count * 500) + '银元，获得' + count + '金贝' };
         }
+    }
+
+    recharge({amount}) {
+        const rmbAmount = parseInt(amount);
+        if (isNaN(rmbAmount) || rmbAmount <= 0) {
+            return { success: false, tip: '请输入有效金额' };
+        }
+        const goldAmount = rmbAmount * 100;
+        this.play.gold += goldAmount;
+        return { 
+            success: true, 
+            tip: `充值成功！获得 ${goldAmount} 金贝`
+        };
     }
 
     calculateTotalShipWeight() {
@@ -546,13 +559,24 @@ export default class Npc {
 
     getHref(npc) {
         let {type} = npc;
+        // 优先检查任务交互（可提交 > 可接 > 功能页面）
+        if (this.task) {
+            const submittable = this.task.getSubmittableTasksForNpc(npc.name);
+            if (submittable.length > 0) {
+                return 'npc-task-direct?npc=' + encodeURIComponent(npc.name);
+            }
+            const available = this.task.getAvailableTasksForNpc(npc.name);
+            if (available.length > 0) {
+                return 'npc-task-direct?npc=' + encodeURIComponent(npc.name);
+            }
+        }
         if (typeof pages[type] === 'string') {
             return pages[type];
         }
         if (typeof pages[type] === 'function') {
             return pages[type](npc);
         }
-        return 'npc-task-direct?npc=' + npc.name;
+        return 'npc-task-direct?npc=' + encodeURIComponent(npc.name);
     }
 
     getHsref(npc) {

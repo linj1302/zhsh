@@ -11,6 +11,8 @@
         <span style="color:#cd7f32;">●</span> <%= play.showCopper %>
     </div>
     <a href="exchange?changeType=1" style="font-size:0.82em;">兑换</a>
+    <span style="color:#bbb; margin:0 4px;">|</span>
+    <a href="recharge" style="font-size:0.82em; color:#e74c3c;">充值</a>
 </div>
 
 <!-- 商品列表 -->
@@ -24,16 +26,16 @@
         if (priceType === "gold") {
             showPrice = price + "金贝";
         } else if (priceType === "silver") {
-            showPrice = price + "银贝";
+            showPrice = price + "银元";
         } else {
             showPrice = price + "铜币";
             if (price >= 1000) {
                 var silver = Math.floor(price / 1000);
                 var copper = price % 1000;
                 if (copper > 0) {
-                    showPrice = silver + "银" + copper + "铜";
+                    showPrice = silver + "银元" + copper + "铜币";
                 } else {
-                    showPrice = silver + "银";
+                    showPrice = silver + "银元";
                 }
             }
         }

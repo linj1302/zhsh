@@ -11,7 +11,7 @@
         <div>未找到该装备!</div>
 <%
     } else {
-        // 记录强化前的银贝铜币
+        // 记录强化前的银元铜币
         var beforeSilver = play.showSilver;
         var beforeCopper = play.showCopper;
         var beforeGold = play.gold;
@@ -28,7 +28,7 @@
             <% if (beforeGold > afterGold) { %>
                 消耗金贝：-<%= beforeGold - afterGold %> | 
             <% } %>
-            当前货币：<%= afterGold > 0 ? afterGold + '金贝 | ' : '' %><%= afterSilver > 0 ? afterSilver + '银贝' : '' %><%= afterCopper > 0 ? (afterSilver > 0 ? afterCopper : afterCopper) + '铜币' : '' %>
+            当前货币：<%= afterGold > 0 ? afterGold + '金贝 | ' : '' %><%= afterSilver > 0 ? afterSilver + '银元' : '' %><%= afterCopper > 0 ? (afterSilver > 0 ? afterCopper : afterCopper) + '铜币' : '' %>
         </div>
 <%
     }

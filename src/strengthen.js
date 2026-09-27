@@ -76,7 +76,7 @@ export default class Strengthen {
         // 计算消耗（传入装备等级）
         const costInfo = this.calculateStrengthenCost(currentLevel, equipLevel);
 
-        // 检查铜币是否足够，不足时尝试用银贝/金贝补足
+        // 检查铜币是否足够，不足时尝试用银元/金贝补足
         const totalCopper = play.copper || 0;
         if (totalCopper < costInfo.costCoins) {
             if (play.gold > 0) {
@@ -93,7 +93,7 @@ export default class Strengthen {
             const silver = Math.floor((play.copper || 0) / 1000);
             const copper = (play.copper || 0) % 1000;
             let msg = '铜币不足！';
-            if (silver > 0) msg += ` 当前拥有${silver}银贝${copper > 0 ? copper + '铜币' : ''}`;
+            if (silver > 0) msg += ` 当前拥有${silver}银元${copper > 0 ? copper + '铜币' : ''}`;
             if (play.gold > 0) msg += ` 和${play.gold}金贝`;
             msg += `，但强化需要${costInfo.costCoins}铜币`;
             return {

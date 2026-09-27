@@ -58,10 +58,10 @@
             <p><strong>您的货币：</strong></p>
             <p>
                 金贝：<%= play.gold || 0 %> | 
-                银贝：<%= play.showSilver %> | 
+                银元：<%= play.showSilver %> | 
                 铜币：<%= play.showCopper %>
             </p>
-            <p style="color: #666; font-size: 0.9em;">（总计：<%= play.copper %>铜币 = <%= play.showSilver %>银贝<%= play.showCopper %>铜币）</p>
+            <p style="color: #666; font-size: 0.9em;">（总计：<%= play.copper %>铜币 = <%= play.showSilver %>银元<%= play.showCopper %>铜币）</p>
         </div>
         
         <div style="margin-top: 10px;">
@@ -70,7 +70,7 @@
             <p>成功率：<%= successRate %>%</p>
             <% var costSilver = Math.floor(costCoins / 1000); var costRemainCopper = costCoins % 1000; %>
             <p>消耗：<%= costCoins %>铜币
-                <% if (costSilver > 0) { %>(<%= costSilver %>银贝<% if (costRemainCopper > 0) { %><%= costRemainCopper %>铜币<% } %>)<% } %>
+                <% if (costSilver > 0) { %>(<%= costSilver %>银元<% if (costRemainCopper > 0) { %><%= costRemainCopper %>铜币<% } %>)<% } %>
             </p>
             
             <% if (costMaterials.length > 0) { %>
@@ -101,11 +101,11 @@
                     canStrengthen = false;
                     var totalSilver = Math.floor(totalCopper / 1000);
                     var totalRemain = totalCopper % 1000;
-                    errorMsg = "货币不足！需要" + costCoins + "铜币(" + costSilver + "银贝" + (costRemainCopper > 0 ? costRemainCopper + "铜币" : "") + ")，当前只有" + totalSilver + "银贝" + totalRemain + "铜币" + (play.gold && play.gold > 0 ? " + " + play.gold + "金贝" : "");
+                    errorMsg = "货币不足！需要" + costCoins + "铜币(" + costSilver + "银元" + (costRemainCopper > 0 ? costRemainCopper + "铜币" : "") + ")，当前只有" + totalSilver + "银元" + totalRemain + "铜币" + (play.gold && play.gold > 0 ? " + " + play.gold + "金贝" : "");
                 }
             } else if (play.showCopper < costCoins && play.showSilver > 0) {
-                // 铜币不够但银贝可以补足
-                paymentNote = "（将自动使用银贝支付：" + costSilver + "银贝" + (costRemainCopper > 0 ? " + " + costRemainCopper + "铜币" : "") + "）";
+                // 铜币不够但银元可以补足
+                paymentNote = "（将自动使用银元支付：" + costSilver + "银元" + (costRemainCopper > 0 ? " + " + costRemainCopper + "铜币" : "") + "）";
             }
             
             if (canStrengthen) {

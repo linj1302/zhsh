@@ -73,12 +73,12 @@ export default class Trial {
             }
         }
 
-        // 扣费（从content中提取银币数）
-        // 如: "需达到30级并支付10银币" → 10*100=1000铜贝
-        const costMatch = trialConfig.content && trialConfig.content.match(/(\d+)银币/);
+        // 扣费（从content中提取银元数）
+        // 如: "需达到30级并支付10银元" → 10*100=1000铜贝
+        const costMatch = trialConfig.content && trialConfig.content.match(/(\d+)银元/);
         const entryCost = costMatch ? parseInt(costMatch[1]) * 100 : 0;
         if (entryCost > 0 && this.play.copper < entryCost) {
-            return { error: `进入「${name}」需要 ${entryCost/100} 银币，你的铜贝不足！`, tip: `进入「${name}」需要 ${entryCost/100} 银币，你的铜贝不足！` };
+            return { error: `进入「${name}」需要 ${entryCost/100} 银元，你的铜贝不足！`, tip: `进入「${name}」需要 ${entryCost/100} 银元，你的铜贝不足！` };
         }
         if (entryCost > 0) {
             this.play.addCopper(-entryCost);

@@ -394,7 +394,7 @@ class Gang {
             
             // === 特殊材料 ===
             { id: 30, name: '灵魂结晶', level: 60, price: 100, monthlyLimit: 200, type: 34, tip: '珍贵的强化材料' },
-            { id: 31, name: '银块', level: 1, price: 2000, monthlyLimit: 100, type: 7, tip: '可以兑换银币' },
+            { id: 31, name: '银块', level: 1, price: 2000, monthlyLimit: 100, type: 7, tip: '可以兑换银元' },
             { id: 32, name: '香料', level: 1, price: 1000, monthlyLimit: 150, type: 11, tip: '烹饪必备材料' },
             { id: 33, name: '香水', level: 1, price: 2000, monthlyLimit: 80, type: 7, tip: '赠送NPC的好礼物' },
             

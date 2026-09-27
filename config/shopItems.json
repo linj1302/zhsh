@@ -1,14 +1,14 @@
 [
   {
     "name": "老鼠药",
-    "price": 200,
+    "price": 100,
     "tip": "一种强力的老鼠药，可以有效清除老鼠。",
     "type": 2,
     "info": {}
   },
   {
     "name": "猫",
-    "price": 200,
+    "price": 5,
     "tip": "猫",
     "type": 2,
     "priceType": "gold",
@@ -19,7 +19,7 @@
   },
   {
     "name": "奶瓶",
-    "price": 10000,
+    "price": 5000,
     "tip": "—瓶神秘的药水。开封后，喝下一口，瞬间恢复体力，让你在冒险的道路上无惧疲劳，勇往直前。临时体力值+3000。体力值低于50%自动使用。",
     "type": 4,
     "info": {
@@ -29,34 +29,36 @@
   },
   {
     "name": "引路蜂",
-    "price": 2000,
+    "price": 1000,
     "tip": "可在城市内传送到任务地点。",
     "type": 2,
     "info": {}
   },
   {
     "name": "藏宝图",
-    "price": 2000,
+    "price": 50,
     "tip": "潜水时能使用藏宝图得到物品或装备。",
     "type": 2,
     "sellPosition": [
       1
     ],
-    "info": {}
+    "info": {},
+    "priceType": "gold"
   },
   {
     "name": "高级藏宝图",
-    "price": 20000,
+    "price": 100,
     "tip": "潜水时能使用高级藏宝图得到物品或装备。",
     "type": 2,
     "sellPosition": [
       1
     ],
-    "info": {}
+    "info": {},
+    "priceType": "gold"
   },
   {
     "name": "牛肉馅饼",
-    "price": 300,
+    "price": 150,
     "tip": "香气四溢的牛肉馅饼，采用上等牛肉制作，食用后可恢复一定生命值。",
     "type": 4,
     "info": {
@@ -65,7 +67,7 @@
   },
   {
     "name": "大体力宝",
-    "price": 2000000,
+    "price": 200000,
     "tip": "闪耀着能量荧光的便携补给，使用后增加临时体力:30000。体力值低于50%自动使用",
     "type": 4,
     "info": {
@@ -75,17 +77,21 @@
   },
   {
     "name": "体力宝",
-    "price": 200000,
+    "price": 100,
     "tip": "闪耀着能量荧光的便携补给，使用后增加临时体力:5000。体力值低于50%自动使用",
     "type": 4,
     "info": {
       "addHp": 5000,
       "allHp": 50000
-    }
+    },
+    "priceType": "gold",
+    "sellPosition": [
+      1
+    ]
   },
   {
     "name": "肉夹馍",
-    "price": 2500,
+    "price": 300,
     "tip": "传统美食肉夹馍，外酥里嫩，食用后可恢复一定生命值。",
     "type": 4,
     "info": {
@@ -94,7 +100,7 @@
   },
   {
     "name": "解毒剂",
-    "price": 100,
+    "price": 200,
     "tip": "能够解除中毒状态的特效药剂。",
     "type": 3,
     "info": {
@@ -105,7 +111,7 @@
   },
   {
     "name": "圣水",
-    "price": 100,
+    "price": 200,
     "tip": "具有神圣力量的水，可以净化诅咒。",
     "type": 3,
     "info": {
@@ -116,7 +122,7 @@
   },
   {
     "name": "固元膏",
-    "price": 100,
+    "price": 200,
     "tip": "滋补身体的传统中药制剂，能够解除虚弱状态。",
     "type": 3,
     "info": {
@@ -127,7 +133,7 @@
   },
   {
     "name": "加速剂",
-    "price": 100,
+    "price": 200,
     "tip": "提升移动速度的化学制剂，能够解除缓慢状态。",
     "type": 3,
     "info": {
@@ -138,7 +144,7 @@
   },
   {
     "name": "二锅头",
-    "price": 100,
+    "price": 200,
     "tip": "烈性白酒，能够解除沮丧状态。",
     "type": 3,
     "info": {
@@ -149,7 +155,7 @@
   },
   {
     "name": "葡萄汁",
-    "price": 100,
+    "price": 50,
     "tip": "天然葡萄榨汁，富含维生素，饮用后可轻微恢复生命值。",
     "type": 4,
     "info": {
@@ -158,7 +164,7 @@
   },
   {
     "name": "曲奇饼",
-    "price": 3000,
+    "price": 200,
     "tip": "里皮夫人亲手烤制的饼干，回复少量生命值",
     "type": 4,
     "info": {
@@ -167,7 +173,7 @@
   },
   {
     "name": "海鲜披萨",
-    "price": 700,
+    "price": 400,
     "tip": "选用新鲜海产制作的美味披萨，鲜香可口，食用后可恢复较多生命值。",
     "type": 4,
     "info": {
@@ -176,7 +182,7 @@
   },
   {
     "name": "狮子奶",
-    "price": 1000,
+    "price": 500,
     "tip": "来自雄狮的乳汁，蕴含强大的生命力，饮用后可恢复少量生命值。",
     "type": 4,
     "info": {
@@ -196,7 +202,7 @@
   },
   {
     "name": "万能药",
-    "price": 1000,
+    "price": 500,
     "tip": "清楚自身所有异常状态。",
     "type": 3,
     "info": {
@@ -242,19 +248,28 @@
   },
   {
     "name": "百宝箱",
-    "price": 10000,
+    "price": 15000,
     "tip": "装满各种宝物的箱子，可以自动拾取物品。",
     "type": 7,
     "gangShop": true,
-    "info": { "expand":  10 }
+    "info": {
+      "expand": 10
+    }
   },
   {
     "name": "乾坤袋",
-    "price": 30000,
-    "tip": "神奇的乾坤袋，可以扩大背包负重上限100点。",
+    "price": 100,
+    "tip": "神奇的乾坤袋，扩大背包负重上限100点，并开启自动拾取功能。",
     "type": 7,
     "gangShop": true,
-    "info": { "expand": 100 }
+    "info": {
+      "expand": 100,
+      "autoPickup": true
+    },
+    "priceType": "gold",
+    "sellPosition": [
+      1
+    ]
   },
   {
     "name": "银块",
@@ -279,7 +294,7 @@
   },
   {
     "name": "回复卡",
-    "price": 20000,
+    "price": 10000,
     "tip": "一次性使用的回复道具，可以完全恢复所有状态。",
     "type": 2,
     "info": {}
@@ -293,7 +308,7 @@
   },
   {
     "name": "三色球",
-    "price": 150000,
+    "price": 80000,
     "tip": "神秘的三色球体，蕴含着未知的力量。",
     "type": 2,
     "info": {}
@@ -376,7 +391,7 @@
   },
   {
     "name": "参赛外卡",
-    "price": 150000,
+    "price": 80000,
     "tip": "特殊的入场券，允许持有者参加重要比赛。",
     "type": 2,
     "info": {}
@@ -397,47 +412,51 @@
   },
   {
     "name": "小型宠物饲料",
-    "price": 20,
+    "price": 4,
     "tip": "一袋普通的宠物饲料，可以增加宠物50点饱食度。",
     "type": 25,
     "add": 50,
     "sellPosition": [
       1
     ],
-    "info": {}
+    "info": {},
+    "priceType": "silver"
   },
   {
     "name": "中型宠物饲料",
-    "price": 150,
+    "price": 10,
     "tip": "一袋优质的宠物饲料，可以增加宠物100点饱食度。",
     "type": 25,
     "add": 100,
     "sellPosition": [
       1
     ],
-    "info": {}
+    "info": {},
+    "priceType": "silver"
   },
   {
     "name": "宠物清洁剂",
-    "price": 20,
+    "price": 4,
     "tip": "一瓶普通的宠物清洁剂，可以增加宠物50点清洁度。",
     "type": 26,
     "add": 50,
     "sellPosition": [
       1
     ],
-    "info": {}
+    "info": {},
+    "priceType": "silver"
   },
   {
     "name": "中型宠物清洁剂",
-    "price": 150,
+    "price": 10,
     "tip": "一套优质的宠物清洁剂，可以增加宠物100点清洁度。",
     "type": 26,
     "add": 100,
     "sellPosition": [
       1
     ],
-    "info": {}
+    "info": {},
+    "priceType": "silver"
   },
   {
     "name": "明永乐大帆船",
@@ -454,7 +473,7 @@
   },
   {
     "name": "宠物技能修炼卷轴",
-    "price": 50000,
+    "price": 30000,
     "tip": "使用后立即为宠物增加300点技能经验值，可用于提升宠物技能等级",
     "type": 27,
     "add": 300,
@@ -536,5 +555,132 @@
     "tip": "玛雅人视若珍宝的可可豆，曾在古老的集市上充当货币。",
     "type": 10,
     "info": {}
+  },
+  {
+    "name": "大礼包",
+    "price": 100,
+    "tip": "包含大量珍贵物资的豪华礼包，开启后随机获得高级装备、宝石或稀有道具。",
+    "type": 39,
+    "priceType": "gold",
+    "info": {
+      "rewards": [
+        {
+          "item": "高级装备箱",
+          "weight": 30
+        },
+        {
+          "item": "三级宝石",
+          "weight": 25
+        },
+        {
+          "item": "宠物蛋",
+          "weight": 20
+        },
+        {
+          "item": "大量金币",
+          "weight": 15
+        },
+        {
+          "item": "稀有材料",
+          "weight": 10
+        }
+      ]
+    },
+    "sellPosition": [
+      1
+    ]
+  },
+  {
+    "name": "灵魂结晶",
+    "price": 100,
+    "tip": "蕴含强大灵魂力量的结晶，用于随从系统的高级进化或技能重置。",
+    "type": 2,
+    "priceType": "gold",
+    "info": {
+      "use": "follower_evolve"
+    },
+    "sellPosition": [
+      1
+    ]
+  },
+  {
+    "name": "高级装备礼包",
+    "price": 100,
+    "tip": "开启后随机获得一件蓝色或紫色品质装备。",
+    "type": 39,
+    "priceType": "gold",
+    "info": {
+      "quality": [
+        "blue",
+        "purple"
+      ]
+    },
+    "sellPosition": [
+      1
+    ]
+  },
+  {
+    "name": "宝石礼包",
+    "price": 100,
+    "tip": "包含 3-5 颗二级或三级宝石。",
+    "type": 39,
+    "priceType": "gold",
+    "info": {
+      "count": {
+        "min": 3,
+        "max": 5
+      },
+      "level": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "sellPosition": [
+      1
+    ]
+  },
+  {
+    "name": "宠物蛋礼包",
+    "price": 100,
+    "tip": "包含一枚随机稀有宠物蛋，可能开出稀有或史诗品质宠物。",
+    "type": 39,
+    "priceType": "gold",
+    "info": {
+      "quality": [
+        "rare",
+        "epic"
+      ]
+    },
+    "sellPosition": [
+      1
+    ]
+  },
+  {
+    "name": "小体力宝",
+    "price": 50,
+    "priceType": "gold",
+    "tip": "小型能量补给，使用后增加临时体力:1000。体力值低于50%自动使用",
+    "type": 4,
+    "info": {
+      "addHp": 1000,
+      "allHp": 10000
+    },
+    "sellPosition": [
+      1
+    ]
+  },
+  {
+    "name": "大体力包",
+    "price": 150,
+    "priceType": "gold",
+    "tip": "大型能量补给，使用后增加临时体力:10000。体力值低于50%自动使用",
+    "type": 4,
+    "info": {
+      "addHp": 10000,
+      "allHp": 100000
+    },
+    "sellPosition": [
+      1
+    ]
   }
 ]

@@ -9,7 +9,7 @@ export default class Play {
         // 成长系统
         this.level = 1;   // 当前等级（1-100）
         this.exp = 0;     // 当前经验值（达到升级要求后清零）
-        //金贝，银贝，铜币
+        //金贝，银元，铜币
         this.gold = 0;
         this.copper = 0;
         // 声望和幸运属性
@@ -527,8 +527,8 @@ export default class Play {
         }
         if (!item) return {success: false, tip: "物品不存在！"};
 
-        // item.type 含义（goods.js分类）: 2=商店物品, 3=解药, 4=回复药, 5=宝石/体力包, 7=百宝箱/乾坤袋
-        const usableTypes = [2, 3, 4, 5, 7];
+        // item.type 含义（goods.js分类）: 2=商店物品, 3=解药, 4=回复药, 5=宝石/体力包, 7=百宝箱/乾坤袋, 39=礼包
+        const usableTypes = [2, 3, 4, 5, 7, 39];
         if (!usableTypes.includes(item.type)) {
             return {success: false, tip: "该物品不能使用！"};
         }
@@ -694,10 +694,88 @@ export default class Play {
             } else if (item.name === '乾坤袋') {
                 const expansionAmount = item.info && item.info.expand ? item.info.expand : 100;
                 this.backpack.maxWeight += expansionAmount;
+                // 乾坤袋同时开启自动拾取
+                this.autoPickup = true;
                 // 乾坤袋不消失，保留在背包中
-                return {success: true, tip: '乾坤袋已激活！背包负重上限永久+' + expansionAmount + '，当前上限' + this.backpack.maxWeight};
+                return {success: true, tip: '乾坤袋已激活！背包负重上限永久+' + expansionAmount + '，当前上限' + this.backpack.maxWeight + '。自动拾取已开启！'};
             } else {
                 return {success: false, tip: '无法使用该物品！'};
+            }
+        } else if (item.type === 39) {
+            // type=39 礼包：按名称分发奖励，使用后消耗
+            if (item.name === '大礼包') {
+                // 随机奖励：金贝、宝石、宠物蛋等
+                const roll = Math.random() * 100;
+                let reward = '';
+                if (roll < 30) {
+                    // 30% 概率获得金贝
+                    const goldAmount = Math.floor(Math.random() * 20) + 10;
+                    this.gold += goldAmount;
+                    reward = `${goldAmount} 金贝`;
+                } else if (roll < 55) {
+                    // 25% 概率获得随机宝石
+                    const gemNames = ['小红宝石', '小天金石', '小金丝藤', '小绿宝石', '小黑曜石'];
+                    const gem = gemNames[Math.floor(Math.random() * gemNames.length)];
+                    this.backpack.addItem({ name: gem, type: 5, num: 1, info: {} });
+                    reward = gem;
+                } else if (roll < 75) {
+                    // 20% 概率获得宠物蛋
+                    this.backpack.addItem({ name: '宠物蛋', type: 20, num: 1, info: {}, pets: ['暗狼','龙猫','月虎','霸熊'] });
+                    reward = '宠物蛋';
+                } else if (roll < 90) {
+                    // 15% 概率获得大量铜币
+                    const copperAmount = Math.floor(Math.random() * 50000) + 10000;
+                    this.copper += copperAmount;
+                    reward = `${copperAmount} 铜币`;
+                } else {
+                    // 10% 概率获得稀有材料
+                    this.backpack.addItem({ name: '香料', type: 10, num: 3, info: {} });
+                    reward = '香料×3';
+                }
+                this.backpack.removeItem(id);
+                return {success: true, tip: `你开启了${item.name}，获得了：${reward}！`};
+            } else if (item.name === '高级装备礼包') {
+                // 随机蓝/紫装备
+                const equipPool = [
+                    { name: '精钢剑', quality: 'blue' },
+                    { name: '锁子甲', quality: 'blue' },
+                    { name: '骑士长靴', quality: 'blue' },
+                    { name: '龙纹剑', quality: 'purple' },
+                    { name: '圣光铠甲', quality: 'purple' },
+                ];
+                const picked = equipPool[Math.floor(Math.random() * equipPool.length)];
+                const level = Math.max(1, this.level + Math.floor(Math.random() * 5) - 2);
+                this.backpack.addItem({
+                    name: picked.name, type: 1, num: 1,
+                    info: { type: 1, level: level, quality: picked.quality }
+                });
+                this.backpack.removeItem(id);
+                const qualityLabel = picked.quality === 'purple' ? '紫色' : '蓝色';
+                return {success: true, tip: `你开启了${item.name}，获得了${qualityLabel}装备【${picked.name}】（${level}级）！`};
+            } else if (item.name === '宝石礼包') {
+                // 3-5 颗随机宝石
+                const count = Math.floor(Math.random() * 3) + 3;
+                const gemPool = ['小红宝石', '小天金石', '小金丝藤', '小绿宝石', '小黑曜石', '小蓝宝石', '小黄宝石'];
+                const got = [];
+                for (let i = 0; i < count; i++) {
+                    const gem = gemPool[Math.floor(Math.random() * gemPool.length)];
+                    this.backpack.addItem({ name: gem, type: 5, num: 1, info: {} });
+                    got.push(gem);
+                }
+                this.backpack.removeItem(id);
+                return {success: true, tip: `你开启了${item.name}，获得了：${got.join('、')}！`};
+            } else if (item.name === '宠物蛋礼包') {
+                // 稀有/史诗宠物蛋
+                const rareEggs = [
+                    { name: '宠物蛋', pets: ['暗狼','龙猫','月虎','霸熊'] },
+                    { name: '高级宠物蛋', pets: ['圣龙','麒麟'] },
+                ];
+                const picked = rareEggs[Math.floor(Math.random() * rareEggs.length)];
+                this.backpack.addItem({ name: picked.name, type: 20, num: 1, info: {}, pets: picked.pets });
+                this.backpack.removeItem(id);
+                return {success: true, tip: `你开启了${item.name}，获得了【${picked.name}】（可孵化：${picked.pets.join('、')}）！`};
+            } else {
+                return {success: false, tip: '无法使用该礼包！'};
             }
         }
 
@@ -924,7 +1002,7 @@ export default class Play {
                 case '金贝':
                     this.gold += value;
                     break;
-                case '银贝':
+                case '银元':
                     this.copper += value * 1000;
                     break;
                 case '铜贝':

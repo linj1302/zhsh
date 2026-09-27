@@ -40,11 +40,14 @@ export default class Sailing {
 
     // 计算两点间距离（海里）
     calculateDistance(fromCity, toCity) {
-        const fromCoords = lngLat[fromCity];
-        const toCoords = lngLat[toCity.replace('(PK)', '')];
+        const cleanFrom = fromCity.replace('(PK)', '');
+        const cleanTo = toCity.replace('(PK)', '');
+        const fromCoords = lngLat[cleanFrom];
+        const toCoords = lngLat[cleanTo];
 
         if (!fromCoords || !toCoords) {
-            throw new Error(`无法找到城市${toCity}坐标`);
+            const missing = !fromCoords ? cleanFrom : cleanTo;
+            throw new Error(`无法找到城市${missing}坐标`);
         }
 
         const [fromLng, fromLat] = fromCoords.split(',').map(Number);

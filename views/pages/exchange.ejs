@@ -3,15 +3,15 @@
     <% var changeType = query.changeType %>
     <div>
         <span>当前金贝：</span><span><%= play.gold %></span>
-        <div>当前银币: <span><%= play.showSilver %></span></div>
+        <div>当前银元: <span><%= play.showSilver %></span></div>
     </div>
 
     <!-- 兑换比例 -->
     <div>
         <% if (changeType == 1) { %>
-            兑换比例: <span>1金贝 = <span>300</span>银币</span>
+            兑换比例: <span>1金贝 = <span>300</span>银元</span>
         <% } else { %>
-            兑换比例: <span>500银币 = <span>1</span>金贝</span>
+            兑换比例: <span>500银元 = <span>1</span>金贝</span>
         <% } %>
     </div>
 
@@ -26,15 +26,15 @@
                 <input type="number" name="count" placeholder="请输入要兑换的金贝数量" min="1" step="1">
             <% } else { %>
                 兑换数量:
-                <input type="number" name="count" placeholder="请输入要兑换的银币数量" min="1" step="1">
+                <input type="number" name="count" placeholder="请输入要兑换的银元数量" min="1" step="1">
             <% } %>
         </div>
 
         <div>
             <% if (changeType == 1) { %>
-                可获得银币: <span id="calculatedSilver">0</span>
+                可获得银元: <span id="calculatedSilver">0</span>
             <% } else { %>
-                消耗银币: <span id="calculatedGold">0</span>
+                消耗银元: <span id="calculatedGold">0</span>
             <% } %>
         </div>
 
@@ -56,11 +56,11 @@
         countInput.addEventListener('input', function () {
             const count = parseInt(this.value) || 0;
             if (changeType == 1) {
-                // 金贝兑换银币: 1金贝 = 300银币
+                // 金贝兑换银元: 1金贝 = 300银元
                 const silver = count * 300;
                 calculatedSilver.textContent = silver;
             } else {
-                // 银币兑换金贝: 500银币 = 1金贝
+                // 银元兑换金贝: 500银元 = 1金贝
                 const silverNeeded = count * 500;
                 calculatedGold.textContent = silverNeeded;
             }

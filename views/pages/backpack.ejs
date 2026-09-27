@@ -55,7 +55,7 @@ var itemsToShow = backpack.items.filter(function (item) {
                 <% if (item.status != 2 && item.type === 1 && item.info && item.info.type) { %>
                     <a href="equip-item?params=<%= item.info.type %>" class="btn btn-primary" style="padding:1px 6px; font-size:0.82em;">穿戴</a>
                 <% } %>
-                <% if ((item.type === 3 || item.type === 4 || item.type === 5 || item.type === 7) && !(item.info && item.info.cardId)) { %>
+                <% if ((item.type === 3 || item.type === 4 || item.type === 5 || item.type === 7 || item.type === 39) && !(item.info && item.info.cardId)) { %>
                     <a href="backpack?type=play.useItem&params=<%= item.id %>,<%= i %>" class="btn btn-ghost" style="padding:1px 6px; font-size:0.82em;">使用</a>
                 <% } %>
                 <a href="backpack?type=play.toggleLockItem&params=<%= item.id %>,<%= i %>" style="color:#bbb; font-size:0.85em;">

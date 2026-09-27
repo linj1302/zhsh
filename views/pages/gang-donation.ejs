@@ -26,9 +26,9 @@
         <div>
             <div>
                 <div>
-                    <div>捐献银贝</div>
+                    <div>捐献银元</div>
                     <div>
-                        <div>消耗: 10银贝</div>
+                        <div>消耗: 10银元</div>
                         <div>获得贡献: 10</div>
                         <div>剩余次数: 10/10</div>
                     </div>
@@ -69,7 +69,7 @@
         <div>
             <% if (typeof donationRecords !== 'undefined' && donationRecords && donationRecords.length > 0) { %>
                 <% donationRecords.forEach(function(record) { %>
-                    <div><%= record.username %>捐献了<%= record.amount %><%= record.donation_type === 'silver' ? '银贝' : record.donation_type === 'gold' ? '金贝' : '帮会令' %></div>
+                    <div><%= record.username %>捐献了<%= record.amount %><%= record.donation_type === 'silver' ? '银元' : record.donation_type === 'gold' ? '金贝' : '帮会令' %></div>
                 <% }); %>
             <% } else { %>
                 <div>暂无捐献记录</div>

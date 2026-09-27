@@ -4,7 +4,7 @@
  * 功能：
  * - 节日检测（公历 + 农历映射）
  * - 多类型活动追踪（每日签到、一次性、链式任务、每日重复）
- * - 丰富的奖励类型（金币、银币、经验、物品、临时属性）
+ * - 丰富的奖励类型（金币、银元、经验、物品、临时属性）
  * - 节日福利解析（特殊功能文本 → 实际倍率）
  * - 追踪系统（战斗/击杀/NPC/步数/掉落/任务等统计）
  * - 领取记录持久化
@@ -275,7 +275,7 @@ export default class Holiday {
                     break;
                 case 'silver':
                     this.play.addCopper((r.amount || 0) * 1000);
-                    msgs.push(`${r.amount}银贝`);
+                    msgs.push(`${r.amount}银元`);
                     break;
                 case 'exp':
                     this.play.addExp(r.amount || 0);
