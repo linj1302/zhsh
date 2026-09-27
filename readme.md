@@ -1,5 +1,9 @@
 <div>
+<<<<<<< HEAD
     游戏入口：http://play.zhenjinggame.dpdns.org:44335/login
+=======
+    游戏入口：http://play.zhenjinggame.dpdns.org:44335/login<br>
+>>>>>>> f252ebfd0b116116a9b0d8bc90da0d51546216a8
     尝试还原游戏纵横四海<br>
     启动：npm start 地址：http://localhost:3000/main<br>
 </div>
